@@ -50,12 +50,9 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: {
-        index: path.resolve(__dirname, 'src/index.ts'),
-        ...Object.fromEntries(
-          entires.map((entry) => [entry[0], path.resolve(__dirname, entry[1])]),
-        ),
-      },
+      entry: Object.fromEntries(
+        entires.map((entry) => [entry[0], path.resolve(__dirname, entry[1])]),
+      ),
       name: '@stanfordbdhg/spezi-web-design-system',
       fileName: (format, name) => {
         if (format === 'es') return `${name}.js`
