@@ -7,10 +7,9 @@
 //
 
 import { cva, type VariantProps } from 'class-variance-authority'
-import { isEmpty } from 'lodash'
 import { type ReactNode, useEffect, useState } from 'react'
-import { cn } from '../../utils/className'
-import { type Nil } from '../../utils/misc'
+import { cn } from '@/utils/className'
+import { isEmpty, type Nil } from '@/utils/misc'
 
 type AvatarProps = {
   className?: string

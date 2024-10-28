@@ -7,7 +7,7 @@
 //
 
 import type { UrlObject } from 'url'
-import { isString } from 'lodash'
+import { isNil, isString } from 'es-toolkit'
 import { toast } from '../../components/Toaster'
 
 /**
@@ -65,3 +65,23 @@ export const strategy = <T extends string | number | symbol, F>(
 
 export const ensureString = (value: unknown) =>
   isString(value) ? value : undefined
+
+export const isObject = (value: unknown): value is object =>
+  value !== null && typeof value === 'object'
+
+interface IsEmptyFunction {
+  (value: string): value is ''
+  (value: null | undefined): value is null | undefined
+  (value: unknown): boolean
+}
+
+// @ts-expect-error isEmpty implements predicate check
+export const isEmpty: IsEmptyFunction = (value: unknown) => {
+  if (value === '') return true
+  if (isNil(value)) return true
+  const valueIsObject = isObject(value)
+  if (valueIsObject && 'length' in value) return value.length === 0
+  if (valueIsObject && 'size' in value) return value.size === 0
+  if (valueIsObject) return Object.entries(value).length === 0
+  return false
+}

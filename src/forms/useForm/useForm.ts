@@ -7,7 +7,7 @@
 //
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { isObject, isString } from 'lodash'
+import { isString } from 'es-toolkit'
 import { useCallback } from 'react'
 import {
   type DeepRequired,
@@ -17,6 +17,7 @@ import {
   type UseFormProps,
 } from 'react-hook-form'
 import { type z } from 'zod'
+import { isObject } from '@/utils/misc'
 
 type FieldValues = Record<string, unknown>
 
