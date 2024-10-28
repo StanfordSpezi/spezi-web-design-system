@@ -1,7 +1,7 @@
 #
-# This source file is part of the Stanford Biodesign Digital Health Next.js Template open-source project
+# This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
 #
-# SPDX-FileCopyrightText: 2023 Stanford University and the project authors (see CONTRIBUTORS.md)
+# SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
 #
 # SPDX-License-Identifier: MIT
 #
@@ -35,9 +35,3 @@ jobs:
     uses: StanfordBDHG/.github/.github/workflows/npm-test-and-coverage.yml@v2
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
-  dockercomposetest:
-    name: Docker Compose & Test
-    uses: StanfordBDHG/.github/.github/workflows/docker-compose-test.yml@v2
-    with:
-      dockerComposeFile: docker-compose-development.yml
-      testscript: test.sh

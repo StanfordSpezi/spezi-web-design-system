@@ -1,0 +1,44 @@
+/*
+
+This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
+
+SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
+
+SPDX-License-Identifier: MIT
+
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .focus-ring {
+    @apply ring-offset-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .inline-flex-center {
+    @apply inline-flex items-center justify-center;
+  }
+
+  .interactive-opacity {
+    @apply focus-ring transition-opacity hover:opacity-60;
+  }
+}

@@ -1,62 +1,276 @@
 {
-  "name": "nextjstemplate",
+  "name": "@stanfordbdhg/spezi-web-design-system",
   "version": "0.1.0",
-  "license": "MIT",
-  "description": "Stanford Biodesign Digital Health Next.js Template",
+  "private": true,
+  "description": "Stanford Biodesign Digital Health Spezi Web Design System",
   "keywords": [
     "Stanford",
-    "Biodesign"
+    "Biodesign",
+    "Spezi",
+    "Web",
+    "Design",
+    "System"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/StanfordBDHG/NextJSTemplate"
+    "url": "https://github.com/StanfordSpezi/spezi-web-design-system"
   },
-  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./style.css": {
+      "default": "./dist/style.css"
+    },
+    "./components/Avatar": {
+      "default": "./dist/components/Avatar.js",
+      "types":"./dist/components/Avatar.d.ts"
+    },
+    "./components/Button": {
+      "default":  "./dist/components/Button.js",
+      "types": "./dist/components/Button.d.ts"
+    },
+    "./components/Calendar":  {
+      "default":  "./dist/components/Calendar.js",
+      "types": "./dist/components/Calendar.d.ts"
+    },
+    "./components/Card": {
+      "default":  "./dist/components/Card.js",
+      "types": "./dist/components/Card.d.ts"
+    },
+    "./components/CopyText":  {
+      "default":  "./dist/components/CopyText.js",
+      "types": "./dist/components/CopyText.d.ts"
+    },
+    "./components/DataTable": {
+      "default":  "./dist/components/DataTable.js",
+      "types": "./dist/components/DataTable.d.ts"
+    },
+    "./components/DatePicker":  {
+      "default":  "./dist/components/DatePicker.js",
+      "types": "./dist/components/DatePicker.d.ts"
+    },
+    "./components/Dialog": {
+      "default":  "./dist/components/Dialog.js",
+      "types": "./dist/components/Dialog.d.ts"
+    },
+    "./components/DropdownMenu":  {
+      "default":  "./dist/components/DropdownMenu.js",
+      "types": "./dist/components/DropdownMenu.d.ts"
+    },
+    "./components/EmptyState": {
+      "default":  "./dist/components/EmptyState.js",
+      "types": "./dist/components/EmptyState.d.ts"
+    },
+    "./components/Error":  {
+      "default":  "./dist/components/Error.js",
+      "types": "./dist/components/Error.d.ts"
+    },
+    "./components/Input": {
+      "default":  "./dist/components/Input.js",
+      "types": "./dist/components/Input.d.ts"
+    },
+    "./components/Label":  {
+      "default":  "./dist/components/Label.js",
+      "types": "./dist/components/Label.d.ts"
+    },
+    "./components/Pagination": {
+      "default":  "./dist/components/Pagination.js",
+      "types": "./dist/components/Pagination.d.ts"
+    },
+    "./components/Popover":  {
+      "default":  "./dist/components/Popover.js",
+      "types": "./dist/components/Popover.d.ts"
+    },
+    "./components/RangeCounter": {
+      "default":  "./dist/components/RangeCounter.js",
+      "types": "./dist/components/RangeCounter.d.ts"
+    },
+    "./components/Select":  {
+      "default":  "./dist/components/Select.js",
+      "types": "./dist/components/Select.d.ts"
+    },
+    "./components/Separator": {
+      "default":  "./dist/components/Separator.js",
+      "types": "./dist/components/Separator.d.ts"
+    },
+    "./components/SideLabel":  {
+      "default":  "./dist/components/SideLabel.js",
+      "types": "./dist/components/SideLabel.d.ts"
+    },
+    "./components/Switch": {
+      "default":  "./dist/components/Switch.js",
+      "types": "./dist/components/Switch.d.ts"
+    },
+    "./components/Table":  {
+      "default":  "./dist/components/Table.js",
+      "types": "./dist/components/Table.d.ts"
+    },
+    "./components/Tabs": {
+      "default":  "./dist/components/Tabs.js",
+      "types": "./dist/components/Tabs.d.ts"
+    },
+    "./components/Textarea":  {
+      "default":  "./dist/components/Textarea.js",
+      "types": "./dist/components/Textarea.d.ts"
+    },
+    "./components/Toaster": {
+      "default":  "./dist/components/Toaster.js",
+      "types": "./dist/components/Toaster.d.ts"
+    },
+    "./components/Tooltip":  {
+      "default":  "./dist/components/Tooltip.js",
+      "types": "./dist/components/Tooltip.d.ts"
+    },
+    "./molecules/AsideBrandLayout":  {
+      "default": "./dist/molecules/AsideBrandLayout.js",
+      "types": "./dist/molecules/AsideBrandLayout.d.ts"
+    },
+    "./molecules/ConfirmDeleteDialog": {
+      "default":  "./dist/molecules/ConfirmDeleteDialog.js",
+      "types":  "./dist/molecules/ConfirmDeleteDialog.d.ts"
+    },
+    "./molecules/DashboardLayout":  {
+      "default":  "./dist/molecules/DashboardLayout.js",
+      "types":  "./dist/molecules/DashboardLayout.d.ts"
+    },
+    "./molecules/Notifications": {
+      "default":  "./dist/molecules/Notifications.js",
+      "types":  "./dist/molecules/Notifications.d.ts"
+    },
+    "./SpeziProvider": {
+      "default": "./dist/SpeziProvider.js",
+      "types": "./dist/SpeziProvider.d.ts"
+    },
+    "./forms": {
+      "default": "./dist/forms.js",
+      "types": "./dist/forms.d.ts"
+    },
+    "./modules/auth": {
+      "default": "./dist/modules/auth.js",
+      "types": "./dist/modules/auth.d.ts"
+    },
+    "./utils/className":  {
+      "default": "./dist/utils/className.js",
+      "types": "./dist/utils/className.d.ts"
+    },
+    "./utils/date": {
+      "default":  "./dist/utils/date.js",
+      "types":  "./dist/utils/date.d.ts"
+    },
+    "./utils/file":  {
+      "default":  "./dist/utils/file.js",
+      "types":  "./dist/utils/file.d.ts"
+    },
+    "./utils/misc": {
+      "default":  "./dist/utils/misc.js",
+      "types":  "./dist/utils/misc.d.ts"
+    },
+    "./utils/tailwind":  {
+      "default":  "./dist/utils/tailwind.js",
+      "types":  "./dist/utils/tailwind.d.ts"
+    },
+    "./utils/useOpenState": {
+      "default":  "./dist/utils/useOpenState.js",
+      "types":  "./dist/utils/useOpenState.d.ts"
+    },
+    "./utils/navigator": {
+      "default":  "./dist/utils/navigator.js",
+      "types":  "./dist/utils/navigator.d.ts"
+    }
+  },
+  "main": "dist/spezi-web-design-system.es.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "dev": "concurrently \"next dev\" \"npm --prefix packages/example-package run watch\"",
-    "prebuild": "npm --prefix packages/example-package run build",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix & prettier --write .",
-    "lint:ci": "npm run prebuild && eslint --output-file eslint_report.json --format json .",
-    "pretest": "npm --prefix packages/example-package run build",
-    "test": "jest",
+    "build": "tsc && vite build",
+    "dev": "vite",
     "docs": "typedoc",
-    "docs:ci": "typedoc --out ./out/docs --githubPages true"
+    "docs:ci": "typedoc --out ./out/docs --githubPages true",
+    "lint": "eslint .",
+    "lint:ci": "eslint --output-file eslint_report.json --format json .",
+    "lint:fix": "eslint . --fix",
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@stanfordbdhg/example-package": "file:./packages/example-package",
-    "next": "^14",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "react": "^18",
-    "react-dom": "^18",
-    "sharp": "^0.33"
+    "@hookform/resolvers": "^3.9.0",
+    "@nextui-org/use-pagination": "^2.0.10",
+    "@radix-ui/react-checkbox": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.1",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.1",
+    "@radix-ui/react-tooltip": "^1.1.3",
+    "@tanstack/match-sorter-utils": "^8.19.4",
+    "@tanstack/react-router": "^1.74.4",
+    "@tanstack/react-table": "^8.20.5",
+    "class-variance-authority": "^0.7.0",
+    "date-fns": "^3.6.0",
+    "es-toolkit": "^1.25.2",
+    "firebase": "^10.14.1",
+    "lucide-react": "^0.453.0",
+    "react-day-picker": "^8",
+    "react-hook-form": "^7.53.1",
+    "sonner": "^1.5.0",
+    "use-debounce": "^10.0.4",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.3.5",
+    "@storybook/addon-interactions": "^8.3.5",
+    "@storybook/addon-links": "^8.3.5",
+    "@storybook/addon-onboarding": "^8.3.5",
+    "@storybook/blocks": "^8.3.5",
+    "@storybook/react": "^8.3.5",
+    "@storybook/react-vite": "^8.3.5",
+    "@storybook/test": "^8.3.5",
     "@testing-library/jest-dom": "^6",
-    "@testing-library/react": "^15",
-    "@total-typescript/ts-reset": "^0.5.1",
-    "@types/jest": "^29",
-    "@types/node": "^20",
+    "@testing-library/react": "^16",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^7",
-    "@typescript-eslint/parser": "^7",
+    "@types/react-helmet": "^6.1.11",
+    "@typescript-eslint/eslint-plugin": "^8",
+    "@typescript-eslint/parser": "^8",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-v8": "^2.1.3",
     "autoprefixer": "^10",
-    "concurrently": "^8",
+    "esbuild": "^0.24.0",
     "eslint": "^8",
     "eslint-config-next": "^14",
     "eslint-config-prettier": "^9",
+    "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2",
     "eslint-plugin-prettier": "^5",
-    "jest": "^29",
-    "jest-environment-jsdom": "^29",
+    "jsdom": "^25.0.1",
     "postcss": "^8",
+    "postcss-import": "^16.1.0",
     "prettier": "^3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "storybook": "^8.3.5",
     "tailwindcss": "^3",
-    "ts-jest": "^29",
-    "typedoc": "^0.25",
-    "typescript": "^5"
+    "tailwindcss-animate": "^1.0.7",
+    "typedoc": "^0.26",
+    "typescript": "^5",
+    "vite": "^5.4.9",
+    "vite-plugin-dts": "^4.2.4",
+    "vitest": "^2.1.3"
+  },
+  "peerDependencies": {
+    "next-intl": "^3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "engines": {
+    "node": "22"
   }
 }

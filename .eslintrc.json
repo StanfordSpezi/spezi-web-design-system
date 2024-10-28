@@ -3,6 +3,13 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:@typescript-eslint/strict-type-checked",
@@ -16,8 +23,7 @@
     "**/dist/*",
     "/docs/**",
     "/out/**",
-    "**/jest.config.js",
-    "**/next.config.js",
+    "/coverage/**",
     "**/postcss.config.js",
     "**/tailwind.config.js"
   ],
@@ -77,6 +83,11 @@
     // false negatives
     "import/namespace": ["off"],
     "no-empty-pattern": "off",
+    "@typescript-eslint/no-empty-object-type": [
+      "error",
+      // `interface SpecificVariantProps extends VariantProps {}` is fine
+      { "allowInterfaces": "with-single-extends" }
+    ],
     // make sure to `await` inside try…catch
     "@typescript-eslint/return-await": ["error", "in-try-catch"],
     "@typescript-eslint/no-confusing-void-expression": [
@@ -99,11 +110,14 @@
       "error",
       { "allowNumber": true, "allowBoolean": true }
     ],
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    // some tanstack router functions result are thrown, like notFound
+    "@typescript-eslint/only-throw-error": "off",
+    "@next/next/no-img-element": "off"
   },
   "overrides": [
     {
-      "files": ["app/**/*.ts?(x)", "**/*.stories.ts?(x)"],
+      "files": ["app/**/*.ts?(x)", "**/*.stories.ts?(x)", "vite.config.ts"],
       "rules": {
         "import/no-default-export": "off"
       }
