@@ -29,11 +29,7 @@ export const ButtonPending = forwardRef<HTMLSpanElement, ButtonPendingProps>(
       {...props}
     >
       {isPending && (
-        <div
-          className="absolute -top-0.5 left-1/2 -translate-x-1/2"
-          aria-hidden
-          data-testid="ButtonPending"
-        >
+        <div className="absolute" aria-hidden data-testid="ButtonPending">
           <Loader2 className="animate-spin" />
         </div>
       )}
