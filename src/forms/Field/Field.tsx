@@ -17,6 +17,7 @@ import {
   type FieldValues,
   type UseFormStateReturn,
 } from 'react-hook-form'
+import { FieldTooltip } from './FieldTooltip'
 import { Error } from '../../components/Error'
 import { Label } from '../../components/Label'
 
@@ -41,6 +42,10 @@ export type FieldProps<
   className?: string
   checkEmptyError?: boolean
   error?: ErrorOption
+  /**
+   * Adds tooltip on top of field, helpful for explaining details about field
+   * */
+  tooltip?: ReactNode
 }
 
 /**
@@ -56,6 +61,7 @@ export const Field = <
   checkEmptyError,
   render,
   error: errorProp,
+  tooltip,
   ...props
 }: FieldProps<TFieldValues, TName>) => {
   const id = name
@@ -74,10 +80,13 @@ export const Field = <
         }
         return (
           <div className={className}>
-            {label && (
-              <Label htmlFor={id} className="mb-2 block">
-                {label}
-              </Label>
+            {(tooltip ?? label) && (
+              <div className="mb-2 flex gap-2">
+                {label && <Label htmlFor={id}>{label}</Label>}
+                {tooltip && (
+                  <FieldTooltip tooltip={tooltip} label={label} id={id} />
+                )}
+              </div>
             )}
             {render({
               ...states,

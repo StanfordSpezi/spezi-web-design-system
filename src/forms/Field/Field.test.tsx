@@ -67,4 +67,17 @@ describe('Field', () => {
     const input = screen.getByRole('textbox')
     expect(input).toHaveAccessibleErrorMessage('Custom error')
   })
+
+  it('renders accessible tooltip', async () => {
+    const user = userEvent.setup()
+    render(<Component tooltip="Tooltip content" />)
+
+    const tooltipTrigger = screen.getByLabelText(
+      'More information about the name field',
+    )
+
+    await user.hover(tooltipTrigger)
+
+    expect(tooltipTrigger).toHaveAccessibleDescription('Tooltip content')
+  })
 })
