@@ -80,14 +80,14 @@ export const Field = <
         }
         return (
           <div className={className}>
-            {(tooltip ?? label) && (
+            {tooltip || label ?
               <div className="mb-2 flex gap-2">
                 {label && <Label htmlFor={id}>{label}</Label>}
                 {tooltip && (
                   <FieldTooltip tooltip={tooltip} label={label} id={id} />
                 )}
               </div>
-            )}
+            : null}
             {render({
               ...states,
               field: fieldProps,
