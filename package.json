@@ -143,6 +143,10 @@
       "types":  "./dist/molecules/Notifications.d.ts",
       "default":  "./dist/molecules/Notifications.js"
     },
+    "./molecules/NotFound": {
+      "types":  "./dist/molecules/NotFound.d.ts",
+      "default":  "./dist/molecules/NotFound.js"
+    },
     "./SpeziProvider": {
       "types": "./dist/SpeziProvider.d.ts",
       "default": "./dist/SpeziProvider.js"
