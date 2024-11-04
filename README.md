@@ -11,7 +11,7 @@ SPDX-License-Identifier: MIT
 # Biodesign Digital Health Spezi Web Design System
 
 [![Build and Test](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/build-and-test.yml)
-[![Deployment](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/main.yml/badge.svg)](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/main.yml)
+[![Deployment](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/deployment.yml/badge.svg)](https://github.com/StanfordSpezi/spezi-web-design-system/actions/workflows/deployment.yml)
 [![codecov](https://codecov.io/gh/StanfordSpezi/spezi-web-design-system/graph/badge.svg?token=dfQW5eZ2up)](https://codecov.io/gh/StanfordSpezi/spezi-web-design-system)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10052055.svg)](https://doi.org/10.5281/zenodo.10052055)
 
