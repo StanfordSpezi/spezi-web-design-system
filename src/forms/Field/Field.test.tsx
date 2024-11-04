@@ -76,8 +76,8 @@ describe('Field', () => {
       'More information about the name field',
     )
 
+    expect(tooltipTrigger).not.toHaveAccessibleDescription('Tooltip content')
     await user.hover(tooltipTrigger)
-
     expect(tooltipTrigger).toHaveAccessibleDescription('Tooltip content')
   })
 })
