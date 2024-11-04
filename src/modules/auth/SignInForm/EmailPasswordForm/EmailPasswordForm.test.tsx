@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import { type Auth } from 'firebase/auth'
 import { vitest } from 'vitest'
+import { renderWithProviders } from '@/tests/helpers'
 import { EmailPasswordForm } from './EmailPasswordForm'
-import { Providers } from '../../../../tests/Providers'
 
 const authMock = {} as Auth
 const signInWithEmailAndPasswordMock = vitest.fn()
@@ -48,12 +48,11 @@ describe('EmailPasswordForm', () => {
   })
 
   it('calls signIn function', async () => {
-    render(
+    renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-      { wrapper: Providers },
     )
     await signIn()
 
@@ -66,12 +65,11 @@ describe('EmailPasswordForm', () => {
 
   it('validates against empty values', async () => {
     const user = userEvent.setup()
-    render(
+    renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-      { wrapper: Providers },
     )
 
     await user.type(getPasswordField(), 'something')
@@ -85,12 +83,11 @@ describe('EmailPasswordForm', () => {
     signInWithEmailAndPasswordMock.mockImplementation(() => {
       throw new InvalidCredsError()
     })
-    render(
+    renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-      { wrapper: Providers },
     )
 
     await signIn()
