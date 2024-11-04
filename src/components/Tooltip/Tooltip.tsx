@@ -37,7 +37,7 @@ export const TooltipContent = forwardRef<
 ))
 TooltipContent.displayName = RadixTooltip.Content.displayName
 
-interface TooltipProps
+export interface TooltipProps
   extends Omit<ComponentPropsWithoutRef<typeof RadixTooltip.Root>, 'children'>,
     Pick<
       ComponentPropsWithoutRef<typeof RadixTooltip.Content>,

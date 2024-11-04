@@ -7,16 +7,16 @@
 //
 
 import { Info } from 'lucide-react'
-import { Tooltip } from '@/components/Tooltip'
+import { Tooltip, type TooltipProps } from '@/components/Tooltip'
 import { type FieldProps } from '@/forms'
 import { ensureString } from '@/utils/misc'
 
-interface FieldTooltipProps extends Pick<FieldProps, 'tooltip' | 'label'> {
+interface FieldTooltipProps extends TooltipProps, Pick<FieldProps, 'label'> {
   id: string
 }
 
-export const FieldTooltip = ({ tooltip, label, id }: FieldTooltipProps) => (
-  <Tooltip tooltip={tooltip} open={true}>
+export const FieldTooltip = ({ label, id, ...props }: FieldTooltipProps) => (
+  <Tooltip {...props}>
     <button
       type="button"
       className="focus-ring rounded-md"
