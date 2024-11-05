@@ -13,6 +13,7 @@ import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import { configDefaults } from 'vitest/config'
 
 /**
  * Tuple of [package name, package entry point]
@@ -34,6 +35,8 @@ const entires = [
     .readdirSync(path.resolve(__dirname, `src/utils`))
     .map((name) => [`utils/${name}`, `src/utils/${name}/index.ts`]),
 ]
+
+const testExclude = ['**/*.stories.tsx']
 
 export default defineConfig({
   root: '.',
@@ -67,5 +70,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./testSetup.ts'],
+    exclude: [...testExclude, ...configDefaults.exclude],
+    coverage: {
+      exclude: [...testExclude, ...(configDefaults.coverage.exclude ?? [])],
+    },
   },
 })
