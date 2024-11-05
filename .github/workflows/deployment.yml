@@ -27,8 +27,6 @@ jobs:
       actions: read
       security-events: write
     secrets: inherit
-    with:
-      environment: production
   publishpackage:
     name: Publish Package
     runs-on: ubuntu-latest
