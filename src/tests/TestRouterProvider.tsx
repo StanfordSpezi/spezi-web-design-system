@@ -13,25 +13,27 @@ import {
   Outlet,
   RouterProvider,
 } from '@tanstack/react-router'
-import type { ReactNode } from 'react'
+import { type ReactNode, useMemo } from 'react'
 
 interface TestRouterProviderProps {
   children: ReactNode
 }
 
 export const TestRouterProvider = ({ children }: TestRouterProviderProps) => {
-  const rootRoute = createRootRoute({
-    component: Outlet,
-  })
+  const router = useMemo(() => {
+    const rootRoute = createRootRoute({
+      component: Outlet,
+    })
 
-  const indexRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '*',
-    component: () => <>{children}</>,
-  })
+    const indexRoute = createRoute({
+      getParentRoute: () => rootRoute,
+      path: '*',
+      component: () => <>{children}</>,
+    })
 
-  const routeTree = rootRoute.addChildren([indexRoute])
-  const router = createRouter({ routeTree })
+    const routeTree = rootRoute.addChildren([indexRoute])
+    return createRouter({ routeTree })
+  }, [children])
 
   return <RouterProvider router={router} />
 }
