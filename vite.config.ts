@@ -53,7 +53,7 @@ export default defineConfig({
       entry: Object.fromEntries(
         entires.map((entry) => [entry[0], path.resolve(__dirname, entry[1])]),
       ),
-      name: '@stanfordbdhg/spezi-web-design-system',
+      name: '@stanfordspezi/spezi-web-design-system',
       fileName: (format, name) => {
         if (format === 'es') return `${name}.js`
         return `${name}.${format}`
