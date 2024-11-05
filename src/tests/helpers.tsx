@@ -21,5 +21,18 @@ export const TestProviders = ({ children }: TestProvidersProps) => (
   </TestRouterProvider>
 )
 
+const DefaultWrapper = ({ children }: { children?: ReactNode }) => (
+  <>{children}</>
+)
+
 export const renderWithProviders = (node: ReactNode, options?: RenderOptions) =>
-  render(<TestProviders>{node}</TestProviders>, options)
+  render(node, {
+    wrapper: ({ children }) => {
+      const Wrapper = options?.wrapper ?? DefaultWrapper
+      return (
+        <TestProviders>
+          <Wrapper>{children}</Wrapper>
+        </TestProviders>
+      )
+    },
+  })
