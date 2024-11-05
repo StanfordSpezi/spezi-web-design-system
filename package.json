@@ -1,7 +1,6 @@
 {
   "name": "@stanfordbdhg/spezi-web-design-system",
   "version": "0.1.0",
-  "private": true,
   "description": "Stanford Biodesign Digital Health Spezi Web Design System",
   "keywords": [
     "Stanford",
