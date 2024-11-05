@@ -36,7 +36,11 @@ const entires = [
     .map((name) => [`utils/${name}`, `src/utils/${name}/index.ts`]),
 ]
 
-const testExclude = ['**/*.stories.tsx']
+const testExclude = [
+  '**/*.stories.tsx',
+  './postcss.config.js',
+  './tailwind.config.js',
+]
 
 export default defineConfig({
   root: '.',
