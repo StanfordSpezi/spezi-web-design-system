@@ -6,15 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 import { Preview } from '@storybook/react'
-import { lightTheme } from '../src'
-import { useEffect } from 'react'
-
 import '../src/main.css'
 /**
  * We need to import preflight in Stories,
  * because that's how components are required to be consumed in client-land
  * */
 import './preflight.css'
+import { TestProviders } from '../src/tests/helpers'
 
 const preview: Preview = {
   parameters: {
@@ -28,18 +26,11 @@ const preview: Preview = {
   },
   tags: ['autodocs'],
   decorators: [
-    (Story) => {
-      // Set theme variables
-      useEffect(() => {
-        Object.entries(lightTheme).forEach(([key, value]) => {
-          if (typeof value === 'string') {
-            window.document.documentElement.style.setProperty(`--${key}`, value)
-          }
-        })
-      }, [])
-
-      return <Story />
-    },
+    (Story) => (
+      <TestProviders>
+        <Story />
+      </TestProviders>
+    ),
   ],
 }
 

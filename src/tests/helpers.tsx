@@ -6,36 +6,33 @@
 // SPDX-License-Identifier: MIT
 //
 
-import {
-  createRootRoute,
-  createRoute,
-  createRouter,
-  Outlet,
-  RouterProvider,
-} from '@tanstack/react-router'
 import { render, type RenderOptions } from '@testing-library/react'
 import type { ReactNode } from 'react'
+import { SpeziProvider } from '@/SpeziProvider'
+import { TestRouterProvider } from '@/tests/TestRouterProvider'
 
-interface TestRouterProviderProps {
+interface TestProvidersProps {
   children: ReactNode
 }
 
-export const TestRouterProvider = ({ children }: TestRouterProviderProps) => {
-  const rootRoute = createRootRoute({
-    component: Outlet,
-  })
+export const TestProviders = ({ children }: TestProvidersProps) => (
+  <TestRouterProvider>
+    <SpeziProvider>{children}</SpeziProvider>
+  </TestRouterProvider>
+)
 
-  const indexRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '/',
-    component: () => <>{children}</>,
-  })
-
-  const routeTree = rootRoute.addChildren([indexRoute])
-  const router = createRouter({ routeTree })
-
-  return <RouterProvider router={router} />
-}
+const DefaultWrapper = ({ children }: { children?: ReactNode }) => (
+  <>{children}</>
+)
 
 export const renderWithProviders = (node: ReactNode, options?: RenderOptions) =>
-  render(<TestRouterProvider>{node}</TestRouterProvider>, options)
+  render(node, {
+    wrapper: ({ children }) => {
+      const Wrapper = options?.wrapper ?? DefaultWrapper
+      return (
+        <TestProviders>
+          <Wrapper>{children}</Wrapper>
+        </TestProviders>
+      )
+    },
+  })

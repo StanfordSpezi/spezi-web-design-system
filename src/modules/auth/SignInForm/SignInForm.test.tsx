@@ -6,11 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { type Auth, type AuthProvider } from 'firebase/auth'
 import { vitest } from 'vitest'
+import { renderWithProviders } from '@/tests/helpers'
 import { SignInForm } from './SignInForm'
-import { Providers } from '../../../tests/Providers'
 
 const authMock = {} as Auth
 const providerMock = {} as AuthProvider
@@ -34,7 +34,7 @@ describe('SignInForm', () => {
   })
 
   it('renders SSO providers and calls signInWithPopup', () => {
-    render(<SignInForm {...defaultProps} />, { wrapper: Providers })
+    renderWithProviders(<SignInForm {...defaultProps} />)
 
     const ssoButton = screen.getByRole('button', { name: 'Sign in with Lorem' })
     fireEvent.click(ssoButton)
@@ -43,13 +43,12 @@ describe('SignInForm', () => {
   })
 
   it('renders email password form', () => {
-    render(
+    renderWithProviders(
       <SignInForm
         {...defaultProps}
         enableEmailPassword={true}
         providers={[]}
       />,
-      { wrapper: Providers },
     )
 
     const input = screen.getByRole('textbox')
@@ -57,13 +56,12 @@ describe('SignInForm', () => {
   })
 
   it('renders separator only if has providers and email password', () => {
-    const { rerender } = render(
+    const { rerender } = renderWithProviders(
       <SignInForm
         {...defaultProps}
         enableEmailPassword={true}
         providers={[]}
       />,
-      { wrapper: Providers },
     )
 
     expect(screen.queryByText('or')).not.toBeInTheDocument()
