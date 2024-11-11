@@ -7,3 +7,4 @@
 //
 
 export * from './SignInForm'
+export * from './EmailPasswordForm'
