@@ -54,7 +54,7 @@ export const NotFoundAction = (props: NotFoundActionProps) => (
   <Button size="sm" className="mt-3" asChild {...props} />
 )
 
-interface NotFoundProps {
+export interface NotFoundProps {
   /**
    * Configures where user should go instead
    * @example { name: "users list", href: "/user" }
