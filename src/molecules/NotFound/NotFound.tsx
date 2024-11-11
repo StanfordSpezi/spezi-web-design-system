@@ -83,7 +83,7 @@ export const NotFound = ({
       Please check your URL or return to {backPage.name}
     </NotFoundParagraph>
     <NotFoundAction>
-      <Link href={backPage.href}>Go to {backPage.name}</Link>
+      <Link to={backPage.href}>Go to {backPage.name}</Link>
     </NotFoundAction>
   </NotFoundContainer>
 )
