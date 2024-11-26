@@ -27,124 +27,124 @@
       "default": "./dist/style.css"
     },
     "./components/Avatar": {
-      "types":"./dist/components/Avatar.d.ts",
+      "types": "./dist/components/Avatar.d.ts",
       "default": "./dist/components/Avatar.js"
     },
     "./components/Button": {
       "types": "./dist/components/Button.d.ts",
-      "default":  "./dist/components/Button.js"
+      "default": "./dist/components/Button.js"
     },
-    "./components/Calendar":  {
+    "./components/Calendar": {
       "types": "./dist/components/Calendar.d.ts",
-      "default":  "./dist/components/Calendar.js"
+      "default": "./dist/components/Calendar.js"
     },
     "./components/Card": {
       "types": "./dist/components/Card.d.ts",
-      "default":  "./dist/components/Card.js"
+      "default": "./dist/components/Card.js"
     },
-    "./components/CopyText":  {
+    "./components/CopyText": {
       "types": "./dist/components/CopyText.d.ts",
-      "default":  "./dist/components/CopyText.js"
+      "default": "./dist/components/CopyText.js"
     },
     "./components/DataTable": {
       "types": "./dist/components/DataTable.d.ts",
-      "default":  "./dist/components/DataTable.js"
+      "default": "./dist/components/DataTable.js"
     },
-    "./components/DatePicker":  {
+    "./components/DatePicker": {
       "types": "./dist/components/DatePicker.d.ts",
-      "default":  "./dist/components/DatePicker.js"
+      "default": "./dist/components/DatePicker.js"
     },
     "./components/Dialog": {
       "types": "./dist/components/Dialog.d.ts",
-      "default":  "./dist/components/Dialog.js"
+      "default": "./dist/components/Dialog.js"
     },
-    "./components/DropdownMenu":  {
+    "./components/DropdownMenu": {
       "types": "./dist/components/DropdownMenu.d.ts",
-      "default":  "./dist/components/DropdownMenu.js"
+      "default": "./dist/components/DropdownMenu.js"
     },
     "./components/EmptyState": {
       "types": "./dist/components/EmptyState.d.ts",
-      "default":  "./dist/components/EmptyState.js"
+      "default": "./dist/components/EmptyState.js"
     },
-    "./components/Error":  {
+    "./components/Error": {
       "types": "./dist/components/Error.d.ts",
-      "default":  "./dist/components/Error.js"
+      "default": "./dist/components/Error.js"
     },
     "./components/Input": {
       "types": "./dist/components/Input.d.ts",
-      "default":  "./dist/components/Input.js"
+      "default": "./dist/components/Input.js"
     },
-    "./components/Label":  {
+    "./components/Label": {
       "types": "./dist/components/Label.d.ts",
-      "default":  "./dist/components/Label.js"
+      "default": "./dist/components/Label.js"
     },
     "./components/Pagination": {
       "types": "./dist/components/Pagination.d.ts",
-      "default":  "./dist/components/Pagination.js"
+      "default": "./dist/components/Pagination.js"
     },
-    "./components/Popover":  {
+    "./components/Popover": {
       "types": "./dist/components/Popover.d.ts",
-      "default":  "./dist/components/Popover.js"
+      "default": "./dist/components/Popover.js"
     },
     "./components/RangeCounter": {
       "types": "./dist/components/RangeCounter.d.ts",
-      "default":  "./dist/components/RangeCounter.js"
+      "default": "./dist/components/RangeCounter.js"
     },
-    "./components/Select":  {
+    "./components/Select": {
       "types": "./dist/components/Select.d.ts",
-      "default":  "./dist/components/Select.js"
+      "default": "./dist/components/Select.js"
     },
     "./components/Separator": {
       "types": "./dist/components/Separator.d.ts",
-      "default":  "./dist/components/Separator.js"
+      "default": "./dist/components/Separator.js"
     },
-    "./components/SideLabel":  {
+    "./components/SideLabel": {
       "types": "./dist/components/SideLabel.d.ts",
-      "default":  "./dist/components/SideLabel.js"
+      "default": "./dist/components/SideLabel.js"
     },
     "./components/Switch": {
       "types": "./dist/components/Switch.d.ts",
-      "default":  "./dist/components/Switch.js"
+      "default": "./dist/components/Switch.js"
     },
-    "./components/Table":  {
+    "./components/Table": {
       "types": "./dist/components/Table.d.ts",
-      "default":  "./dist/components/Table.js"
+      "default": "./dist/components/Table.js"
     },
     "./components/Tabs": {
       "types": "./dist/components/Tabs.d.ts",
-      "default":  "./dist/components/Tabs.js"
+      "default": "./dist/components/Tabs.js"
     },
-    "./components/Textarea":  {
+    "./components/Textarea": {
       "types": "./dist/components/Textarea.d.ts",
-      "default":  "./dist/components/Textarea.js"
+      "default": "./dist/components/Textarea.js"
     },
     "./components/Toaster": {
       "types": "./dist/components/Toaster.d.ts",
-      "default":  "./dist/components/Toaster.js"
+      "default": "./dist/components/Toaster.js"
     },
-    "./components/Tooltip":  {
+    "./components/Tooltip": {
       "types": "./dist/components/Tooltip.d.ts",
-      "default":  "./dist/components/Tooltip.js"
+      "default": "./dist/components/Tooltip.js"
     },
-    "./molecules/AsideBrandLayout":  {
+    "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
     },
     "./molecules/ConfirmDeleteDialog": {
-      "types":  "./dist/molecules/ConfirmDeleteDialog.d.ts",
-      "default":  "./dist/molecules/ConfirmDeleteDialog.js"
+      "types": "./dist/molecules/ConfirmDeleteDialog.d.ts",
+      "default": "./dist/molecules/ConfirmDeleteDialog.js"
     },
-    "./molecules/DashboardLayout":  {
-      "types":  "./dist/molecules/DashboardLayout.d.ts",
-      "default":  "./dist/molecules/DashboardLayout.js"
+    "./molecules/DashboardLayout": {
+      "types": "./dist/molecules/DashboardLayout.d.ts",
+      "default": "./dist/molecules/DashboardLayout.js"
     },
     "./molecules/Notifications": {
-      "types":  "./dist/molecules/Notifications.d.ts",
-      "default":  "./dist/molecules/Notifications.js"
+      "types": "./dist/molecules/Notifications.d.ts",
+      "default": "./dist/molecules/Notifications.js"
     },
     "./molecules/NotFound": {
-      "types":  "./dist/molecules/NotFound.d.ts",
-      "default":  "./dist/molecules/NotFound.js"
+      "types": "./dist/molecules/NotFound.d.ts",
+      "default": "./dist/molecules/NotFound.js"
     },
     "./SpeziProvider": {
       "types": "./dist/SpeziProvider.d.ts",
@@ -158,33 +158,33 @@
       "types": "./dist/modules/auth.d.ts",
       "default": "./dist/modules/auth.js"
     },
-    "./utils/className":  {
+    "./utils/className": {
       "types": "./dist/utils/className.d.ts",
       "default": "./dist/utils/className.js"
     },
     "./utils/date": {
-      "types":  "./dist/utils/date.d.ts",
-      "default":  "./dist/utils/date.js"
+      "types": "./dist/utils/date.d.ts",
+      "default": "./dist/utils/date.js"
     },
-    "./utils/file":  {
-      "types":  "./dist/utils/file.d.ts",
-      "default":  "./dist/utils/file.js"
+    "./utils/file": {
+      "types": "./dist/utils/file.d.ts",
+      "default": "./dist/utils/file.js"
     },
     "./utils/misc": {
-      "types":  "./dist/utils/misc.d.ts",
-      "default":  "./dist/utils/misc.js"
+      "types": "./dist/utils/misc.d.ts",
+      "default": "./dist/utils/misc.js"
     },
-    "./utils/tailwind":  {
-      "types":  "./dist/utils/tailwind.d.ts",
-      "default":  "./dist/utils/tailwind.js"
+    "./utils/tailwind": {
+      "types": "./dist/utils/tailwind.d.ts",
+      "default": "./dist/utils/tailwind.js"
     },
     "./utils/useOpenState": {
-      "types":  "./dist/utils/useOpenState.d.ts",
-      "default":  "./dist/utils/useOpenState.js"
+      "types": "./dist/utils/useOpenState.d.ts",
+      "default": "./dist/utils/useOpenState.js"
     },
     "./utils/navigator": {
-      "types":  "./dist/utils/navigator.d.ts",
-      "default":  "./dist/utils/navigator.js"
+      "types": "./dist/utils/navigator.d.ts",
+      "default": "./dist/utils/navigator.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
