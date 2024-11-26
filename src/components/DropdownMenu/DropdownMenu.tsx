@@ -64,11 +64,20 @@ export const DropdownMenuSubContent = forwardRef<
 ))
 DropdownMenuSubContent.displayName = RadixDropdownMenu.SubContent.displayName
 
+type DropdownMenuContentProps = ComponentPropsWithoutRef<
+  typeof RadixDropdownMenu.Content
+> & {
+  /**
+   * Controls Portal's container.
+   * Pass `null` to disable portal
+   * */
+  container?: HTMLElement | null
+}
 export const DropdownMenuContent = forwardRef<
   ElementRef<typeof RadixDropdownMenu.Content>,
-  ComponentPropsWithoutRef<typeof RadixDropdownMenu.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
-  <RadixDropdownMenu.Portal>
+  DropdownMenuContentProps
+>(({ className, container, sideOffset = 4, ...props }, ref) => {
+  const content = (
     <RadixDropdownMenu.Content
       ref={ref}
       sideOffset={sideOffset}
@@ -78,8 +87,13 @@ export const DropdownMenuContent = forwardRef<
       )}
       {...props}
     />
-  </RadixDropdownMenu.Portal>
-))
+  )
+  return container === null ? content : (
+      <RadixDropdownMenu.Portal container={container}>
+        {content}
+      </RadixDropdownMenu.Portal>
+    )
+})
 DropdownMenuContent.displayName = RadixDropdownMenu.Content.displayName
 
 export const DropdownMenuItem = forwardRef<
