@@ -44,7 +44,7 @@ jobs:
       - name: Clean Install
         run: npm ci
       - name: Set version
-        run: npm version ${{ github.event.release.tag_name }}
+        run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
       - name: Build
         run: npm run build
       - name: Publish
