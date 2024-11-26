@@ -13,10 +13,6 @@
     "type": "git",
     "url": "https://github.com/StanfordSpezi/spezi-web-design-system"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "license": "MIT",
   "exports": {
     ".": {
@@ -189,6 +185,10 @@
   },
   "main": "dist/spezi-web-design-system.es.js",
   "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
