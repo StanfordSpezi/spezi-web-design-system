@@ -25,5 +25,5 @@ export const getUserName = (user: {
   email?: Nil<string>
   uid?: Nil<string>
   // We want to exclude empty strings if possible
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
 }) => user.displayName || user.email || user.uid
