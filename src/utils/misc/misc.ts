@@ -31,6 +31,15 @@ export type Url = string | UrlObject
 export type PartialSome<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 /**
+ * Make provided fields in the object required, rest of them partial
+ *
+ * @example
+ * RequiredSome<{ a: string, b: string, c: string }, 'a'> => { a: string, b?: string, c?: string }
+ * */
+export type RequiredSome<T, K extends keyof T> = Partial<Omit<T, K>> &
+  Required<Pick<T, K>>
+
+/**
  * Handles copying to clipboard and show confirmation toast
  * */
 export const copyToClipboard = async (value: string) => {

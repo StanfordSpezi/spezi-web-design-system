@@ -16,7 +16,6 @@ import {
   peopleColumn,
   columnHelper,
 } from './DataTable.mocks'
-import { DataTableBasicView } from './DataTableBasicView'
 import { Button } from '../Button'
 
 const meta: Meta<typeof DataTable> = {
@@ -99,24 +98,20 @@ export const CustomView = () => (
     entityName="users"
     className="m-5"
   >
-    {(props) => (
-      <DataTableBasicView {...props}>
-        {(rows) => (
-          <div className="grid grid-cols-3 gap-4 p-4">
-            {rows.map((row) => {
-              const person = row.original
-              return (
-                <div key={row.id} className="flex flex-col border p-6">
-                  <h4 className="text-lg font-medium">{person.name}</h4>
-                  <span className="text-sm text-muted-foreground">
-                    {person.age} years old
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        )}
-      </DataTableBasicView>
+    {({ rows }) => (
+      <div className="grid grid-cols-3 gap-4 p-4">
+        {rows.map((row) => {
+          const person = row.original
+          return (
+            <div key={row.id} className="flex flex-col border p-6">
+              <h4 className="text-lg font-medium">{person.name}</h4>
+              <span className="text-sm text-muted-foreground">
+                {person.age} years old
+              </span>
+            </div>
+          )
+        })}
+      </div>
     )}
   </DataTable>
 )

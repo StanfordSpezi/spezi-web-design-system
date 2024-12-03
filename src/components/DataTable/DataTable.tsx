@@ -6,25 +6,29 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Table as TableType } from '@tanstack/table-core'
+import { type Row, type Table as TableType } from '@tanstack/table-core'
 import { type ReactNode } from 'react'
+import { Async, type AsyncProps } from '@/components/Async/Async'
 import {
   DataTableTableView,
   type DataTableTableViewSpecificProps,
 } from '@/components/DataTable/DataTableTableView'
+import { ensureString } from '@/utils/misc'
 import { useDataTable, type UseDataTableProps } from './DataTable.utils'
 import { DataTablePagination } from './DataTablePagination'
 import { GlobalFilterInput } from './GlobalFilterInput'
 import { cn } from '../../utils/className'
 
-export type DataTableViewProps<Data> = { table: TableType<Data> } & Pick<
-  DataTableProps<Data>,
-  'entityName'
->
+export type DataTableViewProps<Data> = {
+  table: TableType<Data>
+  rows: Array<Row<Data>>
+} & Pick<DataTableProps<Data>, 'entityName'>
 
 type ViewRenderProp<Data> = (props: DataTableViewProps<Data>) => ReactNode
 
-export interface DataTableProps<Data> extends UseDataTableProps<Data> {
+export interface DataTableProps<Data>
+  extends UseDataTableProps<Data>,
+    Pick<AsyncProps, 'error' | 'loading'> {
   className?: string
   /**
    * Name of the presented data entity
@@ -57,6 +61,8 @@ export const DataTable = <Data,>({
   bordered = true,
   minimal,
   tableView,
+  loading = false,
+  error = false,
   ...props
 }: DataTableProps<Data>) => {
   const { table, setGlobalFilterDebounced } = useDataTable({
@@ -67,7 +73,8 @@ export const DataTable = <Data,>({
   })
   const rows = table.getRowModel().rows
 
-  const viewProps = { table, entityName }
+  const isEmpty = !rows.length
+  const viewProps = { table, entityName, rows }
 
   return (
     <div
@@ -86,10 +93,22 @@ export const DataTable = <Data,>({
           {typeof header === 'function' ? header(viewProps) : header}
         </header>
       )}
-      {children ?
-        children(viewProps)
-      : <DataTableTableView {...tableView} {...viewProps} />}
-      {(!minimal || table.getPageCount() > 1) && !!rows.length && (
+      <Async
+        error={error}
+        loading={loading}
+        entityName={entityName}
+        empty={{
+          show: rows.length === 0,
+          textFilter: ensureString(table.getState().globalFilter),
+          hasFilters:
+            data.length !== 0 && table.getState().columnFilters.length > 0,
+        }}
+      >
+        {children ?
+          children(viewProps)
+        : <DataTableTableView {...tableView} {...viewProps} />}
+      </Async>
+      {(!minimal || table.getPageCount() > 1) && !isEmpty && (
         <footer className="flex items-center justify-between border-t p-4">
           <DataTablePagination table={table} />
         </footer>

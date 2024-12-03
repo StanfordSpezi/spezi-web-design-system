@@ -6,13 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
+import { FirebaseError } from '@firebase/app'
 import { type Auth, type signInWithEmailAndPassword } from 'firebase/auth'
 import { useTranslations } from 'next-intl'
 import { z } from 'zod'
-import { Button } from '../../../../components/Button'
-import { Input } from '../../../../components/Input'
-import { Field } from '../../../../forms/Field'
-import { useForm } from '../../../../forms/useForm'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
+import { Field, useForm, FormError } from '@/forms'
 
 const formSchema = z.object({
   email: z.string().min(1, 'Email is required'),
@@ -39,11 +39,16 @@ export const EmailPasswordForm = ({
       await signInWithEmailAndPassword(auth, email, password)
     } catch (error) {
       if (
-        error instanceof Error &&
-        'code' in error &&
-        error.code === 'auth/invalid-credential'
+        error instanceof FirebaseError &&
+        [
+          'auth/invalid-credential',
+          'auth/user-not-found',
+          'auth/wrong-password',
+        ].includes(error.code)
       ) {
         form.setFormError(t('signIn_formError_invalidCredentials'))
+      } else if (error instanceof FirebaseError) {
+        form.setFormError(t('signIn_formError_firebase', { code: error.code }))
       } else {
         form.setFormError(t('signIn_formError_unknown'))
       }
@@ -52,6 +57,7 @@ export const EmailPasswordForm = ({
 
   return (
     <form className="grid" onSubmit={handleSubmit}>
+      <FormError formError={form.formError} />
       <Field
         control={form.control}
         name="email"
@@ -65,7 +71,6 @@ export const EmailPasswordForm = ({
         name="password"
         label={t('signIn_field_password')}
         render={({ field }) => <Input type="password" {...field} />}
-        error={form.formError}
       />
       <Button type="submit" isPending={form.formState.isSubmitting}>
         {t('signIn_submit')}

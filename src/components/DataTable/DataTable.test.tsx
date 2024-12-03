@@ -8,8 +8,8 @@
 
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { peopleColumns, peopleData } from './DataTable.mocks'
-import { DataTable, DataTableBasicView } from '.'
+import { peopleColumn, peopleColumns, peopleData } from './DataTable.mocks'
+import { DataTable } from '.'
 
 describe('DataTable', () => {
   const getTBody = () => {
@@ -130,6 +130,40 @@ describe('DataTable', () => {
     expect(searchTextDisplayed).toBeInTheDocument()
   })
 
+  it('shows correct filters empty state', () => {
+    render(
+      <DataTable
+        columns={peopleColumns}
+        data={peopleData}
+        initialState={{
+          columnFilters: [{ id: peopleColumn.age.id, value: 9999 }],
+        }}
+      />,
+    )
+
+    const emptyState = screen.getByText(
+      /No\sresults\sfound\sfor\syour\sselected\sfilters/,
+    )
+    expect(emptyState).toBeInTheDocument()
+
+    render(
+      <DataTable
+        columns={peopleColumns}
+        data={[]}
+        initialState={{
+          // @ts-expect-error Id exists, it's just a broad type
+          columnFilters: [{ id: peopleColumn.age.id, value: 9999 }],
+        }}
+      />,
+    )
+
+    // When there is no data at all, it shows regular message
+    const emptyStateForFilters = screen.queryByText(
+      /No\sresults\sfound\sfor\syour\sselected\sfilters/,
+    )
+    expect(emptyStateForFilters).not.toBeInTheDocument()
+  })
+
   it('supports entityName for search', async () => {
     const user = userEvent.setup()
     render(
@@ -181,19 +215,17 @@ describe('DataTable', () => {
     it('renders people using custom view', () => {
       render(
         <DataTable columns={peopleColumns} data={peopleData}>
-          {(props) => (
-            <DataTableBasicView {...props}>
-              {(rows) =>
-                rows.map((row) => {
-                  const person = row.original
-                  return (
-                    <div key={row.id} role="row">
-                      Person name - {person.name}
-                    </div>
-                  )
-                })
-              }
-            </DataTableBasicView>
+          {({ rows }) => (
+            <>
+              {rows.map((row) => {
+                const person = row.original
+                return (
+                  <div key={row.id} role="row">
+                    Person name - {person.name}
+                  </div>
+                )
+              })}
+            </>
           )}
         </DataTable>,
       )
@@ -208,9 +240,7 @@ describe('DataTable', () => {
     it('shows empty state', () => {
       render(
         <DataTable columns={peopleColumns} data={[]}>
-          {(props) => (
-            <DataTableBasicView {...props}>{() => null}</DataTableBasicView>
-          )}
+          {() => null}
         </DataTable>,
       )
 
