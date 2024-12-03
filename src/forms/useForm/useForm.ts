@@ -7,7 +7,6 @@
 //
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { isString } from 'es-toolkit'
 import { useCallback } from 'react'
 import {
   type DeepRequired,
@@ -17,7 +16,7 @@ import {
   type UseFormProps,
 } from 'react-hook-form'
 import { type z } from 'zod'
-import { isObject } from '@/utils/misc'
+import { parseUnknownError } from '@/utils/query'
 
 type FieldValues = Record<string, unknown>
 
@@ -83,11 +82,7 @@ export const useForm = <Schema extends z.ZodTypeAny>({
   const setFormError = useCallback(
     (error: unknown, options?: Parameters<typeof setError>[2]) => {
       const errorValue = {
-        message:
-          isObject(error) && 'message' in error && isString(error.message) ?
-            error.message
-          : isString(error) ? error
-          : 'Unknown error happened',
+        message: parseUnknownError(error),
       }
       setError(
         // @ts-expect-error Form error is special key, so error here is fine
@@ -99,6 +94,18 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     [setError],
   )
 
+  const handleSubmit: (typeof form)['handleSubmit'] = (
+    successHandler,
+    negativeHandler,
+  ) =>
+    form.handleSubmit(async (...args) => {
+      try {
+        await successHandler(...args)
+      } catch (error) {
+        setFormError(error)
+      }
+    }, negativeHandler)
+
   const formError = errors[FORM_ERROR_KEY] as ErrorOption | undefined
 
   const isSubmitDisabled = !isValid || !isDirty
@@ -109,5 +116,6 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     formError,
     setFormError,
     isSubmitDisabled,
+    handleSubmit,
   }
 }
