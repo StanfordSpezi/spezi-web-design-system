@@ -22,7 +22,8 @@ export const queriesToAsyncProps = (
 ) => {
   const combinedQueries = combineQueries(queries)
   return {
-    loading: props?.loading ?? combinedQueries.isLoading,
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    loading: props?.loading || combinedQueries.isLoading,
     error:
       isObject(props?.error) ?
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
