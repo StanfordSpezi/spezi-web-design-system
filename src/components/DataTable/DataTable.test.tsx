@@ -136,6 +136,7 @@ describe('DataTable', () => {
         columns={peopleColumns}
         data={peopleData}
         initialState={{
+          // @ts-expect-error Id exists, it's just a broad type
           columnFilters: [{ id: peopleColumn.age.id, value: 9999 }],
         }}
       />,
