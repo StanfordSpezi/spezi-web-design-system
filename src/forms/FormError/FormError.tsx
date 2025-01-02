@@ -20,7 +20,7 @@ export interface FormErrorProps extends Omit<ErrorStateProps, 'prefix'> {
 }
 
 /**
- * Exposes form error if exists
+ * Exposes form error if it exists
  *
  * Use it for exposing form-wide errors, like server errors
  * */
