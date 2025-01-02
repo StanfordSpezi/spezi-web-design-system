@@ -30,7 +30,7 @@ describe('DataTable', () => {
 
   const expectEmptyStateToBeInTheDocument = () => {
     // Regex because text is broken with elements
-    const emptyState = screen.getByText(/No\sresults\sfound/)
+    const emptyState = screen.getByText(/No\sdata\sfound/)
     expect(emptyState).toBeInTheDocument()
   }
 
@@ -124,43 +124,40 @@ describe('DataTable', () => {
     await user.clear(searchInput)
     await user.type(searchInput, '1111')
 
-    const emptyState = await screen.findByText(/No results found/)
+    const emptyState = await screen.findByText(/No data found/)
     expect(emptyState).toBeInTheDocument()
     const searchTextDisplayed = screen.getByText(/"1111"/)
     expect(searchTextDisplayed).toBeInTheDocument()
   })
 
   it('shows correct filters empty state', () => {
-    render(
+    const initialState = {
+      columnFilters: [{ id: peopleColumn.age.id ?? '', value: 9999 }],
+    }
+    const { rerender } = render(
       <DataTable
         columns={peopleColumns}
         data={peopleData}
-        initialState={{
-          // @ts-expect-error Id exists, it's just a broad type
-          columnFilters: [{ id: peopleColumn.age.id, value: 9999 }],
-        }}
+        initialState={initialState}
       />,
     )
 
     const emptyState = screen.getByText(
-      /No\sresults\sfound\sfor\syour\sselected\sfilters/,
+      /No\sdata\sfound\sfor\syour\sselected\sfilters/,
     )
     expect(emptyState).toBeInTheDocument()
 
-    render(
+    rerender(
       <DataTable
         columns={peopleColumns}
         data={[]}
-        initialState={{
-          // @ts-expect-error Id exists, it's just a broad type
-          columnFilters: [{ id: peopleColumn.age.id, value: 9999 }],
-        }}
+        initialState={initialState}
       />,
     )
 
     // When there is no data at all, it shows regular message
     const emptyStateForFilters = screen.queryByText(
-      /No\sresults\sfound\sfor\syour\sselected\sfilters/,
+      /No\sdata\sfound\sfor\syour\sselected\sfilters/,
     )
     expect(emptyStateForFilters).not.toBeInTheDocument()
   })

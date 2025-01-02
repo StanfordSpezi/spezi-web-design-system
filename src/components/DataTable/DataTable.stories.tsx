@@ -71,6 +71,9 @@ export const RowAction: Story = {
   },
 }
 
+/**
+ * Presents some ready-to-use columns, like dateColumn and dateTimeColumn
+ * */
 export const PremadeColumns: Story = {
   args: {
     ...Default.args,

@@ -51,8 +51,12 @@ export type Person = (typeof peopleData)[number]
 export const columnHelper = createColumnHelper<Person>()
 
 export const peopleColumn = {
-  name: columnHelper.accessor('name', { header: 'Name' }),
-  age: columnHelper.accessor('age', { header: 'Age' }),
+  name: columnHelper.accessor('name', { header: 'Name', id: 'name' }),
+  age: columnHelper.accessor('age', {
+    header: 'Age',
+    id: 'age',
+    filterFn: 'equals',
+  }),
 }
 
 export const peopleColumns = [peopleColumn.name, peopleColumn.age]

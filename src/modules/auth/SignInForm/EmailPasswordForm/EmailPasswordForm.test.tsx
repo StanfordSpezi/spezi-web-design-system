@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
+import { FirebaseError } from '@firebase/app'
 import { screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import { type Auth } from 'firebase/auth'
@@ -32,14 +33,6 @@ const signIn = async () => {
   await user.type(getEmailField(), validCreds.email)
   await user.type(getPasswordField(), validCreds.password)
   await user.click(getSubmitButton())
-}
-
-class InvalidCredsError extends Error {
-  code: string
-  constructor() {
-    super('invalidcreds')
-    this.code = 'auth/invalid-credential'
-  }
 }
 
 describe('EmailPasswordForm', () => {
@@ -79,9 +72,9 @@ describe('EmailPasswordForm', () => {
     expect(signInWithEmailAndPasswordMock).not.toHaveBeenCalled()
   })
 
-  it('handles', async () => {
+  it('handles invalid creds error', async () => {
     signInWithEmailAndPasswordMock.mockImplementation(() => {
-      throw new InvalidCredsError()
+      throw new FirebaseError('auth/invalid-credential', 'invalidcreds')
     })
     renderWithProviders(
       <EmailPasswordForm

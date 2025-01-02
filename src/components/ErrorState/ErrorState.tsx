@@ -20,7 +20,8 @@ export interface ErrorStateProps extends BadgeProps {
 }
 
 /**
- * Component for surfacing inline query errors
+ * Component for surfacing inline errors
+ * Most often used for data queries
  * */
 export const ErrorState = ({
   children,

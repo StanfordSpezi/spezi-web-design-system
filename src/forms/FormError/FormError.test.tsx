@@ -29,7 +29,7 @@ describe('ErrorState', () => {
   it('renders completely custom node', () => {
     render(<FormError formError={<>Lorem</>} />)
 
-    const element = screen.getByRole('alert', { name: 'Lorem' })
-    expect(element).toBeInTheDocument()
+    const element = screen.getByRole('alert')
+    expect(element).toHaveTextContent('Lorem')
   })
 })

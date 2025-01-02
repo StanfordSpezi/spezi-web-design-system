@@ -13,16 +13,14 @@ describe('ErrorState', () => {
   it('renders error state', () => {
     render(<ErrorState>Lorem</ErrorState>)
 
-    const element = screen.getByRole('alert', { name: 'Lorem' })
-
-    expect(element).toBeInTheDocument()
+    const alert = screen.getByRole('alert')
+    expect(alert).toHaveTextContent(/Lorem/)
   })
 
   it('renders entityName', () => {
     render(<ErrorState entityName="users" />)
 
     const element = screen.getByText(/Fetching\susers\sfailed/)
-
     expect(element).toBeInTheDocument()
   })
 })
