@@ -14,7 +14,8 @@ import { StateContainer } from '@/components/StateContainer'
 import { cn } from '@/utils/className'
 import { isObject } from '@/utils/misc'
 
-export interface FormErrorProps extends Omit<ErrorStateProps, 'prefix'> {
+export interface FormErrorProps
+  extends Omit<ErrorStateProps, 'children' | 'prefix' | 'entityName'> {
   formError: ErrorOption | ReactNode
   prefix?: ReactNode
 }
