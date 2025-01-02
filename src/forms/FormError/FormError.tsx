@@ -21,7 +21,7 @@ export interface FormErrorProps
 }
 
 /**
- * Exposes form error if exists
+ * Exposes form error if it exists
  *
  * Use it for exposing form-wide errors, like server errors
  * */
