@@ -122,6 +122,26 @@
       "types": "./dist/components/Tooltip.d.ts",
       "default": "./dist/components/Tooltip.js"
     },
+    "./components/ErrorState": {
+      "types": "./dist/components/ErrorState.d.ts",
+      "default": "./dist/components/ErrorState.js"
+    },
+    "./components/Badge": {
+      "types": "./dist/components/Badge.d.ts",
+      "default": "./dist/components/Badge.js"
+    },
+    "./components/StateContainer": {
+      "types": "./dist/components/StateContainer.d.ts",
+      "default": "./dist/components/StateContainer.js"
+    },
+    "./components/Spinner": {
+      "types": "./dist/components/Spinner.d.ts",
+      "default": "./dist/components/Spinner.js"
+    },
+    "./components/Async": {
+      "types": "./dist/components/Async.d.ts",
+      "default": "./dist/components/Async.js"
+    },
     "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
@@ -181,6 +201,14 @@
     "./utils/navigator": {
       "types": "./dist/utils/navigator.d.ts",
       "default": "./dist/utils/navigator.js"
+    },
+    "./utils/query": {
+      "types": "./dist/utils/query.d.ts",
+      "default": "./dist/utils/query.js"
+    },
+    "./utils/dev": {
+      "types": "./dist/utils/dev.d.ts",
+      "default": "./dist/utils/dev.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
@@ -198,7 +226,8 @@
     "lint:ci": "eslint --output-file eslint_report.json --format json .",
     "lint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "prepush": "npm run lint:fix && tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
