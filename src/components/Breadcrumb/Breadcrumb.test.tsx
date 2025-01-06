@@ -57,7 +57,7 @@ describe('Breadcrumb', () => {
     })
   })
 
-  it('doesnt truncate if there is not enough items', () => {
+  it("doesn't truncate if there are not enough items", () => {
     renderWithProviders(
       <Breadcrumbs
         breadcrumbs={mockBreadcrumbs.slice(0, 3)}
