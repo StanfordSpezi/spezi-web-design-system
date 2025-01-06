@@ -35,10 +35,7 @@ export const EmptyState = ({
   children,
   ...props
 }: EmptyStateProps) => (
-  <div
-    className={cn('flex-center gap-3 text-muted-foreground', className)}
-    {...props}
-  >
+  <div className={cn('flex gap-3 text-muted-foreground', className)} {...props}>
     {textFilter ?
       <SearchX />
     : <ListX />}
