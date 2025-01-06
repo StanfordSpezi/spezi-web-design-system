@@ -71,7 +71,7 @@ export default defineConfig({
       external: ['react', 'next-intl', 'react/jsx-runtime', 'react-dom'],
     },
   },
-  // @ts-expect-error TypeScript doesnt detect interface overload by vitest
+  // @ts-expect-error TypeScript doesn't detect interface overload by vitest
   test: {
     globals: true,
     environment: 'jsdom',
