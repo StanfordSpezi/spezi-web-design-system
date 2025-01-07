@@ -38,6 +38,10 @@
       "types": "./dist/components/Calendar.d.ts",
       "default": "./dist/components/Calendar.js"
     },
+    "./components/Checkbox": {
+      "types": "./dist/components/Checkbox.d.ts",
+      "default": "./dist/components/Checkbox.js"
+    },
     "./components/Card": {
       "types": "./dist/components/Card.d.ts",
       "default": "./dist/components/Card.js"
