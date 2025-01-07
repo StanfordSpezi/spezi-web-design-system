@@ -6,8 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { omit } from 'es-toolkit'
-import { isBoolean, isUndefined } from 'lodash'
+import { omit, isBoolean, isUndefined } from 'es-toolkit'
 import { type ReactNode } from 'react'
 import { ErrorState, type ErrorStateProps } from '@/components/ErrorState'
 import { Spinner } from '@/components/Spinner'

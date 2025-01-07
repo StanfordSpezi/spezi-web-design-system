@@ -7,7 +7,6 @@
 //
 
 import { Slot } from '@radix-ui/react-slot'
-import { Link } from '@tanstack/react-router'
 import { ChevronRight, MoreHorizontal } from 'lucide-react'
 import {
   type ComponentProps,
@@ -21,6 +20,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/DropdownMenu'
+import { useSpeziContext } from '@/SpeziProvider'
 import { cn } from '@/utils/className'
 
 export const Breadcrumb = forwardRef<
@@ -64,7 +64,10 @@ export const BreadcrumbLink = forwardRef<
   HTMLAnchorElement,
   BreadcrumbLinkProps
 >(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? Slot : 'a'
+  const {
+    router: { Link },
+  } = useSpeziContext()
+  const Comp = asChild ? Slot : Link
 
   return (
     <Comp
@@ -136,21 +139,26 @@ const BreadcrumbCompleteItem = ({
   href,
   isActive,
   label,
-}: BreadcrumbCompleteItemProps) => (
-  <>
-    <BreadcrumbItem>
-      {isActive ?
-        <BreadcrumbPage className="max-w-25 truncate md:max-w-none">
-          {label}
-        </BreadcrumbPage>
-      : <BreadcrumbLink asChild className="max-w-25 truncate md:max-w-none">
-          <Link to={href}>{label}</Link>
-        </BreadcrumbLink>
-      }
-    </BreadcrumbItem>
-    {!isActive && <BreadcrumbSeparator />}
-  </>
-)
+}: BreadcrumbCompleteItemProps) => {
+  const {
+    router: { Link },
+  } = useSpeziContext()
+  return (
+    <>
+      <BreadcrumbItem>
+        {isActive ?
+          <BreadcrumbPage className="max-w-25 truncate md:max-w-none">
+            {label}
+          </BreadcrumbPage>
+        : <BreadcrumbLink asChild className="max-w-25 truncate md:max-w-none">
+            <Link href={href}>{label}</Link>
+          </BreadcrumbLink>
+        }
+      </BreadcrumbItem>
+      {!isActive && <BreadcrumbSeparator />}
+    </>
+  )
+}
 
 interface BreadcrumbsProps {
   breadcrumbs: Array<{ href: string; label: ReactNode }>
@@ -170,6 +178,9 @@ export const Breadcrumbs = ({
   breadcrumbs,
   maxToDisplay = 3,
 }: BreadcrumbsProps) => {
+  const {
+    router: { Link },
+  } = useSpeziContext()
   const firstBreadcrumb = breadcrumbs.at(0)
   const hasTruncatedBreadcrumbs = breadcrumbs.length > maxToDisplay
   const remainingBreadcrumbs =
@@ -201,7 +212,7 @@ export const Breadcrumbs = ({
                     .slice(1, -maxToDisplay + 1)
                     .map((breadcrumb, index) => (
                       <DropdownMenuItem key={index}>
-                        <Link to={breadcrumb.href}>{breadcrumb.label}</Link>
+                        <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
                       </DropdownMenuItem>
                     ))}
                 </DropdownMenuContent>

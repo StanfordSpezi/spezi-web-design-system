@@ -6,12 +6,47 @@
 // SPDX-License-Identifier: MIT
 
 import { NextIntlClientProvider } from 'next-intl'
-import { type ReactNode, useLayoutEffect, useMemo } from 'react'
+import {
+  type ComponentProps,
+  createContext,
+  type ReactNode,
+  useContext,
+  useLayoutEffect,
+  useMemo,
+} from 'react'
 import { messages as defaultMessages, type AllMessages } from '@/messages'
 import { lightTheme } from '@/theme/light'
 import { type Theme } from '@/theme/utils'
 
-interface SpeziProviderProps {
+/**
+ * Allows injecting necessary router-related components.
+ * Projects can have different routers:
+ * Tanstack Router, React Router, Next router
+ * */
+interface SpeziContextRouter {
+  /**
+   * Link component. Make sure to provide your router's Link component.
+   * */
+  Link: (props: ComponentProps<'a'>) => ReactNode
+}
+
+export interface SpeziContextType {
+  router: SpeziContextRouter
+}
+
+export const SpeziContext = createContext<SpeziContextType | null>(null)
+
+export const useSpeziContext = () => {
+  const value = useContext(SpeziContext)
+  if (!value) {
+    throw new Error(
+      'useSpeziContext must be used within SpeziProvider. Make sure to wrap your application with SpeziProvider',
+    )
+  }
+  return value
+}
+
+interface SpeziProviderProps extends SpeziContextType {
   children?: ReactNode
   theme?: Partial<Theme>
   messages?: Partial<AllMessages>
@@ -24,6 +59,7 @@ export const SpeziProvider = ({
   children,
   messages,
   theme,
+  router,
 }: SpeziProviderProps) => {
   useLayoutEffect(() => {
     const resolvedTheme = { ...lightTheme, ...theme }
@@ -39,9 +75,13 @@ export const SpeziProvider = ({
     [messages],
   )
 
+  const speziContextValue = useMemo(() => ({ router }), [router])
+
   return (
     <NextIntlClientProvider messages={resolvedMessages} locale="en">
-      {children}
+      <SpeziContext.Provider value={speziContextValue}>
+        {children}
+      </SpeziContext.Provider>
     </NextIntlClientProvider>
   )
 }

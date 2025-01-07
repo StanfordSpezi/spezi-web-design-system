@@ -8,17 +8,20 @@
 
 import { render, type RenderOptions } from '@testing-library/react'
 import type { ReactNode } from 'react'
-import { SpeziProvider } from '@/SpeziProvider'
-import { TestRouterProvider } from '@/tests/TestRouterProvider'
+import { SpeziProvider, type SpeziContextType } from '@/SpeziProvider'
 
 interface TestProvidersProps {
   children: ReactNode
 }
 
+const speziProviderContext: SpeziContextType = {
+  router: {
+    Link: (props) => <a {...props} />,
+  },
+}
+
 export const TestProviders = ({ children }: TestProvidersProps) => (
-  <TestRouterProvider>
-    <SpeziProvider>{children}</SpeziProvider>
-  </TestRouterProvider>
+  <SpeziProvider {...speziProviderContext}>{children}</SpeziProvider>
 )
 
 const DefaultWrapper = ({ children }: { children?: ReactNode }) => (
