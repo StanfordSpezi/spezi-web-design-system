@@ -8,8 +8,8 @@
 
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { peopleColumns, peopleData } from './DataTable.mocks'
-import { DataTable, DataTableBasicView } from '.'
+import { peopleColumn, peopleColumns, peopleData } from './DataTable.mocks'
+import { DataTable } from '.'
 
 describe('DataTable', () => {
   const getTBody = () => {
@@ -30,7 +30,7 @@ describe('DataTable', () => {
 
   const expectEmptyStateToBeInTheDocument = () => {
     // Regex because text is broken with elements
-    const emptyState = screen.getByText(/No\sresults\sfound/)
+    const emptyState = screen.getByText(/No\sdata\sfound/)
     expect(emptyState).toBeInTheDocument()
   }
 
@@ -124,10 +124,42 @@ describe('DataTable', () => {
     await user.clear(searchInput)
     await user.type(searchInput, '1111')
 
-    const emptyState = await screen.findByText(/No results found/)
+    const emptyState = await screen.findByText(/No data found/)
     expect(emptyState).toBeInTheDocument()
     const searchTextDisplayed = screen.getByText(/"1111"/)
     expect(searchTextDisplayed).toBeInTheDocument()
+  })
+
+  it('shows correct filters empty state', () => {
+    const initialState = {
+      columnFilters: [{ id: peopleColumn.age.id ?? '', value: 9999 }],
+    }
+    const { rerender } = render(
+      <DataTable
+        columns={peopleColumns}
+        data={peopleData}
+        initialState={initialState}
+      />,
+    )
+
+    const emptyState = screen.getByText(
+      /No\sdata\sfound\sfor\syour\sselected\sfilters/,
+    )
+    expect(emptyState).toBeInTheDocument()
+
+    rerender(
+      <DataTable
+        columns={peopleColumns}
+        data={[]}
+        initialState={initialState}
+      />,
+    )
+
+    // When there is no data at all, it shows regular message
+    const emptyStateForFilters = screen.queryByText(
+      /No\sdata\sfound\sfor\syour\sselected\sfilters/,
+    )
+    expect(emptyStateForFilters).not.toBeInTheDocument()
   })
 
   it('supports entityName for search', async () => {
@@ -181,19 +213,17 @@ describe('DataTable', () => {
     it('renders people using custom view', () => {
       render(
         <DataTable columns={peopleColumns} data={peopleData}>
-          {(props) => (
-            <DataTableBasicView {...props}>
-              {(rows) =>
-                rows.map((row) => {
-                  const person = row.original
-                  return (
-                    <div key={row.id} role="row">
-                      Person name - {person.name}
-                    </div>
-                  )
-                })
-              }
-            </DataTableBasicView>
+          {({ rows }) => (
+            <>
+              {rows.map((row) => {
+                const person = row.original
+                return (
+                  <div key={row.id} role="row">
+                    Person name - {person.name}
+                  </div>
+                )
+              })}
+            </>
           )}
         </DataTable>,
       )
@@ -208,9 +238,7 @@ describe('DataTable', () => {
     it('shows empty state', () => {
       render(
         <DataTable columns={peopleColumns} data={[]}>
-          {(props) => (
-            <DataTableBasicView {...props}>{() => null}</DataTableBasicView>
-          )}
+          {() => null}
         </DataTable>,
       )
 

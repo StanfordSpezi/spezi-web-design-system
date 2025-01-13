@@ -40,6 +40,7 @@ const testExclude = [
   '**/*.stories.tsx',
   './postcss.config.js',
   './tailwind.config.js',
+  './src/tests/storybook.tsx',
 ]
 
 export default defineConfig({
@@ -70,6 +71,7 @@ export default defineConfig({
       external: ['react', 'next-intl', 'react/jsx-runtime', 'react-dom'],
     },
   },
+  // @ts-expect-error TypeScript doesn't detect interface overload by vitest
   test: {
     globals: true,
     environment: 'jsdom',

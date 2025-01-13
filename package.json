@@ -13,10 +13,6 @@
     "type": "git",
     "url": "https://github.com/StanfordSpezi/spezi-web-design-system"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "license": "MIT",
   "exports": {
     ".": {
@@ -130,6 +126,26 @@
       "types": "./dist/components/Tooltip.d.ts",
       "default": "./dist/components/Tooltip.js"
     },
+    "./components/ErrorState": {
+      "types": "./dist/components/ErrorState.d.ts",
+      "default": "./dist/components/ErrorState.js"
+    },
+    "./components/Badge": {
+      "types": "./dist/components/Badge.d.ts",
+      "default": "./dist/components/Badge.js"
+    },
+    "./components/StateContainer": {
+      "types": "./dist/components/StateContainer.d.ts",
+      "default": "./dist/components/StateContainer.js"
+    },
+    "./components/Spinner": {
+      "types": "./dist/components/Spinner.d.ts",
+      "default": "./dist/components/Spinner.js"
+    },
+    "./components/Async": {
+      "types": "./dist/components/Async.d.ts",
+      "default": "./dist/components/Async.js"
+    },
     "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
@@ -189,10 +205,22 @@
     "./utils/navigator": {
       "types": "./dist/utils/navigator.d.ts",
       "default": "./dist/utils/navigator.js"
+    },
+    "./utils/query": {
+      "types": "./dist/utils/query.d.ts",
+      "default": "./dist/utils/query.js"
+    },
+    "./utils/dev": {
+      "types": "./dist/utils/dev.d.ts",
+      "default": "./dist/utils/dev.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
   "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
@@ -202,7 +230,8 @@
     "lint:ci": "eslint --output-file eslint_report.json --format json .",
     "lint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "prepush": "npm run lint:fix && tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -220,7 +249,6 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.3",
     "@tanstack/match-sorter-utils": "^8.19.4",
-    "@tanstack/react-router": "^1.77.5",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "date-fns": "^3.6.0",
@@ -234,14 +262,14 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.3.5",
-    "@storybook/addon-interactions": "^8.3.5",
-    "@storybook/addon-links": "^8.3.5",
-    "@storybook/addon-onboarding": "^8.3.5",
-    "@storybook/blocks": "^8.3.5",
-    "@storybook/react": "^8.3.5",
-    "@storybook/react-vite": "^8.3.5",
-    "@storybook/test": "^8.3.5",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
     "@testing-library/jest-dom": "^6",
     "@testing-library/react": "^16",
     "@total-typescript/ts-reset": "^0.6.1",
@@ -251,29 +279,28 @@
     "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@vitejs/plugin-react": "^4.3.3",
-    "@vitest/coverage-v8": "^2.1.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
     "autoprefixer": "^10",
-    "esbuild": "^0.24.0",
     "eslint": "^8",
-    "eslint-config-next": "^14",
+    "eslint-config-next": "^15",
     "eslint-config-prettier": "^9",
-    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2",
     "eslint-plugin-prettier": "^5",
     "jsdom": "^25.0.1",
     "postcss": "^8",
     "postcss-import": "^16.1.0",
     "prettier": "^3",
-    "prettier-plugin-tailwindcss": "^0.6.8",
-    "storybook": "^8.3.5",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "storybook": "^8.4.7",
     "tailwindcss": "^3",
     "tailwindcss-animate": "^1.0.7",
-    "typedoc": "^0.26",
+    "typedoc": "^0.27",
     "typescript": "^5",
-    "vite": "^5.4.10",
-    "vite-plugin-dts": "^4.3.0",
-    "vitest": "^2.1.4"
+    "vite": "^6.0.7",
+    "vite-plugin-dts": "^4.4.0",
+    "vitest": "^2.1.8"
   },
   "peerDependencies": {
     "next-intl": "^3",

@@ -6,10 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Link } from '@tanstack/react-router'
 import { RouteOff } from 'lucide-react'
 import { type ComponentProps, type ReactNode } from 'react'
 import { Button } from '@/components/Button'
+import { useSpeziContext } from '@/SpeziProvider'
 import { cn } from '@/utils/className'
 
 export const NotFoundIcon = ({
@@ -75,15 +75,20 @@ export const NotFound = ({
   backPage,
   entityName,
   className,
-}: NotFoundProps) => (
-  <NotFoundContainer className={className}>
-    <NotFoundIcon />
-    <NotFoundTitle>This {entityName} doesn't exist</NotFoundTitle>
-    <NotFoundParagraph>
-      Please check your URL or return to {backPage.name}
-    </NotFoundParagraph>
-    <NotFoundAction>
-      <Link to={backPage.href}>Go to {backPage.name}</Link>
-    </NotFoundAction>
-  </NotFoundContainer>
-)
+}: NotFoundProps) => {
+  const {
+    router: { Link },
+  } = useSpeziContext()
+  return (
+    <NotFoundContainer className={className}>
+      <NotFoundIcon />
+      <NotFoundTitle>This {entityName} doesn't exist</NotFoundTitle>
+      <NotFoundParagraph>
+        Please check your URL or return to {backPage.name}
+      </NotFoundParagraph>
+      <NotFoundAction>
+        <Link href={backPage.href}>Go to {backPage.name}</Link>
+      </NotFoundAction>
+    </NotFoundContainer>
+  )
+}
