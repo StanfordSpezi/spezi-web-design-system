@@ -1,34 +1,27 @@
-//
-// This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
-//
-// SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
-//
-// SPDX-License-Identifier: MIT
-//
-
-import * as CheckboxPrimitives from '@radix-ui/react-checkbox'
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from 'react'
-import { cn } from '../../utils/className'
-import { CheckIcon } from 'lucide-react'
+import { cn } from '@/utils/className'
+
+type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 
 export const Checkbox = forwardRef<
-  ElementRef<typeof CheckboxPrimitives.Root>,
-  ComponentPropsWithoutRef<typeof CheckboxPrimitives.Root>
+  ElementRef<typeof CheckboxPrimitive.Root>,
+  CheckboxProps
 >(({ className, ...props }, ref) => (
-  <CheckboxPrimitives.Root
+  <CheckboxPrimitive.Root
+    ref={ref}
     className={cn(
-      'hover:bg-violet3 flex size-[25px] appearance-none items-center justify-center rounded bg-white shadow-[0_0_0_2px_black] outline-none',
+      'focus-ring flex-center peer size-4 shrink-0 rounded border border-input disabled:cursor-not-allowed disabled:opacity-50',
       className,
     )}
     {...props}
-    ref={ref}
   >
-    <CheckboxPrimitives.Indicator>
-      <CheckIcon />
-    </CheckboxPrimitives.Indicator>
-  </CheckboxPrimitives.Root>
+    <CheckboxPrimitive.Indicator className="flex-center size-2.5 rounded-sm bg-primary" />
+  </CheckboxPrimitive.Root>
 ))
+
+Checkbox.displayName = CheckboxPrimitive.Root.displayName
