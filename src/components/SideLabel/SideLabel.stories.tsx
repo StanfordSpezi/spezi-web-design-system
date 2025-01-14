@@ -29,6 +29,27 @@ export const Reversed = () => (
   </SideLabel>
 )
 
+const complexLabel = (
+  <>
+    <h2 className="mb-2 font-bold">Lorem</h2>
+    <p className="font-light">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    </p>
+  </>
+)
+
+export const Complex = () => (
+  <SideLabel label={complexLabel}>
+    <Switch />
+  </SideLabel>
+)
+
+export const ComplexNonCentered = () => (
+  <SideLabel label={complexLabel} center={false}>
+    <Switch />
+  </SideLabel>
+)
+
 export const NoInput = () => (
   <SideLabel label="Check me">
     <span className="hidden">input goes here</span>
