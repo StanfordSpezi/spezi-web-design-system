@@ -29,25 +29,8 @@ jobs:
     secrets: inherit
   publishpackage:
     name: Publish Package
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-      packages: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@stanfordspezi'
-      - name: Clean Install
-        run: npm ci
-      - name: Set version
-        run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
-      - name: Build
-        run: npm run build
-      - name: Publish
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    uses: StanfordBDHG/.github/.github/workflows/npm-publish-package.yml@39b0d06
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    with:
+      packageVersion: ${{ github.event.release.tag_name }}
