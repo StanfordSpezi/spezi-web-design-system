@@ -29,7 +29,11 @@ jobs:
     secrets: inherit
   publishpackage:
     name: Publish Package
-    uses: StanfordBDHG/.github/.github/workflows/npm-publish-package.yml@39b0d06
+    uses: StanfordBDHG/.github/.github/workflows/npm-publish-package.yml@v2
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     with:
