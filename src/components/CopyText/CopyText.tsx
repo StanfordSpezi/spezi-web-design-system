@@ -23,6 +23,8 @@ type CopyTextProps = (
  * Useful for displaying truncated ids in tables
  * */
 export const CopyText = ({ children, className, value }: CopyTextProps) => {
+  // It's resolved by types
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   const copyValue = value ?? String(children)
   return (
     <button

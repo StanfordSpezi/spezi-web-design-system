@@ -5,7 +5,7 @@
 //
 // SPDX-License-Identifier: MIT
 //
-import { Preview } from '@storybook/react'
+import { type Preview } from '@storybook/react'
 import '../src/main.css'
 /**
  * We need to import preflight in Stories,
