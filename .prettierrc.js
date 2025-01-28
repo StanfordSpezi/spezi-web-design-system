@@ -5,12 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
+const { prettierConfig } = require("@stanfordbdhg/spezi-web-configurations");
 
-const config = {
-  plugins: [require.resolve('prettier-plugin-tailwindcss')],
-  semi: false,
-  singleQuote: true,
-  experimentalTernaries: true,
-}
-
-module.exports = config
+module.exports = prettierConfig;
