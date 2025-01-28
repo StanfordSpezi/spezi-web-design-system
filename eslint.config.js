@@ -5,6 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-const { getEslintConfig } = require("@stanfordbdhg/spezi-web-configurations");
+const { getEslintConfig } = require("@stanfordspezi/spezi-web-configurations");
 
 module.exports = getEslintConfig({ tsconfigRootDir: __dirname });

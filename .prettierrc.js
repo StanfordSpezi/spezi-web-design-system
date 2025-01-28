@@ -5,6 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-const { prettierConfig } = require("@stanfordbdhg/spezi-web-configurations");
+const { prettierConfig } = require("@stanfordspezi/spezi-web-configurations");
 
 module.exports = prettierConfig;
