@@ -6,4 +6,4 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './className'
+export * from "./className";

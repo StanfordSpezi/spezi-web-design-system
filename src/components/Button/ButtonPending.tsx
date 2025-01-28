@@ -6,15 +6,15 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Loader2 } from 'lucide-react'
-import { forwardRef, type HTMLAttributes } from 'react'
-import { cn } from '../../utils/className'
-import type { ButtonProps } from '../Button'
+import { Loader2 } from "lucide-react";
+import { forwardRef, type HTMLAttributes } from "react";
+import { cn } from "../../utils/className";
+import type { ButtonProps } from "../Button";
 
 interface ButtonPendingProps
   extends HTMLAttributes<HTMLSpanElement>,
-    Pick<ButtonProps, 'size'> {
-  isPending?: boolean
+    Pick<ButtonProps, "size"> {
+  isPending?: boolean;
 }
 
 /**
@@ -24,7 +24,7 @@ interface ButtonPendingProps
 export const ButtonPending = forwardRef<HTMLSpanElement, ButtonPendingProps>(
   ({ children, isPending, className, size, ...props }, ref) => (
     <span
-      className={cn('inline-flex-center relative', className)}
+      className={cn("inline-flex-center relative", className)}
       ref={ref}
       {...props}
     >
@@ -35,15 +35,15 @@ export const ButtonPending = forwardRef<HTMLSpanElement, ButtonPendingProps>(
       )}
       <span
         className={cn(
-          'inline-flex-center',
-          size === 'lg' ? 'gap-2.5' : 'gap-2',
-          isPending && 'invisible',
+          "inline-flex-center",
+          size === "lg" ? "gap-2.5" : "gap-2",
+          isPending && "invisible",
         )}
       >
         {children}
       </span>
     </span>
   ),
-)
+);
 
-ButtonPending.displayName = 'ButtonPending'
+ButtonPending.displayName = "ButtonPending";

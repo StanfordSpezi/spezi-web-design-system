@@ -6,38 +6,38 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { useState } from 'react'
-import { Tabs, TabsList, TabsTrigger } from './Tabs'
-import { elements, Tab } from './Tabs.mocks'
+import { type Meta } from "@storybook/react";
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "./Tabs";
+import { elements, Tab } from "./Tabs.mocks";
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: Tabs,
-}
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <Tabs defaultValue={Tab.lorem}>
     {elements.triggers}
     {elements.content}
   </Tabs>
-)
+);
 
 export const Controlled = () => {
-  const [tab, setTab] = useState(Tab.lorem)
+  const [tab, setTab] = useState(Tab.lorem);
   return (
     <Tabs value={tab} onValueChange={(value) => setTab(value as Tab)}>
       {elements.triggers}
       <p>active tab: {tab}</p>
       {elements.content}
     </Tabs>
-  )
-}
+  );
+};
 
 export const CustomPositioning = () => {
-  const [tab, setTab] = useState(Tab.lorem)
+  const [tab, setTab] = useState(Tab.lorem);
   return (
     <>
       <Tabs value={tab} onValueChange={(value) => setTab(value as Tab)}>
@@ -45,8 +45,8 @@ export const CustomPositioning = () => {
         {elements.content}
       </Tabs>
     </>
-  )
-}
+  );
+};
 
 export const TriggerGrow = () => (
   <div className="w-96">
@@ -58,4 +58,4 @@ export const TriggerGrow = () => (
       </TabsList>
     </Tabs>
   </div>
-)
+);

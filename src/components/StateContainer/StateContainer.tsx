@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type ComponentProps } from 'react'
-import { cn } from '@/utils/className'
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
-export interface StateContainerProps extends ComponentProps<'div'> {
-  grow?: boolean
-  padding?: boolean
+export interface StateContainerProps extends ComponentProps<"div"> {
+  grow?: boolean;
+  padding?: boolean;
 }
 
 /**
@@ -26,11 +26,11 @@ export const StateContainer = ({
 }: StateContainerProps) => (
   <div
     className={cn(
-      'flex-center',
-      padding && 'py-8',
-      grow && 'size-full grow',
+      "flex-center",
+      padding && "py-8",
+      grow && "size-full grow",
       className,
     )}
     {...props}
   />
-)
+);

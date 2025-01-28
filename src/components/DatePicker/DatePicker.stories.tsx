@@ -6,18 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { useState } from 'react'
-import { DatePicker } from './DatePicker'
+import { type Meta } from "@storybook/react";
+import { useState } from "react";
+import { DatePicker } from "./DatePicker";
 
 const meta: Meta<typeof DatePicker> = {
-  title: 'Components/DatePicker',
+  title: "Components/DatePicker",
   component: DatePicker,
-}
+};
 
-export default meta
+export default meta;
 
 export const Default = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date())
-  return <DatePicker mode="single" selected={date} onSelect={setDate} />
-}
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  return <DatePicker mode="single" selected={date} onSelect={setDate} />;
+};

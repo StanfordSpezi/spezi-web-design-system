@@ -8,28 +8,28 @@
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    '@storybook/addon-onboarding',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    "@storybook/addon-onboarding",
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: "@storybook/react-vite",
   },
   core: {
     builder: {
-      name: '@storybook/builder-vite',
+      name: "@storybook/builder-vite",
       options: {
-        viteConfigPath: './vite.config.ts',
+        viteConfigPath: "./vite.config.ts",
       },
     },
   },
   docs: {},
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: "react-docgen-typescript",
   },
-}
+};
 
-export default config
+export default config;

@@ -6,14 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Spinner } from '.'
+import { render, screen } from "@testing-library/react";
+import { Spinner } from ".";
 
-describe('Spinner', () => {
-  it('renders accessible loader', () => {
-    render(<Spinner />)
+describe("Spinner", () => {
+  it("renders accessible loader", () => {
+    render(<Spinner />);
 
-    const element = screen.getByRole('status')
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByRole("status");
+    expect(element).toBeInTheDocument();
+  });
+});

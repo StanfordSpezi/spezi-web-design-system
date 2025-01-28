@@ -6,25 +6,25 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import { Toaster, toast } from '.'
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Toaster, toast } from ".";
 
-describe('Toaster', () => {
-  it('shows toast when triggerred', async () => {
+describe("Toaster", () => {
+  it("shows toast when triggerred", async () => {
     render(
       <>
         <Toaster />
-        <button type="button" onClick={() => toast('Lorem')} />
+        <button type="button" onClick={() => toast("Lorem")} />
       </>,
-    )
+    );
 
-    const toastHidden = screen.queryByText('Lorem')
-    expect(toastHidden).not.toBeInTheDocument()
+    const toastHidden = screen.queryByText("Lorem");
+    expect(toastHidden).not.toBeInTheDocument();
 
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
+    const button = screen.getByRole("button");
+    fireEvent.click(button);
 
-    const toastVisible = await screen.findByText('Lorem')
-    expect(toastVisible).toBeInTheDocument()
-  })
-})
+    const toastVisible = await screen.findByText("Lorem");
+    expect(toastVisible).toBeInTheDocument();
+  });
+});

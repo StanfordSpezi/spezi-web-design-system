@@ -6,14 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Textarea } from '.'
+import { render, screen } from "@testing-library/react";
+import { Textarea } from ".";
 
-describe('Textarea', () => {
-  it('renders textarea', () => {
-    render(<Textarea />)
+describe("Textarea", () => {
+  it("renders textarea", () => {
+    render(<Textarea />);
 
-    const element = screen.getByRole('textbox')
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByRole("textbox");
+    expect(element).toBeInTheDocument();
+  });
+});

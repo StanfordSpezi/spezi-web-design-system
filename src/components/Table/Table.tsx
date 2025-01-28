@@ -6,14 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as React from 'react'
+import * as React from "react";
 import {
   type TdHTMLAttributes,
   forwardRef,
   type HTMLAttributes,
   type ThHTMLAttributes,
-} from 'react'
-import { cn } from '../../utils/className'
+} from "react";
+import { cn } from "../../utils/className";
 
 export const Table = forwardRef<
   HTMLTableElement,
@@ -22,20 +22,20 @@ export const Table = forwardRef<
   <div className="relative w-full overflow-auto">
     <table
       ref={ref}
-      className={cn('w-full caption-bottom text-sm', className)}
+      className={cn("w-full caption-bottom text-sm", className)}
       {...props}
     />
   </div>
-))
-Table.displayName = 'Table'
+));
+Table.displayName = "Table";
 
 export const TableHeader = forwardRef<
   HTMLTableSectionElement,
   HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn('[&_tr]:border-b', className)} {...props} />
-))
-TableHeader.displayName = 'TableHeader'
+  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
+));
+TableHeader.displayName = "TableHeader";
 
 export const TableBody = forwardRef<
   HTMLTableSectionElement,
@@ -43,11 +43,11 @@ export const TableBody = forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn('[&_tr:last-child]:border-0', className)}
+    className={cn("[&_tr:last-child]:border-0", className)}
     {...props}
   />
-))
-TableBody.displayName = 'TableBody'
+));
+TableBody.displayName = "TableBody";
 
 export const TableFooter = forwardRef<
   HTMLTableSectionElement,
@@ -56,16 +56,16 @@ export const TableFooter = forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      'border-t bg-muted/50 font-medium [&>tr]:last:border-b-0',
+      "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
       className,
     )}
     {...props}
   />
-))
-TableFooter.displayName = 'TableFooter'
+));
+TableFooter.displayName = "TableFooter";
 
 export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {
-  isHoverable?: boolean
+  isHoverable?: boolean;
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
@@ -73,10 +73,10 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
     <tr
       ref={ref}
       className={cn(
-        'border-b transition-colors data-[state=selected]:bg-muted',
-        isHoverable && 'hover:bg-muted/50',
+        "border-b transition-colors data-[state=selected]:bg-muted",
+        isHoverable && "hover:bg-muted/50",
         onClick &&
-          'cursor-pointer focus-visible:bg-primary/10 focus-visible:outline-none',
+          "cursor-pointer focus-visible:bg-primary/10 focus-visible:outline-none",
         className,
       )}
       onClick={onClick}
@@ -84,8 +84,8 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
       {...props}
     />
   ),
-)
-TableRow.displayName = 'TableRow'
+);
+TableRow.displayName = "TableRow";
 
 export const TableHead = forwardRef<
   HTMLTableCellElement,
@@ -94,13 +94,13 @@ export const TableHead = forwardRef<
   <th
     ref={ref}
     className={cn(
-      'h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',
+      "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
   />
-))
-TableHead.displayName = 'TableHead'
+));
+TableHead.displayName = "TableHead";
 
 export const TableCell = forwardRef<
   HTMLTableCellElement,
@@ -109,10 +109,10 @@ export const TableCell = forwardRef<
   <td
     ref={ref}
     className={cn(
-      'p-4 text-left align-middle [&:has([role=checkbox])]:pr-0',
+      "p-4 text-left align-middle [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
   />
-))
-TableCell.displayName = 'TableCell'
+));
+TableCell.displayName = "TableCell";

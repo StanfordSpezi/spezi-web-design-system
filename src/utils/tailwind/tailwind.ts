@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { lightTheme } from '../../theme/light'
+import { lightTheme } from "../../theme/light";
 
 export const colorNameToTailwindVar = (colorName: string, alpha = true) =>
-  `rgb(var(--${colorName})${alpha ? '/ <alpha-value>' : ''})`
+  `rgb(var(--${colorName})${alpha ? "/ <alpha-value>" : ""})`;
 
 const colorEntries = Object.keys(lightTheme).map(
   (key) => [key, colorNameToTailwindVar(key)] as const,
-)
+);
 
 /**
  * Tailwind's theme colors
  * Uses light theme to get keys, but these are just CSS variable references
  * */
-export const tailwindColors = Object.fromEntries(colorEntries)
+export const tailwindColors = Object.fromEntries(colorEntries);

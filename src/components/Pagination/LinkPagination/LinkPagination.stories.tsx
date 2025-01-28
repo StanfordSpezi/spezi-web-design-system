@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { LinkPagination } from './LinkPagination'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { LinkPagination } from "./LinkPagination";
 
 const meta: Meta<typeof LinkPagination> = {
-  title: 'Components/Pagination/LinkPagination',
+  title: "Components/Pagination/LinkPagination",
   component: LinkPagination,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof LinkPagination>
+type Story = StoryObj<typeof LinkPagination>;
 
 export const Default: Story = {
   args: {
@@ -24,4 +24,4 @@ export const Default: Story = {
     page: 5,
     getHref: (page) => `/${page}`,
   },
-}
+};

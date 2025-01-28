@@ -6,15 +6,15 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Badge } from '.'
+import { render, screen } from "@testing-library/react";
+import { Badge } from ".";
 
-describe('Badge', () => {
-  it('renders badge element', () => {
-    render(<Badge>Lorem</Badge>)
+describe("Badge", () => {
+  it("renders badge element", () => {
+    render(<Badge>Lorem</Badge>);
 
-    const element = screen.getByText('Lorem')
+    const element = screen.getByText("Lorem");
 
-    expect(element).toBeInTheDocument()
-  })
-})
+    expect(element).toBeInTheDocument();
+  });
+});

@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { ClipboardCopy } from 'lucide-react'
-import { type ReactNode } from 'react'
-import { cn } from '../../utils/className'
-import { copyToClipboard } from '../../utils/misc'
+import { ClipboardCopy } from "lucide-react";
+import { type ReactNode } from "react";
+import { cn } from "../../utils/className";
+import { copyToClipboard } from "../../utils/misc";
 
 type CopyTextProps = (
   | { children: string; value?: string } // children are string = value is optional
   | { children: ReactNode; value: string } // children are ReactNode = value is required, because ReactNode might not be copyable
 ) & {
-  className?: string
-}
+  className?: string;
+};
 
 /**
  * Displays copiable text
@@ -25,16 +25,16 @@ type CopyTextProps = (
 export const CopyText = ({ children, className, value }: CopyTextProps) => {
   // It's resolved by types
   // eslint-disable-next-line @typescript-eslint/no-base-to-string
-  const copyValue = value ?? String(children)
+  const copyValue = value ?? String(children);
   return (
     <button
       type="button"
       className={cn(
-        'interactive-opacity flex w-full items-center gap-2',
+        "interactive-opacity flex w-full items-center gap-2",
         className,
       )}
       onClick={async () => {
-        await copyToClipboard(copyValue)
+        await copyToClipboard(copyValue);
       }}
       aria-label={`Copy "${copyValue}" to clipboard`}
     >
@@ -43,5 +43,5 @@ export const CopyText = ({ children, className, value }: CopyTextProps) => {
         <ClipboardCopy className="size-5 text-muted-foreground" />
       </span>
     </button>
-  )
-}
+  );
+};

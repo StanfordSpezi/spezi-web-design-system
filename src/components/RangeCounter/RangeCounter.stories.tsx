@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { RangeCounter } from './RangeCounter'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { RangeCounter } from "./RangeCounter";
 
 const meta: Meta<typeof RangeCounter> = {
-  title: 'Components/RangeCounter',
+  title: "Components/RangeCounter",
   component: RangeCounter,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof RangeCounter>
+type Story = StoryObj<typeof RangeCounter>;
 
 export const Default: Story = {
   args: {
@@ -24,4 +24,4 @@ export const Default: Story = {
     end: 9,
     all: 20,
   },
-}
+};

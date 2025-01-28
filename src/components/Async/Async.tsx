@@ -6,51 +6,51 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { omit, isBoolean, isUndefined } from 'es-toolkit'
-import { type ReactNode } from 'react'
-import { ErrorState, type ErrorStateProps } from '@/components/ErrorState'
-import { Spinner } from '@/components/Spinner'
-import { StateContainer } from '@/components/StateContainer'
-import { EmptyState, type EmptyStateProps } from '../EmptyState'
+import { omit, isBoolean, isUndefined } from "es-toolkit";
+import { type ReactNode } from "react";
+import { ErrorState, type ErrorStateProps } from "@/components/ErrorState";
+import { Spinner } from "@/components/Spinner";
+import { StateContainer } from "@/components/StateContainer";
+import { EmptyState, type EmptyStateProps } from "../EmptyState";
 
-const parseError = (error: AsyncProps['error']) => {
+const parseError = (error: AsyncProps["error"]) => {
   if (isUndefined(error))
     return {
       show: false,
-    }
-  if (isBoolean(error)) return { show: error }
-  return error
-}
+    };
+  if (isBoolean(error)) return { show: error };
+  return error;
+};
 
-const parseEmpty = (empty: AsyncProps['empty']) => {
-  if (isBoolean(empty)) return { show: empty }
-  if (isUndefined(empty)) return { show: false }
-  return empty
-}
+const parseEmpty = (empty: AsyncProps["empty"]) => {
+  if (isBoolean(empty)) return { show: empty };
+  if (isUndefined(empty)) return { show: false };
+  return empty;
+};
 
-export type FullEmptyProps = { show: boolean } & EmptyStateProps
+export type FullEmptyProps = { show: boolean } & EmptyStateProps;
 
 export type FullErrorProps = {
-  show: boolean
-} & ErrorStateProps
+  show: boolean;
+} & ErrorStateProps;
 
 export interface AsyncProps {
-  grow?: boolean
-  children?: ReactNode
-  className?: string
+  grow?: boolean;
+  children?: ReactNode;
+  className?: string;
   /**
    * Name of the represented entity
    * Provide pluralized
    * @example "users"
    * */
-  entityName?: string
-  empty?: boolean | FullEmptyProps
-  error?: boolean | FullErrorProps
-  loading?: boolean
+  entityName?: string;
+  empty?: boolean | FullEmptyProps;
+  error?: boolean | FullErrorProps;
+  loading?: boolean;
   /**
    * Can be used to wrap state with custom container
    * */
-  renderState?: (specialState: ReactNode) => ReactNode
+  renderState?: (specialState: ReactNode) => ReactNode;
 }
 
 /**
@@ -58,7 +58,7 @@ export interface AsyncProps {
  * Handles common data states: empty, error and loading
  * */
 export const Async = ({
-  entityName = 'data',
+  entityName = "data",
   empty: emptyProp,
   error: errorProp,
   loading,
@@ -67,16 +67,16 @@ export const Async = ({
   grow,
   className,
 }: AsyncProps) => {
-  const error = parseError(errorProp)
-  const empty = parseEmpty(emptyProp)
+  const error = parseError(errorProp);
+  const empty = parseEmpty(emptyProp);
 
   const specialState =
     error.show ?
-      <ErrorState entityName={entityName} {...omit(error, ['show'])} />
+      <ErrorState entityName={entityName} {...omit(error, ["show"])} />
     : loading ? <Spinner />
     : empty.show ?
-      <EmptyState entityName={entityName} {...omit(empty, ['show'])} />
-    : null
+      <EmptyState entityName={entityName} {...omit(empty, ["show"])} />
+    : null;
 
   return (
     !specialState ? children
@@ -84,5 +84,5 @@ export const Async = ({
     : <StateContainer grow={grow} className={className}>
         {specialState}
       </StateContainer>
-  )
-}
+  );
+};

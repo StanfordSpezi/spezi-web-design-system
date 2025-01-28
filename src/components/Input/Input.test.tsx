@@ -6,14 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Input } from '.'
+import { render, screen } from "@testing-library/react";
+import { Input } from ".";
 
-describe('Input', () => {
-  it('renders input', () => {
-    render(<Input />)
+describe("Input", () => {
+  it("renders input", () => {
+    render(<Input />);
 
-    const element = screen.getByRole('textbox')
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByRole("textbox");
+    expect(element).toBeInTheDocument();
+  });
+});

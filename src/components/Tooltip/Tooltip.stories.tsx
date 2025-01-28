@@ -6,21 +6,21 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { Tooltip } from './Tooltip'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { Tooltip } from "./Tooltip";
 
 const meta: Meta<typeof Tooltip> = {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   component: Tooltip,
   args: {
     children: <button type="button">Trigger</button>,
-    tooltip: 'Tooltip',
+    tooltip: "Tooltip",
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Tooltip>
+type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
   args: {
@@ -30,22 +30,22 @@ export const Default: Story = {
       </span>
     ),
   },
-}
+};
 
 export const Bottom: Story = {
   args: {
-    side: 'bottom',
+    side: "bottom",
   },
-}
+};
 
 export const Offset: Story = {
   args: {
     sideOffset: 20,
   },
-}
+};
 
 export const Delayed: Story = {
   args: {
     delayDuration: 500,
   },
-}
+};

@@ -8,20 +8,20 @@
 
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-import fs from 'node:fs'
-import path from 'node:path'
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
-import { configDefaults } from 'vitest/config'
+import fs from "node:fs";
+import path from "node:path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
+import { configDefaults } from "vitest/config";
 
 /**
  * Tuple of [package name, package entry point]
  * */
 const entires = [
-  ['index', 'src/index.ts'],
-  ['SpeziProvider', 'src/SpeziProvider.tsx'],
-  ['forms', 'src/forms/index.tsx'],
+  ["index", "src/index.ts"],
+  ["SpeziProvider", "src/SpeziProvider.tsx"],
+  ["forms", "src/forms/index.tsx"],
   ...fs
     .readdirSync(path.resolve(__dirname, `src/components`))
     .map((name) => [`components/${name}`, `src/components/${name}/index.tsx`]),
@@ -34,17 +34,17 @@ const entires = [
   ...fs
     .readdirSync(path.resolve(__dirname, `src/utils`))
     .map((name) => [`utils/${name}`, `src/utils/${name}/index.ts`]),
-]
+];
 
 const testExclude = [
-  '**/*.stories.tsx',
-  './postcss.config.js',
-  './tailwind.config.js',
-  './src/tests/storybook.tsx',
-]
+  "**/*.stories.tsx",
+  "./postcss.config.js",
+  "./tailwind.config.js",
+  "./src/tests/storybook.tsx",
+];
 
 export default defineConfig({
-  root: '.',
+  root: ".",
   plugins: [
     react(),
     dts({
@@ -53,7 +53,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   build: {
@@ -61,24 +61,24 @@ export default defineConfig({
       entry: Object.fromEntries(
         entires.map((entry) => [entry[0], path.resolve(__dirname, entry[1])]),
       ),
-      name: '@stanfordspezi/spezi-web-design-system',
+      name: "@stanfordspezi/spezi-web-design-system",
       fileName: (format, name) => {
-        if (format === 'es') return `${name}.js`
-        return `${name}.${format}`
+        if (format === "es") return `${name}.js`;
+        return `${name}.${format}`;
       },
     },
     rollupOptions: {
-      external: ['react', 'next-intl', 'react/jsx-runtime', 'react-dom'],
+      external: ["react", "next-intl", "react/jsx-runtime", "react-dom"],
     },
   },
   // @ts-expect-error TypeScript doesn't detect interface overload by vitest
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./testSetup.ts'],
+    environment: "jsdom",
+    setupFiles: ["./testSetup.ts"],
     exclude: [...testExclude, ...configDefaults.exclude],
     coverage: {
       exclude: [...testExclude, ...(configDefaults.coverage.exclude ?? [])],
     },
   },
-})
+});

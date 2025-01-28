@@ -6,31 +6,31 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { EmptyState } from './EmptyState'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { EmptyState } from "./EmptyState";
 
 const meta: Meta<typeof EmptyState> = {
-  title: 'Components/EmptyState',
+  title: "Components/EmptyState",
   component: EmptyState,
   args: {
-    entityName: 'users',
+    entityName: "users",
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof EmptyState>
+type Story = StoryObj<typeof EmptyState>;
 
-export const Default: Story = { args: { entityName: 'users' } }
+export const Default: Story = { args: { entityName: "users" } };
 
 export const MiscFilters: Story = {
   args: { hasFilters: true },
-}
+};
 
 export const TextFilter: Story = {
-  args: { textFilter: 'John Doe' },
-}
+  args: { textFilter: "John Doe" },
+};
 
 export const CustomMessage: Story = {
-  args: { children: 'Data is missing' },
-}
+  args: { children: "Data is missing" },
+};

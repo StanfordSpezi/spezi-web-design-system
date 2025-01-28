@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { TabsContent, TabsList, TabsTrigger } from './Tabs'
+import { TabsContent, TabsList, TabsTrigger } from "./Tabs";
 
 export enum Tab {
-  lorem = 'lorem',
-  ipsum = 'ipsum',
-  dolor = 'dolor',
+  lorem = "lorem",
+  ipsum = "ipsum",
+  dolor = "dolor",
 }
 
 export const elements = {
@@ -44,4 +44,4 @@ export const elements = {
       </TabsContent>
     </>
   ),
-}
+};

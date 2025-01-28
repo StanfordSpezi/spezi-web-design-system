@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from '@storybook/addon-actions'
-import { type Meta } from '@storybook/react'
+import { action } from "@storybook/addon-actions";
+import { type Meta } from "@storybook/react";
 import {
   Pagination,
   PaginationContent,
@@ -18,14 +18,14 @@ import {
   PaginationNextIcon,
   PaginationPrevious,
   PaginationPreviousIcon,
-} from './Pagination'
+} from "./Pagination";
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Pagination',
+  title: "Components/Pagination",
   component: Pagination,
-}
+};
 
-export default meta
+export default meta;
 
 /**
  * Renders buttons by default
@@ -34,28 +34,28 @@ export const Default = () => (
   <Pagination>
     <PaginationContent>
       <PaginationItemContainer>
-        <PaginationPrevious onClick={action('previous click')} />
+        <PaginationPrevious onClick={action("previous click")} />
       </PaginationItemContainer>
       <PaginationItemContainer>
-        <PaginationItem onClick={action('page click')}>1</PaginationItem>
+        <PaginationItem onClick={action("page click")}>1</PaginationItem>
       </PaginationItemContainer>
       <PaginationItemContainer>
-        <PaginationItem onClick={action('page click')} isActive>
+        <PaginationItem onClick={action("page click")} isActive>
           2
         </PaginationItem>
       </PaginationItemContainer>
       <PaginationItemContainer>
-        <PaginationItem onClick={action('page click')}>3</PaginationItem>
+        <PaginationItem onClick={action("page click")}>3</PaginationItem>
       </PaginationItemContainer>
       <PaginationItemContainer>
         <PaginationEllipsis />
       </PaginationItemContainer>
       <PaginationItemContainer>
-        <PaginationNext onClick={action('next click')} />
+        <PaginationNext onClick={action("next click")} />
       </PaginationItemContainer>
     </PaginationContent>
   </Pagination>
-)
+);
 
 /**
  * Opt-in to using links
@@ -97,4 +97,4 @@ export const Links = () => (
       </PaginationItemContainer>
     </PaginationContent>
   </Pagination>
-)
+);

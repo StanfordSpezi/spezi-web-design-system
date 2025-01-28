@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { SearchX, ListX } from 'lucide-react'
-import { type HTMLProps, type ReactNode } from 'react'
-import { cn } from '../../utils/className'
+import { SearchX, ListX } from "lucide-react";
+import { type HTMLProps, type ReactNode } from "react";
+import { cn } from "../../utils/className";
 
 export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
   /**
@@ -16,15 +16,15 @@ export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
    * Provide pluralized and lowercased
    * @example "users"
    * */
-  entityName?: ReactNode
+  entityName?: ReactNode;
   /**
    * Provide text filter that data is filtered by
    * */
-  textFilter?: string
+  textFilter?: string;
   /**
    * Provide whether data is filtered by other filters, excluding global text filter
    * */
-  hasFilters?: boolean
+  hasFilters?: boolean;
 }
 
 export const EmptyState = ({
@@ -35,14 +35,14 @@ export const EmptyState = ({
   children,
   ...props
 }: EmptyStateProps) => (
-  <div className={cn('flex gap-3 text-muted-foreground', className)} {...props}>
+  <div className={cn("flex gap-3 text-muted-foreground", className)} {...props}>
     {textFilter ?
       <SearchX />
     : <ListX />}
     <span>
       {children ?? (
         <>
-          No {entityName ?? 'results'} found
+          No {entityName ?? "results"} found
           {textFilter ?
             <>
               &nbsp;for <i>"{textFilter}"</i> search
@@ -55,4 +55,4 @@ export const EmptyState = ({
       )}
     </span>
   </div>
-)
+);

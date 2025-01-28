@@ -6,14 +6,14 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Card } from '.'
+import { render, screen } from "@testing-library/react";
+import { Card } from ".";
 
-describe('Card', () => {
-  it('renders element', () => {
-    render(<Card>Lorem</Card>)
+describe("Card", () => {
+  it("renders element", () => {
+    render(<Card>Lorem</Card>);
 
-    const element = screen.getByText('Lorem')
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByText("Lorem");
+    expect(element).toBeInTheDocument();
+  });
+});

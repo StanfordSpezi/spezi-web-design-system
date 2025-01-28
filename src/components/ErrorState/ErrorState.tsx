@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { CircleAlert } from 'lucide-react'
-import { type ReactNode } from 'react'
-import { Badge, type BadgeProps } from '@/components/Badge'
+import { CircleAlert } from "lucide-react";
+import { type ReactNode } from "react";
+import { Badge, type BadgeProps } from "@/components/Badge";
 
 export interface ErrorStateProps extends BadgeProps {
   /**
@@ -16,7 +16,7 @@ export interface ErrorStateProps extends BadgeProps {
    * Provide pluralized and lowercased
    * @example "users"
    * */
-  entityName?: ReactNode
+  entityName?: ReactNode;
 }
 
 /**
@@ -34,4 +34,4 @@ export const ErrorState = ({
       {children ?? <>Fetching {entityName} failed. Please try again later.</>}
     </span>
   </Badge>
-)
+);

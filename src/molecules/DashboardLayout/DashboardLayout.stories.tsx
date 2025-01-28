@@ -6,25 +6,25 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { Home, User } from 'lucide-react'
+import { type Meta } from "@storybook/react";
+import { Home, User } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '../../components/DropdownMenu'
-import { DashboardLayout, MenuItem, PageTitle, UserMenuItem } from '.'
+} from "../../components/DropdownMenu";
+import { DashboardLayout, MenuItem, PageTitle, UserMenuItem } from ".";
 
 const meta: Meta<typeof DashboardLayout> = {
-  title: 'Molecules/DashboardLayout',
+  title: "Molecules/DashboardLayout",
   component: DashboardLayout,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-}
+};
 
-export default meta
+export default meta;
 
 export const Default = () => {
   const user = (
@@ -39,7 +39,7 @@ export const Default = () => {
         <DropdownMenuItem>Sign Out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 
   const menuLinks = (
     <>
@@ -47,7 +47,7 @@ export const Default = () => {
       <MenuItem href="/" label="Highligthed" icon={<Home />} isHighlighted />
       <MenuItem href="/" label="Another" icon={<User />} />
     </>
-  )
+  );
 
   return (
     <DashboardLayout
@@ -70,5 +70,5 @@ export const Default = () => {
     >
       Content
     </DashboardLayout>
-  )
-}
+  );
+};

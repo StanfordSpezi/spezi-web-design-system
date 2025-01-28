@@ -6,5 +6,5 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './SignInForm'
-export * from './EmailPasswordForm'
+export * from "./SignInForm";
+export * from "./EmailPasswordForm";

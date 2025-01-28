@@ -6,5 +6,5 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './Separator'
-export * from './SeparatorText'
+export * from "./Separator";
+export * from "./SeparatorText";

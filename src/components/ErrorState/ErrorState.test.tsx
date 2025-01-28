@@ -6,21 +6,21 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { ErrorState } from '.'
+import { render, screen } from "@testing-library/react";
+import { ErrorState } from ".";
 
-describe('ErrorState', () => {
-  it('renders error state', () => {
-    render(<ErrorState>Lorem</ErrorState>)
+describe("ErrorState", () => {
+  it("renders error state", () => {
+    render(<ErrorState>Lorem</ErrorState>);
 
-    const alert = screen.getByRole('alert')
-    expect(alert).toHaveTextContent(/Lorem/)
-  })
+    const alert = screen.getByRole("alert");
+    expect(alert).toHaveTextContent(/Lorem/);
+  });
 
-  it('renders entityName', () => {
-    render(<ErrorState entityName="users" />)
+  it("renders entityName", () => {
+    render(<ErrorState entityName="users" />);
 
-    const element = screen.getByText(/Fetching\susers\sfailed/)
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByText(/Fetching\susers\sfailed/);
+    expect(element).toBeInTheDocument();
+  });
+});

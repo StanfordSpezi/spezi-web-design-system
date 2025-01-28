@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { Card } from './Card'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { Card } from "./Card";
 
 const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: Card,
-  args: { children: 'Lorem ipsum' },
-}
+  args: { children: "Lorem ipsum" },
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Card>
+type Story = StoryObj<typeof Card>;
 
-export const Default: Story = {}
+export const Default: Story = {};

@@ -6,4 +6,4 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './ErrorState'
+export * from "./ErrorState";

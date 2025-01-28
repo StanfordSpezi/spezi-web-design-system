@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from 'react'
-import { cn } from '../../utils/className'
+import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from "react";
+import { cn } from "../../utils/className";
 
 export interface AsideBrandLayoutProps
   extends ButtonHTMLAttributes<HTMLDivElement> {
-  aside?: ReactNode
+  aside?: ReactNode;
 }
 
 export const AsideBrandLayout = forwardRef<
@@ -20,7 +20,7 @@ export const AsideBrandLayout = forwardRef<
 >(({ aside, children, className, ...props }, ref) => (
   <div
     className={cn(
-      'w-full lg:grid lg:min-h-screen lg:grid-cols-[450px,1fr] xl:grid-cols-[600px,1fr]',
+      "w-full lg:grid lg:min-h-screen lg:grid-cols-[450px,1fr] xl:grid-cols-[600px,1fr]",
       className,
     )}
     ref={ref}
@@ -33,6 +33,6 @@ export const AsideBrandLayout = forwardRef<
       {children}
     </main>
   </div>
-))
+));
 
-AsideBrandLayout.displayName = 'AsideBrandLayout'
+AsideBrandLayout.displayName = "AsideBrandLayout";

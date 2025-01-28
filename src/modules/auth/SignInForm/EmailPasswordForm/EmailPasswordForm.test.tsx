@@ -6,87 +6,87 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { FirebaseError } from '@firebase/app'
-import { screen } from '@testing-library/react'
-import { userEvent } from '@testing-library/user-event'
-import { type Auth } from 'firebase/auth'
-import { vitest } from 'vitest'
-import { renderWithProviders } from '@/tests/helpers'
-import { EmailPasswordForm } from './EmailPasswordForm'
+import { FirebaseError } from "@firebase/app";
+import { screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
+import { type Auth } from "firebase/auth";
+import { vitest } from "vitest";
+import { renderWithProviders } from "@/tests/helpers";
+import { EmailPasswordForm } from "./EmailPasswordForm";
 
-const authMock = {} as Auth
-const signInWithEmailAndPasswordMock = vitest.fn()
+const authMock = {} as Auth;
+const signInWithEmailAndPasswordMock = vitest.fn();
 
-vitest.mock('firebase/auth')
+vitest.mock("firebase/auth");
 
-const getEmailField = () => screen.getByLabelText('Email')
-const getPasswordField = () => screen.getByLabelText('Password')
-const getSubmitButton = () => screen.getByRole('button')
+const getEmailField = () => screen.getByLabelText("Email");
+const getPasswordField = () => screen.getByLabelText("Password");
+const getSubmitButton = () => screen.getByRole("button");
 
 const validCreds = {
-  email: 'example@example.com',
-  password: 'example1234',
-}
+  email: "example@example.com",
+  password: "example1234",
+};
 
 const signIn = async () => {
-  const user = userEvent.setup()
-  await user.type(getEmailField(), validCreds.email)
-  await user.type(getPasswordField(), validCreds.password)
-  await user.click(getSubmitButton())
-}
+  const user = userEvent.setup();
+  await user.type(getEmailField(), validCreds.email);
+  await user.type(getPasswordField(), validCreds.password);
+  await user.click(getSubmitButton());
+};
 
-describe('EmailPasswordForm', () => {
+describe("EmailPasswordForm", () => {
   beforeEach(() => {
-    vitest.resetAllMocks()
-  })
+    vitest.resetAllMocks();
+  });
 
-  it('calls signIn function', async () => {
+  it("calls signIn function", async () => {
     renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-    )
-    await signIn()
+    );
+    await signIn();
 
     expect(signInWithEmailAndPasswordMock).toHaveBeenLastCalledWith(
       expect.anything(),
       validCreds.email,
       validCreds.password,
-    )
-  })
+    );
+  });
 
-  it('validates against empty values', async () => {
-    const user = userEvent.setup()
+  it("validates against empty values", async () => {
+    const user = userEvent.setup();
     renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-    )
+    );
 
-    await user.type(getPasswordField(), 'something')
-    await user.click(getSubmitButton())
+    await user.type(getPasswordField(), "something");
+    await user.click(getSubmitButton());
 
-    expect(getEmailField()).toHaveAccessibleErrorMessage()
-    expect(signInWithEmailAndPasswordMock).not.toHaveBeenCalled()
-  })
+    expect(getEmailField()).toHaveAccessibleErrorMessage();
+    expect(signInWithEmailAndPasswordMock).not.toHaveBeenCalled();
+  });
 
-  it('handles invalid creds error', async () => {
+  it("handles invalid creds error", async () => {
     signInWithEmailAndPasswordMock.mockImplementation(() => {
-      throw new FirebaseError('auth/invalid-credential', 'invalidcreds')
-    })
+      throw new FirebaseError("auth/invalid-credential", "invalidcreds");
+    });
     renderWithProviders(
       <EmailPasswordForm
         signInWithEmailAndPassword={signInWithEmailAndPasswordMock}
         auth={authMock}
       />,
-    )
+    );
 
-    await signIn()
+    await signIn();
 
     expect(
-      screen.getByText('Provided credentials are wrong. Please try again.'),
-    ).toBeInTheDocument()
-  })
-})
+      screen.getByText("Provided credentials are wrong. Please try again."),
+    ).toBeInTheDocument();
+  });
+});

@@ -6,21 +6,21 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type HTMLProps, type ReactNode } from 'react'
-import { cn } from '../../utils/className'
+import { type HTMLProps, type ReactNode } from "react";
+import { cn } from "../../utils/className";
 
-type SideLabelProps = Omit<HTMLProps<HTMLLabelElement>, 'label'> & {
-  label?: ReactNode
+type SideLabelProps = Omit<HTMLProps<HTMLLabelElement>, "label"> & {
+  label?: ReactNode;
   /**
    * Show label on right side
    * */
-  reverse?: boolean
+  reverse?: boolean;
   /**
    * Center content vertically
    * @default true
    * */
-  center?: boolean
-}
+  center?: boolean;
+};
 
 /**
  * Component to use together with radio, checkbox or switch controls
@@ -35,9 +35,9 @@ export const SideLabel = ({
 }: SideLabelProps) => (
   <label
     className={cn(
-      'flex cursor-pointer select-none gap-2.5',
-      reverse && 'flex-row-reverse',
-      center && 'items-center',
+      "flex cursor-pointer select-none gap-2.5",
+      reverse && "flex-row-reverse",
+      center && "items-center",
       className,
     )}
     {...props}
@@ -45,4 +45,4 @@ export const SideLabel = ({
     {children}
     <div className="text-sm leading-none">{label}</div>
   </label>
-)
+);

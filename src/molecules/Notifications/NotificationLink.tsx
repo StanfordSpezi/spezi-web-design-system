@@ -9,11 +9,11 @@
 import {
   Notification,
   type NotificationProps,
-} from '@/molecules/Notifications/Notification'
-import { useSpeziContext } from '@/SpeziProvider'
+} from "@/molecules/Notifications/Notification";
+import { useSpeziContext } from "@/SpeziProvider";
 
-interface NotificationLinkProps extends Omit<NotificationProps, 'asChild'> {
-  href: string
+interface NotificationLinkProps extends Omit<NotificationProps, "asChild"> {
+  href: string;
 }
 
 export const NotificationLink = ({
@@ -23,7 +23,7 @@ export const NotificationLink = ({
 }: NotificationLinkProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
+  } = useSpeziContext();
   return (
     <Notification asChild notification={notification}>
       <Link
@@ -33,5 +33,5 @@ export const NotificationLink = ({
         {children}
       </Link>
     </Notification>
-  )
-}
+  );
+};

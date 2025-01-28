@@ -6,13 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import { vitest } from 'vitest'
-import { Checkbox } from '.'
+import { fireEvent, render, screen } from "@testing-library/react";
+import { vitest } from "vitest";
+import { Checkbox } from ".";
 
-describe('Checkbox', () => {
-  it('renders functional Checkbox element', () => {
-    const onCheckedChange = vitest.fn()
+describe("Checkbox", () => {
+  it("renders functional Checkbox element", () => {
+    const onCheckedChange = vitest.fn();
 
     render(
       <Checkbox
@@ -20,11 +20,11 @@ describe('Checkbox', () => {
         onCheckedChange={onCheckedChange}
         aria-label="Checkbox"
       />,
-    )
+    );
 
-    const checkbox = screen.getByLabelText('Checkbox')
-    fireEvent.click(checkbox)
+    const checkbox = screen.getByLabelText("Checkbox");
+    fireEvent.click(checkbox);
 
-    expect(onCheckedChange).toHaveBeenCalledWith(false)
-  })
-})
+    expect(onCheckedChange).toHaveBeenCalledWith(false);
+  });
+});

@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { StateContainer } from '.'
+import { render, screen } from "@testing-library/react";
+import { StateContainer } from ".";
 
-describe('StateContainer', () => {
-  it('renders div element', () => {
-    render(<StateContainer data-testid="element" />)
-    expect(screen.getByTestId('element')).toBeInTheDocument()
-  })
-})
+describe("StateContainer", () => {
+  it("renders div element", () => {
+    render(<StateContainer data-testid="element" />);
+    expect(screen.getByTestId("element")).toBeInTheDocument();
+  });
+});

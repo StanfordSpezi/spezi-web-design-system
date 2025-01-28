@@ -6,23 +6,23 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from '@storybook/addon-actions'
-import { type Meta, type StoryObj } from '@storybook/react'
-import { ButtonPagination } from './ButtonPagination'
+import { action } from "@storybook/addon-actions";
+import { type Meta, type StoryObj } from "@storybook/react";
+import { ButtonPagination } from "./ButtonPagination";
 
 const meta: Meta<typeof ButtonPagination> = {
-  title: 'Components/Pagination/ButtonPagination',
+  title: "Components/Pagination/ButtonPagination",
   component: ButtonPagination,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof ButtonPagination>
+type Story = StoryObj<typeof ButtonPagination>;
 
 export const Default: Story = {
   args: {
     total: 10,
     page: 3,
-    onPageChange: action('onPageChange'),
+    onPageChange: action("onPageChange"),
   },
-}
+};

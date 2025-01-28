@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { times } from '@/utils/misc'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { times } from "@/utils/misc";
 import {
   Breadcrumbs as BreadcrumbsComponent,
   Breadcrumb,
@@ -16,16 +16,16 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from './Breadcrumb'
-import { mockBreadcrumbs } from './Breadcrumb.mocks'
+} from "./Breadcrumb";
+import { mockBreadcrumbs } from "./Breadcrumb.mocks";
 
 const meta: Meta = {
-  title: 'Components/Breadcrumb',
-}
+  title: "Components/Breadcrumb",
+};
 
-type Story = StoryObj<typeof BreadcrumbsComponent>
+type Story = StoryObj<typeof BreadcrumbsComponent>;
 
-export default meta
+export default meta;
 
 export const Breadcrumbs: Story = {
   args: {
@@ -41,7 +41,7 @@ export const Breadcrumbs: Story = {
       ))}
     </>
   ),
-}
+};
 
 export const Primivites = () => (
   <Breadcrumb>
@@ -59,4 +59,4 @@ export const Primivites = () => (
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
-)
+);

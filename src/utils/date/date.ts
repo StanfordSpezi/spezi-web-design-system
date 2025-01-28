@@ -6,23 +6,23 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { isNil } from 'es-toolkit'
-import { type Nil } from '@/utils/misc'
+import { isNil } from "es-toolkit";
+import { type Nil } from "@/utils/misc";
 
-type DateInput = Date | string | number
+type DateInput = Date | string | number;
 
 export const formatDate = (value: DateInput) => {
-  const date = new Date(value)
-  return date.toLocaleDateString()
-}
+  const date = new Date(value);
+  return date.toLocaleDateString();
+};
 
 export const formatNilDate = (value: Nil<DateInput>) =>
-  value === '' || isNil(value) ? null : formatDate(value)
+  value === "" || isNil(value) ? null : formatDate(value);
 
 export const formatDateTime = (value: DateInput) => {
-  const date = new Date(value)
-  return `${date.toLocaleDateString()} ${date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`
-}
+  const date = new Date(value);
+  return `${date.toLocaleDateString()} ${date.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" })}`;
+};
 
 export const formatNilDateTime = (value: Nil<DateInput>) =>
-  value === '' || isNil(value) ? null : formatDateTime(value)
+  value === "" || isNil(value) ? null : formatDateTime(value);
