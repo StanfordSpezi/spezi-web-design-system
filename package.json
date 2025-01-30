@@ -253,7 +253,7 @@
     "class-variance-authority": "^0.7.0",
     "date-fns": "^3.6.0",
     "es-toolkit": "^1.26.1",
-    "firebase": "^10.14.1",
+    "firebase": "^11.2.0",
     "lucide-react": "^0.453.0",
     "react-day-picker": "^8",
     "react-hook-form": "^7.53.1",
