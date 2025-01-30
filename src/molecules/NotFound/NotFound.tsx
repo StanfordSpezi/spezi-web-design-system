@@ -6,53 +6,53 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { RouteOff } from 'lucide-react'
-import { type ComponentProps, type ReactNode } from 'react'
-import { Button } from '@/components/Button'
-import { useSpeziContext } from '@/SpeziProvider'
-import { cn } from '@/utils/className'
+import { RouteOff } from "lucide-react";
+import { type ComponentProps, type ReactNode } from "react";
+import { Button } from "@/components/Button";
+import { useSpeziContext } from "@/SpeziProvider";
+import { cn } from "@/utils/className";
 
 export const NotFoundIcon = ({
   className,
   ...props
-}: Omit<ComponentProps<'div'>, 'children'>) => (
+}: Omit<ComponentProps<"div">, "children">) => (
   <div
-    className={cn('flex-center mb-2 size-20 rounded-full bg-muted', className)}
+    className={cn("flex-center mb-2 size-20 rounded-full bg-muted", className)}
     {...props}
   >
     <RouteOff className="size-7" />
   </div>
-)
+);
 
 export const NotFoundContainer = ({
   className,
   ...props
-}: ComponentProps<'div'>) => (
+}: ComponentProps<"div">) => (
   <div
-    className={cn('flex-center grow flex-col gap-1', className)}
+    className={cn("flex-center grow flex-col gap-1", className)}
     {...props}
   />
-)
+);
 
 export const NotFoundTitle = ({
   className,
   ...props
-}: ComponentProps<'h1'>) => (
-  <h1 className={cn('text-2xl font-medium', className)} {...props} />
-)
+}: ComponentProps<"h1">) => (
+  <h1 className={cn("text-2xl font-medium", className)} {...props} />
+);
 
 export const NotFoundParagraph = ({
   className,
   ...props
-}: ComponentProps<'p'>) => (
-  <p className={cn('text-muted-foreground', className)} {...props} />
-)
+}: ComponentProps<"p">) => (
+  <p className={cn("text-muted-foreground", className)} {...props} />
+);
 
 interface NotFoundActionProps extends ComponentProps<typeof Button> {}
 
 export const NotFoundAction = (props: NotFoundActionProps) => (
   <Button size="sm" className="mt-3" asChild {...props} />
-)
+);
 
 export interface NotFoundProps {
   /**
@@ -60,15 +60,15 @@ export interface NotFoundProps {
    * @example { name: "users list", href: "/user" }
    * */
   backPage: {
-    name: ReactNode
-    href: string
-  }
+    name: ReactNode;
+    href: string;
+  };
   /**
    * Singular name of accessed entity
    * @example "user"
    * */
-  entityName: ReactNode
-  className?: string
+  entityName: ReactNode;
+  className?: string;
 }
 
 export const NotFound = ({
@@ -78,7 +78,7 @@ export const NotFound = ({
 }: NotFoundProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
+  } = useSpeziContext();
   return (
     <NotFoundContainer className={className}>
       <NotFoundIcon />
@@ -90,5 +90,5 @@ export const NotFound = ({
         <Link href={backPage.href}>Go to {backPage.name}</Link>
       </NotFoundAction>
     </NotFoundContainer>
-  )
-}
+  );
+};

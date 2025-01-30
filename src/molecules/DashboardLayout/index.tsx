@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './DashboardLayout'
-export * from './MenuItem'
-export * from './PageTitle'
-export * from './UserMenuItem'
+export * from "./DashboardLayout";
+export * from "./MenuItem";
+export * from "./PageTitle";
+export * from "./UserMenuItem";

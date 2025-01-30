@@ -8,20 +8,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const sleep = (ms: number) =>
-  new Promise((resolve) => setTimeout(() => resolve(undefined), ms))
+  new Promise((resolve) => setTimeout(() => resolve(undefined), ms));
 
 export const logPerformance = <T>(name: string, callback: () => T) => {
-  performance.mark(`mark-${name}`)
-  const res = callback()
-  performance.measure(name, `mark-${name}`)
-  console.info(performance.getEntriesByName(name)[0])
-  return res
-}
+  performance.mark(`mark-${name}`);
+  const res = callback();
+  performance.measure(name, `mark-${name}`);
+  console.info(performance.getEntriesByName(name)[0]);
+  return res;
+};
 
 export const notImplementedError: any = () => {
-  throw new Error('Not implemented')
-}
+  throw new Error("Not implemented");
+};
 
 export const notImplementedAlert: any = () => {
-  alert('Not implemented')
-}
+  alert("Not implemented");
+};

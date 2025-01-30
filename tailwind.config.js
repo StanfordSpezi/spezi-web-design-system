@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import tailwindCssAnimate from 'tailwindcss-animate'
-import { tailwindColors } from './src/utils/tailwind'
+import tailwindCssAnimate from "tailwindcss-animate";
+import { tailwindColors } from "./src/utils/tailwind";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: tailwindColors,
@@ -21,4 +21,4 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-}
+};

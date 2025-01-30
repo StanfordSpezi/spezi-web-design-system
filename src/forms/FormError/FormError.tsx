@@ -6,18 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { isString } from 'es-toolkit'
-import { type ReactNode } from 'react'
-import { type ErrorOption } from 'react-hook-form'
-import { ErrorState, type ErrorStateProps } from '@/components/ErrorState'
-import { StateContainer } from '@/components/StateContainer'
-import { cn } from '@/utils/className'
-import { isObject } from '@/utils/misc'
+import { isString } from "es-toolkit";
+import { type ReactNode } from "react";
+import { type ErrorOption } from "react-hook-form";
+import { ErrorState, type ErrorStateProps } from "@/components/ErrorState";
+import { StateContainer } from "@/components/StateContainer";
+import { cn } from "@/utils/className";
+import { isObject } from "@/utils/misc";
 
 export interface FormErrorProps
-  extends Omit<ErrorStateProps, 'children' | 'prefix' | 'entityName'> {
-  formError: ErrorOption | ReactNode
-  prefix?: ReactNode
+  extends Omit<ErrorStateProps, "children" | "prefix" | "entityName"> {
+  formError: ErrorOption | ReactNode;
+  prefix?: ReactNode;
 }
 
 /**
@@ -32,16 +32,16 @@ export const FormError = ({
   ...props
 }: FormErrorProps) =>
   formError ?
-    <StateContainer padding={false} className={cn('pb-5', className)}>
+    <StateContainer padding={false} className={cn("pb-5", className)}>
       <ErrorState {...props}>
         {prefix}
         {(
           isObject(formError) &&
-          'message' in formError &&
+          "message" in formError &&
           isString(formError.message)
         ) ?
           formError.message
         : (formError as ReactNode)}
       </ErrorState>
     </StateContainer>
-  : null
+  : null;

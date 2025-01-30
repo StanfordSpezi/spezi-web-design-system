@@ -6,31 +6,31 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from '@storybook/addon-actions'
-import { type Meta, type StoryObj } from '@storybook/react'
-import { ConfirmDeleteDialog } from './ConfirmDeleteDialog'
+import { action } from "@storybook/addon-actions";
+import { type Meta, type StoryObj } from "@storybook/react";
+import { ConfirmDeleteDialog } from "./ConfirmDeleteDialog";
 
 const meta: Meta<typeof ConfirmDeleteDialog> = {
-  title: 'Molecules/ConfirmDeleteDialog',
+  title: "Molecules/ConfirmDeleteDialog",
   component: ConfirmDeleteDialog,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof ConfirmDeleteDialog>
+type Story = StoryObj<typeof ConfirmDeleteDialog>;
 
 export const Default: Story = {
   args: {
     open: true,
-    onDelete: action('onDelete'),
-    entityName: 'user',
-    itemName: 'example@example.com',
+    onDelete: action("onDelete"),
+    entityName: "user",
+    itemName: "example@example.com",
   },
-}
+};
 
 export const Plain: Story = {
   args: {
     open: true,
-    onDelete: action('onDelete'),
+    onDelete: action("onDelete"),
   },
-}
+};

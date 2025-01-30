@@ -6,22 +6,22 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as SelectPrimitive from '@radix-ui/react-select'
-import { type Meta } from '@storybook/react'
-import { Button } from '../Button'
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { type Meta } from "@storybook/react";
+import { Button } from "../Button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '.'
+} from ".";
 
 const meta: Meta = {
-  title: 'Components/Select',
-}
+  title: "Components/Select",
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <Select>
@@ -29,14 +29,14 @@ export const Default = () => (
       <SelectValue placeholder="Organizations" />
     </SelectTrigger>
     <SelectContent>
-      {['Lorem', 'Ipsum', 'Sir', 'Dolor', 'Amet'].map((organization) => (
+      {["Lorem", "Ipsum", "Sir", "Dolor", "Amet"].map((organization) => (
         <SelectItem value={organization} key={organization}>
           {organization}
         </SelectItem>
       ))}
     </SelectContent>
   </Select>
-)
+);
 
 export const Customized = () => (
   <Select>
@@ -46,25 +46,25 @@ export const Customized = () => (
     <SelectContent>
       {[
         {
-          name: 'Lorem',
-          description: 'Lorem ipsum dolor sit amet.',
+          name: "Lorem",
+          description: "Lorem ipsum dolor sit amet.",
         },
         {
-          name: 'Ipsum',
+          name: "Ipsum",
           description:
-            'Consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+            "Consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
         },
         {
-          name: 'Sir',
-          description: 'Labore et dolore magna aliqua.',
+          name: "Sir",
+          description: "Labore et dolore magna aliqua.",
         },
         {
-          name: 'Dolor',
-          description: 'Ut enim ad minim veniam, quis nostrud exercitation.',
+          name: "Dolor",
+          description: "Ut enim ad minim veniam, quis nostrud exercitation.",
         },
         {
-          name: 'Amet',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate.',
+          name: "Amet",
+          description: "Duis aute irure dolor in reprehenderit in voluptate.",
         },
       ].map(({ name, description }) => (
         <SelectItem value={name} key={name} itemText={name}>
@@ -76,4 +76,4 @@ export const Customized = () => (
       ))}
     </SelectContent>
   </Select>
-)
+);

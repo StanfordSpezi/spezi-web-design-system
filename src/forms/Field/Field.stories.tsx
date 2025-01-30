@@ -6,36 +6,36 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { z } from 'zod'
-import { Field } from './Field'
-import { Input } from '../../components/Input'
-import { useForm } from '../useForm'
+import { type Meta } from "@storybook/react";
+import { z } from "zod";
+import { Field } from "./Field";
+import { Input } from "../../components/Input";
+import { useForm } from "../useForm";
 
 const meta: Meta<typeof Field> = {
-  title: 'Forms/Field',
+  title: "Forms/Field",
   component: Field,
-}
+};
 
-export default meta
+export default meta;
 
 const formSchema = z.object({
   name: z.string().min(1),
-})
+});
 
 export const RegisteredField = () => {
-  const form = useForm({ formSchema })
+  const form = useForm({ formSchema });
   return (
     <Field
       control={form.control}
       name="name"
       render={({ field }) => <Input {...field} />}
     />
-  )
-}
+  );
+};
 
 export const Label = () => {
-  const form = useForm({ formSchema })
+  const form = useForm({ formSchema });
   return (
     <Field
       control={form.control}
@@ -43,8 +43,8 @@ export const Label = () => {
       label="Name"
       render={({ field }) => <Input {...field} />}
     />
-  )
-}
+  );
+};
 
 /**
  * Field errors are coming from formSchema validation
@@ -54,20 +54,20 @@ export const Error = () => {
   const form = useForm({
     formSchema,
     errors: {
-      name: { message: 'Name is required field', type: 'validationError' },
+      name: { message: "Name is required field", type: "validationError" },
     },
-  })
+  });
   return (
     <Field
       control={form.control}
       name="name"
       render={({ field }) => <Input {...field} />}
     />
-  )
-}
+  );
+};
 
 export const Tooltip = () => {
-  const form = useForm({ formSchema })
+  const form = useForm({ formSchema });
   return (
     <Field
       control={form.control}
@@ -76,5 +76,5 @@ export const Tooltip = () => {
       tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       render={({ field }) => <Input {...field} />}
     />
-  )
-}
+  );
+};

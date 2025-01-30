@@ -6,27 +6,27 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { FormError } from './FormError'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { FormError } from "./FormError";
 
 const meta: Meta<typeof FormError> = {
-  title: 'Forms/FormError',
+  title: "Forms/FormError",
   component: FormError,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof FormError>
+type Story = StoryObj<typeof FormError>;
 
 export const Default: Story = {
-  args: { formError: { message: 'User already exists' } },
-}
+  args: { formError: { message: "User already exists" } },
+};
 
 export const Prefixed: Story = {
   args: {
-    prefix: 'Form invitation error. ',
+    prefix: "Form invitation error. ",
     formError: {
-      message: 'User already exists',
+      message: "User already exists",
     },
   },
-}
+};

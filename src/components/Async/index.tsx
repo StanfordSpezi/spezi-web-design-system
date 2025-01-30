@@ -6,5 +6,5 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './Async'
-export * from './Async.utils'
+export * from "./Async";
+export * from "./Async.utils";

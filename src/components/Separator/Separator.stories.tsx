@@ -6,22 +6,22 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { Separator } from './Separator'
-import { SeparatorText as SeparatorTextComponent } from './SeparatorText'
+import { type Meta } from "@storybook/react";
+import { Separator } from "./Separator";
+import { SeparatorText as SeparatorTextComponent } from "./SeparatorText";
 
 const meta: Meta<typeof Separator> = {
-  title: 'Components/Separator',
+  title: "Components/Separator",
   component: Separator,
-}
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <div className="w-96">
     <Separator />
   </div>
-)
+);
 
 export const SeparatorText = () => (
   <div className="w-96">
@@ -29,4 +29,4 @@ export const SeparatorText = () => (
       <SeparatorTextComponent>Something</SeparatorTextComponent>
     </Separator>
   </div>
-)
+);

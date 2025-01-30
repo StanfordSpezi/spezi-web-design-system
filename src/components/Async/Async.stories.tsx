@@ -6,31 +6,31 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { Async } from './Async'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { Async } from "./Async";
 
 const meta: Meta<typeof Async> = {
-  title: 'Components/Async',
+  title: "Components/Async",
   component: Async,
-  args: { entityName: 'users' },
-}
+  args: { entityName: "users" },
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Async>
+type Story = StoryObj<typeof Async>;
 
 export const Loading: Story = {
   args: { loading: true },
-}
+};
 
 export const Error: Story = {
   args: { error: true },
-}
+};
 
 export const CustomMessage: Story = {
-  args: { error: { show: true, children: 'Custom error message!' } },
-}
+  args: { error: { show: true, children: "Custom error message!" } },
+};
 
 export const Empty: Story = {
   args: { empty: { show: true } },
-}
+};

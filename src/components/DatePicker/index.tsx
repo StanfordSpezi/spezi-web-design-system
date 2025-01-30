@@ -6,4 +6,4 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './DatePicker'
+export * from "./DatePicker";

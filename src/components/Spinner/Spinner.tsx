@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Loader2 } from 'lucide-react'
-import { type ComponentProps } from 'react'
-import { cn } from '@/utils/className'
+import { Loader2 } from "lucide-react";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
 export interface SpinnerProps extends ComponentProps<typeof Loader2> {}
 
@@ -17,10 +17,10 @@ export interface SpinnerProps extends ComponentProps<typeof Loader2> {}
  * */
 export const Spinner = ({ className, ...props }: SpinnerProps) => (
   <Loader2
-    className={cn('animate-spin text-muted-foreground', className)}
+    className={cn("animate-spin text-muted-foreground", className)}
     aria-label="Loading..."
     aria-live="polite"
     role="status"
     {...props}
   />
-)
+);

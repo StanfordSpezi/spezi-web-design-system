@@ -6,26 +6,28 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { Badge } from './Badge'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { Badge } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: "Components/Badge",
   component: Badge,
   args: {
-    children: 'Lorem',
+    children: "Lorem",
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Badge>
+type Story = StoryObj<typeof Badge>;
 
-export const Default: Story = { args: { variant: 'default' } }
-export const Secondary: Story = { args: { variant: 'secondary' } }
-export const Destructive: Story = { args: { variant: 'destructive' } }
-export const DestructiveLight: Story = { args: { variant: 'destructiveLight' } }
-export const Outline: Story = { args: { variant: 'outline' } }
+export const Default: Story = { args: { variant: "default" } };
+export const Secondary: Story = { args: { variant: "secondary" } };
+export const Destructive: Story = { args: { variant: "destructive" } };
+export const DestructiveLight: Story = {
+  args: { variant: "destructiveLight" },
+};
+export const Outline: Story = { args: { variant: "outline" } };
 
-export const Sm: Story = { args: { size: 'sm' } }
-export const Lg: Story = { args: { size: 'lg' } }
+export const Sm: Story = { args: { size: "sm" } };
+export const Lg: Story = { args: { size: "lg" } };

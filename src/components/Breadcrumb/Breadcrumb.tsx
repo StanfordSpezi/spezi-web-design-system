@@ -6,59 +6,59 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from '@radix-ui/react-slot'
-import { ChevronRight, MoreHorizontal } from 'lucide-react'
+import { Slot } from "@radix-ui/react-slot";
+import { ChevronRight, MoreHorizontal } from "lucide-react";
 import {
   type ComponentProps,
   type ComponentPropsWithoutRef,
   forwardRef,
   type ReactNode,
-} from 'react'
+} from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/DropdownMenu'
-import { useSpeziContext } from '@/SpeziProvider'
-import { cn } from '@/utils/className'
+} from "@/components/DropdownMenu";
+import { useSpeziContext } from "@/SpeziProvider";
+import { cn } from "@/utils/className";
 
 export const Breadcrumb = forwardRef<
   HTMLElement,
-  ComponentPropsWithoutRef<'nav'>
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />)
-Breadcrumb.displayName = 'Breadcrumb'
+  ComponentPropsWithoutRef<"nav">
+>(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
+Breadcrumb.displayName = "Breadcrumb";
 
 export const BreadcrumbList = forwardRef<
   HTMLOListElement,
-  ComponentPropsWithoutRef<'ol'>
+  ComponentPropsWithoutRef<"ol">
 >(({ className, ...props }, ref) => (
   <ol
     ref={ref}
     className={cn(
-      'flex flex-wrap items-center gap-1 break-words text-sm text-muted-foreground sm:gap-2',
+      "flex flex-wrap items-center gap-1 break-words text-sm text-muted-foreground sm:gap-2",
       className,
     )}
     {...props}
   />
-))
-BreadcrumbList.displayName = 'BreadcrumbList'
+));
+BreadcrumbList.displayName = "BreadcrumbList";
 
 export const BreadcrumbItem = forwardRef<
   HTMLLIElement,
-  ComponentPropsWithoutRef<'li'>
+  ComponentPropsWithoutRef<"li">
 >(({ className, ...props }, ref) => (
   <li
     ref={ref}
-    className={cn('inline-flex items-center gap-1.5', className)}
+    className={cn("inline-flex items-center gap-1.5", className)}
     {...props}
   />
-))
-BreadcrumbItem.displayName = 'BreadcrumbItem'
+));
+BreadcrumbItem.displayName = "BreadcrumbItem";
 
-type BreadcrumbLinkProps = ComponentPropsWithoutRef<'a'> & {
-  asChild?: boolean
-}
+type BreadcrumbLinkProps = ComponentPropsWithoutRef<"a"> & {
+  asChild?: boolean;
+};
 
 export const BreadcrumbLink = forwardRef<
   HTMLAnchorElement,
@@ -66,73 +66,73 @@ export const BreadcrumbLink = forwardRef<
 >(({ asChild, className, ...props }, ref) => {
   const {
     router: { Link },
-  } = useSpeziContext()
-  const Comp = asChild ? Slot : Link
+  } = useSpeziContext();
+  const Comp = asChild ? Slot : Link;
 
   return (
     <Comp
       ref={ref}
       className={cn(
-        'focus-ring rounded transition hover:text-foreground',
+        "focus-ring rounded transition hover:text-foreground",
         className,
       )}
       {...props}
     />
-  )
-})
-BreadcrumbLink.displayName = 'BreadcrumbLink'
+  );
+});
+BreadcrumbLink.displayName = "BreadcrumbLink";
 
 export const BreadcrumbPage = forwardRef<
   HTMLSpanElement,
-  ComponentPropsWithoutRef<'span'>
+  ComponentPropsWithoutRef<"span">
 >(({ className, ...props }, ref) => (
   <span
     ref={ref}
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn('font-normal text-foreground', className)}
+    className={cn("font-normal text-foreground", className)}
     {...props}
   />
-))
-BreadcrumbPage.displayName = 'BreadcrumbPage'
+));
+BreadcrumbPage.displayName = "BreadcrumbPage";
 
 export const BreadcrumbSeparator = ({
   children,
   className,
   ...props
-}: ComponentProps<'li'>) => (
+}: ComponentProps<"li">) => (
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn('opacity-60 [&>svg]:size-3.5', className)}
+    className={cn("opacity-60 [&>svg]:size-3.5", className)}
     {...props}
   >
     {children ?? <ChevronRight />}
   </li>
-)
-BreadcrumbSeparator.displayName = 'BreadcrumbSeparator'
+);
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
 export const BreadcrumbEllipsis = ({
   className,
   ...props
-}: ComponentProps<'span'>) => (
+}: ComponentProps<"span">) => (
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn('flex-center size-4', className)}
+    className={cn("flex-center size-4", className)}
     {...props}
   >
     <MoreHorizontal className="size-4" />
     <span className="sr-only">More</span>
   </span>
-)
-BreadcrumbEllipsis.displayName = 'BreadcrumbEllipsis'
+);
+BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
 interface BreadcrumbCompleteItemProps {
-  isActive: boolean
-  label: ReactNode
-  href: string
+  isActive: boolean;
+  label: ReactNode;
+  href: string;
 }
 
 const BreadcrumbCompleteItem = ({
@@ -142,7 +142,7 @@ const BreadcrumbCompleteItem = ({
 }: BreadcrumbCompleteItemProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
+  } = useSpeziContext();
   return (
     <>
       <BreadcrumbItem>
@@ -157,18 +157,18 @@ const BreadcrumbCompleteItem = ({
       </BreadcrumbItem>
       {!isActive && <BreadcrumbSeparator />}
     </>
-  )
-}
+  );
+};
 
 interface BreadcrumbsProps {
-  breadcrumbs: Array<{ href: string; label: ReactNode }>
+  breadcrumbs: Array<{ href: string; label: ReactNode }>;
   /**
    * Represents the maximum number of breadcrumb elements to display.
    * Any breadcrumbs beyond this number will be hidden behind a dropdown.
    * @range [2, Infinity]
    * @default 3
    * */
-  maxToDisplay?: number
+  maxToDisplay?: number;
 }
 
 /**
@@ -180,13 +180,13 @@ export const Breadcrumbs = ({
 }: BreadcrumbsProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
-  const firstBreadcrumb = breadcrumbs.at(0)
-  const hasTruncatedBreadcrumbs = breadcrumbs.length > maxToDisplay
+  } = useSpeziContext();
+  const firstBreadcrumb = breadcrumbs.at(0);
+  const hasTruncatedBreadcrumbs = breadcrumbs.length > maxToDisplay;
   const remainingBreadcrumbs =
     hasTruncatedBreadcrumbs ?
       breadcrumbs.slice(-maxToDisplay + 1)
-    : breadcrumbs.slice(1, maxToDisplay)
+    : breadcrumbs.slice(1, maxToDisplay);
 
   return (
     <Breadcrumb>
@@ -230,5 +230,5 @@ export const Breadcrumbs = ({
         ))}
       </BreadcrumbList>
     </Breadcrumb>
-  )
-}
+  );
+};

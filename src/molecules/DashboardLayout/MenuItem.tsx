@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type ReactNode } from 'react'
-import { useSpeziContext } from '@/SpeziProvider'
-import { Tooltip } from '../../components/Tooltip'
-import { cn } from '../../utils/className'
+import { type ReactNode } from "react";
+import { useSpeziContext } from "@/SpeziProvider";
+import { Tooltip } from "../../components/Tooltip";
+import { cn } from "../../utils/className";
 
 interface MenuItemProps {
-  href: string
-  isActive?: boolean
-  isHighlighted?: boolean
-  icon?: ReactNode
-  label?: string
+  href: string;
+  isActive?: boolean;
+  isHighlighted?: boolean;
+  icon?: ReactNode;
+  label?: string;
 }
 
 export const MenuItem = ({
@@ -28,7 +28,7 @@ export const MenuItem = ({
 }: MenuItemProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
+  } = useSpeziContext();
   return (
     <Tooltip
       key={href}
@@ -40,10 +40,10 @@ export const MenuItem = ({
       <Link
         href={href}
         className={cn(
-          'focus-ring relative flex items-center gap-3 rounded-lg p-2 font-medium no-underline transition xl:w-full xl:self-start',
+          "focus-ring relative flex items-center gap-3 rounded-lg p-2 font-medium no-underline transition xl:w-full xl:self-start",
           isActive ?
-            'bg-accent/50 text-primary hover:opacity-60'
-          : 'text-foreground/60 hover:bg-accent hover:text-foreground',
+            "bg-accent/50 text-primary hover:opacity-60"
+          : "text-foreground/60 hover:bg-accent hover:text-foreground",
         )}
       >
         {icon}
@@ -56,5 +56,5 @@ export const MenuItem = ({
         )}
       </Link>
     </Tooltip>
-  )
-}
+  );
+};

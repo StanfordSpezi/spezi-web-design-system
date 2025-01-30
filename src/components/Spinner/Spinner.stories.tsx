@@ -6,16 +6,16 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { Spinner } from './Spinner'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { Spinner } from "./Spinner";
 
 const meta: Meta<typeof Spinner> = {
-  title: 'Components/Spinner',
+  title: "Components/Spinner",
   component: Spinner,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Spinner>
+type Story = StoryObj<typeof Spinner>;
 
-export const Default: Story = {}
+export const Default: Story = {};

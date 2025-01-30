@@ -6,18 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { createContext, useContext } from 'react'
+import { createContext, useContext } from "react";
 
 export interface Notification {
-  isRead: boolean
+  isRead: boolean;
 }
 
-export const NotificationContext = createContext<Notification | null>(null)
+export const NotificationContext = createContext<Notification | null>(null);
 
 export const useNotificationContext = () => {
-  const notification = useContext(NotificationContext)
+  const notification = useContext(NotificationContext);
   if (!notification) {
-    throw new Error('Missing NotificationContext provider.')
+    throw new Error("Missing NotificationContext provider.");
   }
-  return notification
-}
+  return notification;
+};

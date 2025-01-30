@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { Button } from '../Button'
+import { type Meta } from "@storybook/react";
+import { Button } from "../Button";
 import {
   Dialog,
   DialogContent,
@@ -16,13 +16,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '.'
+} from ".";
 
 const meta: Meta = {
-  title: 'Components/Dialog',
-}
+  title: "Components/Dialog",
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <Dialog>
@@ -51,4 +51,4 @@ export const Default = () => (
       </DialogFooter>
     </DialogContent>
   </Dialog>
-)
+);

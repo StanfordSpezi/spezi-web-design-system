@@ -6,19 +6,19 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from '@radix-ui/react-slot'
-import { type ReactNode } from 'react'
-import { cn } from '@/utils/className'
+import { Slot } from "@radix-ui/react-slot";
+import { type ReactNode } from "react";
+import { cn } from "@/utils/className";
 import {
   type Notification as NotificationType,
   NotificationContext,
-} from './NotificationContext'
+} from "./NotificationContext";
 
 export interface NotificationProps {
-  notification: NotificationType
-  children: ReactNode
-  className?: string
-  asChild?: boolean
+  notification: NotificationType;
+  children: ReactNode;
+  className?: string;
+  asChild?: boolean;
 }
 
 export const Notification = ({
@@ -27,17 +27,17 @@ export const Notification = ({
   className,
   asChild,
 }: NotificationProps) => {
-  const Component = asChild ? Slot : 'article'
+  const Component = asChild ? Slot : "article";
   return (
     <NotificationContext.Provider value={notification}>
       <Component
         className={cn(
-          'flex gap-x-4 border-b border-b-neutral-200 px-3 py-4 last:border-b-0',
+          "flex gap-x-4 border-b border-b-neutral-200 px-3 py-4 last:border-b-0",
           className,
         )}
       >
         {children}
       </Component>
     </NotificationContext.Provider>
-  )
-}
+  );
+};

@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { flexRender } from '@tanstack/react-table'
-import { type MouseEvent } from 'react'
-import { ToggleSortButton } from '@/components/DataTable/ToggleSortButton'
+import { flexRender } from "@tanstack/react-table";
+import { type MouseEvent } from "react";
+import { ToggleSortButton } from "@/components/DataTable/ToggleSortButton";
 import {
   Table,
   TableBody,
@@ -16,20 +16,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/Table'
-import type { DataTableViewProps } from './DataTable'
+} from "@/components/Table";
+import type { DataTableViewProps } from "./DataTable";
 
 export interface DataTableTableViewSpecificProps<Data> {
-  onRowClick?: (data: Data, event: MouseEvent) => void
+  onRowClick?: (data: Data, event: MouseEvent) => void;
   /**
    * Determines whether event is valid row click. Some table rows include interactive elements
    * isRowClicked allows excluding clicks that were bubbled up
    * */
-  isRowClicked?: (event: MouseEvent) => boolean
+  isRowClicked?: (event: MouseEvent) => boolean;
 }
 
 const isRowClickedDefault = (event: MouseEvent) =>
-  (event.target as HTMLElement).tagName === 'TD'
+  (event.target as HTMLElement).tagName === "TD";
 
 interface DataTableTableViewProps<Data>
   extends DataTableViewProps<Data>,
@@ -49,7 +49,7 @@ export const DataTableTableView = <Data,>({
             const columnContent =
               header.isPlaceholder ? null : (
                 flexRender(header.column.columnDef.header, header.getContext())
-              )
+              );
             return (
               <TableHead key={header.id}>
                 {header.column.getCanFilter() ?
@@ -58,7 +58,7 @@ export const DataTableTableView = <Data,>({
                   </ToggleSortButton>
                 : columnContent}
               </TableHead>
-            )
+            );
           })}
         </TableRow>
       ))}
@@ -67,12 +67,12 @@ export const DataTableTableView = <Data,>({
       {rows.map((row) => (
         <TableRow
           key={row.id}
-          data-state={row.getIsSelected() && 'selected'}
+          data-state={row.getIsSelected() && "selected"}
           onClick={
             onRowClick ?
               (event) => {
                 if (isRowClicked(event)) {
-                  onRowClick(row.original, event)
+                  onRowClick(row.original, event);
                 }
               }
             : undefined
@@ -87,4 +87,4 @@ export const DataTableTableView = <Data,>({
       ))}
     </TableBody>
   </Table>
-)
+);

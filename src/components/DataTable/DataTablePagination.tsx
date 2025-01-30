@@ -6,27 +6,27 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { Table as TableType } from '@tanstack/table-core'
-import { ButtonPagination } from '@/components/Pagination/ButtonPagination'
-import { RangeCounter } from '@/components/RangeCounter'
+import type { Table as TableType } from "@tanstack/table-core";
+import { ButtonPagination } from "@/components/Pagination/ButtonPagination";
+import { RangeCounter } from "@/components/RangeCounter";
 
 interface DataTablePaginationProps<Data> {
-  table: TableType<Data>
+  table: TableType<Data>;
 }
 
 export const DataTablePagination = <Data,>({
   table,
 }: DataTablePaginationProps<Data>) => {
-  const rows = table.getRowModel().rows
-  const filteredRowsLength = table.getFilteredRowModel().rows.length
+  const rows = table.getRowModel().rows;
+  const filteredRowsLength = table.getFilteredRowModel().rows.length;
 
-  const tableState = table.getState()
-  const currentPage = tableState.pagination.pageIndex + 1
+  const tableState = table.getState();
+  const currentPage = tableState.pagination.pageIndex + 1;
 
   const itemsRangeStartIndex =
-    tableState.pagination.pageIndex * tableState.pagination.pageSize
+    tableState.pagination.pageIndex * tableState.pagination.pageSize;
 
-  const pageCount = table.getPageCount()
+  const pageCount = table.getPageCount();
 
   return (
     <>
@@ -43,5 +43,5 @@ export const DataTablePagination = <Data,>({
         />
       )}
     </>
-  )
-}
+  );
+};

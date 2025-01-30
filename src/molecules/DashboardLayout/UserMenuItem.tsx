@@ -6,15 +6,15 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { forwardRef } from 'react'
-import { Avatar } from '../../components/Avatar'
-import { Button, type ButtonProps } from '../../components/Button'
-import { type Nil } from '../../utils/misc'
+import { forwardRef } from "react";
+import { Avatar } from "../../components/Avatar";
+import { Button, type ButtonProps } from "../../components/Button";
+import { type Nil } from "../../utils/misc";
 
-type UserMenuItemProps = Omit<ButtonProps, 'name'> & {
-  name: Nil<string>
-  img: Nil<string>
-}
+type UserMenuItemProps = Omit<ButtonProps, "name"> & {
+  name: Nil<string>;
+  img: Nil<string>;
+};
 
 export const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
   ({ name, img, ...props }, ref) => (
@@ -28,5 +28,5 @@ export const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
       <span className="truncate text-sm lg:hidden xl:block">{name}</span>
     </Button>
   ),
-)
-UserMenuItem.displayName = 'UserMenuItem'
+);
+UserMenuItem.displayName = "UserMenuItem";

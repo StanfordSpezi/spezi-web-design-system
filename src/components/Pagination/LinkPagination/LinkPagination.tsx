@@ -10,8 +10,8 @@ import {
   PaginationItemType,
   usePagination,
   type UsePaginationProps,
-} from '@nextui-org/use-pagination'
-import { useSpeziContext } from '@/SpeziProvider'
+} from "@nextui-org/use-pagination";
+import { useSpeziContext } from "@/SpeziProvider";
 import {
   Pagination,
   PaginationContent,
@@ -22,15 +22,15 @@ import {
   PaginationNextIcon,
   PaginationPrevious,
   PaginationPreviousIcon,
-} from '../Pagination'
+} from "../Pagination";
 
 export interface LinkPaginationProps extends UsePaginationProps {
-  total: number
+  total: number;
   /**
    * Currently selected page, 1-based
    * */
-  page: number
-  getHref: (page: number) => string
+  page: number;
+  getHref: (page: number) => string;
 }
 
 /**
@@ -45,20 +45,20 @@ export const LinkPagination = ({
 }: LinkPaginationProps) => {
   const {
     router: { Link },
-  } = useSpeziContext()
+  } = useSpeziContext();
   const { activePage, range } = usePagination({
     total,
     page,
     showControls,
     ...props,
-  })
+  });
 
   return (
     <Pagination>
       <PaginationContent>
         {range.map((rangePage, index) => {
           if (rangePage === PaginationItemType.PREV) {
-            if (page === 1) return null
+            if (page === 1) return null;
             return (
               <PaginationItemContainer key={rangePage}>
                 <PaginationPrevious asChild>
@@ -67,10 +67,10 @@ export const LinkPagination = ({
                   </Link>
                 </PaginationPrevious>
               </PaginationItemContainer>
-            )
+            );
           }
           if (rangePage === PaginationItemType.NEXT) {
-            if (page === total) return null
+            if (page === total) return null;
             return (
               <PaginationItemContainer key={rangePage}>
                 <PaginationNext asChild>
@@ -79,23 +79,23 @@ export const LinkPagination = ({
                   </Link>
                 </PaginationNext>
               </PaginationItemContainer>
-            )
+            );
           }
           if (rangePage === PaginationItemType.DOTS)
             return (
               <PaginationItemContainer key={`${rangePage}-${index}`}>
                 <PaginationEllipsis />
               </PaginationItemContainer>
-            )
+            );
           return (
             <PaginationItemContainer key={rangePage}>
               <PaginationItem isActive={rangePage === page}>
                 <Link href={getHref(rangePage)}>{rangePage}</Link>
               </PaginationItem>
             </PaginationItemContainer>
-          )
+          );
         })}
       </PaginationContent>
     </Pagination>
-  )
-}
+  );
+};

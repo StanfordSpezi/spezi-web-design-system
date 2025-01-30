@@ -6,45 +6,45 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { cva, type VariantProps } from 'class-variance-authority'
-import { type ReactNode, useEffect, useState } from 'react'
-import { cn } from '@/utils/className'
-import { isEmpty, type Nil } from '@/utils/misc'
+import { cva, type VariantProps } from "class-variance-authority";
+import { type ReactNode, useEffect, useState } from "react";
+import { cn } from "@/utils/className";
+import { isEmpty, type Nil } from "@/utils/misc";
 
 type AvatarProps = {
-  className?: string
-  src?: Nil<string>
-  fallback?: ReactNode
-  name?: Nil<string>
-} & VariantProps<typeof avatarVariance>
+  className?: string;
+  src?: Nil<string>;
+  fallback?: ReactNode;
+  name?: Nil<string>;
+} & VariantProps<typeof avatarVariance>;
 
 export const getInitials = (value: string) => {
-  const words = value.trim().split(' ')
-  if (isEmpty(words)) return ''
+  const words = value.trim().split(" ");
+  if (isEmpty(words)) return "";
   if (words.length === 1)
-    return words.at(0)?.substring(0, 2).toLocaleUpperCase() ?? ''
-  const nameLetter = words.at(0)?.at(0) ?? ''
-  const surnameLetter = words.at(-1)?.at(0) ?? ''
-  return `${nameLetter}${surnameLetter}`.toLocaleUpperCase()
-}
+    return words.at(0)?.substring(0, 2).toLocaleUpperCase() ?? "";
+  const nameLetter = words.at(0)?.at(0) ?? "";
+  const surnameLetter = words.at(-1)?.at(0) ?? "";
+  return `${nameLetter}${surnameLetter}`.toLocaleUpperCase();
+};
 
 export const avatarVariants = {
   size: {
-    sm: 'size-8 text-xs',
-    default: 'size-12',
-    lg: 'size-16 text-xl',
+    sm: "size-8 text-xs",
+    default: "size-12",
+    lg: "size-16 text-xl",
   },
-}
+};
 
 export const avatarVariance = cva(
-  'relative flex shrink-0 overflow-hidden rounded-full',
+  "relative flex shrink-0 overflow-hidden rounded-full",
   {
     variants: avatarVariants,
     defaultVariants: {
-      size: 'default',
+      size: "default",
     },
   },
-)
+);
 
 export const Avatar = ({
   className,
@@ -53,29 +53,28 @@ export const Avatar = ({
   size,
   name,
 }: AvatarProps) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-    setIsImageLoaded(false)
-  }, [src])
+    setIsImageLoaded(false);
+  }, [src]);
 
   const fallbackContent =
     isImageLoaded ? null
     : name ? getInitials(name)
-    : fallback
+    : fallback;
 
   return (
     <div className={cn(avatarVariance({ size }), className)}>
       {src && (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           className={cn(
-            'aspect-square size-full object-cover',
-            !isImageLoaded && 'opacity-0',
+            "aspect-square size-full object-cover",
+            !isImageLoaded && "opacity-0",
           )}
           src={src}
           onLoad={() => setIsImageLoaded(true)}
-          alt={[name, 'avatar'].filter(Boolean).join(' ')}
+          alt={[name, "avatar"].filter(Boolean).join(" ")}
         />
       )}
       {fallbackContent && (
@@ -84,5 +83,5 @@ export const Avatar = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

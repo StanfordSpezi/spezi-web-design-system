@@ -6,34 +6,34 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Header } from '@tanstack/react-table'
-import { ArrowDownAZ, ArrowUpZA } from 'lucide-react'
-import { type ReactNode } from 'react'
-import { Button } from '../Button'
+import { type Header } from "@tanstack/react-table";
+import { ArrowDownAZ, ArrowUpZA } from "lucide-react";
+import { type ReactNode } from "react";
+import { Button } from "../Button";
 
 interface ToggleSortButtonProps<Data> {
-  children?: ReactNode
-  header: Header<Data, unknown>
+  children?: ReactNode;
+  header: Header<Data, unknown>;
 }
 
 export const ToggleSortButton = <Data,>({
   children,
   header,
 }: ToggleSortButtonProps<Data>) => {
-  const isSorted = header.column.getIsSorted()
+  const isSorted = header.column.getIsSorted();
 
-  const nextSorting = header.column.getNextSortingOrder()
+  const nextSorting = header.column.getNextSortingOrder();
 
   const label = [
-    nextSorting === 'asc' ? 'Sort ascending'
-    : nextSorting === 'desc' ? 'Sort descending'
-    : 'Disable sorting',
-    'by',
-    typeof children === 'string' ? children : null,
-    'column',
+    nextSorting === "asc" ? "Sort ascending"
+    : nextSorting === "desc" ? "Sort descending"
+    : "Disable sorting",
+    "by",
+    typeof children === "string" ? children : null,
+    "column",
   ]
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 
   return (
     <Button
@@ -44,11 +44,11 @@ export const ToggleSortButton = <Data,>({
       aria-label={label}
     >
       {children}
-      {isSorted === 'asc' ?
+      {isSorted === "asc" ?
         <ArrowDownAZ className="size-4" />
-      : isSorted === 'desc' ?
+      : isSorted === "desc" ?
         <ArrowUpZA className="size-4" />
       : <div aria-hidden className="size-4" />}
     </Button>
-  )
-}
+  );
+};

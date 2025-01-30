@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { isObject } from '@/utils/misc'
-import { combineQueries, type Query } from '@/utils/query'
-import { type FullErrorProps } from './Async'
+import { isObject } from "@/utils/misc";
+import { combineQueries, type Query } from "@/utils/query";
+import { type FullErrorProps } from "./Async";
 
 /**
  * Parses queries to Async component props
@@ -16,11 +16,11 @@ import { type FullErrorProps } from './Async'
 export const queriesToAsyncProps = (
   queries: Query[],
   props?: {
-    loading?: boolean
-    error?: boolean | Partial<FullErrorProps>
+    loading?: boolean;
+    error?: boolean | Partial<FullErrorProps>;
   },
 ) => {
-  const combinedQueries = combineQueries(queries)
+  const combinedQueries = combineQueries(queries);
   return {
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     loading: props?.loading || combinedQueries.isLoading,
@@ -29,5 +29,5 @@ export const queriesToAsyncProps = (
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         { ...props.error, show: props.error.show || combinedQueries.isError }
       : combinedQueries.isError,
-  }
-}
+  };
+};

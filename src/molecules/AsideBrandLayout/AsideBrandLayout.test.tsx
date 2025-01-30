@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { AsideBrandLayout } from '.'
+import { render, screen } from "@testing-library/react";
+import { AsideBrandLayout } from ".";
 
-describe('AsideBrandLayout', () => {
-  it('renders aside and children elements', () => {
-    render(<AsideBrandLayout aside="Aside">Main</AsideBrandLayout>)
+describe("AsideBrandLayout", () => {
+  it("renders aside and children elements", () => {
+    render(<AsideBrandLayout aside="Aside">Main</AsideBrandLayout>);
 
-    const aside = screen.getByText('Aside')
-    expect(aside).toBeInTheDocument()
+    const aside = screen.getByText("Aside");
+    expect(aside).toBeInTheDocument();
 
-    const main = screen.getByText('Main')
-    expect(main).toBeInTheDocument()
-  })
-})
+    const main = screen.getByText("Main");
+    expect(main).toBeInTheDocument();
+  });
+});

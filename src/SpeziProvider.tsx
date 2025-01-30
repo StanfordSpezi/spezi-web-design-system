@@ -5,7 +5,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { NextIntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider } from "next-intl";
 import {
   type ComponentProps,
   createContext,
@@ -13,10 +13,10 @@ import {
   useContext,
   useLayoutEffect,
   useMemo,
-} from 'react'
-import { messages as defaultMessages, type AllMessages } from '@/messages'
-import { lightTheme } from '@/theme/light'
-import { type Theme } from '@/theme/utils'
+} from "react";
+import { messages as defaultMessages, type AllMessages } from "@/messages";
+import { lightTheme } from "@/theme/light";
+import { type Theme } from "@/theme/utils";
 
 /**
  * Allows injecting necessary router-related components.
@@ -27,29 +27,29 @@ interface SpeziContextRouter {
   /**
    * Link component. Make sure to provide your router's Link component.
    * */
-  Link: (props: ComponentProps<'a'>) => ReactNode
+  Link: (props: ComponentProps<"a">) => ReactNode;
 }
 
 export interface SpeziContextType {
-  router: SpeziContextRouter
+  router: SpeziContextRouter;
 }
 
-export const SpeziContext = createContext<SpeziContextType | null>(null)
+export const SpeziContext = createContext<SpeziContextType | null>(null);
 
 export const useSpeziContext = () => {
-  const value = useContext(SpeziContext)
+  const value = useContext(SpeziContext);
   if (!value) {
     throw new Error(
-      'useSpeziContext must be used within SpeziProvider. Make sure to wrap your application with SpeziProvider',
-    )
+      "useSpeziContext must be used within SpeziProvider. Make sure to wrap your application with SpeziProvider",
+    );
   }
-  return value
-}
+  return value;
+};
 
 interface SpeziProviderProps extends SpeziContextType {
-  children?: ReactNode
-  theme?: Partial<Theme>
-  messages?: Partial<AllMessages>
+  children?: ReactNode;
+  theme?: Partial<Theme>;
+  messages?: Partial<AllMessages>;
 }
 
 /**
@@ -62,20 +62,20 @@ export const SpeziProvider = ({
   router,
 }: SpeziProviderProps) => {
   useLayoutEffect(() => {
-    const resolvedTheme = { ...lightTheme, ...theme }
+    const resolvedTheme = { ...lightTheme, ...theme };
     Object.entries(resolvedTheme).forEach(([key, value]) => {
       if (value) {
-        document.documentElement.style.setProperty(`--${key}`, value)
+        document.documentElement.style.setProperty(`--${key}`, value);
       }
-    })
-  }, [theme])
+    });
+  }, [theme]);
 
   const resolvedMessages = useMemo(
     () => ({ ...defaultMessages, ...messages }),
     [messages],
-  )
+  );
 
-  const speziContextValue = useMemo(() => ({ router }), [router])
+  const speziContextValue = useMemo(() => ({ router }), [router]);
 
   return (
     <NextIntlClientProvider messages={resolvedMessages} locale="en">
@@ -83,5 +83,5 @@ export const SpeziProvider = ({
         {children}
       </SpeziContext.Provider>
     </NextIntlClientProvider>
-  )
-}
+  );
+};

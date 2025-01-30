@@ -6,20 +6,20 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as SeparatorPrimitive from '@radix-ui/react-separator'
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
-} from 'react'
-import { cn } from '../../utils/className'
+} from "react";
+import { cn } from "../../utils/className";
 
 export const Separator = forwardRef<
   ElementRef<typeof SeparatorPrimitive.Root>,
   ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 >(
   (
-    { className, orientation = 'horizontal', decorative, children, ...props },
+    { className, orientation = "horizontal", decorative, children, ...props },
     ref,
   ) => (
     <SeparatorPrimitive.Root
@@ -27,8 +27,8 @@ export const Separator = forwardRef<
       decorative={decorative ?? !!children}
       orientation={orientation}
       className={cn(
-        'relative shrink-0 bg-border',
-        orientation === 'horizontal' ? 'h-[1px] w-full' : 'h -full w-[1px]',
+        "relative shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h -full w-[1px]",
         className,
       )}
       {...props}
@@ -36,6 +36,6 @@ export const Separator = forwardRef<
       {children}
     </SeparatorPrimitive.Root>
   ),
-)
+);
 
-Separator.displayName = SeparatorPrimitive.Root.displayName
+Separator.displayName = SeparatorPrimitive.Root.displayName;

@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type ReactNode } from 'react'
+import { type ReactNode } from "react";
 
 interface PageTitleProps {
-  title?: ReactNode
-  subTitle?: ReactNode
-  icon?: ReactNode
+  title?: ReactNode;
+  subTitle?: ReactNode;
+  icon?: ReactNode;
 }
 
 export const PageTitle = ({ title, subTitle, icon }: PageTitleProps) => (
@@ -29,4 +29,4 @@ export const PageTitle = ({ title, subTitle, icon }: PageTitleProps) => (
       {subTitle && <h2 className="text-xs lg:text-sm">{subTitle}</h2>}
     </div>
   </div>
-)
+);

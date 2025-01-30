@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { toast } from 'sonner'
+import { toast } from "sonner";
 
-export * from './Toaster'
-export { toast }
+export * from "./Toaster";
+export { toast };

@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { HTMLProps } from 'react'
-import { useNotificationContext } from '@/molecules/Notifications/NotificationContext'
-import { cn } from '@/utils/className'
+import type { HTMLProps } from "react";
+import { useNotificationContext } from "@/molecules/Notifications/NotificationContext";
+import { cn } from "@/utils/className";
 
 interface NotificationMessageProps extends HTMLProps<HTMLParagraphElement> {}
 
@@ -16,15 +16,15 @@ export const NotificationMessage = ({
   className,
   ...props
 }: NotificationMessageProps) => {
-  const notification = useNotificationContext()
+  const notification = useNotificationContext();
   return (
     <p
       className={cn(
-        'flex-1 text-sm',
-        notification.isRead && 'text-foreground/70',
+        "flex-1 text-sm",
+        notification.isRead && "text-foreground/70",
         className,
       )}
       {...props}
     />
-  )
-}
+  );
+};

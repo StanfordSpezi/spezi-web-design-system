@@ -8,27 +8,27 @@
 
 export const mockBreadcrumbs = [
   {
-    label: 'Home',
-    href: '/',
+    label: "Home",
+    href: "/",
   },
   {
-    label: 'Docs',
-    href: '/docs',
+    label: "Docs",
+    href: "/docs",
   },
   {
-    label: 'Components',
-    href: '/docs/components',
+    label: "Components",
+    href: "/docs/components",
   },
   {
-    label: 'Breadcrumbs',
-    href: '/docs/components/breadcrumbs',
+    label: "Breadcrumbs",
+    href: "/docs/components/breadcrumbs",
   },
   {
-    label: 'Full component',
-    href: '/docs/components/breadcrumbs/full',
+    label: "Full component",
+    href: "/docs/components/breadcrumbs/full",
   },
   {
-    label: 'Props',
-    href: '/docs/components/breadcrumbs/full/props',
+    label: "Props",
+    href: "/docs/components/breadcrumbs/full/props",
   },
-]
+];

@@ -6,4 +6,4 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './ButtonPagination'
+export * from "./ButtonPagination";
