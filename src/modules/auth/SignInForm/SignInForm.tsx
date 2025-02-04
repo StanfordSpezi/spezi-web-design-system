@@ -14,7 +14,7 @@ import {
   type signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Button } from "@/components/Button";
 import { Separator, SeparatorText } from "@/components/Separator";
 import { FormError } from "@/forms";
@@ -39,11 +39,13 @@ export interface SignInFormProps {
   providers: Array<{
     provider: AuthProvider;
     name: string;
+    icon?: ReactNode;
   }>;
   enableEmailPassword: boolean;
   signInWithPopup: typeof signInWithPopup;
   signInWithEmailAndPassword: typeof signInWithEmailAndPassword;
   className?: string;
+  buttonSize?: "default" | "lg";
 }
 
 export const SignInForm = ({
@@ -53,6 +55,7 @@ export const SignInForm = ({
   className,
   signInWithPopup,
   signInWithEmailAndPassword,
+  buttonSize = "default",
 }: SignInFormProps) => {
   const [formError, setFormError] = useState<string>();
   const t = useTranslations();
@@ -66,6 +69,7 @@ export const SignInForm = ({
         <Button
           key={provider.name}
           variant="outlineBg"
+          size={buttonSize}
           onClick={async () => {
             setFormError(undefined);
             try {
@@ -84,6 +88,11 @@ export const SignInForm = ({
             }
           }}
         >
+          {provider.icon && (
+            <span className={cn("flex", buttonSize === "lg" ? "h-8" : "h-6")}>
+              {provider.icon}
+            </span>
+          )}
           {t("signIn_provider", { provider: provider.name })}
         </Button>
       ))}
@@ -97,6 +106,7 @@ export const SignInForm = ({
           <EmailPasswordForm
             auth={auth}
             signInWithEmailAndPassword={signInWithEmailAndPassword}
+            buttonSize={buttonSize}
           />
         </>
       )}
