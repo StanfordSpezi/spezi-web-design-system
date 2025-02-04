@@ -72,4 +72,22 @@ describe("SignInForm", () => {
 
     expect(screen.queryByText("or")).toBeInTheDocument();
   });
+
+  it("renders icons", () => {
+    renderWithProviders(
+      <SignInForm
+        {...defaultProps}
+        enableEmailPassword={true}
+        providers={[
+          {
+            name: "Lorem",
+            provider: providerMock,
+            icon: <span data-testid="icon" />,
+          },
+        ]}
+      />,
+    );
+
+    expect(screen.getByTestId("icon")).toBeInTheDocument();
+  });
 });

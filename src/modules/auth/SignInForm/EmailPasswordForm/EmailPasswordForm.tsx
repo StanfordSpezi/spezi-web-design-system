@@ -22,11 +22,13 @@ const formSchema = z.object({
 interface EmailPasswordFormProps {
   auth: Auth;
   signInWithEmailAndPassword: typeof signInWithEmailAndPassword;
+  buttonSize?: "default" | "lg";
 }
 
 export const EmailPasswordForm = ({
   auth,
   signInWithEmailAndPassword,
+  buttonSize = "default",
 }: EmailPasswordFormProps) => {
   const t = useTranslations();
   const form = useForm({
@@ -72,7 +74,11 @@ export const EmailPasswordForm = ({
         label={t("signIn_field_password")}
         render={({ field }) => <Input type="password" {...field} />}
       />
-      <Button type="submit" isPending={form.formState.isSubmitting}>
+      <Button
+        type="submit"
+        size={buttonSize}
+        isPending={form.formState.isSubmitting}
+      >
         {t("signIn_submit")}
       </Button>
     </form>
