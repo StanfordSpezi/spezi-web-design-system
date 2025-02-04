@@ -82,7 +82,7 @@ describe("SignInForm", () => {
           {
             name: "Lorem",
             provider: providerMock,
-            icon: <span test-id="icon" />,
+            icon: <span data-testid="icon" />,
           },
         ]}
       />,
