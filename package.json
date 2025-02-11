@@ -86,6 +86,10 @@
       "types": "./dist/components/Popover.d.ts",
       "default": "./dist/components/Popover.js"
     },
+    "./components/Radio": {
+      "types": "./dist/components/Radio.d.ts",
+      "default": "./dist/components/Radio.js"
+    },
     "./components/RangeCounter": {
       "types": "./dist/components/RangeCounter.d.ts",
       "default": "./dist/components/RangeCounter.js"
