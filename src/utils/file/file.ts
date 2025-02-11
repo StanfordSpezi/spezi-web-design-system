@@ -10,35 +10,35 @@ export const downloadFile = (
   src: File | Blob | MediaSource,
   fileName: string,
 ) => {
-  const url = URL.createObjectURL(src)
+  const url = URL.createObjectURL(src);
 
-  const link = document.createElement('a')
-  link.href = url
-  link.download = fileName
-  link.click()
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  link.click();
 
-  URL.revokeObjectURL(url)
-}
+  URL.revokeObjectURL(url);
+};
 
 export const base64ToBlob = (
   base64Data: string,
-  contentType = '',
+  contentType = "",
   sliceSize = 512,
 ) => {
-  const byteCharacters = atob(base64Data)
-  const byteArrays = []
+  const byteCharacters = atob(base64Data);
+  const byteArrays = [];
 
   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    const slice = byteCharacters.slice(offset, offset + sliceSize)
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
 
-    const byteNumbers = new Array(slice.length)
+    const byteNumbers = new Array(slice.length);
     for (let i = 0; i < slice.length; i++) {
-      byteNumbers[i] = slice.charCodeAt(i)
+      byteNumbers[i] = slice.charCodeAt(i);
     }
 
-    const byteArray = new Uint8Array(byteNumbers)
-    byteArrays.push(byteArray)
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
   }
 
-  return new Blob(byteArrays, { type: contentType })
-}
+  return new Blob(byteArrays, { type: contentType });
+};

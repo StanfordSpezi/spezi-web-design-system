@@ -6,18 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { RowDropdownMenu } from './RowDropdownMenu'
-import { DropdownMenuItem } from '../../DropdownMenu'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { RowDropdownMenu } from "./RowDropdownMenu";
+import { DropdownMenuItem } from "../../DropdownMenu";
 
 const meta: Meta<typeof RowDropdownMenu> = {
-  title: 'Components/DataTable/RowDropdownMenu',
+  title: "Components/DataTable/RowDropdownMenu",
   component: RowDropdownMenu,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof RowDropdownMenu>
+type Story = StoryObj<typeof RowDropdownMenu>;
 
 export const Default: Story = {
   args: {
@@ -27,4 +27,4 @@ export const Default: Story = {
       </>
     ),
   },
-}
+};

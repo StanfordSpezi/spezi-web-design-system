@@ -6,32 +6,32 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { Separator, SeparatorText } from '.'
+import { render, screen } from "@testing-library/react";
+import { Separator, SeparatorText } from ".";
 
-describe('Separator', () => {
-  it('renders separator element if no children provided', () => {
-    render(<Separator />)
+describe("Separator", () => {
+  it("renders separator element if no children provided", () => {
+    render(<Separator />);
 
-    const element = screen.getByRole('separator')
-    expect(element).toBeInTheDocument()
-  })
+    const element = screen.getByRole("separator");
+    expect(element).toBeInTheDocument();
+  });
 
-  it('renders regular element if children provided', () => {
-    render(<Separator>lorem</Separator>)
+  it("renders regular element if children provided", () => {
+    render(<Separator>lorem</Separator>);
 
-    const element = screen.queryByRole('separator')
-    expect(element).not.toBeInTheDocument()
-  })
+    const element = screen.queryByRole("separator");
+    expect(element).not.toBeInTheDocument();
+  });
 
-  it('renders children', () => {
+  it("renders children", () => {
     render(
       <Separator>
         <SeparatorText>Lorem</SeparatorText>
       </Separator>,
-    )
+    );
 
-    const element = screen.getByText('Lorem')
-    expect(element).toBeInTheDocument()
-  })
-})
+    const element = screen.getByText("Lorem");
+    expect(element).toBeInTheDocument();
+  });
+});

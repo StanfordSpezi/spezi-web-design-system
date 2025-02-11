@@ -5,10 +5,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { messages as signInFormMessages } from './modules/auth/SignInForm'
+import { messages as signInFormMessages } from "./modules/auth/SignInForm";
 
 export const messages = {
   ...signInFormMessages,
-}
+};
 
-export type AllMessages = typeof messages
+export type AllMessages = typeof messages;

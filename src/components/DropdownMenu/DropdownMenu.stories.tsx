@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { LogOut } from 'lucide-react'
-import { useIsDocs } from '@/tests/storybook'
+import { type Meta } from "@storybook/react";
+import { LogOut } from "lucide-react";
+import { useIsDocs } from "@/tests/storybook";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,21 +22,21 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from './DropdownMenu'
-import { Button } from '../Button'
+} from "./DropdownMenu";
+import { Button } from "../Button";
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: 'Components/DropdownMenu',
+  title: "Components/DropdownMenu",
   component: DropdownMenu,
-}
+};
 
-export default meta
+export default meta;
 
 /**
  * Storybook in Docs view needs couple adjustments to provide good overview behavior
  * */
 const useProps = () => {
-  const isDocs = useIsDocs()
+  const isDocs = useIsDocs();
   return {
     menu: {
       modal: !isDocs,
@@ -45,8 +45,8 @@ const useProps = () => {
       container: isDocs ? null : undefined,
       avoidCollisions: isDocs ? false : undefined,
     },
-  }
-}
+  };
+};
 
 /**
  * Dropdown with modality and appended to the body
@@ -65,10 +65,10 @@ export const Triggerable = () => (
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-)
+);
 
 export const Simple = () => {
-  const props = useProps()
+  const props = useProps();
   return (
     <div style={{ minHeight: 100 }}>
       <DropdownMenu open={true} {...props.menu}>
@@ -85,11 +85,11 @@ export const Simple = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
-}
+  );
+};
 
 export const Complex = () => {
-  const props = useProps()
+  const props = useProps();
   return (
     <div style={{ minHeight: 300 }}>
       <DropdownMenu open={true} {...props.menu}>
@@ -156,5 +156,5 @@ export const Complex = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
-}
+  );
+};

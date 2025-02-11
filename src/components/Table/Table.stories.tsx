@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
+import { type Meta } from "@storybook/react";
 import {
   Table,
   TableBody,
@@ -15,17 +15,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './Table'
+} from "./Table";
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table',
+  title: "Components/Table",
   component: Table,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-}
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <Table>
@@ -52,4 +52,4 @@ export const Default = () => (
       </TableRow>
     </TableFooter>
   </Table>
-)
+);

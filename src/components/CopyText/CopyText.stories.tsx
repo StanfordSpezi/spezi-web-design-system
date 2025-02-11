@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { CopyText } from './CopyText'
-import { Toaster } from '../Toaster'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { CopyText } from "./CopyText";
+import { Toaster } from "../Toaster";
 
 const meta: Meta<typeof CopyText> = {
-  title: 'Components/CopyText',
+  title: "Components/CopyText",
   component: CopyText,
   decorators: [
     (Story) => (
@@ -21,24 +21,24 @@ const meta: Meta<typeof CopyText> = {
       </>
     ),
   ],
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof CopyText>
+type Story = StoryObj<typeof CopyText>;
 
 export const Default: Story = {
   args: {
-    children: 'Special text to copy',
+    children: "Special text to copy",
   },
-}
+};
 
 export const Truncated: Story = {
   args: {
-    children: '50e8400-e29b-41d4-a716-446655440000',
-    className: 'max-w-[100px]',
+    children: "50e8400-e29b-41d4-a716-446655440000",
+    className: "max-w-[100px]",
   },
-}
+};
 
 export const DifferentTextValue: Story = {
   args: {
@@ -47,7 +47,7 @@ export const DifferentTextValue: Story = {
         <b>John</b> Doe
       </>
     ),
-    value: 'example',
-    className: 'max-w-[100px]',
+    value: "example",
+    className: "max-w-[100px]",
   },
-}
+};

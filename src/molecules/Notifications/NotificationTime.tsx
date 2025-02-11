@@ -6,26 +6,26 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type HTMLProps } from 'react'
-import { useNotificationContext } from '@/molecules/Notifications/NotificationContext'
-import { cn } from '@/utils/className'
-import { formatDateTime } from '@/utils/date'
+import { type HTMLProps } from "react";
+import { useNotificationContext } from "@/molecules/Notifications/NotificationContext";
+import { cn } from "@/utils/className";
+import { formatDateTime } from "@/utils/date";
 
 interface NotificationTimeProps extends HTMLProps<HTMLTimeElement> {
-  time: Date
+  time: Date;
 }
 
 export const NotificationTime = ({ time, ...props }: NotificationTimeProps) => {
-  const notification = useNotificationContext()
+  const notification = useNotificationContext();
   return (
     <time
       className={cn(
-        'shrink-0 text-xs',
-        !notification.isRead && 'font-semibold',
+        "shrink-0 text-xs",
+        !notification.isRead && "font-semibold",
       )}
       {...props}
     >
       {formatDateTime(time)}
     </time>
-  )
-}
+  );
+};

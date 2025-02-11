@@ -6,35 +6,35 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
-import { useState } from 'react'
-import { SideLabel } from '@/components/SideLabel'
-import { Switch } from './Switch'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { useState } from "react";
+import { SideLabel } from "@/components/SideLabel";
+import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: "Components/Switch",
   component: Switch,
   args: {
     onCheckedChange: fn(),
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Switch>
+type Story = StoryObj<typeof Switch>;
 
-export const Unchecked: Story = { args: { checked: false } }
+export const Unchecked: Story = { args: { checked: false } };
 
-export const Checked: Story = { args: { checked: true } }
+export const Checked: Story = { args: { checked: true } };
 
 export const Functional = () => {
-  const [checked, setChecked] = useState(false)
-  return <Switch checked={checked} onCheckedChange={setChecked} />
-}
+  const [checked, setChecked] = useState(false);
+  return <Switch checked={checked} onCheckedChange={setChecked} />;
+};
 
 export const Labeled = () => (
   <SideLabel label="Show unread only">
     <Switch checked />
   </SideLabel>
-)
+);

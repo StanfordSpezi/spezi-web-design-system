@@ -30,6 +30,8 @@ jobs:
   eslint:
     name: ESLint
     uses: StanfordBDHG/.github/.github/workflows/eslint.yml@v2
+    with:
+      nodeVersion: 22
     permissions:
       contents: read
       checks: write

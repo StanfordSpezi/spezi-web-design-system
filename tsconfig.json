@@ -23,7 +23,7 @@
     },
     "types": ["vitest/globals"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "./testSetup.ts"],
+  "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.ts", ".storybook/**/*.tsx"],
   "exclude": ["node_modules"],
   "typedocOptions": {
     "entryPoints": ["packages/*"],

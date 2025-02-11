@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { useState } from 'react'
-import { type InitialState, not } from '../misc'
+import { useState } from "react";
+import { type InitialState, not } from "../misc";
 
 /**
  * Handles open/close or similar boolean states
@@ -20,16 +20,16 @@ import { type InitialState, not } from '../misc'
  *
  * */
 export const useOpenState = (initialValue: InitialState<boolean> = false) => {
-  const [isOpen, setIsOpen] = useState(initialValue)
+  const [isOpen, setIsOpen] = useState(initialValue);
 
-  const close = () => setIsOpen(false)
+  const close = () => setIsOpen(false);
 
-  const open = () => setIsOpen(true)
+  const open = () => setIsOpen(true);
 
-  const toggle = () => setIsOpen(not)
+  const toggle = () => setIsOpen(not);
 
-  return { isOpen, setIsOpen, close, open, toggle }
-}
+  return { isOpen, setIsOpen, close, open, toggle };
+};
 
 /**
  * Stateful open state is suitable for cases where combination of boolean flag and additional state is required
@@ -39,17 +39,17 @@ export const useStatefulOpenState = <T>(
   initialStateValue?: T,
   initialValue?: InitialState<boolean>,
 ) => {
-  const [state, setState] = useState(initialStateValue)
-  const openState = useOpenState(initialValue)
+  const [state, setState] = useState(initialStateValue);
+  const openState = useOpenState(initialValue);
 
-  const close = openState.close
+  const close = openState.close;
 
   const open = (state: T) => {
-    setState(state)
-    openState.open()
-  }
+    setState(state);
+    openState.open();
+  };
 
-  const isOpen = !!state && openState.isOpen
+  const isOpen = !!state && openState.isOpen;
 
-  return { isOpen, close, open, state }
-}
+  return { isOpen, close, open, state };
+};

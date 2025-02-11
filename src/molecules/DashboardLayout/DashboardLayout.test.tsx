@@ -6,13 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithProviders } from '@/tests/helpers'
-import { DashboardLayout, MenuItem, PageTitle } from '.'
+import { fireEvent, screen } from "@testing-library/react";
+import { renderWithProviders } from "@/tests/helpers";
+import { DashboardLayout, MenuItem, PageTitle } from ".";
 
-describe('DashboardLayout', () => {
-  it('renders functional dashboard', () => {
-    const menuLinks = <MenuItem href="/home" label="Home" isActive />
+describe("DashboardLayout", () => {
+  it("renders functional dashboard", () => {
+    const menuLinks = <MenuItem href="/home" label="Home" isActive />;
     renderWithProviders(
       <DashboardLayout
         aside={menuLinks}
@@ -21,23 +21,23 @@ describe('DashboardLayout', () => {
       >
         Content
       </DashboardLayout>,
-    )
+    );
 
-    const dashboardContent = screen.getByText('Content')
-    expect(dashboardContent).toBeInTheDocument()
+    const dashboardContent = screen.getByText("Content");
+    expect(dashboardContent).toBeInTheDocument();
 
-    const homeLink = screen.getByRole('link', { name: 'Home' })
-    expect(homeLink).toBeInTheDocument()
+    const homeLink = screen.getByRole("link", { name: "Home" });
+    expect(homeLink).toBeInTheDocument();
 
-    const mobileMenu = screen.getByTestId('mobileMenu')
-    expect(mobileMenu).not.toBeVisible()
+    const mobileMenu = screen.getByTestId("mobileMenu");
+    expect(mobileMenu).not.toBeVisible();
 
-    const menuTriggerButton = screen.getByRole('button', { name: 'Open menu' })
-    fireEvent.click(menuTriggerButton)
+    const menuTriggerButton = screen.getByRole("button", { name: "Open menu" });
+    fireEvent.click(menuTriggerButton);
 
-    expect(mobileMenu).toBeVisible()
+    expect(mobileMenu).toBeVisible();
     // Renders both home links - mobile and desktop
-    const homeLinks = screen.getAllByRole('link', { name: 'Home' })
-    expect(homeLinks).toHaveLength(2)
-  })
-})
+    const homeLinks = screen.getAllByRole("link", { name: "Home" });
+    expect(homeLinks).toHaveLength(2);
+  });
+});

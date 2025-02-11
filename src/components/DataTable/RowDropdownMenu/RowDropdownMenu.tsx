@@ -6,19 +6,19 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Ellipsis } from 'lucide-react'
-import { type ReactNode } from 'react'
-import { Button } from '../../Button'
+import { Ellipsis } from "lucide-react";
+import { type ReactNode } from "react";
+import { Button } from "../../Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '../../DropdownMenu'
+} from "../../DropdownMenu";
 
 interface RowDropdownMenuProps {
   /* pass DropdownMenuContent children */
-  children?: ReactNode
-  itemName?: string
+  children?: ReactNode;
+  itemName?: string;
 }
 
 /**
@@ -35,7 +35,7 @@ export const RowDropdownMenu = ({
           size="round"
           className="size-6"
           variant="ghost"
-          aria-label={`Open actions${itemName ? ` for ${itemName}` : ''}`}
+          aria-label={`Open actions${itemName ? ` for ${itemName}` : ""}`}
         >
           <Ellipsis className="size-4" />
         </Button>
@@ -43,4 +43,4 @@ export const RowDropdownMenu = ({
       <DropdownMenuContent>{children}</DropdownMenuContent>
     </DropdownMenu>
   </div>
-)
+);

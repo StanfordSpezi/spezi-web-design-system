@@ -6,47 +6,47 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from '@testing-library/react'
-import { EmptyState } from '.'
+import { render, screen } from "@testing-library/react";
+import { EmptyState } from ".";
 
-describe('EmptyState', () => {
-  it('renders empty state', () => {
-    render(<EmptyState />)
+describe("EmptyState", () => {
+  it("renders empty state", () => {
+    render(<EmptyState />);
 
-    const element = screen.getByText(/No\sresults\sfound/)
+    const element = screen.getByText(/No\sresults\sfound/);
 
-    expect(element).toBeInTheDocument()
-  })
+    expect(element).toBeInTheDocument();
+  });
 
-  it('renders entityName', () => {
-    render(<EmptyState entityName="users" />)
+  it("renders entityName", () => {
+    render(<EmptyState entityName="users" />);
 
-    const element = screen.getByText(/No\susers\sfound/)
+    const element = screen.getByText(/No\susers\sfound/);
 
-    expect(element).toBeInTheDocument()
-  })
+    expect(element).toBeInTheDocument();
+  });
 
-  it('renders text filter within empty state', () => {
-    render(<EmptyState textFilter="lorem" />)
+  it("renders text filter within empty state", () => {
+    render(<EmptyState textFilter="lorem" />);
 
-    const element = screen.getByText(/lorem/)
+    const element = screen.getByText(/lorem/);
 
-    expect(element).toBeInTheDocument()
-  })
+    expect(element).toBeInTheDocument();
+  });
 
-  it('indicates data is filtered', () => {
-    render(<EmptyState hasFilters />)
+  it("indicates data is filtered", () => {
+    render(<EmptyState hasFilters />);
 
-    const element = screen.getByText(/for your selected filters/)
+    const element = screen.getByText(/for your selected filters/);
 
-    expect(element).toBeInTheDocument()
-  })
+    expect(element).toBeInTheDocument();
+  });
 
-  it('supports completely custom message', () => {
-    render(<EmptyState>Data is missing</EmptyState>)
+  it("supports completely custom message", () => {
+    render(<EmptyState>Data is missing</EmptyState>);
 
-    const element = screen.getByText('Data is missing')
+    const element = screen.getByText("Data is missing");
 
-    expect(element).toBeInTheDocument()
-  })
-})
+    expect(element).toBeInTheDocument();
+  });
+});

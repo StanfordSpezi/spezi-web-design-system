@@ -6,21 +6,21 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { AsideBrandLayout } from './AsideBrandLayout'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { AsideBrandLayout } from "./AsideBrandLayout";
 
 const meta: Meta<typeof AsideBrandLayout> = {
-  title: 'Molecules/AsideBrandLayout',
+  title: "Molecules/AsideBrandLayout",
   component: AsideBrandLayout,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof AsideBrandLayout>
+type Story = StoryObj<typeof AsideBrandLayout>;
 
 export const Default: Story = {
-  args: { aside: 'Aside content', children: 'Main content' },
-}
+  args: { aside: "Aside content", children: "Main content" },
+};

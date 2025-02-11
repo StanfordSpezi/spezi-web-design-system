@@ -6,4 +6,4 @@
 // SPDX-License-Identifier: MIT
 //
 
-export * from './ConfirmDeleteDialog'
+export * from "./ConfirmDeleteDialog";

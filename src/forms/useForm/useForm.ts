@@ -6,34 +6,33 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { isString } from 'es-toolkit'
-import { useCallback } from 'react'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback } from "react";
 import {
   type DeepRequired,
   type FieldErrorsImpl,
   type ErrorOption,
   useForm as useFormHook,
   type UseFormProps,
-} from 'react-hook-form'
-import { type z } from 'zod'
-import { isObject } from '@/utils/misc'
+} from "react-hook-form";
+import { type z } from "zod";
+import { parseUnknownError } from "@/utils/query";
 
-type FieldValues = Record<string, unknown>
+type FieldValues = Record<string, unknown>;
 
 type ErrorsObject<TFieldValues extends FieldValues> = Partial<
   FieldErrorsImpl<DeepRequired<TFieldValues>>
->
+>;
 
-export const FORM_ERROR_KEY = 'FORM_ERROR'
+export const FORM_ERROR_KEY = "FORM_ERROR";
 
 class ValidationError<
   TFieldValues extends FieldValues = FieldValues,
 > extends Error {
-  fieldErrors: ErrorsObject<TFieldValues>
+  fieldErrors: ErrorsObject<TFieldValues>;
   constructor(fieldErrors: ErrorsObject<TFieldValues>) {
-    super('Form validation field when submitting')
-    this.fieldErrors = fieldErrors
+    super("Form validation field when submitting");
+    this.fieldErrors = fieldErrors;
   }
 }
 
@@ -45,17 +44,17 @@ export const useForm = <Schema extends z.ZodTypeAny>({
   formSchema,
   ...props
 }: UseFormProps<z.infer<Schema>> & {
-  formSchema: Schema
+  formSchema: Schema;
 }) => {
   const form = useFormHook<z.infer<Schema>>({
     resolver: zodResolver(formSchema),
     ...props,
-  })
+  });
 
   const {
     formState: { isValid, isDirty, errors },
     setError,
-  } = form
+  } = form;
 
   /**
    * Function to get form's data, but only if it actually passes validation
@@ -66,14 +65,14 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     new Promise<z.infer<Schema>>((resolve, reject) => {
       void form.handleSubmit(
         (data) => {
-          resolve(data)
+          resolve(data);
         },
         (errorFields) => {
-          const error = new ValidationError(errorFields)
-          reject(error)
+          const error = new ValidationError(errorFields);
+          reject(error);
         },
-      )()
-    })
+      )();
+    });
 
   /**
    * Utility that helps to handle form errors
@@ -83,25 +82,33 @@ export const useForm = <Schema extends z.ZodTypeAny>({
   const setFormError = useCallback(
     (error: unknown, options?: Parameters<typeof setError>[2]) => {
       const errorValue = {
-        message:
-          isObject(error) && 'message' in error && isString(error.message) ?
-            error.message
-          : isString(error) ? error
-          : 'Unknown error happened',
-      }
+        message: parseUnknownError(error),
+      };
       setError(
         // @ts-expect-error Form error is special key, so error here is fine
         FORM_ERROR_KEY,
         errorValue,
         options,
-      )
+      );
     },
     [setError],
-  )
+  );
 
-  const formError = errors[FORM_ERROR_KEY] as ErrorOption | undefined
+  const handleSubmit: (typeof form)["handleSubmit"] = (
+    successHandler,
+    negativeHandler,
+  ) =>
+    form.handleSubmit(async (...args) => {
+      try {
+        await successHandler(...args);
+      } catch (error) {
+        setFormError(error);
+      }
+    }, negativeHandler);
 
-  const isSubmitDisabled = !isValid || !isDirty
+  const formError = errors[FORM_ERROR_KEY] as ErrorOption | undefined;
+
+  const isSubmitDisabled = !isValid || !isDirty;
 
   return {
     ...form,
@@ -109,5 +116,6 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     formError,
     setFormError,
     isSubmitDisabled,
-  }
-}
+    handleSubmit,
+  };
+};

@@ -10,7 +10,7 @@ import {
   PaginationItemType,
   usePagination,
   type UsePaginationProps,
-} from '@nextui-org/use-pagination'
+} from "@nextui-org/use-pagination";
 import {
   Pagination,
   PaginationContent,
@@ -19,15 +19,15 @@ import {
   PaginationItemContainer,
   PaginationNext,
   PaginationPrevious,
-} from '../Pagination'
+} from "../Pagination";
 
 export interface ButtonPaginationProps extends UsePaginationProps {
-  total: number
+  total: number;
   /**
    * Currently selected page, 1-based
    * */
-  page: number
-  onPageChange: (page: number) => void
+  page: number;
+  onPageChange: (page: number) => void;
 }
 
 /**
@@ -47,36 +47,36 @@ export const ButtonPagination = ({
     siblings,
     showControls,
     ...props,
-  })
+  });
 
   return (
     <Pagination>
       <PaginationContent>
         {range.map((rangePage, index) => {
           if (rangePage === PaginationItemType.PREV) {
-            if (page === 1) return null
+            if (page === 1) return null;
             return (
               <PaginationItemContainer key={rangePage}>
                 <PaginationPrevious
                   onClick={() => onPageChange(activePage - 1)}
                 />
               </PaginationItemContainer>
-            )
+            );
           }
           if (rangePage === PaginationItemType.NEXT) {
-            if (page === total) return null
+            if (page === total) return null;
             return (
               <PaginationItemContainer key={rangePage}>
                 <PaginationNext onClick={() => onPageChange(activePage + 1)} />
               </PaginationItemContainer>
-            )
+            );
           }
           if (rangePage === PaginationItemType.DOTS)
             return (
               <PaginationItemContainer key={`${rangePage}-${index}`}>
                 <PaginationEllipsis />
               </PaginationItemContainer>
-            )
+            );
           return (
             <PaginationItemContainer key={rangePage}>
               <PaginationItem
@@ -86,9 +86,9 @@ export const ButtonPagination = ({
                 {rangePage}
               </PaginationItem>
             </PaginationItemContainer>
-          )
+          );
         })}
       </PaginationContent>
     </Pagination>
-  )
-}
+  );
+};

@@ -6,25 +6,25 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import { Popover, PopoverTrigger, PopoverContent } from '.'
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Popover, PopoverTrigger, PopoverContent } from ".";
 
-describe('Popover', () => {
-  it('renders accessible popover', async () => {
+describe("Popover", () => {
+  it("renders accessible popover", async () => {
     render(
       <Popover>
         <PopoverTrigger>Trigger</PopoverTrigger>
         <PopoverContent>Content</PopoverContent>
       </Popover>,
-    )
+    );
 
-    const dialog = screen.queryByRole('dialog')
-    expect(dialog).not.toBeInTheDocument()
+    const dialog = screen.queryByRole("dialog");
+    expect(dialog).not.toBeInTheDocument();
 
-    const trigger = screen.getByRole('button')
-    fireEvent.click(trigger)
+    const trigger = screen.getByRole("button");
+    fireEvent.click(trigger);
 
-    const dialog2 = await screen.findByRole('dialog')
-    expect(dialog2).toBeInTheDocument()
-  })
-})
+    const dialog2 = await screen.findByRole("dialog");
+    expect(dialog2).toBeInTheDocument();
+  });
+});

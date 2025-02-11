@@ -6,13 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import { vitest } from 'vitest'
-import { Switch } from '.'
+import { fireEvent, render, screen } from "@testing-library/react";
+import { vitest } from "vitest";
+import { Switch } from ".";
 
-describe('Switch', () => {
-  it('renders functional switch element', () => {
-    const onCheckedChange = vitest.fn()
+describe("Switch", () => {
+  it("renders functional switch element", () => {
+    const onCheckedChange = vitest.fn();
 
     render(
       <Switch
@@ -20,12 +20,12 @@ describe('Switch', () => {
         onCheckedChange={onCheckedChange}
         aria-label="Toggle"
       />,
-    )
+    );
 
-    const element = screen.getByLabelText('Toggle')
-    fireEvent.click(element)
+    const element = screen.getByLabelText("Toggle");
+    fireEvent.click(element);
 
-    const newCheckedValue = false
-    expect(onCheckedChange).toHaveBeenCalledWith(newCheckedValue)
-  })
-})
+    const newCheckedValue = false;
+    expect(onCheckedChange).toHaveBeenCalledWith(newCheckedValue);
+  });
+});

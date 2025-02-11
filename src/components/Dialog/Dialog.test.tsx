@@ -6,11 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '.'
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from ".";
 
-describe('Dialog', () => {
-  it('renders accessible dialog', () => {
+describe("Dialog", () => {
+  it("renders accessible dialog", () => {
     render(
       <Dialog>
         <DialogTrigger>Trigger</DialogTrigger>
@@ -18,20 +18,20 @@ describe('Dialog', () => {
           <DialogTitle>Content</DialogTitle>
         </DialogContent>
       </Dialog>,
-    )
+    );
 
-    const queryContent = () => screen.queryByText('Content')
+    const queryContent = () => screen.queryByText("Content");
 
-    expect(queryContent()).not.toBeInTheDocument()
+    expect(queryContent()).not.toBeInTheDocument();
 
-    const trigger = screen.getByRole('button', { name: 'Trigger' })
-    fireEvent.click(trigger)
+    const trigger = screen.getByRole("button", { name: "Trigger" });
+    fireEvent.click(trigger);
 
-    expect(queryContent()).toBeInTheDocument()
+    expect(queryContent()).toBeInTheDocument();
 
-    const closeButton = screen.getByRole('button', { name: 'Close' })
-    fireEvent.click(closeButton)
+    const closeButton = screen.getByRole("button", { name: "Close" });
+    fireEvent.click(closeButton);
 
-    expect(queryContent()).not.toBeInTheDocument()
-  })
-})
+    expect(queryContent()).not.toBeInTheDocument();
+  });
+});

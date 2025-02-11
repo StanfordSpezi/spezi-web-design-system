@@ -6,46 +6,45 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta, type StoryObj } from '@storybook/react'
-import { DataTable } from './DataTable'
-import { dateColumn, dateTimeColumn } from './DataTable.columns'
+import { type Meta, type StoryObj } from "@storybook/react";
+import { DataTable } from "./DataTable";
+import { dateColumn, dateTimeColumn } from "./DataTable.columns";
 import {
   peopleColumns,
   peopleData,
   type Person,
   peopleColumn,
   columnHelper,
-} from './DataTable.mocks'
-import { DataTableBasicView } from './DataTableBasicView'
-import { Button } from '../Button'
+} from "./DataTable.mocks";
+import { Button } from "../Button";
 
 const meta: Meta<typeof DataTable> = {
-  title: 'Components/DataTable',
+  title: "Components/DataTable",
   component: DataTable,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof DataTable<Person>>
+type Story = StoryObj<typeof DataTable<Person>>;
 
 export const Default: Story = {
   args: {
     columns: peopleColumns,
     data: peopleData,
-    entityName: 'users',
-    className: 'm-5',
+    entityName: "users",
+    className: "m-5",
   },
-}
+};
 
 export const Paginated: Story = {
   args: {
     ...Default.args,
     pageSize: 2,
   },
-}
+};
 
 export const HeaderAction: Story = {
   args: {
@@ -58,7 +57,7 @@ export const HeaderAction: Story = {
       </>
     ),
   },
-}
+};
 
 /**
  * Click on row
@@ -70,24 +69,27 @@ export const RowAction: Story = {
       onRowClick: (person) => alert(`Clicked row: ${person.name}`),
     },
   },
-}
+};
 
+/**
+ * Presents some ready-to-use columns, like dateColumn and dateTimeColumn
+ * */
 export const PremadeColumns: Story = {
   args: {
     ...Default.args,
     columns: [
       peopleColumn.name,
-      columnHelper.accessor('updatedAt', {
-        header: 'Date',
+      columnHelper.accessor("updatedAt", {
+        header: "Date",
         cell: dateColumn,
       }),
-      columnHelper.accessor('updatedAt', {
-        header: 'Date Time',
+      columnHelper.accessor("updatedAt", {
+        header: "Date Time",
         cell: dateTimeColumn,
       }),
     ],
   },
-}
+};
 
 /**
  * Custom view that replaces standard table view
@@ -99,38 +101,34 @@ export const CustomView = () => (
     entityName="users"
     className="m-5"
   >
-    {(props) => (
-      <DataTableBasicView {...props}>
-        {(rows) => (
-          <div className="grid grid-cols-3 gap-4 p-4">
-            {rows.map((row) => {
-              const person = row.original
-              return (
-                <div key={row.id} className="flex flex-col border p-6">
-                  <h4 className="text-lg font-medium">{person.name}</h4>
-                  <span className="text-sm text-muted-foreground">
-                    {person.age} years old
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        )}
-      </DataTableBasicView>
+    {({ rows }) => (
+      <div className="grid grid-cols-3 gap-4 p-4">
+        {rows.map((row) => {
+          const person = row.original;
+          return (
+            <div key={row.id} className="flex flex-col border p-6">
+              <h4 className="text-lg font-medium">{person.name}</h4>
+              <span className="text-sm text-muted-foreground">
+                {person.age} years old
+              </span>
+            </div>
+          );
+        })}
+      </div>
     )}
   </DataTable>
-)
+);
 
 export const Minimal: Story = {
   args: {
     ...Default.args,
     minimal: true,
   },
-}
+};
 
 export const NoBorder: Story = {
   args: {
     ...Default.args,
     bordered: false,
   },
-}
+};

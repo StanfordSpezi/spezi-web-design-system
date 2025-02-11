@@ -6,17 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Search } from 'lucide-react'
-import { Input, type InputProps } from '../Input'
+import { Search } from "lucide-react";
+import { Input, type InputProps } from "../Input";
 
 interface GlobalFilterInputProps extends InputProps {
-  entityName?: string
+  entityName?: string;
 }
 export const GlobalFilterInput = ({
   entityName,
   ...props
 }: GlobalFilterInputProps) => {
-  const placeholder = `Search${entityName ? ` ${entityName}` : ''}...`
+  const placeholder = `Search${entityName ? ` ${entityName}` : ""}...`;
   return (
     <div className="relative max-w-72 grow">
       <Search className="absolute left-3 top-2.5 size-5 text-muted-foreground" />
@@ -28,5 +28,5 @@ export const GlobalFilterInput = ({
         {...props}
       />
     </div>
-  )
-}
+  );
+};
