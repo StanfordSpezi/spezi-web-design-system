@@ -17,11 +17,7 @@ const meta: Meta = {
 export default meta
 
 export const Default = () => (
-  <RadioGroup
-    className="flex flex-col space-y-4"
-    defaultValue="default"
-    aria-label="View density"
-  >
+  <RadioGroup defaultValue="default" aria-label="View density">
     <SideLabel label="Default">
       <Radio value="1" id="r1"></Radio>
     </SideLabel>
