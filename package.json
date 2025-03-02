@@ -266,7 +266,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@stanfordspezi/spezi-web-configurations": "^0.2.0",
+    "@stanfordspezi/spezi-web-configurations": "^0.2.1",
     "@storybook/addon-essentials": "^8.5.3",
     "@storybook/addon-interactions": "^8.5.3",
     "@storybook/addon-onboarding": "^8.5.3",
@@ -284,11 +284,11 @@
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^3.0.5",
     "autoprefixer": "^10",
-    "eslint": "^9",
+    "eslint": "^9.21.0",
     "jsdom": "^26.0.0",
     "postcss": "^8",
     "postcss-import": "^16.1.0",
-    "prettier": "^3",
+    "prettier": "^3.5.2",
     "storybook": "^8.5.3",
     "tailwindcss": "^3",
     "tailwindcss-animate": "^1.0.7",

@@ -6,15 +6,15 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from '@storybook/react'
-import { RadioGroup, Radio } from './Radio'
-import { SideLabel } from '../SideLabel'
+import { type Meta } from "@storybook/react";
+import { RadioGroup, Radio } from "./Radio";
+import { SideLabel } from "../SideLabel";
 
 const meta: Meta = {
-  title: 'Components/Radio',
-}
+  title: "Components/Radio",
+};
 
-export default meta
+export default meta;
 
 export const Default = () => (
   <RadioGroup defaultValue="default" aria-label="View density">
@@ -25,4 +25,4 @@ export const Default = () => (
       <Radio value="2" id="r2"></Radio>
     </SideLabel>
   </RadioGroup>
-)
+);
