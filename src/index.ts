@@ -17,6 +17,7 @@ export * from "./utils/useOpenState";
 export * from "./utils/navigator";
 export * from "./utils/query";
 export * from "./utils/dev";
+export * from "./utils/data";
 export * from "./theme/light";
 export * from "./theme/utils";
 export * from "./components/Avatar";

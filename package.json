@@ -217,6 +217,10 @@
     "./utils/dev": {
       "types": "./dist/utils/dev.d.ts",
       "default": "./dist/utils/dev.js"
+    },
+    "./utils/data": {
+      "types": "./dist/utils/data.d.ts",
+      "default": "./dist/utils/data.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
