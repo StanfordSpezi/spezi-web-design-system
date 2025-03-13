@@ -35,7 +35,12 @@ export const EmptyState = ({
   children,
   ...props
 }: EmptyStateProps) => (
-  <div className={cn("flex gap-3 text-muted-foreground", className)} {...props}>
+  <div
+    role="status"
+    aria-live="polite"
+    className={cn("flex gap-3 text-muted-foreground", className)}
+    {...props}
+  >
     {textFilter ?
       <SearchX />
     : <ListX />}
