@@ -14,7 +14,14 @@ describe("Calendar", () => {
   it("renders calendar", () => {
     const date = new Date(2024, 6, 27);
     const onSelect = vitest.fn();
-    render(<Calendar mode="single" selected={date} onSelect={onSelect} />);
+    render(
+      <Calendar
+        defaultMonth={date}
+        mode="single"
+        selected={date}
+        onSelect={onSelect}
+      />,
+    );
 
     const goToPrevMonth = screen.getByRole("button", {
       name: "Go to previous month",
