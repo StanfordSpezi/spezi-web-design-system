@@ -74,6 +74,10 @@
       "types": "./dist/components/Input.d.ts",
       "default": "./dist/components/Input.js"
     },
+    "./components/InputOTP": {
+      "types": "./dist/components/InputOTP.d.ts",
+      "default": "./dist/components/InputOTP.js"
+    },
     "./components/Label": {
       "types": "./dist/components/Label.d.ts",
       "default": "./dist/components/Label.js"
