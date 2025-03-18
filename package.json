@@ -262,6 +262,7 @@
     "date-fns": "^3.6.0",
     "es-toolkit": "^1.32.0",
     "firebase": "^11.2.0",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.474.0",
     "react-day-picker": "^8",
     "react-hook-form": "^7.54.2",
