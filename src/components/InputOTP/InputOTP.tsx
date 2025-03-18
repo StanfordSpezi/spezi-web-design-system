@@ -80,7 +80,7 @@ export const InputOTPSeparator = forwardRef<
 InputOTPSeparator.displayName = "InputOTPSeparator";
 
 /**
- * Accessible one-time password component.
+ * Accessible one time password input.
  * InputOTP renders maxLength of slots for your secret - see Components/InputOTP#Default story
  * If you need to customize rendering - see Components/InputOTP#Custom story
  * */
