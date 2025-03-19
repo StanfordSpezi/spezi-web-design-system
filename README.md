@@ -17,7 +17,6 @@ SPDX-License-Identifier: MIT
 
 ## Getting Started
 
-
 ## License
 
 This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordSpezi/spezi-web-design-system/tree/main/LICENSES) for more information.
@@ -26,6 +25,8 @@ This project is licensed under the MIT License. See [Licenses](https://github.co
 
 This project is developed as part of the Stanford Byers Center for Biodesign at Stanford University.
 See [CONTRIBUTORS.md](https://github.com/StanfordSpezi/spezi-web-design-system/tree/main/CONTRIBUTORS.md) for a full list of all Next.js Template contributors.
+
+https://localhost:5173
 
 ![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-light.png#gh-light-mode-only)
 ![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-dark.png#gh-dark-mode-only)
