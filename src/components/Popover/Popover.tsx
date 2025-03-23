@@ -7,7 +7,9 @@
 //
 
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { X } from "lucide-react";
 import {
+  type ComponentProps,
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
@@ -19,6 +21,37 @@ export const PopoverRoot = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
 export const PopoverArrow = PopoverPrimitive.Arrow;
+
+export const PopoverHeader = ({
+  className,
+  ...props
+}: ComponentProps<"div">) => (
+  <div
+    className={cn(
+      "flex flex-col space-y-1.5 text-center sm:text-left",
+      className,
+    )}
+    {...props}
+  />
+);
+
+export const PopoverTitle = ({ className, ...props }: ComponentProps<"h6">) => (
+  <h6 className={cn("text-lg font-semibold", className)} {...props} />
+);
+
+export const PopoverDescription = ({
+  className,
+  ...props
+}: ComponentProps<"h6">) => (
+  <p className={cn("text-sm text-muted-foreground", className)} {...props} />
+);
+
+export const PopoverCloseX = () => (
+  <PopoverPrimitive.Close className="ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+    <X className="size-4" />
+    <span className="sr-only">Close</span>
+  </PopoverPrimitive.Close>
+);
 
 type PopoverContentProps = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
