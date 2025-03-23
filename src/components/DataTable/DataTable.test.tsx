@@ -47,28 +47,38 @@ describe("DataTable", () => {
     expect(someCell).toBeInTheDocument();
   });
 
-  it("shows empty state", () => {
-    const { rerender } = render(
-      <DataTable columns={peopleColumns} data={[]} />,
-    );
+  describe("empty state", () => {
+    it("shows default empty state", () => {
+      render(<DataTable columns={peopleColumns} data={[]} />);
 
-    expectEmptyStateToBeInTheDocument();
+      expectEmptyStateToBeInTheDocument();
+    });
 
-    rerender(
-      <DataTable columns={peopleColumns} data={[]} entityName="users" />,
-    );
-    const emptyStateWithEntityName = screen.getByText(/No\susers\sfound/);
-    expect(emptyStateWithEntityName).toBeInTheDocument();
+    it("shows entityName", () => {
+      render(
+        <DataTable columns={peopleColumns} data={[]} entityName="users" />,
+      );
+      const emptyStateWithEntityName = screen.getByText(/No\susers\sfound/);
+      expect(emptyStateWithEntityName).toBeInTheDocument();
+    });
 
-    rerender(
-      <DataTable
-        columns={peopleColumns}
-        data={[]}
-        empty={{ children: "Custom error message" }}
-      />,
-    );
-    const customEmptyState = screen.getByText("Custom error message");
-    expect(customEmptyState).toBeInTheDocument();
+    it("shows customized messages", () => {
+      render(
+        <DataTable
+          columns={peopleColumns}
+          data={[]}
+          empty={{ children: "Custom error message" }}
+        />,
+      );
+      const customEmptyState = screen.getByText("Custom error message");
+      expect(customEmptyState).toBeInTheDocument();
+    });
+
+    it("shows no error state if empty overrides default checks", () => {
+      render(<DataTable columns={peopleColumns} data={[]} empty={false} />);
+      const emptyState = screen.queryByText(/No\sdata\sfound/);
+      expect(emptyState).not.toBeInTheDocument();
+    });
   });
 
   it("paginates data", () => {
