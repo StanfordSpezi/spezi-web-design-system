@@ -15,6 +15,7 @@ type SkeletonProps = ComponentProps<"div"> & {
    * */
   round?: boolean;
 };
+
 /**
  * Skeleton to indicate content loading state.
  * Useful if you load data partially and want to preserve layout size.
