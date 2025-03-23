@@ -82,7 +82,11 @@ export const DataTable = <Data,>({
   const isEmpty = !rows.length;
   const viewProps = { table, entityName, rows };
 
-  const emptyParams = isObject(empty) ? empty : {};
+  const defaultEmptyProps = {
+    show: rows.length === 0,
+    textFilter: ensureString(table.getState().globalFilter),
+    hasFilters: data.length !== 0 && table.getState().columnFilters.length > 0,
+  };
 
   return (
     <div
@@ -105,13 +109,13 @@ export const DataTable = <Data,>({
         error={error}
         loading={loading}
         entityName={entityName}
-        empty={{
-          show: rows.length === 0,
-          textFilter: ensureString(table.getState().globalFilter),
-          hasFilters:
-            data.length !== 0 && table.getState().columnFilters.length > 0,
-          ...emptyParams,
-        }}
+        empty={
+          isObject(empty) ? { ...defaultEmptyProps, ...empty }
+            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+          : empty === undefined ?
+            defaultEmptyProps
+          : empty
+        }
       >
         {children ?
           children(viewProps)
