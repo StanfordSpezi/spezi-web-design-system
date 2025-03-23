@@ -7,15 +7,15 @@
 //
 
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Popover, PopoverTrigger, PopoverContent } from ".";
+import { PopoverRoot, PopoverTrigger, PopoverContent } from ".";
 
 describe("Popover", () => {
   it("renders accessible popover", async () => {
     render(
-      <Popover>
+      <PopoverRoot>
         <PopoverTrigger>Trigger</PopoverTrigger>
         <PopoverContent>Content</PopoverContent>
-      </Popover>,
+      </PopoverRoot>,
     );
 
     const dialog = screen.queryByRole("dialog");

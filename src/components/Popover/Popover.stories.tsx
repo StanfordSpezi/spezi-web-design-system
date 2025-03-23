@@ -7,18 +7,25 @@
 //
 
 import { type Meta } from "@storybook/react";
-import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
+import { PopoverRoot, PopoverContent, PopoverTrigger } from "./Popover";
 
-const meta: Meta<typeof Popover> = {
+const meta: Meta<typeof PopoverRoot> = {
   title: "Components/Popover",
-  component: Popover,
+  component: PopoverRoot,
 };
 
 export default meta;
 
 export const Default = () => (
-  <Popover>
+  <PopoverRoot>
     <PopoverTrigger>Trigger</PopoverTrigger>
     <PopoverContent>Content</PopoverContent>
-  </Popover>
+  </PopoverRoot>
+);
+
+export const Arrow = () => (
+  <PopoverRoot>
+    <PopoverTrigger>Trigger</PopoverTrigger>
+    <PopoverContent arrow>Content</PopoverContent>
+  </PopoverRoot>
 );

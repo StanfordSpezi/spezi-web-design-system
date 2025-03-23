@@ -14,25 +14,41 @@ import {
 } from "react";
 import { cn } from "../../utils/className";
 
-export const Popover = PopoverPrimitive.Root;
+export const PopoverRoot = PopoverPrimitive.Root;
 
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
+export const PopoverArrow = PopoverPrimitive.Arrow;
+
+type PopoverContentProps = ComponentPropsWithoutRef<
+  typeof PopoverPrimitive.Content
+> & { arrow?: boolean };
+
 export const PopoverContent = forwardRef<
   ElementRef<typeof PopoverPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
->(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
-  <PopoverPrimitive.Portal>
-    <PopoverPrimitive.Content
-      ref={ref}
-      align={align}
-      sideOffset={sideOffset}
-      className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow outline-none",
-        className,
-      )}
-      {...props}
-    />
-  </PopoverPrimitive.Portal>
-));
+  PopoverContentProps
+>(
+  (
+    { className, children, align = "center", sideOffset = 4, arrow, ...props },
+    ref,
+  ) => (
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content
+        ref={ref}
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow outline-none",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        {arrow && (
+          <PopoverArrow className="fill-popover" width={12} height={8} />
+        )}
+      </PopoverPrimitive.Content>
+    </PopoverPrimitive.Portal>
+  ),
+);
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
