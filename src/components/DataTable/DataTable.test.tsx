@@ -28,9 +28,13 @@ describe("DataTable", () => {
       expect(cellColumn).toBeInTheDocument();
     });
 
-  const expectEmptyStateToBeInTheDocument = () => {
+  const queryEmptyState = () => {
     // Regex because text is broken with elements
-    const emptyState = screen.getByText(/No\sdata\sfound/);
+    return screen.queryByText(/No\sdata\sfound/);
+  };
+
+  const expectEmptyStateToBeInTheDocument = () => {
+    const emptyState = queryEmptyState();
     expect(emptyState).toBeInTheDocument();
   };
 
@@ -47,18 +51,40 @@ describe("DataTable", () => {
     expect(someCell).toBeInTheDocument();
   });
 
-  it("shows empty state", () => {
-    const { rerender } = render(
-      <DataTable columns={peopleColumns} data={[]} />,
-    );
+  describe("empty state", () => {
+    it("shows default empty state", () => {
+      render(<DataTable columns={peopleColumns} data={[]} />);
 
-    expectEmptyStateToBeInTheDocument();
+      expectEmptyStateToBeInTheDocument();
+    });
 
-    rerender(
-      <DataTable columns={peopleColumns} data={[]} entityName="users" />,
-    );
-    const emptyStateWithEntityName = screen.getByText(/No\susers\sfound/);
-    expect(emptyStateWithEntityName).toBeInTheDocument();
+    it("shows entityName", () => {
+      render(
+        <DataTable columns={peopleColumns} data={[]} entityName="users" />,
+      );
+      const emptyStateWithEntityName = screen.getByText(/No\susers\sfound/);
+      expect(emptyStateWithEntityName).toBeInTheDocument();
+    });
+
+    it("shows customized messages", () => {
+      render(
+        <DataTable
+          columns={peopleColumns}
+          data={[]}
+          empty={{ children: "Custom error message" }}
+        />,
+      );
+      const customEmptyState = screen.getByText("Custom error message");
+      expect(customEmptyState).toBeInTheDocument();
+      const defaultEmptyState = queryEmptyState();
+      expect(defaultEmptyState).not.toBeInTheDocument();
+    });
+
+    it("shows no error state if empty overrides default checks", () => {
+      render(<DataTable columns={peopleColumns} data={[]} empty={false} />);
+      const emptyState = queryEmptyState();
+      expect(emptyState).not.toBeInTheDocument();
+    });
   });
 
   it("paginates data", () => {

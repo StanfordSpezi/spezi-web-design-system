@@ -119,6 +119,38 @@ export const CustomView = () => (
   </DataTable>
 );
 
+export const Loading: Story = {
+  args: {
+    ...Default.args,
+    data: [],
+    loading: true,
+  },
+};
+
+export const Empty: Story = {
+  args: {
+    ...Default.args,
+    data: [],
+  },
+};
+
+export const CustomizedEmptyMessage: Story = {
+  args: {
+    ...Default.args,
+    data: [],
+    empty: {
+      children: "Sorry, no users found. Please try again later.",
+    },
+  },
+};
+
+export const Error: Story = {
+  args: {
+    ...Default.args,
+    error: true,
+  },
+};
+
 export const Minimal: Story = {
   args: {
     ...Default.args,
