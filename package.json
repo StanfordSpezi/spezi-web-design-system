@@ -106,6 +106,10 @@
       "types": "./dist/components/Separator.d.ts",
       "default": "./dist/components/Separator.js"
     },
+    "./components/Skeleton": {
+      "types": "./dist/components/Skeleton.d.ts",
+      "default": "./dist/components/Skeleton.js"
+    },
     "./components/SideLabel": {
       "types": "./dist/components/SideLabel.d.ts",
       "default": "./dist/components/SideLabel.js"

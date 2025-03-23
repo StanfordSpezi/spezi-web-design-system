@@ -53,6 +53,7 @@ export * from "./components/Badge";
 export * from "./components/Spinner";
 export * from "./components/Async";
 export * from "./components/StateContainer";
+export * from "./components/Skeleton";
 export * from "./forms/useForm";
 export * from "./forms/Field";
 export * from "./forms/FormError";
