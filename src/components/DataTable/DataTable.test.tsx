@@ -28,9 +28,13 @@ describe("DataTable", () => {
       expect(cellColumn).toBeInTheDocument();
     });
 
-  const expectEmptyStateToBeInTheDocument = () => {
+  const queryEmptyState = () => {
     // Regex because text is broken with elements
-    const emptyState = screen.getByText(/No\sdata\sfound/);
+    return screen.queryByText(/No\sdata\sfound/);
+  };
+
+  const expectEmptyStateToBeInTheDocument = () => {
+    const emptyState = queryEmptyState();
     expect(emptyState).toBeInTheDocument();
   };
 
@@ -72,11 +76,13 @@ describe("DataTable", () => {
       );
       const customEmptyState = screen.getByText("Custom error message");
       expect(customEmptyState).toBeInTheDocument();
+      const defaultEmptyState = queryEmptyState();
+      expect(defaultEmptyState).not.toBeInTheDocument();
     });
 
     it("shows no error state if empty overrides default checks", () => {
       render(<DataTable columns={peopleColumns} data={[]} empty={false} />);
-      const emptyState = screen.queryByText(/No\sdata\sfound/);
+      const emptyState = queryEmptyState();
       expect(emptyState).not.toBeInTheDocument();
     });
   });
