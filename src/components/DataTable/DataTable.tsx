@@ -7,6 +7,7 @@
 //
 
 import { type Row, type Table as TableType } from "@tanstack/table-core";
+import { isBoolean } from "es-toolkit";
 import { type ReactNode } from "react";
 import {
   Async,
@@ -111,10 +112,9 @@ export const DataTable = <Data,>({
         entityName={entityName}
         empty={
           isObject(empty) ? { ...defaultEmptyProps, ...empty }
-            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-          : empty === undefined ?
-            defaultEmptyProps
-          : empty
+          : isBoolean(empty) ?
+            empty
+          : defaultEmptyProps
         }
       >
         {children ?
