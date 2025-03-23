@@ -8,12 +8,16 @@
 
 import { type Row, type Table as TableType } from "@tanstack/table-core";
 import { type ReactNode } from "react";
-import { Async, type AsyncProps } from "@/components/Async/Async";
+import {
+  Async,
+  type AsyncProps,
+  type FullEmptyProps,
+} from "@/components/Async/Async";
 import {
   DataTableTableView,
   type DataTableTableViewSpecificProps,
 } from "@/components/DataTable/DataTableTableView";
-import { ensureString } from "@/utils/misc";
+import { ensureString, isObject } from "@/utils/misc";
 import { useDataTable, type UseDataTableProps } from "./DataTable.utils";
 import { DataTablePagination } from "./DataTablePagination";
 import { GlobalFilterInput } from "./GlobalFilterInput";
@@ -48,6 +52,7 @@ export interface DataTableProps<Data>
    * */
   minimal?: boolean;
   tableView?: DataTableTableViewSpecificProps<Data>;
+  empty?: boolean | Partial<FullEmptyProps>;
 }
 
 export const DataTable = <Data,>({
@@ -63,6 +68,7 @@ export const DataTable = <Data,>({
   tableView,
   loading = false,
   error = false,
+  empty,
   ...props
 }: DataTableProps<Data>) => {
   const { table, setGlobalFilterDebounced } = useDataTable({
@@ -75,6 +81,8 @@ export const DataTable = <Data,>({
 
   const isEmpty = !rows.length;
   const viewProps = { table, entityName, rows };
+
+  const emptyParams = isObject(empty) ? empty : {};
 
   return (
     <div
@@ -102,6 +110,7 @@ export const DataTable = <Data,>({
           textFilter: ensureString(table.getState().globalFilter),
           hasFilters:
             data.length !== 0 && table.getState().columnFilters.length > 0,
+          ...emptyParams,
         }}
       >
         {children ?

@@ -59,6 +59,16 @@ describe("DataTable", () => {
     );
     const emptyStateWithEntityName = screen.getByText(/No\susers\sfound/);
     expect(emptyStateWithEntityName).toBeInTheDocument();
+
+    rerender(
+      <DataTable
+        columns={peopleColumns}
+        data={[]}
+        empty={{ children: "Custom error message" }}
+      />,
+    );
+    const customEmptyState = screen.getByText("Custom error message");
+    expect(customEmptyState).toBeInTheDocument();
   });
 
   it("paginates data", () => {
