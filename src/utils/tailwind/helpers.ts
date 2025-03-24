@@ -32,3 +32,5 @@ export const sizeToMaxWidthRecord: Record<Size, string> = {
   "6xl": "max-w-6xl",
   "7xl": "max-w-7xl",
 };
+
+export const sizes = Object.keys(sizeToMaxWidthRecord);
