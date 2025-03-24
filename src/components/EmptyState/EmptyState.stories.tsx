@@ -7,6 +7,7 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
+import { Button } from "@/components/Button";
 import { EmptyState } from "./EmptyState";
 
 const meta: Meta<typeof EmptyState> = {
@@ -33,4 +34,14 @@ export const TextFilter: Story = {
 
 export const CustomMessage: Story = {
   args: { children: "Data is missing" },
+};
+
+export const Actions: Story = {
+  args: {
+    actions: (
+      <>
+        <Button size="xs">Create user</Button>
+      </>
+    ),
+  },
 };

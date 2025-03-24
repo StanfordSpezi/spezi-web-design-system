@@ -10,7 +10,13 @@ import { SearchX, ListX } from "lucide-react";
 import { type HTMLProps, type ReactNode } from "react";
 import { cn } from "../../utils/className";
 
-export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
+export interface EmptyStateProps
+  extends Omit<HTMLProps<HTMLDivElement>, "children" | "action"> {
+  /**
+   * Provide `children` only if you wish to customize empty message.
+   * If children is not provided, default message is constructed.
+   * */
+  children?: ReactNode;
   /**
    * Name of the presented missing data entity
    * Provide pluralized and lowercased
@@ -25,6 +31,10 @@ export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
    * Provide whether data is filtered by other filters, excluding global text filter
    * */
   hasFilters?: boolean;
+  /**
+   * Slot to render action buttons
+   * */
+  actions?: ReactNode;
 }
 
 export const EmptyState = ({
@@ -33,15 +43,21 @@ export const EmptyState = ({
   hasFilters,
   className,
   children,
+  actions,
   ...props
 }: EmptyStateProps) => (
-  <div className={cn("flex gap-3 text-muted-foreground", className)} {...props}>
+  <div
+    role="status"
+    aria-live="polite"
+    className={cn("flex gap-3 text-muted-foreground", className)}
+    {...props}
+  >
     {textFilter ?
       <SearchX />
     : <ListX />}
-    <span>
+    <span className="flex flex-col gap-3">
       {children ?? (
-        <>
+        <span>
           No {entityName ?? "results"} found
           {textFilter ?
             <>
@@ -51,8 +67,9 @@ export const EmptyState = ({
             <>&nbsp;for your selected filters</>
           : null}
           .
-        </>
+        </span>
       )}
+      {actions && <div className="flex gap-2">{actions}</div>}
     </span>
   </div>
 );
