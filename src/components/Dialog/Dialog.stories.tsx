@@ -6,7 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type Meta } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
+import { type Size, sizes } from "@/utils/tailwind/helpers";
 import { Button } from "../Button";
 import {
   Dialog,
@@ -18,18 +19,16 @@ import {
   DialogTrigger,
 } from ".";
 
-const meta: Meta = {
-  title: "Components/Dialog",
-};
+interface FullDialogProps {
+  size?: Size;
+}
 
-export default meta;
-
-export const Default = () => (
+const FullDialog = ({ size }: FullDialogProps) => (
   <Dialog>
     <DialogTrigger asChild>
       <Button>Trigger</Button>
     </DialogTrigger>
-    <DialogContent>
+    <DialogContent size={size}>
       <DialogHeader>
         <DialogTitle>Lorem ipsum</DialogTitle>
         <DialogDescription>
@@ -52,3 +51,39 @@ export const Default = () => (
     </DialogContent>
   </Dialog>
 );
+
+const meta = {
+  title: "Components/Dialog",
+  component: FullDialog,
+  args: {
+    size: "lg",
+  },
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: sizes,
+    },
+  },
+} satisfies Meta<typeof FullDialog>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+
+const createMaxWidthStory = (size: Size): Story => ({
+  args: { size },
+});
+
+export const SizeXs = createMaxWidthStory("xs");
+export const SizeSm = createMaxWidthStory("sm");
+export const SizeMd = createMaxWidthStory("md");
+export const SizeLg = createMaxWidthStory("lg");
+export const SizeXl = createMaxWidthStory("xl");
+export const Size2xl = createMaxWidthStory("2xl");
+export const Size3xl = createMaxWidthStory("3xl");
+export const Size4xl = createMaxWidthStory("4xl");
+export const Size5xl = createMaxWidthStory("5xl");
+export const Size6xl = createMaxWidthStory("6xl");
+export const Size7xl = createMaxWidthStory("7xl");
