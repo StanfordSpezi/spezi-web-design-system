@@ -25,6 +25,10 @@ export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
    * Provide whether data is filtered by other filters, excluding global text filter
    * */
   hasFilters?: boolean;
+  /**
+   * Slot to render action buttons
+   * */
+  actions?: ReactNode;
 }
 
 export const EmptyState = ({
@@ -33,15 +37,16 @@ export const EmptyState = ({
   hasFilters,
   className,
   children,
+  actions,
   ...props
 }: EmptyStateProps) => (
   <div className={cn("flex gap-3 text-muted-foreground", className)} {...props}>
     {textFilter ?
       <SearchX />
     : <ListX />}
-    <span>
+    <span className="flex flex-col gap-3">
       {children ?? (
-        <>
+        <span>
           No {entityName ?? "results"} found
           {textFilter ?
             <>
@@ -51,8 +56,9 @@ export const EmptyState = ({
             <>&nbsp;for your selected filters</>
           : null}
           .
-        </>
+        </span>
       )}
+      {actions && <div className="flex gap-2">{actions}</div>}
     </span>
   </div>
 );
