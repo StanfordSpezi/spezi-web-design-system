@@ -12,14 +12,14 @@ import { type ComponentProps } from "react";
 import { cn } from "../../utils/className";
 import { Button } from "../Button";
 import { Calendar } from "../Calendar";
-import { Popover, PopoverTrigger, PopoverContent } from "../Popover";
+import { PopoverRoot, PopoverTrigger, PopoverContent } from "../Popover";
 
 export type DatePickerProps = ComponentProps<typeof Calendar>;
 
 export const DatePicker = (props: DatePickerProps) => {
   const { selected, showTimePicker } = props;
   return (
-    <Popover>
+    <PopoverRoot>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -37,6 +37,6 @@ export const DatePicker = (props: DatePickerProps) => {
       <PopoverContent className="!w-auto !p-0">
         <Calendar {...props} />
       </PopoverContent>
-    </Popover>
+    </PopoverRoot>
   );
 };
