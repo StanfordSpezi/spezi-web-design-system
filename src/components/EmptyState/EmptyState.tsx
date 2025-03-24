@@ -10,7 +10,13 @@ import { SearchX, ListX } from "lucide-react";
 import { type HTMLProps, type ReactNode } from "react";
 import { cn } from "../../utils/className";
 
-export interface EmptyStateProps extends HTMLProps<HTMLDivElement> {
+export interface EmptyStateProps
+  extends Omit<HTMLProps<HTMLDivElement>, "children" | "action"> {
+  /**
+   * Provide `children` only if you wish to customize empty message.
+   * If children is not provided, default message is constructed.
+   * */
+  children?: ReactNode;
   /**
    * Name of the presented missing data entity
    * Provide pluralized and lowercased
