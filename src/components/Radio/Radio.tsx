@@ -6,32 +6,26 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as RadioPrimitive from "@radix-ui/react-radio-group";
-import {
-  forwardRef,
-  type ElementRef,
-  type ComponentPropsWithoutRef,
-} from "react";
-import { cn } from "../../utils/className";
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
 /**
  * Container for Radio inputs
  * */
-export const RadioGroup = RadioPrimitive.Root;
+export const RadioGroup = RadioGroupPrimitive.Root;
 
-export const Radio = forwardRef<
-  ElementRef<typeof RadioPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof RadioPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <RadioPrimitive.Item
-    ref={ref}
+export const Radio = ({
+  className,
+  ...props
+}: ComponentProps<typeof RadioGroupPrimitive.Item>) => (
+  <RadioGroupPrimitive.Item
     className={cn(
-      "focus-ring flex-center size-4 shrink-0 rounded-full border border-input disabled:cursor-not-allowed disabled:opacity-50",
+      "focus-ring flex-center border-input size-4 shrink-0 rounded-full border disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
     {...props}
   >
-    <RadioPrimitive.Indicator className="flex-center size-2 rounded-full bg-primary" />
-  </RadioPrimitive.Item>
-));
-Radio.displayName = RadioPrimitive.Item.displayName;
+    <RadioGroupPrimitive.Indicator className="flex-center bg-primary size-2 rounded-full" />
+  </RadioGroupPrimitive.Item>
+);

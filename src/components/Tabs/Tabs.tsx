@@ -6,15 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-import {
-  type ComponentPropsWithoutRef,
-  createContext,
-  type ElementRef,
-  forwardRef,
-  useContext,
-} from "react";
-import { cn } from "../../utils/className";
+import { Tabs as TabsPrimitive } from "radix-ui";
+import { type ComponentProps, createContext, useContext } from "react";
+import { cn } from "@/utils/className";
 
 export const Tabs = TabsPrimitive.Root;
 
@@ -26,58 +20,49 @@ interface TabsListContextProps {
 }
 
 interface TabsListProps
-  extends ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
+  extends ComponentProps<typeof TabsPrimitive.List>,
     TabsListContextProps {}
 
 const TabsListContext = createContext<TabsListContextProps>({
   grow: false,
 });
 
-export const TabsList = forwardRef<
-  ElementRef<typeof TabsPrimitive.List>,
-  TabsListProps
->(({ className, grow, ...props }, ref) => (
+export const TabsList = ({ className, grow, ...props }: TabsListProps) => (
   <TabsListContext.Provider value={{ grow }}>
     <TabsPrimitive.List
-      ref={ref}
       className={cn(
-        "inline-flex-center h-10 p-1 text-muted-foreground",
+        "inline-flex-center text-muted-foreground h-10 p-1",
         grow && "w-full",
         className,
       )}
       {...props}
     />
   </TabsListContext.Provider>
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+);
 
-export const TabsTrigger = forwardRef<
-  ElementRef<typeof TabsPrimitive.Trigger>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => {
+export const TabsTrigger = ({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.Trigger>) => {
   const { grow } = useContext(TabsListContext);
   return (
     <TabsPrimitive.Trigger
-      ref={ref}
       className={cn(
-        "inline-flex-center focus-ring whitespace-nowrap border-b border-b-border px-3 py-2 text-sm font-medium transition-all focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-sm",
+        "inline-flex-center focus-ring border-b-border data-[state=active]:border-b-primary data-[state=active]:text-foreground border-b px-3 py-2 text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-xs",
         grow && "grow",
         className,
       )}
       {...props}
     />
   );
-});
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+};
 
-export const TabsContent = forwardRef<
-  ElementRef<typeof TabsPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+export const TabsContent = ({
+  className,
+  ...props
+}: ComponentProps<typeof TabsPrimitive.Content>) => (
   <TabsPrimitive.Content
-    ref={ref}
     className={cn("focus-ring mt-2", className)}
     {...props}
   />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+);

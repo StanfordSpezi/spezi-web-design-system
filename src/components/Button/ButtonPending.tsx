@@ -7,12 +7,12 @@
 //
 
 import { Loader2 } from "lucide-react";
-import { forwardRef, type HTMLAttributes } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 import type { ButtonProps } from "../Button";
 
 interface ButtonPendingProps
-  extends HTMLAttributes<HTMLSpanElement>,
+  extends ComponentProps<"span">,
     Pick<ButtonProps, "size"> {
   isPending?: boolean;
 }
@@ -21,29 +21,27 @@ interface ButtonPendingProps
  * Utility to compose button with pending state
  * It's separated from Button to prevent redundant markup when unnecessary
  * */
-export const ButtonPending = forwardRef<HTMLSpanElement, ButtonPendingProps>(
-  ({ children, isPending, className, size, ...props }, ref) => (
+export const ButtonPending = ({
+  children,
+  isPending,
+  className,
+  size,
+  ...props
+}: ButtonPendingProps) => (
+  <span className={cn("inline-flex-center relative", className)} {...props}>
+    {isPending && (
+      <div className="absolute" aria-hidden data-testid="ButtonPending">
+        <Loader2 className="animate-spin" />
+      </div>
+    )}
     <span
-      className={cn("inline-flex-center relative", className)}
-      ref={ref}
-      {...props}
-    >
-      {isPending && (
-        <div className="absolute" aria-hidden data-testid="ButtonPending">
-          <Loader2 className="animate-spin" />
-        </div>
+      className={cn(
+        "inline-flex-center",
+        size === "lg" ? "gap-2.5" : "gap-2",
+        isPending && "invisible",
       )}
-      <span
-        className={cn(
-          "inline-flex-center",
-          size === "lg" ? "gap-2.5" : "gap-2",
-          isPending && "invisible",
-        )}
-      >
-        {children}
-      </span>
+    >
+      {children}
     </span>
-  ),
+  </span>
 );
-
-ButtonPending.displayName = "ButtonPending";

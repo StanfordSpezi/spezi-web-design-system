@@ -7,112 +7,82 @@
 //
 
 import * as React from "react";
-import {
-  type TdHTMLAttributes,
-  forwardRef,
-  type HTMLAttributes,
-  type ThHTMLAttributes,
-} from "react";
-import { cn } from "../../utils/className";
+import type { ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
-export const Table = forwardRef<
-  HTMLTableElement,
-  HTMLAttributes<HTMLTableElement>
->(({ className, ...props }, ref) => (
+export const Table = ({ className, ...props }: ComponentProps<"table">) => (
   <div className="relative w-full overflow-auto">
     <table
-      ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}
       {...props}
     />
   </div>
-));
-Table.displayName = "Table";
+);
 
-export const TableHeader = forwardRef<
-  HTMLTableSectionElement,
-  HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
-));
-TableHeader.displayName = "TableHeader";
+export const TableHeader = ({
+  className,
+  ...props
+}: ComponentProps<"thead">) => (
+  <thead className={cn("[&_tr]:border-b", className)} {...props} />
+);
 
-export const TableBody = forwardRef<
-  HTMLTableSectionElement,
-  HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
-  <tbody
-    ref={ref}
-    className={cn("[&_tr:last-child]:border-0", className)}
-    {...props}
-  />
-));
-TableBody.displayName = "TableBody";
+export const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => (
+  <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+);
 
-export const TableFooter = forwardRef<
-  HTMLTableSectionElement,
-  HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
+export const TableFooter = ({
+  className,
+  ...props
+}: ComponentProps<"tfoot">) => (
   <tfoot
-    ref={ref}
     className={cn(
-      "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+      "bg-muted/50 border-t font-medium last:[&>tr]:border-b-0",
       className,
     )}
     {...props}
   />
-));
-TableFooter.displayName = "TableFooter";
+);
 
-export interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {
+export interface TableRowProps extends ComponentProps<"tr"> {
   isHoverable?: boolean;
 }
 
-export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ className, onClick, isHoverable = true, ...props }, ref) => (
-    <tr
-      ref={ref}
-      className={cn(
-        "border-b transition-colors data-[state=selected]:bg-muted",
-        isHoverable && "hover:bg-muted/50",
-        onClick &&
-          "cursor-pointer focus-visible:bg-primary/10 focus-visible:outline-none",
-        className,
-      )}
-      onClick={onClick}
-      {...(onClick ? { tabIndex: 0 } : undefined)}
-      {...props}
-    />
-  ),
-);
-TableRow.displayName = "TableRow";
-
-export const TableHead = forwardRef<
-  HTMLTableCellElement,
-  ThHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
-  <th
-    ref={ref}
+export const TableRow = ({
+  className,
+  onClick,
+  isHoverable = true,
+  ...props
+}: TableRowProps) => (
+  <tr
     className={cn(
-      "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
+      "data-[state=selected]:bg-muted border-b transition-colors",
+      isHoverable && "hover:bg-muted/50",
+      onClick &&
+        "focus-visible:bg-primary/10 cursor-pointer focus-visible:outline-hidden",
+      className,
+    )}
+    onClick={onClick}
+    {...(onClick ? { tabIndex: 0 } : undefined)}
+    {...props}
+  />
+);
+
+export const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
+  <th
+    className={cn(
+      "text-muted-foreground h-12 px-4 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
   />
-));
-TableHead.displayName = "TableHead";
+);
 
-export const TableCell = forwardRef<
-  HTMLTableCellElement,
-  TdHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
+export const TableCell = ({ className, ...props }: ComponentProps<"td">) => (
   <td
-    ref={ref}
     className={cn(
       "p-4 text-left align-middle [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
   />
-));
-TableCell.displayName = "TableCell";
+);

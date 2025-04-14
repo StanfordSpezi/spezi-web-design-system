@@ -19,7 +19,7 @@ export const GlobalFilterInput = ({
   const placeholder = `Search${entityName ? ` ${entityName}` : ""}...`;
   return (
     <div className="relative max-w-72 grow">
-      <Search className="absolute left-3 top-2.5 size-5 text-muted-foreground" />
+      <Search className="text-muted-foreground absolute top-2.5 left-3 size-5" />
       <Input
         placeholder={placeholder}
         aria-label={placeholder}

@@ -51,7 +51,7 @@ export const ConfirmDeleteDialog = ({
           {itemName && (
             <>
               <br />
-              <b className="font-medium text-foreground">{itemName}</b> will be
+              <b className="text-foreground font-medium">{itemName}</b> will be
               deleted forever.
             </>
           )}

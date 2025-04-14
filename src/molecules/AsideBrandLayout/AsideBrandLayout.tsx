@@ -6,33 +6,31 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps, type ReactNode } from "react";
+import { cn } from "@/utils/className";
 
-export interface AsideBrandLayoutProps
-  extends ButtonHTMLAttributes<HTMLDivElement> {
+export interface AsideBrandLayoutProps extends ComponentProps<"div"> {
   aside?: ReactNode;
 }
 
-export const AsideBrandLayout = forwardRef<
-  HTMLDivElement,
-  AsideBrandLayoutProps
->(({ aside, children, className, ...props }, ref) => (
+export const AsideBrandLayout = ({
+  aside,
+  children,
+  className,
+  ...props
+}: AsideBrandLayoutProps) => (
   <div
     className={cn(
-      "w-full lg:grid lg:min-h-screen lg:grid-cols-[450px,1fr] xl:grid-cols-[600px,1fr]",
+      "w-full lg:grid lg:min-h-screen lg:grid-cols-[450px_1fr] xl:grid-cols-[600px_1fr]",
       className,
     )}
-    ref={ref}
     {...props}
   >
-    <aside className="hidden flex-col items-center justify-between gap-20 bg-accent py-40 lg:flex">
+    <aside className="bg-accent hidden flex-col items-center justify-between gap-20 py-40 lg:flex">
       {aside}
     </aside>
     <main className="flex min-h-screen items-center justify-center py-12">
       {children}
     </main>
   </div>
-));
-
-AsideBrandLayout.displayName = "AsideBrandLayout";
+);

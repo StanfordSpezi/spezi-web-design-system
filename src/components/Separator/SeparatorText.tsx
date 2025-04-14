@@ -6,23 +6,21 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { forwardRef, type HTMLProps } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
-export const SeparatorText = forwardRef<
-  HTMLDivElement,
-  HTMLProps<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
+export const SeparatorText = ({
+  className,
+  children,
+  ...props
+}: ComponentProps<"div">) => (
   <div
     className={cn(
       "flex-center absolute -top-2.5 left-0 w-full text-sm",
       className,
     )}
-    ref={ref}
     {...props}
   >
-    <div className="bg-surface px-4 text-border">{children}</div>
+    <div className="bg-surface text-border px-4">{children}</div>
   </div>
-));
-
-SeparatorText.displayName = "SeparatorText";
+);

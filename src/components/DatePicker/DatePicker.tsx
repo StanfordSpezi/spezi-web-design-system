@@ -9,7 +9,7 @@
 import { format, isDate } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { type ComponentProps } from "react";
-import { cn } from "../../utils/className";
+import { cn } from "@/utils/className";
 import { Button } from "../Button";
 import { Calendar } from "../Calendar";
 import { PopoverRoot, PopoverTrigger, PopoverContent } from "../Popover";
@@ -17,15 +17,16 @@ import { PopoverRoot, PopoverTrigger, PopoverContent } from "../Popover";
 export type DatePickerProps = ComponentProps<typeof Calendar>;
 
 export const DatePicker = (props: DatePickerProps) => {
-  const { selected, showTimePicker } = props;
+  const { showTimePicker } = props;
+  const selected = props.mode !== undefined ? props.selected : null;
   return (
     <PopoverRoot>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           className={cn(
-            "!w-full !justify-start !bg-surface-primary !text-left !text-sm",
-            !selected && "!text-muted-foreground",
+            "bg-surface-primary! w-full! justify-start! text-left! text-sm!",
+            !selected && "text-muted-foreground!",
           )}
         >
           <CalendarIcon className="size-4" />
@@ -34,7 +35,7 @@ export const DatePicker = (props: DatePickerProps) => {
           : "Pick a date"}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="!w-auto !p-0">
+      <PopoverContent className="w-auto! p-0!">
         <Calendar {...props} />
       </PopoverContent>
     </PopoverRoot>

@@ -6,11 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type HTMLProps } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
-export interface RangeCounterProps
-  extends Omit<HTMLProps<HTMLParagraphElement>, "start"> {
+export interface RangeCounterProps extends Omit<ComponentProps<"p">, "start"> {
   all: number;
   end: number;
   start: number;
@@ -28,7 +27,7 @@ export const RangeCounter = ({
   ...props
 }: RangeCounterProps) => (
   <p
-    className={cn("text-sm font-medium text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm font-medium", className)}
     {...props}
   >
     {start}-{end} of {all}

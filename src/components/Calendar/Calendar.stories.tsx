@@ -7,7 +7,9 @@
 //
 
 import { type Meta } from "@storybook/react";
+import { addDays } from "date-fns";
 import { useState } from "react";
+import { type DateRange } from "react-day-picker";
 import { Calendar } from "./Calendar";
 
 const meta: Meta<typeof Calendar> = {
@@ -27,4 +29,12 @@ export const WithTimePicker = () => {
   return (
     <Calendar mode="single" selected={date} onSelect={setDate} showTimePicker />
   );
+};
+
+export const Range = () => {
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: new Date(),
+    to: addDays(new Date(), 2),
+  });
+  return <Calendar mode="range" selected={date} onSelect={setDate} />;
 };

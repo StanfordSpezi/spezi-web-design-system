@@ -6,44 +6,39 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { forwardRef, type HTMLAttributes } from "react";
-import { cn } from "../../utils/className";
+import { Slot } from "radix-ui";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
 export const cardVariants = {};
 
 export const cardVariance = cva(
-  "rounded-md border bg-card text-card-foreground shadow-sm",
+  "rounded-md border bg-card text-card-foreground shadow-xs",
   { variants: cardVariants },
 );
 
 export interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<"div">,
     VariantProps<typeof cardVariance> {
   asChild?: boolean;
 }
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, asChild, ...props }, ref) => {
-    const Comp = asChild ? Slot : "div";
-    return (
-      <Comp className={cardVariance({ className })} ref={ref} {...props} />
-    );
-  },
-);
-Card.displayName = "Button";
+export const Card = ({ className, asChild, ...props }: CardProps) => {
+  const Comp = asChild ? Slot.Root : "div";
+  return <Comp className={cardVariance({ className })} {...props} />;
+};
 
-type CardTitleProps = HTMLAttributes<HTMLParagraphElement> & {
+type CardTitleProps = ComponentProps<"p"> & {
   asChild?: boolean;
 };
 
 export const CardTitle = ({ className, asChild, ...props }: CardTitleProps) => {
-  const Comp = asChild ? Slot : "h5";
+  const Comp = asChild ? Slot.Root : "h5";
   return <Comp className={cn("text-lg font-medium", className)} {...props} />;
 };
 
-type CardHeaderProps = HTMLAttributes<HTMLDivElement>;
+type CardHeaderProps = ComponentProps<"div">;
 
 export const CardHeader = ({ className, ...props }: CardHeaderProps) => (
   <header

@@ -6,10 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { HTMLProps } from "react";
-import { cn } from "../../utils/className";
+import type { ComponentProps } from "react";
+import { cn } from "@/utils/className";
 
-interface NotificationContentContainerProps extends HTMLProps<HTMLDivElement> {}
+interface NotificationContentContainerProps extends ComponentProps<"div"> {}
 
 export const NotificationContentContainer = ({
   className,

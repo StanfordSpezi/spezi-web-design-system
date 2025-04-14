@@ -6,8 +6,6 @@
 // SPDX-License-Identifier: MIT
 //
 
-import "./main.css";
-
 export * from "./utils/className";
 export * from "./utils/date";
 export * from "./utils/file";

@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { forwardRef, useContext } from "react";
+import { useContext } from "react";
 import { cn } from "@/utils/className";
 import { DashboardContext } from "./DashboardContext";
 import { Avatar } from "../../components/Avatar";
@@ -18,29 +18,25 @@ type UserMenuItemProps = Omit<ButtonProps, "name"> & {
   img: Nil<string>;
 };
 
-export const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
-  ({ name, img, ...props }, ref) => {
-    const { shrinkable } = useContext(DashboardContext);
-    return (
-      <Button
-        variant="ghost"
-        className={cn(
-          "mb-2 mt-auto !p-2 transition",
-          shrinkable ?
-            "xl:mb-0 xl:w-full xl:justify-start xl:self-start"
-          : "lg:mb-0 lg:w-full lg:justify-start lg:self-start",
-        )}
-        ref={ref}
-        {...props}
+export const UserMenuItem = ({ name, img, ...props }: UserMenuItemProps) => {
+  const { shrinkable } = useContext(DashboardContext);
+  return (
+    <Button
+      variant="ghost"
+      className={cn(
+        "mt-auto mb-2 p-2! transition",
+        shrinkable ?
+          "xl:mb-0 xl:w-full xl:justify-start xl:self-start"
+        : "lg:mb-0 lg:w-full lg:justify-start lg:self-start",
+      )}
+      {...props}
+    >
+      <Avatar size="sm" name={name} src={img} />
+      <span
+        className={cn("truncate text-sm", shrinkable && "lg:hidden xl:block")}
       >
-        <Avatar size="sm" name={name} src={img} />
-        <span
-          className={cn("truncate text-sm", shrinkable && "lg:hidden xl:block")}
-        >
-          {name}
-        </span>
-      </Button>
-    );
-  },
-);
-UserMenuItem.displayName = "UserMenuItem";
+        {name}
+      </span>
+    </Button>
+  );
+};

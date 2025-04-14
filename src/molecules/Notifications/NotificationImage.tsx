@@ -7,12 +7,12 @@
 //
 
 import { Info } from "lucide-react";
-import type { HTMLProps } from "react";
+import type { ComponentProps } from "react";
 import { cn } from "@/utils/className";
 import { type Nil } from "@/utils/misc";
 import { useNotificationContext } from "./NotificationContext";
 
-type NotificationImageProps = Omit<HTMLProps<HTMLImageElement>, "src"> & {
+type NotificationImageProps = Omit<ComponentProps<"img">, "src"> & {
   src: Nil<string>;
 };
 
@@ -39,7 +39,7 @@ export const NotificationImage = ({
         />
       : <div
           className={cn(
-            "flex-center size-10 rounded-full bg-accent",
+            "flex-center bg-accent size-10 rounded-full",
             className,
           )}
         >

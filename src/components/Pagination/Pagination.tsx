@@ -7,8 +7,8 @@
 //
 
 import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
-import { type ComponentProps, forwardRef } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps } from "react";
+import { cn } from "@/utils/className";
 import { Button, type ButtonProps } from "../Button";
 
 /**
@@ -24,26 +24,17 @@ export const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
   />
 );
 
-export const PaginationContent = forwardRef<
-  HTMLUListElement,
-  ComponentProps<"ul">
->(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    className={cn("flex items-center gap-1", className)}
-    {...props}
-  />
-));
-PaginationContent.displayName = "PaginationContent";
+export const PaginationContent = ({
+  className,
+  ...props
+}: ComponentProps<"ul">) => (
+  <ul className={cn("flex items-center gap-1", className)} {...props} />
+);
 
-export const PaginationItemContainer = forwardRef<
-  HTMLLIElement,
-  ComponentProps<"li">
->(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("", className)} {...props} />
-));
-
-PaginationItemContainer.displayName = "PaginationItemContainer";
+export const PaginationItemContainer = ({
+  className,
+  ...props
+}: ComponentProps<"li">) => <li className={cn("", className)} {...props} />;
 
 interface PaginationLinkProps extends ButtonProps {
   isActive?: boolean;

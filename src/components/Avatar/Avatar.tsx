@@ -78,7 +78,7 @@ export const Avatar = ({
         />
       )}
       {fallbackContent && (
-        <div className="flex-center size-full rounded-full bg-muted">
+        <div className="flex-center bg-muted size-full rounded-full">
           {fallbackContent}
         </div>
       )}

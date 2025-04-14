@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type HTMLProps } from "react";
+import { type ComponentProps } from "react";
 import { useNotificationContext } from "@/molecules/Notifications/NotificationContext";
 import { cn } from "@/utils/className";
 import { formatDateTime } from "@/utils/date";
 
-interface NotificationTimeProps extends HTMLProps<HTMLTimeElement> {
+interface NotificationTimeProps extends ComponentProps<"time"> {
   time: Date;
 }
 

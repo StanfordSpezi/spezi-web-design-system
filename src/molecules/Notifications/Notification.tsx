@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 import { type ReactNode } from "react";
 import { cn } from "@/utils/className";
 import {
@@ -27,7 +27,7 @@ export const Notification = ({
   className,
   asChild,
 }: NotificationProps) => {
-  const Component = asChild ? Slot : "article";
+  const Component = asChild ? Slot.Root : "article";
   return (
     <NotificationContext.Provider value={notification}>
       <Component

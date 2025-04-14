@@ -1,0 +1,93 @@
+/*
+
+This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
+
+SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
+
+SPDX-License-Identifier: MIT
+
+*/
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-surface: var(--color-surface);
+  --color-surface-primary: var(--color-surface-primary);
+  --color-foreground: var(--color-foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+  --color-popover: var(--color-popover);
+  --color-popover-foreground: var(--color-popover-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-ring: var(--color-ring);
+}
+
+@utility focus-ring {
+  @apply ring-offset-surface focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden;
+}
+
+@utility no-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility inline-flex-center {
+  @apply inline-flex items-center justify-center;
+}
+
+@utility interactive-opacity {
+  @apply focus-ring transition-opacity hover:opacity-60;
+}
+
+@utility hide-all-hidden {
+  & [aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/*
+  Utility for data-state based fade in animations
+  RadixUI components use it
+*/
+@utility animate-entrance-fade {
+  @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
+}
+
+/*
+  Utility for data-state based fade in animations
+  RadixUI components use it
+*/
+@utility animate-entrance-fade-zoom {
+  @apply animate-entrance-fade data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95;
+}
+
+/*
+  Utility for data-state based fade in animations with slide based on side
+  RadixUI components use it
+*/
+@utility animate-entrance-fade-slide {
+  @apply animate-entrance-fade-zoom data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2
+}
+

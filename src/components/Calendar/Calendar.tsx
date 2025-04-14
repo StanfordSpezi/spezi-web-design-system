@@ -1,21 +1,19 @@
-//
-// This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
-//
-// SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
-//
-// SPDX-License-Identifier: MIT
-//
-
 import { isDate, set } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker, type DayPickerSingleProps } from "react-day-picker";
-import { cn } from "../../utils/className";
-import { buttonVariance } from "../Button";
+import {
+  type DateRange,
+  DayPicker,
+  type DayPickerProps,
+  type PropsSingle,
+  type PropsSingleRequired,
+} from "react-day-picker";
+import { buttonVariance } from "@/components/Button";
+import { cn } from "@/utils/className";
 
 const Footer = ({
   selected,
   onSelect,
-}: Pick<CalendarProps, "selected" | "onSelect">) => {
+}: Pick<PropsSingle | PropsSingleRequired, "selected" | "onSelect">) => {
   const value = isDate(selected) ? selected : undefined;
   return (
     <div className="flex-center pb-3">
@@ -31,95 +29,108 @@ const Footer = ({
           const minutes = parseInt(stringStamp.slice(3, 5));
           const newDate = new Date(value?.getTime() ?? Date.now());
           newDate.setHours(hours, minutes);
-          onSelect?.(newDate);
+          // @ts-expect-error day-picker expects no ChangeEvent, but that's a fair tradeoff for simpler types
+          onSelect?.(newDate, newDate, {}, event);
         }}
-        className="focus-ring rounded p-1"
+        className="focus-ring rounded-sm p-1"
       />
     </div>
   );
 };
 
-export type CalendarProps = Omit<DayPickerSingleProps, "onSelect"> & {
+export type CalendarProps = DayPickerProps & {
   showTimePicker?: boolean;
-  onSelect?: (date: Date | undefined) => void;
 };
 
-export const Calendar = ({
-  className,
-  classNames,
-  showOutsideDays = true,
-  selected,
-  showTimePicker,
-  onSelect,
-  ...props
-}: CalendarProps) => {
-  const handleSelect = (newDate: Date | undefined) => {
-    if (showTimePicker && selected && newDate) {
+export const Calendar = (props: CalendarProps) => {
+  const {
+    className,
+    classNames,
+    showOutsideDays = true,
+    showTimePicker,
+    mode,
+    ...restProps
+  } = props;
+
+  const handleSelect = (
+    newDate: Date | Date[] | DateRange | undefined,
+    ...args: unknown[]
+  ) => {
+    if (
+      mode === "single" &&
+      showTimePicker &&
+      props.selected &&
+      isDate(newDate)
+    ) {
       // Keep the same hour when selecting date
-      onSelect?.(
-        set(newDate, {
-          hours: selected.getHours(),
-          minutes: selected.getMinutes(),
-        }),
-      );
-    } else {
-      onSelect?.(newDate);
+      const adjustedDate = set(newDate, {
+        hours: props.selected.getHours(),
+        minutes: props.selected.getMinutes(),
+      });
+      // @ts-expect-error ...args are coming from day-picker, we just forward it
+      props.onSelect?.(adjustedDate, ...args);
+    } else if (props.mode !== undefined) {
+      // @ts-expect-error ...args are coming from day-picker, we just forward it
+      props.onSelect?.(newDate, ...args);
     }
   };
+
+  const navButton = cn(
+    buttonVariance({ variant: "outline" }),
+    "size-7! p-0! opacity-50 hover:opacity-100 z-4",
+  );
 
   return (
     <>
       <DayPicker
         showOutsideDays={showOutsideDays}
         className={cn("p-3", className)}
-        captionLayout="dropdown-buttons"
-        fromYear={1900}
-        toYear={2100}
+        startMonth={new Date(1900, 0)}
+        endMonth={new Date(2100, 0)}
+        captionLayout="dropdown"
         classNames={{
-          months:
-            "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+          months: "relative flex flex-col space-y-4",
           month: "space-y-4",
-          caption: "flex justify-center pt-1 relative items-center",
+          dropdown: "focus-ring rounded-sm",
+          month_caption: "flex-center pt-1 relative",
           caption_label: "text-sm font-medium",
-          vhidden: "hidden",
-          caption_dropdowns: "hide-all-hidden flex gap-2 text-sm items-center",
-          nav: "space-x-1 flex items-center",
-          nav_button: cn(
-            buttonVariance({ variant: "outline" }),
-            "!size-7 !p-0 opacity-50 hover:opacity-100",
-          ),
-          nav_button_previous: "absolute left-1",
-          nav_button_next: "absolute right-1",
-          table: "w-full border-collapse space-y-1",
-          head_row: "flex",
-          head_cell: "text-muted-foreground rounded-md w-9 font-normal text-xs",
-          row: "flex w-full mt-2",
-          cell: "size-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+          dropdowns: "hide-all-hidden flex gap-2 text-sm items-center",
+          nav: "space-x-1 flex items-center justify-between absolute top-0 left-0 w-full",
+          button_previous: cn(navButton, "left-1"),
+          button_next: cn(navButton, "right-1"),
+          month_grid: "w-full space-y-1",
+          weekdays: "flex",
+          weekday: "text-muted-foreground w-9 font-normal text-xs",
+          week: "flex w-full mt-2",
+          range_end: "rounded-r-md rounded-l-none",
+          range_start: "rounded-l-md rounded-r-none",
+          range_middle: "rounded-none!",
           day: cn(
             buttonVariance({ variant: "ghost" }),
-            "!size-9 !p-0 aria-selected:opacity-100",
+            "size-9! p-0! text-sm",
+            "data-selected:bg-primary data-selected:text-primary-foreground data-selected:hover:bg-primary/80",
           ),
-          day_range_end: "day-range-end",
-          day_selected:
-            "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-          day_today: "bg-accent text-accent-foreground",
-          day_outside:
-            "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-          day_disabled: "text-muted-foreground opacity-50",
-          day_range_middle:
-            "aria-selected:bg-accent aria-selected:text-accent-foreground",
-          day_hidden: "invisible",
+          day_button: "size-full",
+          today: "border",
+          outside: "text-muted-foreground opacity-50",
+          disabled: "text-muted-foreground opacity-50",
+          hidden: "invisible",
           ...classNames,
         }}
         components={{
-          IconLeft: () => <ChevronLeft className="size-4" />,
-          IconRight: () => <ChevronRight className="size-4" />,
+          Chevron: ({ ...props }) =>
+            props.orientation === "left" ?
+              <ChevronLeft {...props} className="size-4" />
+            : <ChevronRight {...props} className="size-4" />,
         }}
-        selected={selected}
+        mode={mode}
+        // @ts-expect-error handleSelect works with every mode
         onSelect={handleSelect}
-        {...props}
+        {...restProps}
       />
-      {showTimePicker && <Footer onSelect={onSelect} selected={selected} />}
+      {showTimePicker && props.mode === "single" && (
+        <Footer onSelect={props.onSelect} selected={props.selected} />
+      )}
     </>
   );
 };

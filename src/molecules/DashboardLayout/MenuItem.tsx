@@ -8,9 +8,9 @@
 
 import { type ReactNode, useContext } from "react";
 import { useSpeziContext } from "@/SpeziProvider";
+import { cn } from "@/utils/className";
 import { DashboardContext } from "./DashboardContext";
 import { Tooltip } from "../../components/Tooltip";
-import { cn } from "../../utils/className";
 
 interface MenuItemProps {
   href: string;
@@ -55,9 +55,9 @@ export const MenuItem = ({
           <i
             aria-hidden
             className={cn(
-              "size-2.5 rounded-full bg-destructive",
+              "bg-destructive size-2.5 rounded-full",
               shrinkable &&
-                "lg:absolute lg:right-1 lg:top-1 lg:size-1.5 xl:static xl:size-2.5",
+                "lg:absolute lg:top-1 lg:right-1 lg:size-1.5 xl:static xl:size-2.5",
             )}
           />
         )}

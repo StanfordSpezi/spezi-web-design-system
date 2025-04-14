@@ -28,7 +28,7 @@ export const NotificationLink = ({
     <Notification asChild notification={notification}>
       <Link
         href={href}
-        className="cursor-pointer transition hover:bg-accent/50"
+        className="hover:bg-accent/50 cursor-pointer transition"
       >
         {children}
       </Link>

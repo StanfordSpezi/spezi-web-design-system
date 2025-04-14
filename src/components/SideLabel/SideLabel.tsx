@@ -6,10 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { type HTMLProps, type ReactNode } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps, type ReactNode } from "react";
+import { cn } from "@/utils/className";
 
-type SideLabelProps = Omit<HTMLProps<HTMLLabelElement>, "label"> & {
+type SideLabelProps = Omit<ComponentProps<"label">, "label"> & {
   label?: ReactNode;
   /**
    * Show label on right side
@@ -35,7 +35,7 @@ export const SideLabel = ({
 }: SideLabelProps) => (
   <label
     className={cn(
-      "flex cursor-pointer select-none gap-2.5",
+      "flex cursor-pointer gap-2.5 select-none",
       reverse && "flex-row-reverse",
       center && "items-center",
       className,

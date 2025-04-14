@@ -18,7 +18,7 @@ export const PageTitle = ({ title, subTitle, icon }: PageTitleProps) => (
   <div className="flex items-center gap-2 lg:gap-4">
     {icon && (
       <div
-        className="flex-center rounded-lg bg-muted p-2 [&_svg]:size-5 lg:[&_svg]:size-6"
+        className="flex-center bg-muted rounded-lg p-2 [&_svg]:size-5 lg:[&_svg]:size-6"
         aria-hidden
       >
         {icon}

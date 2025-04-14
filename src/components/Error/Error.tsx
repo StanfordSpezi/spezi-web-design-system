@@ -6,32 +6,32 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { forwardRef, type HTMLProps, type ReactNode } from "react";
-import { cn } from "../../utils/className";
+import { type ComponentProps, type ReactNode } from "react";
+import { cn } from "@/utils/className";
 
-interface ErrorProps extends HTMLProps<HTMLParagraphElement> {
+interface ErrorProps extends ComponentProps<"p"> {
   checkEmpty?: boolean;
   children?: ReactNode;
   className?: string;
   id?: string;
 }
 
-export const Error = forwardRef<HTMLParagraphElement, ErrorProps>(
-  ({ children, className, checkEmpty = false, ...props }, ref) => {
-    if (checkEmpty && !children) return null;
-    return (
-      <p
-        className={cn(
-          "mb-1 mt-1.5 min-h-5 text-xs leading-none text-destructive",
-          className,
-        )}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </p>
-    );
-  },
-);
-
-Error.displayName = "Error";
+export const Error = ({
+  children,
+  className,
+  checkEmpty = false,
+  ...props
+}: ErrorProps) => {
+  if (checkEmpty && !children) return null;
+  return (
+    <p
+      className={cn(
+        "text-destructive mt-1.5 mb-1 min-h-5 text-xs leading-none",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+};

@@ -6,12 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { SearchX, ListX } from "lucide-react";
-import { type HTMLProps, type ReactNode } from "react";
-import { cn } from "../../utils/className";
+import { ListX, SearchX } from "lucide-react";
+import { type ComponentProps, type ReactNode } from "react";
+import { cn } from "@/utils/className";
 
 export interface EmptyStateProps
-  extends Omit<HTMLProps<HTMLDivElement>, "children" | "action"> {
+  extends Omit<ComponentProps<"div">, "children" | "action"> {
   /**
    * Provide `children` only if you wish to customize empty message.
    * If children is not provided, default message is constructed.
@@ -49,7 +49,7 @@ export const EmptyState = ({
   <div
     role="status"
     aria-live="polite"
-    className={cn("flex gap-3 text-muted-foreground", className)}
+    className={cn("text-muted-foreground flex gap-3", className)}
     {...props}
   >
     {textFilter ?
