@@ -7,7 +7,7 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { type Size, sizes } from "@/utils/tailwind/helpers";
+import { type Size, sizes } from "@/utils/tailwind";
 import { Button } from "../Button";
 import {
   Dialog,
