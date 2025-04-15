@@ -17,9 +17,9 @@ import {
   type FieldValues,
   type UseFormStateReturn,
 } from "react-hook-form";
+import { Error } from "@/components/Error";
+import { Label, LabelContainer } from "@/components/Label";
 import { FieldTooltip } from "./FieldTooltip";
-import { Error } from "../../components/Error";
-import { Label } from "../../components/Label";
 
 export type FieldProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -81,12 +81,12 @@ export const Field = <
         return (
           <div className={className}>
             {tooltip || label ?
-              <div className="mb-2 flex gap-2">
+              <LabelContainer>
                 {label && <Label htmlFor={id}>{label}</Label>}
                 {tooltip && (
                   <FieldTooltip tooltip={tooltip} label={label} id={id} />
                 )}
-              </div>
+              </LabelContainer>
             : null}
             {render({
               ...states,
