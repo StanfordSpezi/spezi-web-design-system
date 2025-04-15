@@ -21,3 +21,12 @@ export const Label = ({ className, ...props }: LabelProps) => (
     {...props}
   />
 );
+
+type LabelContainerProps = ComponentProps<"div">;
+
+export const LabelContainer = ({
+  className,
+  ...props
+}: LabelContainerProps) => (
+  <div className={cn("mb-2 flex gap-2", className)} {...props} />
+);
