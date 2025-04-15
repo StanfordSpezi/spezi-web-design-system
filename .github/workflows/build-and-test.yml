@@ -38,5 +38,7 @@ jobs:
   testandcoverage:
     name: Test and Coverage
     uses: StanfordBDHG/.github/.github/workflows/npm-test-and-coverage.yml@v2
+    with:
+      nodeVersion: 22
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}

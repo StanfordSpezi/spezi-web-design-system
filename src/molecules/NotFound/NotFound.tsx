@@ -17,7 +17,7 @@ export const NotFoundIcon = ({
   ...props
 }: Omit<ComponentProps<"div">, "children">) => (
   <div
-    className={cn("flex-center mb-2 size-20 rounded-full bg-muted", className)}
+    className={cn("flex-center bg-muted mb-2 size-20 rounded-full", className)}
     {...props}
   >
     <RouteOff className="size-7" />

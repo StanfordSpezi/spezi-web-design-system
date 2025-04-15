@@ -18,11 +18,11 @@ import {
   DataTableTableView,
   type DataTableTableViewSpecificProps,
 } from "@/components/DataTable/DataTableTableView";
+import { cn } from "@/utils/className";
 import { ensureString, isObject } from "@/utils/misc";
 import { useDataTable, type UseDataTableProps } from "./DataTable.utils";
 import { DataTablePagination } from "./DataTablePagination";
 import { GlobalFilterInput } from "./GlobalFilterInput";
-import { cn } from "../../utils/className";
 
 export type DataTableViewProps<Data> = {
   table: TableType<Data>;
@@ -92,7 +92,7 @@ export const DataTable = <Data,>({
   return (
     <div
       className={cn(
-        "rounded-md bg-surface-primary",
+        "bg-surface-primary rounded-md",
         bordered && "border",
         className,
       )}

@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as SelectPrimitive from "@radix-ui/react-select";
 import { type Meta } from "@storybook/react";
+import { Select as SelectPrimitive } from "radix-ui";
 import { Button } from "../Button";
 import {
   Select,
@@ -25,7 +25,7 @@ export default meta;
 
 export const Default = () => (
   <Select>
-    <SelectTrigger className="!w-[220px]">
+    <SelectTrigger className="w-[220px]!">
       <SelectValue placeholder="Organizations" />
     </SelectTrigger>
     <SelectContent>

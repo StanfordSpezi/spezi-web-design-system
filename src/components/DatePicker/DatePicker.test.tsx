@@ -19,7 +19,7 @@ describe("DatePicker", () => {
 
     const queryGoToPrevMonth = () =>
       screen.queryByRole("button", {
-        name: "Go to previous month",
+        name: "Go to the Previous Month",
       });
 
     expect(queryGoToPrevMonth()).not.toBeInTheDocument();

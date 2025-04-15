@@ -1,0 +1,37 @@
+/*
+
+This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
+
+SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
+
+SPDX-License-Identifier: MIT
+
+*/
+
+/*
+  @layer base is separated from tailwind.css.
+  It simplifies opting out from global styles modification.
+*/
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-border;
+  }
+
+  *::selection {
+    @apply bg-primary/30;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  body {
+    @apply bg-surface text-foreground;
+  }
+}

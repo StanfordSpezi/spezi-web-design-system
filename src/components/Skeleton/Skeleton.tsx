@@ -23,7 +23,7 @@ type SkeletonProps = ComponentProps<"div"> & {
 export const Skeleton = ({ className, round, ...props }: SkeletonProps) => (
   <div
     className={cn(
-      "animate-pulse bg-accent",
+      "bg-accent animate-pulse",
       round ? "rounded-full" : "rounded-md",
       className,
     )}

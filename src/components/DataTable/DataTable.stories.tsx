@@ -108,7 +108,7 @@ export const CustomView = () => (
           return (
             <div key={row.id} className="flex flex-col border p-6">
               <h4 className="text-lg font-medium">{person.name}</h4>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 {person.age} years old
               </span>
             </div>

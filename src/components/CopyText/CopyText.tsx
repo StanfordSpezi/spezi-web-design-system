@@ -8,7 +8,7 @@
 
 import { ClipboardCopy } from "lucide-react";
 import { type ReactNode } from "react";
-import { cn } from "../../utils/className";
+import { cn } from "@/utils/className";
 import { copyToClipboard } from "../../utils/misc";
 
 type CopyTextProps = (
@@ -40,7 +40,7 @@ export const CopyText = ({ children, className, value }: CopyTextProps) => {
     >
       <span className="truncate">{children}</span>
       <span className="flex">
-        <ClipboardCopy className="size-5 text-muted-foreground" />
+        <ClipboardCopy className="text-muted-foreground size-5" />
       </span>
     </button>
   );

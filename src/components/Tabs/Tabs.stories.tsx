@@ -41,7 +41,7 @@ export const CustomPositioning = () => {
   return (
     <>
       <Tabs value={tab} onValueChange={(value) => setTab(value as Tab)}>
-        <nav className="fixed left-0 top-0">{elements.triggers}</nav>
+        <nav className="fixed top-0 left-0">{elements.triggers}</nav>
         {elements.content}
       </Tabs>
     </>

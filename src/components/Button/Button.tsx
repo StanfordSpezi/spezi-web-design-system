@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import { Slot } from "radix-ui";
+import { type ComponentProps } from "react";
 import { ButtonPending } from "./ButtonPending";
 
 export const buttonVariants = {
@@ -45,42 +45,35 @@ export const buttonVariance = cva(
 );
 
 export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends ComponentProps<"button">,
     VariantProps<typeof buttonVariance> {
   asChild?: boolean;
   isPending?: boolean;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild,
-      type = "button",
-      isPending,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={buttonVariance({ variant, size, className })}
-        ref={ref}
-        type={type}
-        aria-label={isPending ? "Loading" : undefined}
-        {...props}
-      >
-        {isPending !== undefined ?
-          <ButtonPending size={size} isPending={isPending}>
-            {children}
-          </ButtonPending>
-        : children}
-      </Comp>
-    );
-  },
-);
-Button.displayName = "Button";
+export const Button = ({
+  className,
+  variant,
+  size,
+  asChild,
+  type = "button",
+  isPending,
+  children,
+  ...props
+}: ButtonProps) => {
+  const Comp = asChild ? Slot.Root : "button";
+  return (
+    <Comp
+      className={buttonVariance({ variant, size, className })}
+      type={type}
+      aria-label={isPending ? "Loading" : undefined}
+      {...props}
+    >
+      {isPending !== undefined ?
+        <ButtonPending size={size} isPending={isPending}>
+          {children}
+        </ButtonPending>
+      : children}
+    </Comp>
+  );
+};

@@ -6,14 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Slot } from "@radix-ui/react-slot";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
-import {
-  type ComponentProps,
-  type ComponentPropsWithoutRef,
-  forwardRef,
-  type ReactNode,
-} from "react";
+import { Slot } from "radix-ui";
+import { type ComponentProps, type ReactNode } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,79 +18,70 @@ import {
 import { useSpeziContext } from "@/SpeziProvider";
 import { cn } from "@/utils/className";
 
-export const Breadcrumb = forwardRef<
-  HTMLElement,
-  ComponentPropsWithoutRef<"nav">
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
-Breadcrumb.displayName = "Breadcrumb";
+export const Breadcrumb = ({ ...props }: ComponentProps<"nav">) => (
+  <nav aria-label="breadcrumb" {...props} />
+);
 
-export const BreadcrumbList = forwardRef<
-  HTMLOListElement,
-  ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
+export const BreadcrumbList = ({
+  className,
+  ...props
+}: ComponentProps<"ol">) => (
   <ol
-    ref={ref}
     className={cn(
-      "flex flex-wrap items-center gap-1 break-words text-sm text-muted-foreground sm:gap-2",
+      "text-muted-foreground flex flex-wrap items-center gap-1 text-sm break-words sm:gap-2",
       className,
     )}
     {...props}
   />
-));
-BreadcrumbList.displayName = "BreadcrumbList";
+);
 
-export const BreadcrumbItem = forwardRef<
-  HTMLLIElement,
-  ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
+export const BreadcrumbItem = ({
+  className,
+  ...props
+}: ComponentProps<"li">) => (
   <li
-    ref={ref}
     className={cn("inline-flex items-center gap-1.5", className)}
     {...props}
   />
-));
-BreadcrumbItem.displayName = "BreadcrumbItem";
+);
 
-type BreadcrumbLinkProps = ComponentPropsWithoutRef<"a"> & {
+type BreadcrumbLinkProps = ComponentProps<"a"> & {
   asChild?: boolean;
 };
 
-export const BreadcrumbLink = forwardRef<
-  HTMLAnchorElement,
-  BreadcrumbLinkProps
->(({ asChild, className, ...props }, ref) => {
+export const BreadcrumbLink = ({
+  asChild,
+  className,
+  ...props
+}: BreadcrumbLinkProps) => {
   const {
     router: { Link },
   } = useSpeziContext();
-  const Comp = asChild ? Slot : Link;
+  const Comp = asChild ? Slot.Root : Link;
 
   return (
     <Comp
-      ref={ref}
       className={cn(
-        "focus-ring rounded transition hover:text-foreground",
+        "focus-ring hover:text-foreground rounded-sm transition",
         className,
       )}
       {...props}
     />
   );
-});
-BreadcrumbLink.displayName = "BreadcrumbLink";
+};
 
-export const BreadcrumbPage = forwardRef<
-  HTMLSpanElement,
-  ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
+export const BreadcrumbPage = ({
+  className,
+  ...props
+}: ComponentProps<"span">) => (
   <span
-    ref={ref}
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn("font-normal text-foreground", className)}
+    className={cn("text-foreground font-normal", className)}
     {...props}
   />
-));
-BreadcrumbPage.displayName = "BreadcrumbPage";
+);
 
 export const BreadcrumbSeparator = ({
   children,
@@ -111,7 +97,6 @@ export const BreadcrumbSeparator = ({
     {children ?? <ChevronRight />}
   </li>
 );
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
 export const BreadcrumbEllipsis = ({
   className,
@@ -127,7 +112,6 @@ export const BreadcrumbEllipsis = ({
     <span className="sr-only">More</span>
   </span>
 );
-BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
 interface BreadcrumbCompleteItemProps {
   isActive: boolean;
@@ -203,7 +187,7 @@ export const Breadcrumbs = ({
               <DropdownMenu>
                 <DropdownMenuTrigger
                   aria-label="Toggle menu"
-                  className="focus-ring rounded"
+                  className="focus-ring rounded-sm"
                 >
                   <BreadcrumbEllipsis />
                 </DropdownMenuTrigger>

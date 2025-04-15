@@ -6,11 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { HTMLProps } from "react";
+import type { ComponentProps } from "react";
 import { useNotificationContext } from "@/molecules/Notifications/NotificationContext";
 import { cn } from "@/utils/className";
 
-interface NotificationTitleProps extends HTMLProps<HTMLHeadingElement> {}
+interface NotificationTitleProps extends ComponentProps<"div"> {}
 
 export const NotificationTitle = ({
   className,
@@ -22,7 +22,7 @@ export const NotificationTitle = ({
       className={cn(
         "flex-1 text-sm",
         notification.isRead ?
-          "font-medium text-foreground/70"
+          "text-foreground/70 font-medium"
         : "font-semibold",
         className,
       )}

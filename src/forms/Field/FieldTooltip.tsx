@@ -28,7 +28,7 @@ export const FieldTooltip = ({ label, id, ...props }: FieldTooltipProps) => (
         .filter(Boolean)
         .join(" ")}
     >
-      <Info className="size-4 text-muted-foreground" />
+      <Info className="text-muted-foreground size-4" />
     </button>
   </Tooltip>
 );

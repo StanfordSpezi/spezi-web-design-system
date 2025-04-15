@@ -6,11 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { HTMLProps } from "react";
+import type { ComponentProps } from "react";
 import { useNotificationContext } from "@/molecules/Notifications/NotificationContext";
 import { cn } from "@/utils/className";
 
-interface NotificationMessageProps extends HTMLProps<HTMLParagraphElement> {}
+interface NotificationMessageProps extends ComponentProps<"p"> {}
 
 export const NotificationMessage = ({
   className,

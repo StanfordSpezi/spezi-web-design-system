@@ -24,7 +24,7 @@ describe("Calendar", () => {
     );
 
     const goToPrevMonth = screen.getByRole("button", {
-      name: "Go to previous month",
+      name: "Go to the Previous Month",
     });
     expect(goToPrevMonth).toBeInTheDocument();
     const goTo24th = screen.getByRole("gridcell", {
@@ -50,6 +50,9 @@ describe("Calendar", () => {
 
     expect(onSelect).toHaveBeenCalledWith(
       new Date(date.getFullYear(), date.getMonth(), date.getDate(), 1, 1),
+      expect.anything(),
+      expect.anything(),
+      expect.anything(),
     );
   });
 });
