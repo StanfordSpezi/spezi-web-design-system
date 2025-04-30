@@ -299,7 +299,7 @@
     "tailwindcss": "^4",
     "typedoc": "^0.28",
     "typescript": "^5",
-    "vite": "^6.2.6",
+    "vite": "^6.3.4",
     "vite-plugin-dts": "^4.5.3",
     "vite-plugin-static-copy": "^2.3.1",
     "vitest": "^3.1.1"
