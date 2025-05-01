@@ -19,10 +19,10 @@ export default meta;
 export const Default = () => (
   <RadioGroup defaultValue="default" aria-label="View density">
     <SideLabel label="Default">
-      <Radio value="1" id="r1"></Radio>
+      <Radio value="1" id="r1" />
     </SideLabel>
     <SideLabel label="Second Choice">
-      <Radio value="2" id="r2"></Radio>
+      <Radio value="2" id="r2" />
     </SideLabel>
   </RadioGroup>
 );

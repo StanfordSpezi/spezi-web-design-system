@@ -6,7 +6,6 @@
 // SPDX-License-Identifier: MIT
 //
 
-import * as React from "react";
 import type { ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
