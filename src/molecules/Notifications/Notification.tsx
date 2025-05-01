@@ -24,7 +24,8 @@ export interface NotificationProps extends NotificationContextType {
    * */
   title?: ReactNode;
   /**
-   * Optional image URL. Fallback is rendered
+   * Optional image URL displayed on the left side of the notification.
+   * If not provided, a default icon is rendered instead.
    * */
   image?: string;
   /**
@@ -40,7 +41,7 @@ export interface NotificationProps extends NotificationContextType {
    * */
   actions?: ReactNode;
   /**
-   * Provide `link` parameter if whole Notification should lead somewhere
+   * If provided, the entire notification becomes a clickable link to this URL.
    * */
   link?: string;
 }
@@ -92,7 +93,8 @@ export const Notification = ({
     <>
       <NotificationImage src={image} />
       <NotificationContentContainer>
-        {!!(title ?? time) && (
+        {/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
+        {(title || time) && (
           <NotificationHeader>
             {title && <NotificationTitle>{title}</NotificationTitle>}
             {time && <NotificationTime time={time} />}
