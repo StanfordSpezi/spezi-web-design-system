@@ -272,7 +272,7 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
-    "@stanfordspezi/spezi-web-configurations": "^0.2.0",
+    "@stanfordspezi/spezi-web-configurations": "^0.4.0",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-interactions": "^8.6.12",
     "@storybook/addon-onboarding": "^8.6.12",
