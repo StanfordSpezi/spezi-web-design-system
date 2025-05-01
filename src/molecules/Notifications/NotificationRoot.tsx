@@ -7,26 +7,24 @@
 //
 
 import { Slot } from "radix-ui";
-import { type ReactNode } from "react";
+import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 import {
   type Notification as NotificationType,
   NotificationContext,
 } from "./NotificationContext";
 
-export interface NotificationProps {
+export interface NotificationRootProps extends ComponentProps<"article"> {
   notification: NotificationType;
-  children: ReactNode;
-  className?: string;
   asChild?: boolean;
 }
 
-export const Notification = ({
+export const NotificationRoot = ({
   notification,
-  children,
   className,
   asChild,
-}: NotificationProps) => {
+  ...props
+}: NotificationRootProps) => {
   const Component = asChild ? Slot.Root : "article";
   return (
     <NotificationContext.Provider value={notification}>
@@ -35,9 +33,8 @@ export const Notification = ({
           "flex gap-x-4 border-b border-b-neutral-200 px-3 py-4 last:border-b-0",
           className,
         )}
-      >
-        {children}
-      </Component>
+        {...props}
+      />
     </NotificationContext.Provider>
   );
 };
