@@ -10,7 +10,7 @@ import { Slot } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 import {
-  type Notification as NotificationType,
+  type NotificationContextType as NotificationType,
   NotificationContext,
 } from "./NotificationContext";
 
