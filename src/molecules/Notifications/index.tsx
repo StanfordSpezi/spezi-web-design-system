@@ -15,3 +15,4 @@ export * from "./NotificationHeader";
 export * from "./NotificationMessage";
 export * from "./NotificationImage";
 export * from "./NotificationActions";
+export * from "./Notification";

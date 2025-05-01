@@ -18,7 +18,7 @@ import { NotificationRoot } from "./NotificationRoot";
 import { NotificationTime } from "./NotificationTime";
 import { NotificationTitle } from "./NotificationTitle";
 
-interface NotificationProps extends NotificationContextType {
+export interface NotificationProps extends NotificationContextType {
   /**
    * Title text of notification.
    * */
@@ -61,15 +61,22 @@ interface NotificationProps extends NotificationContextType {
  * />
  *
  * @example
- * // Complete notification with all features
+ * // Complete link notification
  * <Notification
  *   title="Appointment reminder"
  *   image="/profile-image.jpg"
  *   message="Your appointment with Dr. Smith is tomorrow at 2:00 PM"
  *   time={new Date("2024-07-15T14:00:00")}
- *   actions={<button>Confirm</button>}
  *   link="/appointments/123"
  *   isRead={false}
+ * />
+ *
+ * @example
+ * // Notification with additional actions
+ * <Notification
+ *   title="New message"
+ *   message="You have a new message from Dr. Smith"
+ *   actions={<Button>Dismiss message</Button>}
  * />
  */
 export const Notification = ({
