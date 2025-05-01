@@ -8,11 +8,13 @@
 
 import { createContext, useContext } from "react";
 
-export interface Notification {
+export interface NotificationContextType {
+  /** Indicates whether a notification has been read, affects styling */
   isRead: boolean;
 }
 
-export const NotificationContext = createContext<Notification | null>(null);
+export const NotificationContext =
+  createContext<NotificationContextType | null>(null);
 
 export const useNotificationContext = () => {
   const notification = useContext(NotificationContext);

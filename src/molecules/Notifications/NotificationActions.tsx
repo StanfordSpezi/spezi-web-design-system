@@ -19,7 +19,7 @@ export const NotificationActions = ({
   <div
     className={cn("flex gap-2 self-start", className)}
     onClick={(event) => {
-      // Stops capturing container click if whole notification is wrapped with Link element
+      // Stops capturing container click if the whole notification is wrapped with a Link element
       event.stopPropagation();
       event.preventDefault();
       onClick?.(event);
