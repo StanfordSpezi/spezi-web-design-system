@@ -169,6 +169,10 @@
       "types": "./dist/molecules/ConfirmDeleteDialog.d.ts",
       "default": "./dist/molecules/ConfirmDeleteDialog.js"
     },
+    "./molecules/ConsentDialog": {
+      "types": "./dist/molecules/ConsentDialog.d.ts",
+      "default": "./dist/molecules/ConsentDialog.js"
+    },
     "./molecules/DashboardLayout": {
       "types": "./dist/molecules/DashboardLayout.d.ts",
       "default": "./dist/molecules/DashboardLayout.js"
