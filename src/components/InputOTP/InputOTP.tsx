@@ -12,6 +12,20 @@ import { type ComponentProps, useContext } from "react";
 import { cn } from "@/utils/className";
 import { times } from "@/utils/misc";
 
+/**
+ * Root component for the OTP input.
+ *
+ * Provides the main container and context for the OTP input fields.
+ * Controls behavior like focusing, keyboard navigation, and value management.
+ *
+ * @example
+ * <InputOTPRoot maxLength={2}>
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={0} />
+ *     <InputOTPSlot index={1} />
+ *   </InputOTPGroup>
+ * </InputOTPRoot>
+ */
 export const InputOTPRoot = ({
   className,
   containerClassName,
@@ -27,6 +41,27 @@ export const InputOTPRoot = ({
   />
 );
 
+/**
+ * Group component for OTP input slots.
+ *
+ * Used to organize OTP input slots into logical groups.
+ * Useful for formatting OTP codes with visual separators between groups.
+ *
+ * @example
+ * <InputOTPRoot maxLength={6}>
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={0} />
+ *     <InputOTPSlot index={1} />
+ *     <InputOTPSlot index={2} />
+ *   </InputOTPGroup>
+ *   <InputOTPSeparator />
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={3} />
+ *     <InputOTPSlot index={4} />
+ *     <InputOTPSlot index={5} />
+ *   </InputOTPGroup>
+ * </InputOTPRoot>
+ */
 export const InputOTPGroup = ({
   className,
   ...props
@@ -34,11 +69,23 @@ export const InputOTPGroup = ({
   <div className={cn("flex items-center", className)} {...props} />
 );
 
+type InputOTPSlotProps = ComponentProps<"div"> & { index: number };
+
+/**
+ * Individual input slot for a single character in the OTP input.
+ *
+ * Displays the entered character and visual feedback when active.
+ * Shows a blinking caret when the slot is focused but empty.
+ * Automatically applies border radius to the first and last slots in a group.
+ *
+ * @example
+ * <InputOTPSlot index={0} />
+ */
 export const InputOTPSlot = ({
   index,
   className,
   ...props
-}: ComponentProps<"div"> & { index: number }) => {
+}: InputOTPSlotProps) => {
   const inputOTPContext = useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
 
@@ -61,21 +108,59 @@ export const InputOTPSlot = ({
   );
 };
 
+/**
+ * Visual separator component for OTP input groups.
+ *
+ * Used to visually separate groups of OTP input slots.
+ * Includes proper accessibility attributes for screen readers.
+ *
+ * @example
+ * <InputOTPRoot>
+ *   <InputOTPGroup>
+ *     ...
+ *   </InputOTPGroup>
+ *   <InputOTPSeparator />
+ *   <InputOTPGroup>
+ *     ...
+ *   </InputOTPGroup>
+ * </InputOTPRoot>
+ */
 export const InputOTPSeparator = ({ ...props }: ComponentProps<"div">) => (
   <div role="separator" {...props}>
     <Minus className="text-muted-foreground w-4" />
   </div>
 );
 
+type InputOTPProps = Omit<ComponentProps<typeof OTPInput>, "render">;
+
 /**
- * Accessible one time password input.
- * InputOTP renders maxLength of slots for your secret - see Components/InputOTP#Default story
- * If you need to customize rendering - see Components/InputOTP#Custom story
- * */
-export const InputOTP = ({
-  maxLength,
-  ...props
-}: Omit<ComponentProps<typeof OTPInput>, "render">) => (
+ * A component for handling one-time password (OTP) input.
+ * Built on top of [input-otp](https://github.com/guilhermerodz/input-otp#otpinput).
+ *
+ * @example
+ * // Basic usage
+ * <InputOTP
+ *   maxLength={6}
+ *   onComplete={(code) => verifyCode(code)}
+ * />
+ *
+ * @example
+ * // With separator
+ * <InputOTPRoot maxLength={6}>
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={0} />
+ *     <InputOTPSlot index={1} />
+ *     <InputOTPSlot index={2} />
+ *   </InputOTPGroup>
+ *   <InputOTPSeparator />
+ *   <InputOTPGroup>
+ *     <InputOTPSlot index={3} />
+ *     <InputOTPSlot index={4} />
+ *     <InputOTPSlot index={5} />
+ *   </InputOTPGroup>
+ * </InputOTPRoot>
+ */
+export const InputOTP = ({ maxLength, ...props }: InputOTPProps) => (
   <InputOTPRoot maxLength={maxLength} {...props}>
     <InputOTPGroup>
       {times(maxLength, (index) => (

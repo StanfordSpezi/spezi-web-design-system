@@ -11,6 +11,14 @@ import { cn } from "@/utils/className";
 
 interface NotificationContentContainerProps extends ComponentProps<"div"> {}
 
+/**
+ * Container for Notification's main content.
+ *
+ * @example
+ * <NotificationContentContainer>
+ *   <NotificationMessage>You received a new message!</NotificationMessage>
+ * </NotificationContentContainer>
+ */
 export const NotificationContentContainer = ({
   className,
   ...props

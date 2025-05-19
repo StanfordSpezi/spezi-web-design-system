@@ -47,8 +47,8 @@ export const Round: Story = {
 };
 
 /**
- * Renders button styles over link element
- * */
+ * Renders button styles over link element.
+ */
 export const AsChild: Story = {
   args: { asChild: true, children: <a href="#">Link</a> },
 };

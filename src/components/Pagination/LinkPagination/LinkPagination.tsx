@@ -25,17 +25,24 @@ import {
 } from "../Pagination";
 
 export interface LinkPaginationProps extends UsePaginationProps {
+  /**
+   * Maximum number of available pages.
+   */
   total: number;
   /**
-   * Currently selected page, 1-based
-   * */
+   * Currently selected page, 1-based.
+   */
   page: number;
+  /**
+   * Translates page number to URL.
+   * @example (page) => `/users?page=${page}`
+   */
   getHref: (page: number) => string;
 }
 
 /**
- * Complete link-based pagination
- * */
+ * Complete link-based pagination.
+ */
 export const LinkPagination = ({
   total,
   page,

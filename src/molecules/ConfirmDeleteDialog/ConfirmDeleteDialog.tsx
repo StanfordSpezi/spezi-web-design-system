@@ -23,19 +23,33 @@ import {
 
 interface ConfirmDeleteDialogProps extends ComponentProps<typeof Dialog> {
   /**
-   * Name of distinctive item identifier
-   * It allows user to see what they're deleting right before confirming
+   * Name of distinctive item identifier.
+   * It allows the user to see what they're deleting right before confirming.
    * @example "example@example.com"
-   * */
+   */
   itemName?: ReactNode;
   /**
-   * Name of deleted entity model name
+   * Name of deleted entity model name.
    * @example "user"
-   * */
+   */
   entityName?: ReactNode;
   onDelete: MouseEventHandler;
 }
 
+/**
+ * A dialog component for confirming destructive actions like deletion.
+ * Built on top of the Dialog component, it provides a consistent interface
+ * for confirming irreversible actions.
+ *
+ * @example
+ * <ConfirmDeleteDialog
+ *   entityName="user"
+ *   itemName="john@example.com"
+ *   onDelete={handleDelete}
+ *   open={isOpen}
+ *   onOpenChange={setIsOpen}
+ * />
+ */
 export const ConfirmDeleteDialog = ({
   entityName,
   itemName,

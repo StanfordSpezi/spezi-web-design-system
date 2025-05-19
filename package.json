@@ -292,6 +292,7 @@
     "@vitest/coverage-v8": "^3.1.2",
     "autoprefixer": "^10",
     "eslint": "^9",
+    "eslint-plugin-jsdoc": "^50.6.17",
     "jsdom": "^26.1.0",
     "postcss": "^8",
     "prettier": "^3",

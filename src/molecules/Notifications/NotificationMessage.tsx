@@ -12,6 +12,9 @@ import { cn } from "@/utils/className";
 
 interface NotificationMessageProps extends ComponentProps<"p"> {}
 
+/**
+ * Main content of the notification.
+ */
 export const NotificationMessage = ({
   className,
   ...props

@@ -10,21 +10,31 @@ import { type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/utils/className";
 
 type SideLabelProps = Omit<ComponentProps<"label">, "label"> & {
+  /**
+   * Element that describes form input
+   */
   label?: ReactNode;
   /**
-   * Show label on right side
-   * */
+   * Show label on right side.
+   */
   reverse?: boolean;
   /**
-   * Center content vertically
+   * Center content vertically.
+   * Useful to disable centering if the label is complex and spans multiple lines.
    * @default true
-   * */
+   */
   center?: boolean;
 };
 
 /**
- * Component to use together with radio, checkbox or switch controls
- * */
+ * Component for creating labeled form controls like radio, checkbox or switch.
+ *
+ * @example
+ * // Basic usage with Checkbox
+ * <SideLabel label="Enable notifications">
+ *   <Checkbox />
+ * </SideLabel>
+ */
 export const SideLabel = ({
   children,
   className,

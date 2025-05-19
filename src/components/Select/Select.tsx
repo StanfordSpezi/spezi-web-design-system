@@ -11,12 +11,44 @@ import { Select as SelectPrimitive } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * Root component for the Select.
+ * Controls the open state and value of the select.
+ *
+ * Built on top of [Radix UI Select](https://www.radix-ui.com/primitives/docs/components/select).
+ */
 export const Select = SelectPrimitive.Root;
 
+/**
+ * Groups related select options together.
+ * Provides visual and semantic grouping of options.
+ *
+ * @example
+ * <SelectGroup>
+ *   <SelectLabel>Fruits</SelectLabel>
+ *   <SelectItem value="apple">Apple</SelectItem>
+ *   <SelectItem value="banana">Banana</SelectItem>
+ * </SelectGroup>
+ */
 export const SelectGroup = SelectPrimitive.Group;
 
+/**
+ * Displays the currently selected value or placeholder.
+ * Used inside SelectTrigger to show the current selection.
+ *
+ * @example
+ * <SelectValue placeholder="Select a fruit" />
+ */
 export const SelectValue = SelectPrimitive.Value;
 
+/**
+ * Input-styled component that opens the select when clicked.
+ *
+ * @example
+ * <SelectTrigger>
+ *   <SelectValue placeholder="Select an option" />
+ * </SelectTrigger>
+ */
 export const SelectTrigger = ({
   className,
   children,
@@ -36,6 +68,10 @@ export const SelectTrigger = ({
   </SelectPrimitive.Trigger>
 );
 
+/**
+ * Scroll up button for the select content.
+ * Appears when there are more items to scroll to.
+ */
 export const SelectScrollUpButton = ({
   className,
   ...props
@@ -51,6 +87,10 @@ export const SelectScrollUpButton = ({
   </SelectPrimitive.ScrollUpButton>
 );
 
+/**
+ * Scroll down button for the select content.
+ * Appears when there are more items to scroll to.
+ */
 export const SelectScrollDownButton = ({
   className,
   ...props
@@ -66,6 +106,18 @@ export const SelectScrollDownButton = ({
   </SelectPrimitive.ScrollDownButton>
 );
 
+/**
+ * Main content component for the Select.
+ * Contains the list of selectable options.
+ *
+ * Handles portal, scroll buttons, styling and animations.
+ *
+ * @example
+ * <SelectContent>
+ *   <SelectItem value="option1">Option 1</SelectItem>
+ *   <SelectItem value="option2">Option 2</SelectItem>
+ * </SelectContent>
+ */
 export const SelectContent = ({
   className,
   children,
@@ -98,6 +150,15 @@ export const SelectContent = ({
   </SelectPrimitive.Portal>
 );
 
+/**
+ * Label component for the select.
+ * Provides a label for a group of options.
+ *
+ * @example
+ * <SelectLabel>Category</SelectLabel>
+ * <SelectItem value="1">Option 1</SelectItem>
+ * <SelectItem value="2">Option 2</SelectItem>
+ */
 export const SelectLabel = ({
   className,
   ...props
@@ -108,12 +169,32 @@ export const SelectLabel = ({
   />
 );
 
+type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item> & {
+  /**
+   * Provide itemText only if `children` is a complex ReactNode element.
+   */
+  itemText?: string;
+};
+
+/**
+ * Item component for select options.
+ * Represents a single selectable option.
+ *
+ * @example
+ * <SelectItem value="1">Option 1</SelectItem>
+ *
+ * @example
+ * // With custom text, for complex ReactNode labels
+ * <SelectItem value="1" itemText="Custom text">
+ *   <div>Option <b>1</b></div>
+ * </SelectItem>
+ */
 export const SelectItem = ({
   className,
   children,
   itemText,
   ...props
-}: ComponentProps<typeof SelectPrimitive.Item> & { itemText?: string }) => (
+}: SelectItemProps) => (
   <SelectPrimitive.Item
     className={cn(
       "focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-default items-center rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50",
@@ -139,6 +220,15 @@ export const SelectItem = ({
   </SelectPrimitive.Item>
 );
 
+/**
+ * Separator component for the select.
+ * Creates a visual divider between groups of items.
+ *
+ * @example
+ * <SelectItem value="1">Option 1</SelectItem>
+ * <SelectSeparator />
+ * <SelectItem value="2">Option 2</SelectItem>
+ */
 export const SelectSeparator = ({
   className,
   ...props

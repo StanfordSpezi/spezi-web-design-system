@@ -18,7 +18,15 @@ import {
 import { buttonVariance } from "@/components/Button";
 import { cn } from "@/utils/className";
 
-const Footer = ({
+/**
+ * Internal time picker component for the Calendar.
+ *
+ * Allows selecting hours and minutes to complement the date selection.
+ * Used when the Calendar component has showTimePicker enabled.
+ *
+ * @internal
+ */
+const TimePicker = ({
   selected,
   onSelect,
 }: Pick<PropsSingle | PropsSingleRequired, "selected" | "onSelect">) => {
@@ -47,9 +55,37 @@ const Footer = ({
 };
 
 export type CalendarProps = DayPickerProps & {
+  /**
+   * Whether to show the time picker below the calendar.
+   * Only works in single date selection mode.
+   * When enabled, selected time will be preserved when changing dates.
+   *
+   * @default false
+   */
   showTimePicker?: boolean;
 };
 
+/**
+ * A calendar component for date selection with an optional time picker.
+ * Built on top of [react-day-picker](https://react-day-picker.js.org/).
+ *
+ * @example
+ * // Basic usage with single date selection
+ * <Calendar
+ *   mode="single"
+ *   selected={date}
+ *   onSelect={setDate}
+ * />
+ *
+ * @example
+ * // With time picker
+ * <Calendar
+ *   mode="single"
+ *   selected={date}
+ *   onSelect={setDate}
+ *   showTimePicker
+ * />
+ */
 export const Calendar = (props: CalendarProps) => {
   const {
     className,
@@ -137,7 +173,7 @@ export const Calendar = (props: CalendarProps) => {
         {...restProps}
       />
       {showTimePicker && props.mode === "single" && (
-        <Footer onSelect={props.onSelect} selected={props.selected} />
+        <TimePicker onSelect={props.onSelect} selected={props.selected} />
       )}
     </>
   );

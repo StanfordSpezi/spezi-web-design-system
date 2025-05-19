@@ -6,6 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * Downloads provided file.
+ */
 export const downloadFile = (
   src: File | Blob | MediaSource,
   fileName: string,
@@ -20,6 +23,9 @@ export const downloadFile = (
   URL.revokeObjectURL(url);
 };
 
+/**
+ * Converts base64 string to Blob.
+ */
 export const base64ToBlob = (
   base64Data: string,
   contentType = "",

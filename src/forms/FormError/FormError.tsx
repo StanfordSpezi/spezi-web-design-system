@@ -21,10 +21,10 @@ export interface FormErrorProps
 }
 
 /**
- * Exposes form error if it exists
+ * Exposes form error if it exists.
  *
- * Use it for exposing form-wide errors, like server errors
- * */
+ * Use it for exposing form-wide errors, like server errors.
+ */
 export const FormError = ({
   formError,
   className,

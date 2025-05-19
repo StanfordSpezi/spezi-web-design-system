@@ -12,9 +12,9 @@ import { cn } from "@/utils/className";
 import { Button, type ButtonProps } from "../Button";
 
 /**
- * Primitives to build your Pagination
- * If you're looking for batteries-included components, see ButtonPagination
- * */
+ * Primitives to build your Pagination.
+ * If you're looking for batteries-included components, see `ButtonPagination` and `LinkPagination`.
+ */
 export const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
   <nav
     role="navigation"
@@ -24,6 +24,13 @@ export const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
   />
 );
 
+/**
+ * Container for pagination items.
+ *
+ * Provides proper layout and spacing for pagination controls.
+ * Renders as a semantic unordered list for accessibility.
+ * Usually contains `PaginationItemContainer` components.
+ */
 export const PaginationContent = ({
   className,
   ...props
@@ -31,15 +38,42 @@ export const PaginationContent = ({
   <ul className={cn("flex items-center gap-1", className)} {...props} />
 );
 
+/**
+ * Container for individual pagination items.
+ *
+ * Renders as a semantic list item for accessibility.
+ * Should wrap each individual pagination control.
+ *
+ * @example
+ * <PaginationItemContainer>
+ *   <PaginationItem>1</PaginationItem>
+ * </PaginationItemContainer>
+ */
 export const PaginationItemContainer = ({
   className,
   ...props
 }: ComponentProps<"li">) => <li className={cn("", className)} {...props} />;
 
 interface PaginationLinkProps extends ButtonProps {
+  /**
+   * Indicates the pagination control is currently active page.
+   */
   isActive?: boolean;
 }
 
+/**
+ * Displays a single pagination control such as a page number or navigation action.
+ * Handles active state and proper accessibility attributes.
+ * Extends the Button component with pagination-specific behavior.
+ *
+ * @example
+ * <PaginationItem isActive>1</PaginationItem>
+ *
+ * @example
+ * <PaginationItem aria-label="Go to previous page">
+ *    <PreviousIcon />
+ * </PaginationItem>
+ */
 export const PaginationItem = ({
   isActive,
   size = "sm",
@@ -53,8 +87,23 @@ export const PaginationItem = ({
   />
 );
 
+/**
+ * Icon component for the previous page navigation button. Displays a left-pointing chevron icon.
+ */
 export const PaginationPreviousIcon = () => <ChevronLeft className="size-4" />;
 
+/**
+ * Navigation component for moving to the previous page.
+ *
+ * Displays a button with a left chevron icon by default.
+ *
+ * @example
+ * <PaginationPrevious onClick={() => goToPreviousPage()} />
+ *
+ * @example
+ * // custom content
+ * <PaginationPrevious>Previous</PaginationPrevious>
+ */
 export const PaginationPrevious = ({
   children,
   ...props
@@ -64,8 +113,23 @@ export const PaginationPrevious = ({
   </PaginationItem>
 );
 
+/**
+ * Icon component for the next page navigation button. Displays a right-pointing chevron icon.
+ */
 export const PaginationNextIcon = () => <ChevronRight className="size-4" />;
 
+/**
+ * Navigation component for moving to the next page.
+ *
+ * Displays a button with a right chevron icon by default.
+ *
+ * @example
+ * <PaginationNext onClick={() => goToNextPage()} />
+ *
+ * @example
+ * // custom content
+ * <PaginationNext>Next</PaginationNext>
+ */
 export const PaginationNext = ({
   children,
   ...props
@@ -75,6 +139,18 @@ export const PaginationNext = ({
   </PaginationItem>
 );
 
+/**
+ * Ellipsis component for pagination.
+ *
+ * Indicates that pages have been omitted in the pagination sequence.
+ * Hidden from screen readers while providing an appropriate screen reader text.
+ * Commonly used when there are too many pages to display all page numbers.
+ *
+ * @example
+ * <PaginationItemContainer>
+ *   <PaginationEllipsis />
+ * </PaginationItemContainer>
+ */
 export const PaginationEllipsis = ({
   className,
   ...props

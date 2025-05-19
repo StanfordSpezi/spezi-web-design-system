@@ -12,6 +12,13 @@ import { cn } from "@/utils/className";
 
 interface NotificationTitleProps extends ComponentProps<"div"> {}
 
+/**
+ * Title component for notification.
+ * Adjusts its styling based on notification read status from context.
+ *
+ * @example
+ * <NotificationTitle>New message received</NotificationTitle>
+ */
 export const NotificationTitle = ({
   className,
   ...props

@@ -25,6 +25,9 @@ export type FieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = Omit<ControllerProps<TFieldValues, TName>, "render"> & {
+  /**
+   * Render function that receives field state and props and renders form input element.
+   */
   render: ({
     field,
     fieldState,
@@ -38,19 +41,48 @@ export type FieldProps<
     fieldState: ControllerFieldState;
     formState: UseFormStateReturn<TFieldValues>;
   }) => ReactElement;
+  /**
+   * Label text for the field
+   */
   label?: ReactNode;
   className?: string;
+  /**
+   * Whether to check for empty errors.
+   * For more details, refer to the `checkEmpty` property of the [Error](src/components/Error/Error.tsx) component.
+   */
   checkEmptyError?: boolean;
+  /**
+   * Custom error message
+   */
   error?: ErrorOption;
   /**
-   * Adds tooltip on top of field, helpful for explaining details about field
-   * */
+   * Tooltip content on top of the field, helpful for explaining details.
+   */
   tooltip?: ReactNode;
 };
 
 /**
- * Registers form field with correct error and label handler built-in
- * */
+ * A form field component that integrates with [React Hook Form](https://react-hook-form.com/).
+ * Provides consistent field rendering with label, error handling, and accessibility features.
+ *
+ * Features:
+ * - Automatic error handling
+ * - Label integration
+ * - Tooltip support
+ * - Accessibility attributes
+ * - Empty state checking
+ *
+ * @example
+ * const form = useForm({ formSchema });
+ * <Field
+ *   control={form.control}
+ *   name="email"
+ *   label="Email"
+ *   render={({ field }) => (
+ *     <Input {...field} type="email" />
+ *   )}
+ * />
+ */
 export const Field = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,

@@ -15,6 +15,15 @@ interface NotificationTimeProps extends ComponentProps<"time"> {
   time: Date;
 }
 
+/**
+ * Component responsible for rendering time in a notification
+ * with proper formatting and styling based on read status.
+ *
+ * Time is displayed in the user's locale format, including both date and time.
+ *
+ * @example
+ * <NotificationTime time={new Date("2024-01-01T12:00:00")} />
+ */
 export const NotificationTime = ({ time, ...props }: NotificationTimeProps) => {
   const notification = useNotificationContext();
   return (

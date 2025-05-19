@@ -9,13 +9,19 @@
 import { createContext, useContext } from "react";
 
 export interface NotificationContextType {
-  /** Indicates whether a notification has been read, affects styling */
+  /**
+   * Indicates whether a notification has been read, affects styling.
+   */
   isRead: boolean;
 }
 
 export const NotificationContext =
   createContext<NotificationContextType | null>(null);
 
+/**
+ * Returns NotificationContextType from context and validates its presence.
+ * @throws {Error} When used outside NotificationRoot..
+ */
 export const useNotificationContext = () => {
   const notification = useContext(NotificationContext);
   if (!notification) {

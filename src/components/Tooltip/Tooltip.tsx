@@ -16,6 +16,15 @@ export const TooltipRoot = TooltipPrimitive.Root;
 
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 
+/**
+ * Main content container for Tooltip.
+ * Contains Tooltip's inner content.
+ *
+ * @example
+ * <TooltipContent>
+ *   Tooltip text
+ * </TooltipContent>
+ */
 export const TooltipContent = ({
   className,
   sideOffset = 4,
@@ -37,10 +46,27 @@ export interface TooltipProps
       ComponentProps<typeof TooltipPrimitive.Content>,
       "sideOffset" | "className" | "side"
     > {
+  /**
+   * Slot for the main content that should trigger the Tooltip.
+   */
   children?: ReactNode;
+  /**
+   * Tooltip's content.
+   */
   tooltip?: ReactNode;
 }
 
+/**
+ * A component that displays additional information when hovering over an element.
+ * Built on top of [radix-ui Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip).
+ *
+ * For interactive tooltips, see [Popover](src/components/Popover/Popover.tsx)
+ *
+ * @example
+ * <Tooltip tooltip="Click to save">
+ *   <Button>Save</Button>
+ * </Tooltip>
+ */
 export const Tooltip = ({
   children,
   tooltip,

@@ -9,6 +9,9 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * Table primitives for creating Table UI. For ready table component, use DataTable.
+ */
 export const Table = ({ className, ...props }: ComponentProps<"table">) => (
   <div className="relative w-full overflow-auto">
     <table
@@ -18,6 +21,9 @@ export const Table = ({ className, ...props }: ComponentProps<"table">) => (
   </div>
 );
 
+/**
+ * Styled `thead` element.
+ */
 export const TableHeader = ({
   className,
   ...props
@@ -25,10 +31,16 @@ export const TableHeader = ({
   <thead className={cn("[&_tr]:border-b", className)} {...props} />
 );
 
+/**
+ * Styled `tbody` element.
+ */
 export const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => (
   <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
 );
 
+/**
+ * Styled `tfoot` element.
+ */
 export const TableFooter = ({
   className,
   ...props
@@ -43,9 +55,17 @@ export const TableFooter = ({
 );
 
 export interface TableRowProps extends ComponentProps<"tr"> {
+  /**
+   * Adds hover styles.
+   *
+   * @default true
+   */
   isHoverable?: boolean;
 }
 
+/**
+ * Styled `tr` element. Adds proper focus and tab index when `onClick` is provided.
+ */
 export const TableRow = ({
   className,
   onClick,
@@ -66,6 +86,9 @@ export const TableRow = ({
   />
 );
 
+/**
+ * Styled `th` element.
+ */
 export const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
   <th
     className={cn(
@@ -76,6 +99,9 @@ export const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
   />
 );
 
+/**
+ * Styled `td` element.
+ */
 export const TableCell = ({ className, ...props }: ComponentProps<"td">) => (
   <td
     className={cn(

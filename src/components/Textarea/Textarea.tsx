@@ -11,6 +11,9 @@ import { cn } from "@/utils/className";
 
 export interface TextareaProps extends ComponentProps<"textarea"> {}
 
+/**
+ * Styled HTML textarea element.
+ */
 export const Textarea = ({ className, ...props }: TextareaProps) => (
   <textarea
     className={cn(

@@ -9,6 +9,7 @@
 import { Slot } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
+import { type AsChildProp } from "@/utils/misc";
 import {
   type NotificationContextType as NotificationType,
   NotificationContext,
@@ -16,9 +17,22 @@ import {
 
 export interface NotificationRootProps extends ComponentProps<"article"> {
   notification: NotificationType;
-  asChild?: boolean;
+  asChild?: AsChildProp;
 }
 
+/**
+ * Root component for notifications that provides context and styling.
+ *
+ * Renders a notification article element with consistent styling and layout.
+ * Can render as a custom component when asChild is true.
+ * Provides notification context to child components.
+ *
+ * @example
+ * // Basic notification root
+ * <NotificationRoot notification={{ isRead: false }}>
+ *   <NotificationContent />
+ * </NotificationRoot>
+ */
 export const NotificationRoot = ({
   notification,
   className,

@@ -13,30 +13,71 @@ import { cn } from "@/utils/className";
 export interface EmptyStateProps
   extends Omit<ComponentProps<"div">, "children" | "action"> {
   /**
-   * Provide `children` only if you wish to customize empty message.
-   * If children is not provided, default message is constructed.
-   * */
+   * Custom content to display in the empty state.
+   *
+   * @remarks
+   * Only provide this prop when you need to customize the empty state message.
+   * When not provided, a default message will be automatically constructed
+   * based on the entityName prop.
+   */
   children?: ReactNode;
   /**
-   * Name of the presented missing data entity
-   * Provide pluralized and lowercased
+   * Name of the presented missing data entity.
+   * Provide pluralized and lowercased.
    * @example "users"
-   * */
+   */
   entityName?: ReactNode;
   /**
-   * Provide text filter that data is filtered by
-   * */
+   * Provide a text filter value that data is filtered by.
+   */
   textFilter?: string;
   /**
-   * Provide whether data is filtered by other filters, excluding global text filter
-   * */
+   * Provide whether data is filtered by other filters, excluding text filter.
+   */
   hasFilters?: boolean;
   /**
-   * Slot to render action buttons
-   * */
+   * Slot to render action buttons.
+   * If an empty state can be fixed by a user's action, it's worth making it clear and accessible.
+   */
   actions?: ReactNode;
 }
 
+/**
+ * A component for displaying empty states in lists, tables, or other data displays.
+ *
+ *
+ * Shows different states based on whether the user already filtered the data.
+ * This reduces the chance of misinterpretations and reduces user's anxiety.
+ *
+ * Automatically constructs messages based on `entityName`.
+ *
+ * @example
+ * // Basic usage
+ * <EmptyState entityName="users" />
+ *
+ * @example
+ * // With text filter
+ * <EmptyState
+ *   entityName="users"
+ *   textFilter="John"
+ * />
+ *
+ * @example
+ * // With other filters
+ * <EmptyState
+ *   entityName="users"
+ *   hasFilters
+ * />
+ *
+ * @example
+ * // With custom content and actions
+ * <EmptyState
+ *   entityName="users"
+ *   actions={<Button>Add User</Button>}
+ * >
+ *   <p>No users found in the system.</p>
+ * </EmptyState>
+ */
 export const EmptyState = ({
   entityName,
   textFilter,

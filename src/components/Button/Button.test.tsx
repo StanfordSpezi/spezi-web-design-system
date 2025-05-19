@@ -38,7 +38,8 @@ describe("Button", () => {
   });
 
   it("supports isPending", () => {
-    const queryButtonPending = () => screen.queryByTestId("ButtonPending");
+    const queryButtonPending = () =>
+      screen.queryByTestId("buttonPendingLoader");
     const { rerender } = render(<Button isPending={false}>Lorem</Button>);
 
     expect(queryButtonPending()).not.toBeInTheDocument();

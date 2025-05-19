@@ -10,15 +10,24 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
 export interface RangeCounterProps extends Omit<ComponentProps<"p">, "start"> {
+  /**
+   * Count of all items.
+   */
   all: number;
+  /**
+   * Number of the last item in the current range.
+   */
   end: number;
+  /**
+   * Number of the first item in the current range.
+   */
   start: number;
 }
 
 /**
- * Shows range of displayed items
- * Useful for showing pagination or filter results
- * */
+ * Shows a range of displayed items.
+ * Useful for showing pagination or filter results.
+ */
 export const RangeCounter = ({
   all,
   end,

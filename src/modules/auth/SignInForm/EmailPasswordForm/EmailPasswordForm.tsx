@@ -10,7 +10,7 @@ import { FirebaseError } from "@firebase/app";
 import { type Auth, type signInWithEmailAndPassword } from "firebase/auth";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
-import { Button } from "@/components/Button";
+import { Button, type ButtonProps } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Field, useForm, FormError } from "@/forms";
 
@@ -20,11 +20,23 @@ const formSchema = z.object({
 });
 
 interface EmailPasswordFormProps {
+  /**
+   * Firebase's Auth object.
+   */
   auth: Auth;
+  /**
+   * Firebase's signInWithEmailAndPassword function.
+   */
   signInWithEmailAndPassword: typeof signInWithEmailAndPassword;
-  buttonSize?: "default" | "lg";
+  /**
+   * Size of the submit button.
+   */
+  buttonSize?: ButtonProps["size"];
 }
 
+/**
+ *
+ */
 export const EmailPasswordForm = ({
   auth,
   signInWithEmailAndPassword,

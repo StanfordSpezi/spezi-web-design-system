@@ -16,6 +16,10 @@ interface ToggleSortButtonProps<Data> {
   header: Header<Data, unknown>;
 }
 
+/**
+ * Button displayed over sortable column header name.
+ * Shows the current sorting direction and allows toggling it.
+ */
 export const ToggleSortButton = <Data,>({
   children,
   header,

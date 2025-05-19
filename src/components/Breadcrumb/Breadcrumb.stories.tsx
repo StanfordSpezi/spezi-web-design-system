@@ -10,7 +10,7 @@ import { type Meta, type StoryObj } from "@storybook/react";
 import { times } from "@/utils/misc";
 import {
   Breadcrumbs as BreadcrumbsComponent,
-  Breadcrumb,
+  BreadcrumbsRoot,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -44,7 +44,7 @@ export const Breadcrumbs: Story = {
 };
 
 export const Primivites = () => (
-  <Breadcrumb>
+  <BreadcrumbsRoot>
     <BreadcrumbList>
       <BreadcrumbItem>
         <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -58,5 +58,5 @@ export const Primivites = () => (
         <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
-  </Breadcrumb>
+  </BreadcrumbsRoot>
 );

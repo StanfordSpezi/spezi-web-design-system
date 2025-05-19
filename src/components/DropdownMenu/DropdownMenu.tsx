@@ -11,18 +11,54 @@ import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * Root container for DropdownMenu components.
+ * Controls the open state of the dropdown menu.
+ *
+ * Built on top of [Radix UI Dropdown](https://www.radix-ui.com/primitives/docs/components/dropdown-menu).
+ */
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 
+/**
+ * Element that toggles the dropdown menu.
+ * Must be wrapped in the DropdownMenu component.
+ *
+ * @example
+ * // renders Button as trigger
+ * <DropdownMenuTrigger asChild>
+ *   <Button variant="outline">Trigger</Button>
+ * </DropdownMenuTrigger>
+ */
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
+/**
+ * Groups multiple menu items together.
+ * Useful for organizing related menu options.
+ */
 export const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
+/**
+ * Portal for rendering dropdown content outside its parent hierarchy.
+ * Prevents layout issues in complex UIs.
+ */
 export const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 
+/**
+ * Creates a submenu within a dropdown menu.
+ * Useful for nested navigation structures.
+ */
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
+/**
+ * Container for radio items in a dropdown menu.
+ * Allows for mutually exclusive selection of options.
+ */
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
+/**
+ * Trigger element for a submenu within a dropdown.
+ * Displays a chevron icon to indicate nested content.
+ */
 export const DropdownMenuSubTrigger = ({
   className,
   inset,
@@ -44,6 +80,9 @@ export const DropdownMenuSubTrigger = ({
   </DropdownMenuPrimitive.SubTrigger>
 );
 
+/**
+ * Content container for submenu items.
+ */
 export const DropdownMenuSubContent = ({
   className,
   ...props
@@ -62,10 +101,28 @@ type DropdownMenuContentProps = ComponentProps<
 > & {
   /**
    * Controls Portal's container.
-   * Pass `null` to disable portal
-   * */
+   * Pass `null` to disable portal.
+   */
   container?: HTMLElement | null;
 };
+
+/**
+ * Displays the main content of a dropdown menu.
+ *
+ * @example
+ * <DropdownMenu>
+ *   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuItem>Item</DropdownMenuItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ *
+ * @example
+ * // Render inline without portal
+ * <DropdownMenuContent container={null}>
+ *   <DropdownMenuItem>Item</DropdownMenuItem>
+ * </DropdownMenuContent>
+ */
 export const DropdownMenuContent = ({
   className,
   container,
@@ -89,6 +146,24 @@ export const DropdownMenuContent = ({
     );
 };
 
+/**
+ * Standard menu item for dropdown menus.
+ * Renders a selectable option.
+ *
+ * @example
+ * <DropdownMenuItem onClick={() => signOut()}>
+ *   <LogOut />
+ *   Sign out
+ * </DropdownMenuItem>
+ *
+ * @example
+ * // as link
+ * <DropdownMenuItem asChild>
+ *   <Link href="/account">
+ *     Account
+ *   </Link>
+ * </DropdownMenuItem>
+ */
 export const DropdownMenuItem = ({
   className,
   inset,
@@ -106,6 +181,20 @@ export const DropdownMenuItem = ({
   />
 );
 
+/**
+ * Checkbox menu item for dropdown menus.
+ * Displays a checkmark when selected.
+ * Supports three states: checked, unchecked, and indeterminate.
+ *
+ * @example
+ * <DropdownMenu>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuCheckboxItem checked={isChecked} onCheckedChange={setIsChecked}>
+ *       Show notifications
+ *     </DropdownMenuCheckboxItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ */
 export const DropdownMenuCheckboxItem = ({
   className,
   children,
@@ -120,7 +209,7 @@ export const DropdownMenuCheckboxItem = ({
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex size-3.5 items-center justify-center">
+    <span className="flex-center absolute left-2 size-3.5">
       <DropdownMenuPrimitive.ItemIndicator>
         <Check className="size-4" />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -128,7 +217,17 @@ export const DropdownMenuCheckboxItem = ({
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 );
-
+/**
+ * Radio menu item for dropdown menus.
+ * Displays a filled circle when selected.
+ * Must be used inside a DropdownMenuRadioGroup.
+ *
+ * @example
+ * <DropdownMenuRadioGroup value={value} onValueChange={setValue}>
+ *   <DropdownMenuRadioItem value="option1">Option 1</DropdownMenuRadioItem>
+ *   <DropdownMenuRadioItem value="option2">Option 2</DropdownMenuRadioItem>
+ * </DropdownMenuRadioGroup>
+ */
 export const DropdownMenuRadioItem = ({
   className,
   children,
@@ -150,13 +249,30 @@ export const DropdownMenuRadioItem = ({
   </DropdownMenuPrimitive.RadioItem>
 );
 
+type DropdownMenuLabelProps = ComponentProps<
+  typeof DropdownMenuPrimitive.Label
+> & {
+  inset?: boolean;
+};
+
+/**
+ * Non-interactive label element for dropdown menus.
+ * Useful for creating section headers or group titles within the menu.
+ *
+ * @example
+ * <DropdownMenu>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuLabel>Account</DropdownMenuLabel>
+ *     <DropdownMenuItem>Profile</DropdownMenuItem>
+ *     <DropdownMenuItem>Settings</DropdownMenuItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ */
 export const DropdownMenuLabel = ({
   className,
   inset,
   ...props
-}: ComponentProps<typeof DropdownMenuPrimitive.Label> & {
-  inset?: boolean;
-}) => (
+}: DropdownMenuLabelProps) => (
   <DropdownMenuPrimitive.Label
     className={cn(
       "px-2 py-1.5 text-sm font-semibold",
@@ -167,6 +283,19 @@ export const DropdownMenuLabel = ({
   />
 );
 
+/**
+ * Visual separator line for dropdown menus.
+ * Creates a horizontal rule to divide sections within the menu.
+ *
+ * @example
+ * <DropdownMenu>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuItem>Profile</DropdownMenuItem>
+ *     <DropdownMenuSeparator />
+ *     <DropdownMenuItem>Settings</DropdownMenuItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ */
 export const DropdownMenuSeparator = ({
   className,
   ...props
@@ -177,6 +306,16 @@ export const DropdownMenuSeparator = ({
   />
 );
 
+/**
+ * Displays keyboard shortcut hints in dropdown menu items.
+ * Renders with subtle styling to indicate keyboard commands without overwhelming the UI.
+ *
+ * @example
+ * <DropdownMenuItem>
+ *   New File
+ *   <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+ * </DropdownMenuItem>
+ */
 export const DropdownMenuShortcut = ({
   className,
   ...props

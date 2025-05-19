@@ -12,17 +12,17 @@ import { Badge, type BadgeProps } from "@/components/Badge";
 
 export interface ErrorStateProps extends BadgeProps {
   /**
-   * Name of the presented missing data entity
-   * Provide pluralized and lowercased
+   * Name of the presented missing data entity.
+   * Provide pluralized and lowercased.
    * @example "users"
-   * */
+   */
   entityName?: ReactNode;
 }
 
 /**
- * Component for surfacing inline errors
- * Most often used for data queries
- * */
+ * Component for surfacing operational errors.
+ * Most often used for data queries and form mutation errors.
+ */
 export const ErrorState = ({
   children,
   entityName,

@@ -9,8 +9,8 @@
 import { type Theme } from "./utils";
 
 /**
- * Default implementation of light theme
- * */
+ * Default implementation of a light theme.
+ */
 export const lightTheme: Theme = {
   "color-surface": "rgb(250 250 249)",
   "color-surface-primary": "rgb(255 255 255)",

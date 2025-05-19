@@ -11,10 +11,10 @@ import { type Auth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 /**
- * Returns currently authenticated user
- * null = no user is authenticated
- * undefined = initial state
- * */
+ * Returns currently authenticated user.
+ * null = no user is authenticated.
+ * undefined = initial state.
+ */
 export const useAuthUser = (auth: Auth) => {
   const [user, setUser] = useState<User | null>();
 

@@ -10,6 +10,24 @@ import { Switch as SwitchPrimitive } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * A switch component for toggling between two states.
+ * Built on top of [radix-ui Switch](https://www.radix-ui.com/primitives/docs/components/switch).
+ *
+ * @example
+ * // Basic usage
+ * <Switch checked={isEnabled} onCheckedChange={setIsEnabled} />
+ *
+ * @example
+ * // With label
+ * <SideLabel label="Enable notifications">
+ *   <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
+ * </SideLabel>
+ *
+ * @example
+ * // Disabled state
+ * <Switch disabled />
+ */
 export const Switch = ({
   className,
   ...props

@@ -7,5 +7,17 @@
 //
 
 const { getEslintConfig } = require("@stanfordspezi/spezi-web-configurations");
+const jsdoc = require("eslint-plugin-jsdoc");
 
-module.exports = getEslintConfig({ tsconfigRootDir: __dirname });
+module.exports = [
+  ...getEslintConfig({ tsconfigRootDir: __dirname }),
+  {
+    files: ["**/*.{js,ts,tsx}"],
+    plugins: {
+      jsdoc,
+    },
+    rules: {
+      "jsdoc/no-multi-asterisks": "error",
+    },
+  },
+];

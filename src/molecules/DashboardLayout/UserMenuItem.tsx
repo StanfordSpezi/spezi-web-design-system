@@ -14,10 +14,28 @@ import { Button, type ButtonProps } from "../../components/Button";
 import { type Nil } from "../../utils/misc";
 
 type UserMenuItemProps = Omit<ButtonProps, "name"> & {
+  /**
+   * User's name to display
+   */
   name: Nil<string>;
+  /**
+   * User's avatar image URL
+   */
   img: Nil<string>;
 };
 
+/**
+ * A component for displaying user information in the dashboard aside.
+ * Shows the user's avatar and name, and can be clicked to trigger an action.
+ *
+ * Combine it with the [DropdownMenu](src/components/DropdownMenu/DropdownMenu.tsx) to create an interactive user menu.
+ *
+ * @example
+ * <UserMenuItem
+ *   name="John Doe"
+ *   avatar="/path/to/avatar.jpg"
+ * />
+ */
 export const UserMenuItem = ({ name, img, ...props }: UserMenuItemProps) => {
   const { shrinkable } = useContext(DashboardContext);
   return (

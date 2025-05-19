@@ -9,11 +9,39 @@
 import { type ReactNode } from "react";
 
 interface PageTitleProps {
+  /**
+   * Main title text.
+   */
   title?: ReactNode;
+  /**
+   * Optional subtitle text.
+   */
   subTitle?: ReactNode;
+  /**
+   * Optional icon to display before the title
+   */
   icon?: ReactNode;
 }
 
+/**
+ * A component for displaying page titles with optional icon and subtitle.
+ * Used in the DashboardLayout `header` slot to provide consistent title styling.
+ *
+ * @example
+ * // Basic usage
+ * <PageTitle
+ *   title="Dashboard"
+ *   icon={<Home />}
+ * />
+ *
+ * @example
+ * // Helps to identify a resource
+ * <PageTitle
+ *   title="Edit user"
+ *   subTitle="example@example.com"
+ *   icon={<User />}
+ * />
+ */
 export const PageTitle = ({ title, subTitle, icon }: PageTitleProps) => (
   <div className="flex items-center gap-2 lg:gap-4">
     {icon && (

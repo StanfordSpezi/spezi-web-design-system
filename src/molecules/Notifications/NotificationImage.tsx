@@ -16,6 +16,19 @@ type NotificationImageProps = Omit<ComponentProps<"img">, "src"> & {
   src: Nil<string>;
 };
 
+/**
+ * Notification image component that either renders an image or a default info icon.
+ * Handles both custom notification images and a fallback icon when an image is not provided.
+ *
+ *
+ * @example
+ * // With image URL
+ * <NotificationImage src="/notification-image.jpg" alt="New message" />
+ *
+ * @example
+ * // Without image - shows a default icon
+ * <NotificationImage src={undefined} />
+ */
 export const NotificationImage = ({
   alt = "Notification image",
   src,

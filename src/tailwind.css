@@ -68,24 +68,24 @@ SPDX-License-Identifier: MIT
 }
 
 /*
-  Utility for data-state based fade in animations
-  RadixUI components use it
+  Utility for data-state based fade in animations.
+  RadixUI components use it.
 */
 @utility animate-entrance-fade {
   @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
 }
 
 /*
-  Utility for data-state based fade in animations
-  RadixUI components use it
+  Utility for data-state based fade in animations.
+  RadixUI components use it.
 */
 @utility animate-entrance-fade-zoom {
   @apply animate-entrance-fade data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95;
 }
 
 /*
-  Utility for data-state based fade in animations with slide based on side
-  RadixUI components use it
+  Utility for data-state based fade in animations with slide based on side.
+  RadixUI components use it.
 */
 @utility animate-entrance-fade-slide {
   @apply animate-entrance-fade-zoom data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2

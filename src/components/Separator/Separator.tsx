@@ -10,6 +10,37 @@ import { Separator as SeparatorPrimitive } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * Visual separator component for dividing content sections.
+ *
+ * Built on top of [radix-ui Separator](https://www.radix-ui.com/primitives/docs/components/separator).
+ *
+ * @example
+ * // Basic horizontal separator
+ * <div className="space-y-4">
+ *   <p>Content above</p>
+ *   <Separator decorative />
+ *   <p>Content below</p>
+ * </div>
+ *
+ * @example
+ * // Vertical separator
+ * <div className="flex items-center gap-4">
+ *   <p>Left content</p>
+ *   <Separator decorative orientation="vertical" />
+ *   <p>Right content</p>
+ * </div>
+ *
+ * @example
+ * // With text
+ * <div className="space-y-4">
+ *   <p>Content above</p>
+ *   <Separator>
+ *     <SeparatorText>Or</SeparatorText>
+ *   </Separator>
+ *   <p>Content below</p>
+ * </div>
+ */
 export const Separator = ({
   className,
   orientation = "horizontal",

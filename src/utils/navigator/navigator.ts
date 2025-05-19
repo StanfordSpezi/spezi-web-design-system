@@ -9,7 +9,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 /**
  * Gets user locale, providing en-US as fallback
- * */
+ */
 export const getNavigatorLanguage = () => {
   if (typeof window === "undefined") return "en-US"; // Fallback for SSR
   return navigator.languages.at(0) ?? navigator.language ?? "en-US";

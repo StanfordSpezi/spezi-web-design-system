@@ -15,6 +15,9 @@ interface FieldTooltipProps extends TooltipProps, Pick<FieldProps, "label"> {
   id: string;
 }
 
+/**
+ * Info tooltip to be used within Field context.
+ */
 export const FieldTooltip = ({ label, id, ...props }: FieldTooltipProps) => (
   <Tooltip {...props}>
     <button

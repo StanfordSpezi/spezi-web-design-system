@@ -8,24 +8,59 @@
 
 import { Menu } from "lucide-react";
 import { type ReactNode } from "react";
-import { DashboardContext } from "@/molecules/DashboardLayout/DashboardContext";
+import {
+  DashboardContext,
+  type DashboardContextValue,
+} from "@/molecules/DashboardLayout/DashboardContext";
 import { cn } from "@/utils/className";
 import { Button } from "../../components/Button";
 import { useOpenState } from "../../utils/useOpenState";
 
-export interface DashboardLayoutProps {
-  title?: ReactNode;
-  actions?: ReactNode;
-  children?: ReactNode;
-  aside?: ReactNode;
-  mobile?: ReactNode;
+export interface DashboardLayoutProps extends Partial<DashboardContextValue> {
   /**
-   * Enables auto-shrink of dashboard's aside on lg screens. This optimizes real estate.
-   * @default true
-   * */
-  shrinkable?: boolean;
+   * Title slot in the header. Can be used together with the `PageTitle` component.
+   * @example
+   * title={<PageTitle icon={<Home />} title="Home" />}
+   */
+  title?: ReactNode;
+  /**
+   * Actions slot displayed in the header and mobile menu.
+   */
+  actions?: ReactNode;
+  /**
+   * Main content of the dashboard.
+   */
+  children?: ReactNode;
+  /**
+   * Slot for aside panel content.
+   */
+  aside?: ReactNode;
+  /**
+   * Slot for mobile menu content.
+   */
+  mobile?: ReactNode;
 }
 
+/**
+ * A responsive dashboard skeleton component with a collapsible sidebar.
+ *
+ * Features:
+ * - Responsive design with mobile menu
+ * - Collapsible sidebar on large screens
+ * - Fixed header with actions
+ * - Mobile-optimized navigation
+ *
+ * @example
+ * // Basic usage
+ * <DashboardLayout
+ *   title="Dashboard"
+ *   aside={<Navigation />}
+ *   mobile={<MobileNavigation />}
+ *   actions={<UserMenu />}
+ * >
+ *   <DashboardContent />
+ * </DashboardLayout>
+ */
 export const DashboardLayout = ({
   title,
   actions,

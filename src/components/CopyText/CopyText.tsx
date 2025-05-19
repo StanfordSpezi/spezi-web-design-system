@@ -11,17 +11,27 @@ import { type ReactNode } from "react";
 import { cn } from "@/utils/className";
 import { copyToClipboard } from "../../utils/misc";
 
-type CopyTextProps = (
-  | { children: string; value?: string } // children are string = value is optional
-  | { children: ReactNode; value: string } // children are ReactNode = value is required, because ReactNode might not be copyable
-) & {
+// children prop is string = value is optional, because string is copyable
+interface StringChildrenProps {
+  children: string;
+  value?: string;
+}
+
+// children prop is ReactNode = value is required, because ReactNode might not be a copyable string
+interface ReactNodeChildrenProps {
+  children: ReactNode;
+  value: string;
+}
+
+type CopyTextProps = (StringChildrenProps | ReactNodeChildrenProps) & {
   className?: string;
 };
 
 /**
- * Displays copiable text
- * Useful for displaying truncated ids in tables
- * */
+ * Displays copiable text.
+ * Useful for displaying truncated ids in a compact manner,
+ * ensuring more screen estate.
+ */
 export const CopyText = ({ children, className, value }: CopyTextProps) => {
   // It's resolved by types
   // eslint-disable-next-line @typescript-eslint/no-base-to-string

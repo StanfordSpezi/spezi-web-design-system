@@ -12,6 +12,23 @@ import { cn } from "@/utils/className";
 
 type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 
+/**
+ * Checkbox component, it implements just the Checkbox control input.
+ *
+ * @example
+ * // It's typically used with a SideLabel for proper labeling
+ * <SideLabel label="Show unread only">
+ *   <Checkbox checked={checked} onCheckedChange={setChecked} />
+ * </SideLabel>
+ *
+ * @example
+ * // With aria-label for standalone usage
+ * <Checkbox
+ *   checked={checked}
+ *   onCheckedChange={setChecked}
+ *   aria-label="Checkbox"
+ * />
+ */
 export const Checkbox = ({ className, ...props }: CheckboxProps) => (
   <CheckboxPrimitive.Root
     className={cn(

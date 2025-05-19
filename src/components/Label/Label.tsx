@@ -12,6 +12,9 @@ import { cn } from "@/utils/className";
 
 type LabelProps = ComponentProps<typeof LabelPrimitive.Root>;
 
+/**
+ * Styled label element for forms elements.
+ */
 export const Label = ({ className, ...props }: LabelProps) => (
   <LabelPrimitive.Root
     className={cn(
@@ -24,6 +27,9 @@ export const Label = ({ className, ...props }: LabelProps) => (
 
 type LabelContainerProps = ComponentProps<"div">;
 
+/**
+ * Container for labels. Ensures consistent spacing between field and label parts.
+ */
 export const LabelContainer = ({
   className,
   ...props

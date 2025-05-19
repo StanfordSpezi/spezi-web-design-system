@@ -17,11 +17,21 @@ import {
 } from "@/components/DropdownMenu";
 import { useSpeziContext } from "@/SpeziProvider";
 import { cn } from "@/utils/className";
+import { type AsChildProp } from "@/utils/misc";
 
-export const Breadcrumb = ({ ...props }: ComponentProps<"nav">) => (
+/**
+ * Container for Breadcrumbs component.
+ *
+ * Can be used to construct complete Breadcrums UI.
+ * For batteries-included Breadcrumbs component - use `Breadcrumbs`.
+ */
+export const BreadcrumbsRoot = ({ ...props }: ComponentProps<"nav">) => (
   <nav aria-label="breadcrumb" {...props} />
 );
 
+/**
+ * List wrapper for breadcrumb items.
+ */
 export const BreadcrumbList = ({
   className,
   ...props
@@ -35,6 +45,9 @@ export const BreadcrumbList = ({
   />
 );
 
+/**
+ * Container for any breadcrumb list item: link, page or separator with menu.
+ */
 export const BreadcrumbItem = ({
   className,
   ...props
@@ -46,9 +59,12 @@ export const BreadcrumbItem = ({
 );
 
 type BreadcrumbLinkProps = ComponentProps<"a"> & {
-  asChild?: boolean;
+  asChild?: AsChildProp;
 };
 
+/**
+ * Interactive Breadcrumb link. Used for non-active breadcrumbs.
+ */
 export const BreadcrumbLink = ({
   asChild,
   className,
@@ -70,6 +86,9 @@ export const BreadcrumbLink = ({
   );
 };
 
+/**
+ * Currently active page.
+ */
 export const BreadcrumbPage = ({
   className,
   ...props
@@ -83,8 +102,16 @@ export const BreadcrumbPage = ({
   />
 );
 
+/**
+ * Breadcrumb separator component that visually separates breadcrumb items.
+ *
+ * @example
+ * <BreadcrumbSeparator>
+ *   <CustomIcon />
+ * </BreadcrumbSeparator>
+ */
 export const BreadcrumbSeparator = ({
-  children,
+  children = <ChevronRight />,
   className,
   ...props
 }: ComponentProps<"li">) => (
@@ -94,10 +121,22 @@ export const BreadcrumbSeparator = ({
     className={cn("opacity-60 [&>svg]:size-3.5", className)}
     {...props}
   >
-    {children ?? <ChevronRight />}
+    {children}
   </li>
 );
 
+/**
+ * Ellipsis component for Breadcrumbs.
+ *
+ * Used to indicate truncated breadcrumb items when there are too many to display.
+ * Often used as a dropdown trigger to reveal hidden breadcrumb items.
+ * Includes proper accessibility attributes to ensure it's correctly presented to assistive technologies.
+ *
+ * @example
+ * <BreadcrumbItem>
+ *   <BreadcrumbEllipsis />
+ * </BreadcrumbItem>
+ */
 export const BreadcrumbEllipsis = ({
   className,
   ...props
@@ -119,6 +158,15 @@ interface BreadcrumbCompleteItemProps {
   href: string;
 }
 
+/**
+ * Complete breadcrumb item component used internally by the Breadcrumbs component.
+ *
+ * Renders either an active page or a link based on the isActive prop.
+ * Automatically handles proper truncation for mobile and desktop views.
+ * Includes a separator after non-active items.
+ *
+ * @internal
+ */
 const BreadcrumbCompleteItem = ({
   href,
   isActive,
@@ -151,13 +199,30 @@ interface BreadcrumbsProps {
    * Any breadcrumbs beyond this number will be hidden behind a dropdown.
    * @range [2, Infinity]
    * @default 3
-   * */
+   */
   maxToDisplay?: number;
 }
 
 /**
- * Complete, ready to use Breadcrumbs component with truncation support
- * */
+ * Breadcrumbs component that provides a complete notification UI, based on links.
+ *
+ * It composes smaller atomic breadcrumbs elements, which can be reused to create your own composition of Breadcrumbs.
+ *
+ * The component automatically handles:
+ * - Displaying the first and last breadcrumbs
+ * - Truncating middle breadcrumbs into a dropdown when exceeding maxToDisplay
+ * - Proper navigation using the configured router
+ * - Accessibility attributes
+ *
+ * @example
+ * <Breadcrumbs
+ *   breadcrumbs={[
+ *     { label: "Home", href: "/" },
+ *     { label: "Products", href: "/products" },
+ *     { label: "Current Page", href: "/products/current" }
+ *   ]}
+ * />
+ */
 export const Breadcrumbs = ({
   breadcrumbs,
   maxToDisplay = 3,
@@ -173,7 +238,7 @@ export const Breadcrumbs = ({
     : breadcrumbs.slice(1, maxToDisplay);
 
   return (
-    <Breadcrumb>
+    <BreadcrumbsRoot>
       <BreadcrumbList>
         {firstBreadcrumb && (
           <BreadcrumbCompleteItem
@@ -213,6 +278,6 @@ export const Breadcrumbs = ({
           />
         ))}
       </BreadcrumbList>
-    </Breadcrumb>
+    </BreadcrumbsRoot>
   );
 };
