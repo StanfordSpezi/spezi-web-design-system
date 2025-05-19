@@ -9,7 +9,7 @@
 import { type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/utils/className";
 
-type SideLabelProps = Omit<ComponentProps<"label">, "label"> & {
+export type SideLabelProps = Omit<ComponentProps<"label">, "label"> & {
   /**
    * Element that describes form input
    */
