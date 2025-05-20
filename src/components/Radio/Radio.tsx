@@ -11,8 +11,8 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
 /**
- * Container for Radio inputs
- * */
+ * Container for Radio inputs.
+ */
 export const RadioGroup = RadioGroupPrimitive.Root;
 
 export const Radio = ({

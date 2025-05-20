@@ -11,16 +11,15 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 import type { ButtonProps } from "../Button";
 
-interface ButtonPendingProps
+export interface ButtonPendingProps
   extends ComponentProps<"span">,
-    Pick<ButtonProps, "size"> {
-  isPending?: boolean;
-}
+    Pick<ButtonProps, "size" | "isPending"> {}
 
 /**
- * Utility to compose button with pending state
- * It's separated from Button to prevent redundant markup when unnecessary
- * */
+ * Utility to compose button with pending state.
+ * It's separated from Button to prevent redundant markup when unnecessary.
+ * Loader is displayed over regular button's content, which maintains button's size.
+ */
 export const ButtonPending = ({
   children,
   isPending,
@@ -30,7 +29,7 @@ export const ButtonPending = ({
 }: ButtonPendingProps) => (
   <span className={cn("inline-flex-center relative", className)} {...props}>
     {isPending && (
-      <div className="absolute" aria-hidden data-testid="ButtonPending">
+      <div className="absolute" aria-hidden data-testid="buttonPendingLoader">
         <Loader2 className="animate-spin" />
       </div>
     )}

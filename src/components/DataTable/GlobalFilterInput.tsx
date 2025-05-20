@@ -12,6 +12,10 @@ import { Input, type InputProps } from "../Input";
 interface GlobalFilterInputProps extends InputProps {
   entityName?: string;
 }
+
+/**
+ * Renders input for global text search.
+ */
 export const GlobalFilterInput = ({
   entityName,
   ...props

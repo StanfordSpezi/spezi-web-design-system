@@ -6,6 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * All Tailwinds' default sizes
+ */
 export type Size =
   | "xs"
   | "sm"
@@ -19,6 +22,10 @@ export type Size =
   | "6xl"
   | "7xl";
 
+/*
+ * Record that translates Size variable to max width className.
+ * Useful for creating different size variants of UI elements e.g., Dialog component.
+ * */
 export const sizeToMaxWidthRecord: Record<Size, string> = {
   xs: "max-w-xs",
   sm: "max-w-sm",
@@ -33,4 +40,7 @@ export const sizeToMaxWidthRecord: Record<Size, string> = {
   "7xl": "max-w-7xl",
 };
 
+/**
+ * List of available sizes as string
+ */
 export const sizes = Object.keys(sizeToMaxWidthRecord);

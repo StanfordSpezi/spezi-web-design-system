@@ -28,8 +28,8 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 
 /**
- * Renders buttons by default
- * */
+ * Renders buttons by default.
+ */
 export const Default = () => (
   <Pagination>
     <PaginationContent>
@@ -58,8 +58,8 @@ export const Default = () => (
 );
 
 /**
- * Opt-in to using links
- * */
+ * Opt-in to using links.
+ */
 export const Links = () => (
   <Pagination>
     <PaginationContent>

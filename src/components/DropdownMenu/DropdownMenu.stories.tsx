@@ -33,8 +33,8 @@ const meta: Meta<typeof DropdownMenu> = {
 export default meta;
 
 /**
- * Storybook in Docs view needs couple adjustments to provide good overview behavior
- * */
+ * Storybook in Docs view needs couple adjustments to provide good overview behavior.
+ */
 const useProps = () => {
   const isDocs = useIsDocs();
   return {
@@ -49,8 +49,8 @@ const useProps = () => {
 };
 
 /**
- * Dropdown with modality and appended to the body
- * */
+ * Dropdown with modality and appended to the body.
+ */
 export const Triggerable = () => (
   <DropdownMenu>
     <DropdownMenuTrigger>Trigger</DropdownMenuTrigger>

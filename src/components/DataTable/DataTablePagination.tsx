@@ -14,6 +14,9 @@ interface DataTablePaginationProps<Data> {
   table: TableType<Data>;
 }
 
+/**
+ * Uses core DataTable hook to construct pagination
+ */
 export const DataTablePagination = <Data,>({
   table,
 }: DataTablePaginationProps<Data>) => {

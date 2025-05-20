@@ -20,14 +20,28 @@ import {
 import type { DataTableViewProps } from "./DataTable";
 
 export interface DataTableTableViewSpecificProps<Data> {
+  /**
+   * Row event click handler. Row is clicked only if it passes `isRowClicked` check.
+   */
   onRowClick?: (data: Data, event: MouseEvent) => void;
   /**
-   * Determines whether event is valid row click. Some table rows include interactive elements
-   * isRowClicked allows excluding clicks that were bubbled up
-   * */
+   * Determines whether a mouse event represents a valid row click.
+   *
+   * This function helps filter click events when table rows contain interactive elements
+   * by allowing you to exclude clicks that have bubbled up from child elements.
+   *
+   * By default, it checks if the event's target is a "TD" HTML element.
+   */
   isRowClicked?: (event: MouseEvent) => boolean;
 }
 
+/**
+ * Default function to determine if a mouse event represents a valid row click.
+ * Returns true if the clicked element is a table cell (TD).
+ *
+ * @param event - The mouse event to evaluate
+ * @returns Whether the event should be treated as a row click
+ */
 const isRowClickedDefault = (event: MouseEvent) =>
   (event.target as HTMLElement).tagName === "TD";
 
@@ -35,6 +49,13 @@ interface DataTableTableViewProps<Data>
   extends DataTableViewProps<Data>,
     DataTableTableViewSpecificProps<Data> {}
 
+/**
+ * Regular DataTable's TableView.
+ * If no custom `children` is provided, this component is rendered by default.
+ *
+ * Renders a fully-featured table with headers, sortable columns, and row click handling.
+ * Automatically applies proper styling and accessibility attributes to the table elements.
+ */
 export const DataTableTableView = <Data,>({
   table,
   rows,

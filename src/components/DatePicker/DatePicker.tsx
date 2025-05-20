@@ -16,6 +16,9 @@ import { PopoverRoot, PopoverTrigger, PopoverContent } from "../Popover";
 
 export type DatePickerProps = ComponentProps<typeof Calendar>;
 
+/**
+ * Calendar component displayed within a dropdown triggered by input-like button.
+ */
 export const DatePicker = (props: DatePickerProps) => {
   const { showTimePicker } = props;
   const selected = props.mode !== undefined ? props.selected : null;

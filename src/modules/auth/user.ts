@@ -9,6 +9,9 @@
 import { type UserInfo as AuthUserInfo } from "@firebase/auth-types";
 import { type Nil } from "@/utils/misc";
 
+/**
+ * Converts complete Firebase UserInfo to plain object with properties
+ */
 export const getUserInfo = (user: AuthUserInfo) => ({
   displayName: user.displayName,
   email: user.email,
@@ -20,6 +23,9 @@ export const getUserInfo = (user: AuthUserInfo) => ({
 
 export type UserInfo = ReturnType<typeof getUserInfo>;
 
+/**
+ * Converts user object to displayable name
+ */
 export const getUserName = (user: {
   displayName?: Nil<string>;
   email?: Nil<string>;

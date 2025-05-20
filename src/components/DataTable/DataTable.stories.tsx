@@ -60,8 +60,8 @@ export const HeaderAction: Story = {
 };
 
 /**
- * Click on row
- * */
+ * Click on row.
+ */
 export const RowAction: Story = {
   args: {
     ...Default.args,
@@ -72,8 +72,8 @@ export const RowAction: Story = {
 };
 
 /**
- * Presents some ready-to-use columns, like dateColumn and dateTimeColumn
- * */
+ * Presents some ready-to-use columns, like dateColumn and dateTimeColumn.
+ */
 export const PremadeColumns: Story = {
   args: {
     ...Default.args,
@@ -92,8 +92,8 @@ export const PremadeColumns: Story = {
 };
 
 /**
- * Custom view that replaces standard table view
- * */
+ * Custom view that replaces standard table view.
+ */
 export const CustomView = () => (
   <DataTable<Person>
     columns={peopleColumns}

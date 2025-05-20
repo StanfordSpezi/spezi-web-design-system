@@ -12,6 +12,9 @@ import { Button } from "@/components/Button";
 import { useSpeziContext } from "@/SpeziProvider";
 import { cn } from "@/utils/className";
 
+/**
+ * Icon component for the 404 not found state.
+ */
 export const NotFoundIcon = ({
   className,
   ...props
@@ -24,6 +27,9 @@ export const NotFoundIcon = ({
   </div>
 );
 
+/**
+ * Container component that centers and arranges not found content vertically.
+ */
 export const NotFoundContainer = ({
   className,
   ...props
@@ -34,6 +40,10 @@ export const NotFoundContainer = ({
   />
 );
 
+/**
+ * Title component for the not found state.
+ * Displays the main error message.
+ */
 export const NotFoundTitle = ({
   className,
   ...props
@@ -41,6 +51,10 @@ export const NotFoundTitle = ({
   <h1 className={cn("text-2xl font-medium", className)} {...props} />
 );
 
+/**
+ * Paragraph component for the not found state.
+ * Provides additional context and instructions to the user.
+ */
 export const NotFoundParagraph = ({
   className,
   ...props
@@ -50,27 +64,43 @@ export const NotFoundParagraph = ({
 
 interface NotFoundActionProps extends ComponentProps<typeof Button> {}
 
+/**
+ * Action component that provides navigation options from the not found state.
+ * Renders as a small button.
+ */
 export const NotFoundAction = (props: NotFoundActionProps) => (
   <Button size="sm" className="mt-3" asChild {...props} />
 );
 
 export interface NotFoundProps {
   /**
-   * Configures where user should go instead
+   * Configures where the user should go instead.
    * @example { name: "users list", href: "/user" }
-   * */
+   */
   backPage: {
     name: ReactNode;
     href: string;
   };
   /**
-   * Singular name of accessed entity
+   * Singular name of accessed entity.
    * @example "user"
-   * */
+   */
   entityName: ReactNode;
   className?: string;
 }
 
+/**
+ * A complete 404 page component for handling non-existent resources.
+ *
+ * Ensures consistent error messaging and clear navigation options.
+ *
+ * @example
+ * // Basic usage
+ * <NotFound
+ *   entityName="user"
+ *   backPage={{ name: "users list", href: "/users" }}
+ * />
+ */
 export const NotFound = ({
   backPage,
   entityName,

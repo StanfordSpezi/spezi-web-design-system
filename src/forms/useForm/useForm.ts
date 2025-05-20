@@ -24,8 +24,15 @@ type ErrorsObject<TFieldValues extends FieldValues> = Partial<
   FieldErrorsImpl<DeepRequired<TFieldValues>>
 >;
 
+/**
+ * Special key used for form-level errors.
+ */
 export const FORM_ERROR_KEY = "FORM_ERROR";
 
+/**
+ * Custom error class for form validation errors.
+ * Extends Error to include field-specific error information.
+ */
 class ValidationError<
   TFieldValues extends FieldValues = FieldValues,
 > extends Error {
@@ -37,9 +44,23 @@ class ValidationError<
 }
 
 /**
- * Wrapper over react-hook-form's useForm
- * Provides default types and custom functionalities
- * */
+ * Enhanced version of [react-hook-form's useForm](https://react-hook-form.com/docs/useform).
+ * Provides Zod schema validation and additional utilities for form handling.
+ *
+ * Features:
+ * - Zod schema validation
+ * - Form-level error handling
+ * - Async submission handling
+ * - Submit button state management
+ *
+ * @example
+ * const form = useForm({
+ *   formSchema: z.object({
+ *     email: z.string().email(),
+ *     password: z.string().min(8)
+ *   })
+ * });
+ */
 export const useForm = <Schema extends z.ZodTypeAny>({
   formSchema,
   ...props
@@ -57,10 +78,10 @@ export const useForm = <Schema extends z.ZodTypeAny>({
   } = form;
 
   /**
-   * Function to get form's data, but only if it actually passes validation
-   * Useful when needed to combine couple useForms into one
-   * Prevents callback hell and wrong execution flow if form is not valid
-   * */
+   * Function to get form's data, but only if it actually passes validation.
+   * Useful when needed to combine multiple useForms into one.
+   * Prevents callback hell and wrong execution flow if one of forms is not valid.
+   */
   const submitAsync = () =>
     new Promise<z.infer<Schema>>((resolve, reject) => {
       void form.handleSubmit(
@@ -75,17 +96,17 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     });
 
   /**
-   * Utility that helps to handle form errors
-   * Respects form state, resets on submit
-   * Handles both known string errors and unknown error objects
-   * */
+   * Utility that helps to handle form errors.
+   * Respects form state, resets on submitting.
+   * Handles both known string errors and unknown error objects.
+   */
   const setFormError = useCallback(
     (error: unknown, options?: Parameters<typeof setError>[2]) => {
       const errorValue = {
         message: parseUnknownError(error),
       };
       setError(
-        // @ts-expect-error Form error is special key, so error here is fine
+        // @ts-expect-error Form error is a special key, so type error here is expected
         FORM_ERROR_KEY,
         errorValue,
         options,
@@ -94,6 +115,10 @@ export const useForm = <Schema extends z.ZodTypeAny>({
     [setError],
   );
 
+  /**
+   * Wraps react-hook-form's handleSubmit to automatically set form errors for caught exceptions.
+   * This adds error handling without requiring try/catch blocks in form handlers.
+   */
   const handleSubmit: (typeof form)["handleSubmit"] = (
     successHandler,
     negativeHandler,

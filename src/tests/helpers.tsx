@@ -20,14 +20,22 @@ const speziProviderContext: SpeziContextType = {
   },
 };
 
+/**
+ * Renders all required context providers for test environments.
+ */
 export const TestProviders = ({ children }: TestProvidersProps) => (
   <SpeziProvider {...speziProviderContext}>{children}</SpeziProvider>
 );
 
-const DefaultWrapper = ({ children }: { children?: ReactNode }) => (
-  <>{children}</>
-);
+interface DefaultWrapperProps {
+  children?: ReactNode;
+}
 
+const DefaultWrapper = ({ children }: DefaultWrapperProps) => <>{children}</>;
+
+/**
+ * Utility for tests that ensures component is rendered with every required context.
+ */
 export const renderWithProviders = (node: ReactNode, options?: RenderOptions) =>
   render(node, {
     wrapper: ({ children }) => {

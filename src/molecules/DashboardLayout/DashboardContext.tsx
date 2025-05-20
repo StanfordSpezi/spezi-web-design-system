@@ -8,6 +8,15 @@
 
 import { createContext } from "react";
 
-export const DashboardContext = createContext({
+export interface DashboardContextValue {
+  /**
+   * Enables auto-shrink of dashboard's aside on lg screens. This optimizes real estate.
+   *
+   * @default true
+   */
+  shrinkable: boolean;
+}
+
+export const DashboardContext = createContext<DashboardContextValue>({
   shrinkable: true,
 });

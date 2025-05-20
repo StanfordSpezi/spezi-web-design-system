@@ -17,15 +17,15 @@ const meta: Meta<typeof StateContainer> = {
 export default meta;
 
 /**
- * Background is just for presentation purposes
- * */
+ * Background is just for presentation purposes.
+ */
 export const Default = () => (
   <StateContainer className="bg-accent">...</StateContainer>
 );
 
 /**
- * Background is just for presentation purposes
- * */
+ * Background is just for presentation purposes.
+ */
 export const Grow = () => (
   <div className="size-80">
     <StateContainer className="bg-accent" grow>

@@ -11,6 +11,15 @@ import { cn } from "@/utils/className";
 
 interface NotificationHeaderProps extends ComponentProps<"div"> {}
 
+/**
+ * Header component for notifications that provides a container for title, time and other elements.
+ *
+ * @example
+ * <NotificationHeader>
+ *   <NotificationTitle>New Message</NotificationTitle>
+ *   <NotificationTime time={new Date()} />
+ * </NotificationHeader>
+ */
 export const NotificationHeader = ({
   className,
   ...props

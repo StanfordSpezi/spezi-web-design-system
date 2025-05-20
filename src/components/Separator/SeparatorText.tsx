@@ -9,6 +9,9 @@
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
+/**
+ * Text to be displayed over a Separator
+ */
 export const SeparatorText = ({
   className,
   children,

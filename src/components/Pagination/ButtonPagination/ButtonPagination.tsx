@@ -24,15 +24,15 @@ import {
 export interface ButtonPaginationProps extends UsePaginationProps {
   total: number;
   /**
-   * Currently selected page, 1-based
-   * */
+   * Currently selected page, 1-based.
+   */
   page: number;
   onPageChange: (page: number) => void;
 }
 
 /**
- * Complete state-controlled pagination
- * */
+ * Complete state-controlled pagination.
+ */
 export const ButtonPagination = ({
   total,
   page,

@@ -16,14 +16,16 @@ import {
 } from "../../DropdownMenu";
 
 interface RowDropdownMenuProps {
-  /* pass DropdownMenuContent children */
+  /**
+   * Pass DropdownMenuContent children.
+   */
   children?: ReactNode;
   itemName?: string;
 }
 
 /**
- * Standard DataTable row actions dropdown menu
- * */
+ * Standard DataTable row actions dropdown menu.
+ */
 export const RowDropdownMenu = ({
   children,
   itemName,

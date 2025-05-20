@@ -7,14 +7,14 @@
 //
 
 /**
- * Color in `r g b` 8bit format
+ * Color in `r g b` 8bit format.
  * @example 255 255 255
- * */
+ */
 type RGBColor = string;
 
 /**
- * Interface of theme variables used by design-system
- * */
+ * Interface of theme variables used by the design-system.
+ */
 export interface Theme {
   [key: string]: string;
   "color-surface": RGBColor;

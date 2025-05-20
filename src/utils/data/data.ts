@@ -9,10 +9,10 @@
 import { isEqual, keyBy, uniq } from "es-toolkit";
 
 /**
- * Compares array of two objects and performs create/delete/update operations.
- * Checks equality for update. By default, uses deep object equality
- * Useful for bulk transaction operations
- * */
+ * Compares an array of two objects and performs create/delete/update operations.
+ * Checks equality for update. By default, uses deep object equality.
+ * Useful for bulk transaction operations.
+ */
 export const syncData = <Item>({
   oldItems,
   newItems,

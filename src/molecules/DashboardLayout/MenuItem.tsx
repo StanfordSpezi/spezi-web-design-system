@@ -13,14 +13,51 @@ import { DashboardContext } from "./DashboardContext";
 import { Tooltip } from "../../components/Tooltip";
 
 interface MenuItemProps {
+  /**
+   * URL to navigate to when clicked.
+   */
   href: string;
+  /**
+   * Whether the item is currently active route.
+   */
   isActive?: boolean;
+  /**
+   * Whether to show a highlight indicator.
+   * Use highlight for elements that contain new data, like a notification.
+   */
   isHighlighted?: boolean;
+  /**
+   * Icon to display before the label.
+   */
   icon?: ReactNode;
+  /**
+   * Text label for the menu item.
+   */
   label?: string;
+  /**
+   * Additional slot to display after the label.
+   */
   children?: ReactNode;
 }
 
+/**
+ * A navigation menu item component for the dashboard sidebar.
+ * Supports responsive behavior with the dashboard's shrinkable state.
+ *
+ * Features:
+ * - Active state styling
+ * - Highlight indicator
+ * - Tooltip for collapsed state
+ * - Icon support
+ *
+ * @example
+ * <MenuItem
+ *   href="/dashboard"
+ *   icon={<Home />}
+ *   label="Dashboard"
+ *   isActive
+ * />
+ */
 export const MenuItem = ({
   href,
   icon,

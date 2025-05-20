@@ -7,9 +7,16 @@
 //
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/**
+ * Waits for provided milliseconds.
+ * Useful for testing asynchronous operations.
+ */
 export const sleep = (ms: number) =>
   new Promise((resolve) => setTimeout(() => resolve(undefined), ms));
 
+/**
+ * Uses performance API to measure callback's execution performance.
+ */
 export const logPerformance = <T>(name: string, callback: () => T) => {
   performance.mark(`mark-${name}`);
   const res = callback();
@@ -18,10 +25,18 @@ export const logPerformance = <T>(name: string, callback: () => T) => {
   return res;
 };
 
+/**
+ * Throws a "not implemented" error.
+ * Useful when implementing a feature partially in development environments.
+ */
 export const notImplementedError: any = () => {
   throw new Error("Not implemented");
 };
 
+/**
+ * Shows a "not implemented" alert.
+ * Useful when implementing a feature partially in development environments.
+ */
 export const notImplementedAlert: any = () => {
   alert("Not implemented");
 };

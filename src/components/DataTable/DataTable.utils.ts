@@ -30,6 +30,9 @@ declare module "@tanstack/react-table" {
   }
 }
 
+/**
+ * Default fuzzyFilter implementation, used for global text filtering.
+ */
 export const fuzzyFilter: FilterFn<unknown> = (
   row,
   columnId,
@@ -49,9 +52,17 @@ export const fuzzyFilter: FilterFn<unknown> = (
 
 export interface UseDataTableProps<Data>
   extends PartialSome<TableOptions<Data>, "getCoreRowModel" | "filterFns"> {
+  /**
+   * Defines how many items are displayed per one page.
+   *
+   * @default 50
+   */
   pageSize?: number;
 }
 
+/**
+ * Composes useReactTable usage, contains core data table logic.
+ */
 export const useDataTable = <Data>({
   columns,
   data,

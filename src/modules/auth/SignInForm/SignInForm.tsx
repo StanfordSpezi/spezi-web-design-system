@@ -15,7 +15,7 @@ import {
 } from "firebase/auth";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
-import { Button } from "@/components/Button";
+import { Button, type ButtonProps } from "@/components/Button";
 import { Separator, SeparatorText } from "@/components/Separator";
 import { FormError } from "@/forms";
 import { cn } from "@/utils/className";
@@ -35,43 +35,67 @@ export const messages = {
 };
 
 export interface SignInFormProps {
+  /**
+   * Firebase's Auth object.
+   */
   auth: Auth;
+  /**
+   * List of SSO providers.
+   */
   providers: Array<{
     provider: AuthProvider;
     name: string;
     icon?: ReactNode;
   }>;
-  enableEmailPassword: boolean;
+  /**
+   * If false, the email/password form will not be displayed.
+   * Can be used for showing email/password form just for dev environments.
+   *
+   * @default true
+   */
+  enableEmailPassword?: boolean;
+  /**
+   * Firebase's signInWithPopup function.
+   */
   signInWithPopup: typeof signInWithPopup;
+  /**
+   * Firebase's signInWithEmailAndPassword function.
+   */
   signInWithEmailAndPassword: typeof signInWithEmailAndPassword;
   className?: string;
-  buttonSize?: "default" | "lg";
+  /**
+   * Size of submit and SSO buttons.
+   */
+  buttonSize?: ButtonProps["size"];
 }
 
+/**
+ * Complete Sign In Form component for Firebase.
+ */
 export const SignInForm = ({
   auth,
   providers,
-  enableEmailPassword,
+  enableEmailPassword = true,
   className,
   signInWithPopup,
   signInWithEmailAndPassword,
   buttonSize = "default",
 }: SignInFormProps) => {
-  const [formError, setFormError] = useState<string>();
+  const [ssoFormError, setSsoFormError] = useState<string>();
   const t = useTranslations();
   return (
     <div className={cn("grid gap-4", className)}>
       <h1 className="mb-4 text-center text-2xl font-bold">
         {t("signIn_title")}
       </h1>
-      <FormError formError={formError} />
+      <FormError formError={ssoFormError} />
       {providers.map((provider) => (
         <Button
           key={provider.name}
           variant="outlineBg"
           size={buttonSize}
           onClick={async () => {
-            setFormError(undefined);
+            setSsoFormError(undefined);
             try {
               await signInWithPopup(auth, provider.provider);
             } catch (error) {
@@ -79,11 +103,11 @@ export const SignInForm = ({
                 error instanceof FirebaseError &&
                 error.code !== "auth/popup-closed-by-user"
               ) {
-                setFormError(
+                setSsoFormError(
                   t("signIn_formError_firebase", { code: error.code }),
                 );
               } else {
-                setFormError(t("signIn_formError_unknown"));
+                setSsoFormError(t("signIn_formError_unknown"));
               }
             }
           }}

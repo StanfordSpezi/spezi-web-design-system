@@ -13,8 +13,8 @@ import { cn } from "@/utils/className";
 export interface SpinnerProps extends ComponentProps<typeof Loader2> {}
 
 /**
- * Loading indicator icon
- * */
+ * Loading indicator icon, shows infinite spinning animation.
+ */
 export const Spinner = ({ className, ...props }: SpinnerProps) => (
   <Loader2
     className={cn("text-muted-foreground animate-spin", className)}

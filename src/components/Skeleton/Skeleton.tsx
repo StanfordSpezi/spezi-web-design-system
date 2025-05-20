@@ -11,15 +11,20 @@ import { cn } from "@/utils/className";
 
 type SkeletonProps = ComponentProps<"div"> & {
   /**
-   * Full circle skeleton
-   * */
+   * Full circle skeleton.
+   */
   round?: boolean;
 };
 
 /**
- * Skeleton to indicate content loading state.
+ * Skeleton to indicate the content loading state.
  * Useful if you load data partially and want to preserve layout size.
- * */
+ *
+ *
+ * @example
+ * // Basic usage, width and height classes are necessary
+ * <Skeleton className="w-12 h-4">
+ */
 export const Skeleton = ({ className, round, ...props }: SkeletonProps) => (
   <div
     className={cn(

@@ -13,11 +13,35 @@ import { isEmpty, type Nil } from "@/utils/misc";
 
 type AvatarProps = {
   className?: string;
+  /**
+   * The source URL of the avatar image.
+   * If provided, the image will be displayed.
+   * If the image fails to load, the fallback content will be shown.
+   */
   src?: Nil<string>;
+  /**
+   * Custom fallback content to display when:
+   * - No src is provided
+   * - The image fails to load
+   * - The name is not provided
+   *
+   * Initials from the name will be used as fallback if provided.
+   */
   fallback?: ReactNode;
+  /**
+   * The name associated with the avatar.
+   * Used for:
+   * - Generating fallback initials when no fallback is provided
+   * - Setting the alt text for the image
+   */
   name?: Nil<string>;
 } & VariantProps<typeof avatarVariance>;
 
+/**
+ * Extracts initials from a given name string.
+ * For full names, returns first letters of first and last name.
+ * For single names, returns first two letters.
+ */
 export const getInitials = (value: string) => {
   const words = value.trim().split(" ");
   if (isEmpty(words)) return "";
@@ -29,6 +53,14 @@ export const getInitials = (value: string) => {
 };
 
 export const avatarVariants = {
+  /**
+   * Affects width, height and font size.
+   * - `sm`: 32px with smaller text.
+   * - `default`: 48px with base text.
+   * - `lg`: 64px with larger text.
+   *
+   * @default "default"
+   */
   size: {
     sm: "size-8 text-xs",
     default: "size-12",
@@ -46,6 +78,25 @@ export const avatarVariance = cva(
   },
 );
 
+/**
+ * Avatar component that displays a user's profile picture or fallback content.
+ * Supports different sizes and can show either an image, custom fallback content,
+ * or automatically generated initials from a name.
+ *
+ * @example
+ * // Basic usage with image
+ * <Avatar src="/path/to/image.jpg" name="John Doe" />
+ *
+ * @example
+ * // With custom fallback
+ * <Avatar name="John Doe" fallback={<UserIcon />} />
+ *
+ * @example
+ * // Different sizes
+ * <Avatar size="sm" name="John Doe" />
+ * <Avatar size="default" name="John Doe" />
+ * <Avatar size="lg" name="John Doe" />
+ */
 export const Avatar = ({
   className,
   src,

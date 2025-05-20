@@ -10,15 +10,15 @@ import { useState } from "react";
 import { type InitialState, not } from "../misc";
 
 /**
- * Handles open/close or similar boolean states
- * Mainly aims to improve readability
+ * Handles open/close or similar boolean states.
+ * Mainly aims to improve readability.
  *
  * @example
  * const modal = useOpenState()
  * <button onClick={modal.open} />
- * <Modal isOpen={modal.isOpen}  />
+ * <Modal isOpen={modal.isOpen} />
  *
- * */
+ */
 export const useOpenState = (initialValue: InitialState<boolean> = false) => {
   const [isOpen, setIsOpen] = useState(initialValue);
 
@@ -32,9 +32,14 @@ export const useOpenState = (initialValue: InitialState<boolean> = false) => {
 };
 
 /**
- * Stateful open state is suitable for cases where combination of boolean flag and additional state is required
- * State is kept after closing to prevent flickering of exit animations
- * */
+ * Implements a stateful open/closed mechanism that preserves component state between transitions.
+ *
+ * @remarks
+ * This pattern is particularly useful in scenarios requiring:
+ * - A boolean flag to control visibility (open/closed state)
+ * - Separate state to determine opened entity
+ * - Saving state even after closing, which prevents flickering during exit animations
+ */
 export const useStatefulOpenState = <T>(
   initialStateValue?: T,
   initialValue?: InitialState<boolean>,

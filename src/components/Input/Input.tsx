@@ -11,6 +11,22 @@ import { cn } from "@/utils/className";
 
 export interface InputProps extends ComponentProps<"input"> {}
 
+/**
+ * A styled HTML input component that provides consistent styling across the application.
+ * Suitable for text inputs, search fields, and other form inputs.
+ *
+ * @example
+ * // Basic text input
+ * <Input placeholder="Enter your name" />
+ *
+ * @example
+ * // Search input
+ * <Input type="search" placeholder="Search..." />
+ *
+ * @example
+ * // Disabled input
+ * <Input disabled value="Cannot edit" />
+ */
 export const Input = ({ className, type = "text", ...props }: InputProps) => (
   <input
     type={type}

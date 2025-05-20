@@ -21,28 +21,28 @@ import { NotificationTitle } from "./NotificationTitle";
 export interface NotificationProps extends NotificationContextType {
   /**
    * Title text of notification.
-   * */
+   */
   title?: ReactNode;
   /**
    * Optional image URL displayed on the left side of the notification.
    * If not provided, a default icon is rendered instead.
-   * */
+   */
   image?: string;
   /**
    * Main message of the notification.
-   * */
+   */
   message?: ReactNode;
   /**
    * Date to display along the notification.
-   * */
+   */
   time?: Date;
   /**
    * Container for action buttons.
-   * */
+   */
   actions?: ReactNode;
   /**
    * If provided, the entire notification becomes a clickable link to this URL.
-   * */
+   */
   link?: string;
 }
 

@@ -13,6 +13,18 @@ export interface AsideBrandLayoutProps extends ComponentProps<"div"> {
   aside?: ReactNode;
 }
 
+/**
+ * A layout component that provides a branded aside section and main content area.
+ * Useful for landing page, sign in, reset password flows.
+ *
+ * The aside section is only visible on large screens (lg breakpoint and above).
+ *
+ *
+ * @example
+ * <AsideBrandLayout aside={<BrandLogo />}>
+ *   <LoginForm />
+ * </AsideBrandLayout>
+ */
 export const AsideBrandLayout = ({
   aside,
   children,

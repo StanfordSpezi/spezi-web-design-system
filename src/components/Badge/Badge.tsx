@@ -7,13 +7,27 @@
 //
 
 import { cva, type VariantProps } from "class-variance-authority";
+import { Slot } from "radix-ui";
 import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
+import { type AsChildProp } from "@/utils/misc";
 
-const badgeVariants = cva(
+export const badgeVariance = cva(
   "inline-flex-center border transition-colors focus-ring",
   {
     variants: {
+      /**
+       * Controls the visual variant of the badge.
+       * - `default`: filled with primary color.
+       * - `secondary`: filled with secondary color.
+       * - `destructive`: filled with destructive color.
+       *    Should be used for indicating negative and unsuccessful statues.
+       * - `destructiveLight`: filled with destructive color of reduced opacity.
+       *    Should be used for indicating negative and unsuccessful statues.
+       * - `outline`: bordered, transparent fill
+       *
+       * @default "default"
+       */
       variant: {
         default:
           "border-transparent bg-primary text-primary-foreground shadow-sm hover:bg-primary/80",
@@ -25,6 +39,13 @@ const badgeVariants = cva(
           "border-transparent bg-destructive/10 text-destructive",
         outline: "text-foreground",
       },
+      /**
+       * Affects padding, font size, border radius and gap.
+       * - `sm`
+       * - `lg`
+       *
+       * @default "sm"
+       */
       size: {
         sm: "px-2.5 py-0.5 text-xs rounded-md gap-1 font-semibold",
         lg: "text-sm px-3 py-2 rounded-2xl gap-3 font-medium",
@@ -39,8 +60,48 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends ComponentProps<"div">,
-    VariantProps<typeof badgeVariants> {}
+    VariantProps<typeof badgeVariance> {
+  asChild?: AsChildProp;
+}
 
-export const Badge = ({ className, variant, size, ...props }: BadgeProps) => (
-  <div className={cn(badgeVariants({ variant, size }), className)} {...props} />
-);
+/**
+ * A status descriptor for UI elements.
+ * Badges are used to highlight an item's status for quick recognition.
+ *
+ * @example
+ * // Default badge
+ * <Badge>New</Badge>
+ *
+ * @example
+ * // Different variants
+ * <Badge variant="secondary">Secondary</Badge>
+ * <Badge variant="destructive">Error</Badge>
+ * <Badge variant="destructiveLight">Warning</Badge>
+ * <Badge variant="outline">Outline</Badge>
+ *
+ * @example
+ * // Different sizes
+ * <Badge size="sm">Small</Badge>
+ * <Badge size="lg">Large</Badge>
+ *
+ * @example
+ * // As child element
+ * <Badge asChild>
+ *   <button>Click me</button>
+ * </Badge>
+ */
+export const Badge = ({
+  className,
+  variant,
+  size,
+  asChild,
+  ...props
+}: BadgeProps) => {
+  const Component = asChild ? Slot.Root : "div";
+  return (
+    <Component
+      className={cn(badgeVariance({ variant, size }), className)}
+      {...props}
+    />
+  );
+};

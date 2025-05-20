@@ -11,6 +11,12 @@ import { cn } from "@/utils/className";
 
 interface NotificationActionsProps extends ComponentProps<"div"> {}
 
+/**
+ * Container for additional notification actions.
+ * Some actions might add call to actions about notified, like "Delete", "Mark as read" and others.
+ *
+ * It captures and prevents propagation of all click events to avoid conflicts with parent Link elements.
+ */
 export const NotificationActions = ({
   onClick,
   className,

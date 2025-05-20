@@ -22,11 +22,11 @@ import { type Theme } from "@/theme/utils";
  * Allows injecting necessary router-related components.
  * Projects can have different routers:
  * Tanstack Router, React Router, Next router
- * */
+ */
 interface SpeziContextRouter {
   /**
    * Link component. Make sure to provide your router's Link component.
-   * */
+   */
   Link: (props: ComponentProps<"a">) => ReactNode;
 }
 
@@ -36,6 +36,10 @@ export interface SpeziContextType {
 
 export const SpeziContext = createContext<SpeziContextType | null>(null);
 
+/**
+ * Returns SpeziContextType from context and validates its presence.
+ * @throws {Error} When used outside SpeziProvider.
+ */
 export const useSpeziContext = () => {
   const value = useContext(SpeziContext);
   if (!value) {
@@ -53,8 +57,8 @@ interface SpeziProviderProps extends SpeziContextType {
 }
 
 /**
- * Configures messages and theme
- * */
+ * Configures messages and theme.
+ */
 export const SpeziProvider = ({
   children,
   messages,

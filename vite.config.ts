@@ -17,8 +17,8 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import { configDefaults } from "vitest/config";
 
 /**
- * Tuple of [package name, package entry point]
- * */
+ * Tuple of [package name, package entry point].
+ */
 const entires = [
   ["index", "src/index.ts"],
   ["SpeziProvider", "src/SpeziProvider.tsx"],
