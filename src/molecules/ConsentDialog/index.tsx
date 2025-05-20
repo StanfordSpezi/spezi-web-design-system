@@ -7,6 +7,4 @@
 //
 
 export * from "./ConsentDialog";
-export { useConsentDialog } from "@/molecules/ConsentDialog/ConsentDialogContext";
-export { ConsentDialogContext } from "@/molecules/ConsentDialog/ConsentDialogContext";
-export { ConsentDialogContextValue } from "@/molecules/ConsentDialog/ConsentDialogContext";
+export { useConsentDialog, ConsentDialogContext } from "./ConsentDialogContext";
