@@ -36,5 +36,9 @@ export interface Theme {
   "color-input": RGBColor;
   "color-destructive": RGBColor;
   "color-destructive-foreground": RGBColor;
+  "color-success": RGBColor;
+  "color-success-foreground": RGBColor;
+  "color-warning": RGBColor;
+  "color-warning-foreground": RGBColor;
   "color-ring": RGBColor;
 }

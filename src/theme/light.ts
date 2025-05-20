@@ -31,5 +31,9 @@ export const lightTheme: Theme = {
   "color-input": "rgb(232 215 221)",
   "color-destructive": "rgb(222 65 38)",
   "color-destructive-foreground": "rgb(243 243 243)",
+  "color-success": "rgb(34 197 94)",
+  "color-success-foreground": "rgb(243 243 243)",
+  "color-warning": "rgb(234 179 8)",
+  "color-warning-foreground": "rgb(243 243 243)",
   "color-ring": "rgb(62 176 85)",
 };
