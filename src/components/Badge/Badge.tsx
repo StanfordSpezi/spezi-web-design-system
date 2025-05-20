@@ -46,7 +46,7 @@ export const badgeVariance = cva(
         successLight: "border-transparent bg-success/10 text-success",
         warning:
           "border-transparent bg-warning text-warning-foreground shadow-sm hover:bg-warning/80",
-        warningLight: "border-transparent bg-warning/10 text-warning",
+        warningLight: "border-transparent bg-warning/10 text-warning-dark",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/80",
         destructiveLight:

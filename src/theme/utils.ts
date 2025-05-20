@@ -39,6 +39,7 @@ export interface Theme {
   "color-success": RGBColor;
   "color-success-foreground": RGBColor;
   "color-warning": RGBColor;
+  "color-warning-dark": RGBColor;
   "color-warning-foreground": RGBColor;
   "color-ring": RGBColor;
 }
