@@ -22,7 +22,7 @@ export const badgeVariance = cva(
        * - `secondary`: filled with secondary color.
        * - `success`: filled with success color.
        *    Should be used for indicating positive and successful statues.
-       * - `successLight`: filled with destructive color of reduced opacity.
+       * - `successLight`: filled with success color of reduced opacity.
        *    Should be used for indicating positive and successful statues.
        * - `warning`: filled with warning color.
        *    Should be used for bringing users' attention to potential upcoming problems or semi-success statuses.
