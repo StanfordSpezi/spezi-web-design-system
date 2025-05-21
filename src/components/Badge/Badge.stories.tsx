@@ -23,6 +23,10 @@ type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = { args: { variant: "default" } };
 export const Secondary: Story = { args: { variant: "secondary" } };
+export const Success: Story = { args: { variant: "success" } };
+export const SuccessLight: Story = { args: { variant: "successLight" } };
+export const Warning: Story = { args: { variant: "warning" } };
+export const WarningLight: Story = { args: { variant: "warningLight" } };
 export const Destructive: Story = { args: { variant: "destructive" } };
 export const DestructiveLight: Story = {
   args: { variant: "destructiveLight" },

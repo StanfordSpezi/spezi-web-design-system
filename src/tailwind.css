@@ -29,6 +29,11 @@ SPDX-License-Identifier: MIT
   --color-accent-foreground: var(--color-accent-foreground);
   --color-border: var(--color-border);
   --color-input: var(--color-input);
+  --color-success: var(--color-success);
+  --color-success-foreground: var(--color-success-foreground);
+  --color-warning: var(--color-warning);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-warning-foreground: var(--color-warning-foreground);
   --color-destructive: var(--color-destructive);
   --color-destructive-foreground: var(--color-destructive-foreground);
   --color-ring: var(--color-ring);

@@ -20,6 +20,14 @@ export const badgeVariance = cva(
        * Controls the visual variant of the badge.
        * - `default`: filled with primary color.
        * - `secondary`: filled with secondary color.
+       * - `success`: filled with success color.
+       *    Should be used for indicating positive and successful statues.
+       * - `successLight`: filled with success color of reduced opacity.
+       *    Should be used for indicating positive and successful statues.
+       * - `warning`: filled with warning color.
+       *    Should be used for bringing users' attention to potential upcoming problems or semi-success statuses.
+       * - `warningLight`: filled with warning color of reduced opacity.
+       *    Should be used for bringing users' attention to potential upcoming problems or semi-negative statuses.
        * - `destructive`: filled with destructive color.
        *    Should be used for indicating negative and unsuccessful statues.
        * - `destructiveLight`: filled with destructive color of reduced opacity.
@@ -33,6 +41,12 @@ export const badgeVariance = cva(
           "border-transparent bg-primary text-primary-foreground shadow-sm hover:bg-primary/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        success:
+          "border-transparent bg-success text-success-foreground shadow-sm hover:bg-success/80",
+        successLight: "border-transparent bg-success/10 text-success",
+        warning:
+          "border-transparent bg-warning text-warning-foreground shadow-sm hover:bg-warning/80",
+        warningLight: "border-transparent bg-warning/10 text-warning-dark",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/80",
         destructiveLight:
