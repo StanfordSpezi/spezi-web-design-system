@@ -58,6 +58,7 @@ export * from "./forms/FormError";
 export * from "./molecules/AsideBrandLayout";
 export * from "./molecules/DashboardLayout";
 export * from "./molecules/ConfirmDeleteDialog";
+export * from "./molecules/ConsentDialog";
 export * from "./molecules/Notifications";
 export * from "./molecules/NotFound";
 export * from "./modules/auth/user";

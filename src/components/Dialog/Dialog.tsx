@@ -69,6 +69,24 @@ export const DialogPortal = DialogPrimitive.Portal;
 export const DialogClose = DialogPrimitive.Close;
 
 /**
+ * A styled close button with an X icon for Dialog components.
+ * Positioned in the top-right corner of a Dialog by default.
+ *
+ * @example
+ * <DialogContent>
+ *   <DialogTitle>Settings</DialogTitle>
+ *   <DialogCloseX />
+ *   <p>Dialog content...</p>
+ * </DialogContent>
+ */
+export const DialogCloseX = () => (
+  <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
+    <X className="size-4" />
+    <span className="sr-only">Close</span>
+  </DialogPrimitive.Close>
+);
+
+/**
  * Displays overlay behind the main dialog content. Necessary to achieve dialog's modality.
  */
 export const DialogOverlay = ({
@@ -80,11 +98,12 @@ export const DialogOverlay = ({
       "animate-entrance-fade fixed inset-0 z-50 bg-black/20",
       className,
     )}
+    data-testid="dialogOverlay"
     {...props}
   />
 );
 
-interface DialogContentProps
+interface DialogContentElementProps
   extends ComponentProps<typeof DialogPrimitive.Content> {
   /**
    * Determines maximum width of the modal.
@@ -94,7 +113,29 @@ interface DialogContentProps
 }
 
 /**
- * The main content container for the Dialog.
+ * Ready to use DialogContent. Provides default modality styling and size constraints. .
+ */
+export const DialogContentElement = ({
+  size = "lg",
+  className,
+  children,
+  ...props
+}: DialogContentElementProps) => (
+  <DialogPrimitive.Content
+    className={cn(
+      "animate-entrance-fade-zoom bg-surface fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg sm:rounded-lg",
+      size && sizeToMaxWidthRecord[size],
+      className,
+    )}
+    {...props}
+  >
+    {children}
+  </DialogPrimitive.Content>
+);
+
+interface DialogContentProps extends DialogContentElementProps {}
+/**
+ * The main content container for the Dialog. Provides complete Dialog experience with reasonable defaults.
  *
  * Handles portal, overlay, size constraints, close button, centered positioning, animations.
  * If Dialog has more specified needs, it has to opt out from this component and use primitives directly.
@@ -116,25 +157,15 @@ interface DialogContentProps
 export const DialogContent = ({
   className,
   children,
-  size = "lg",
+  size,
   ...props
 }: DialogContentProps) => (
   <DialogPortal>
     <DialogOverlay />
-    <DialogPrimitive.Content
-      className={cn(
-        "animate-entrance-fade-zoom bg-surface fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg sm:rounded-lg",
-        size && sizeToMaxWidthRecord[size],
-        className,
-      )}
-      {...props}
-    >
+    <DialogContentElement className={className} size={size} {...props}>
       {children}
-      <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
-        <X className="size-4" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
+      <DialogCloseX />
+    </DialogContentElement>
   </DialogPortal>
 );
 
