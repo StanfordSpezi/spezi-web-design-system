@@ -38,6 +38,9 @@ export interface RadioGroupProps<T extends string>
   /**
    * Direction of the radio group.
    *
+   * - `row`: Arranges radio buttons horizontally in a row with wrapping if necessary
+   * - `column`: Arranges radio buttons vertically in a column
+   *
    * @default "column"
    */
   direction?: "row" | "column";
