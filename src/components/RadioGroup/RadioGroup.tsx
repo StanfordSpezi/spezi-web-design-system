@@ -32,7 +32,7 @@ export interface RadioGroupProps<T extends string>
    */
   onChange?: (value: T) => void;
   /**
-   * Default value to be selected initially for un-controlled usage.
+   * Default value to be selected initially for uncontrolled usage.
    */
   defaultValue?: T;
   /**
