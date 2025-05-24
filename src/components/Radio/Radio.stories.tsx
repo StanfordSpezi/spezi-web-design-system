@@ -6,9 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+import { action } from "@storybook/addon-actions";
 import { type Meta } from "@storybook/react";
-import { RadioGroup, Radio } from "./Radio";
-import { SideLabel } from "../SideLabel";
+import { SideLabel } from "@/components/SideLabel";
+import { Radio, RadioRoot } from "./Radio";
 
 const meta: Meta = {
   title: "Components/Radio",
@@ -17,12 +18,18 @@ const meta: Meta = {
 export default meta;
 
 export const Default = () => (
-  <RadioGroup defaultValue="default" aria-label="View density">
-    <SideLabel label="Default">
-      <Radio value="1" id="r1" />
+  <RadioRoot onValueChange={action("onValueChange")}>
+    <Radio value="standalone" />
+  </RadioRoot>
+);
+
+export const Labeled = () => (
+  <RadioRoot onValueChange={action("onValueChange")}>
+    <SideLabel label="One">
+      <Radio value="one" />
     </SideLabel>
-    <SideLabel label="Second Choice">
-      <Radio value="2" id="r2" />
+    <SideLabel label="Two">
+      <Radio value="two" />
     </SideLabel>
-  </RadioGroup>
+  </RadioRoot>
 );
