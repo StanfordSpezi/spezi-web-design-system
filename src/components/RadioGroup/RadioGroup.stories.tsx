@@ -90,3 +90,10 @@ export const Horizontal: Story = {
     direction: "row",
   },
 };
+
+export const HorizontalWrapped: Story = {
+  args: {
+    direction: "row",
+    className: "max-w-40",
+  },
+};
