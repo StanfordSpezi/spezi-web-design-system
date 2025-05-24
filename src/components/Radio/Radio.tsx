@@ -13,7 +13,7 @@ import { cn } from "@/utils/className";
 /**
  * State provider for the radio. Radio cannot be rendered without a parent.
  *
- * Use `RadioGroup` for a complete radio selection list component.
+ * Use [RadioGroup](src/components/RadioGroup) for a complete radio selection list component.
  */
 export const RadioRoot = RadioGroupPrimitive.Root;
 
@@ -21,7 +21,7 @@ export const RadioRoot = RadioGroupPrimitive.Root;
  * Radio component, it implements just the Radio control input.
  * It must be wrapped in a RadioGroup.Root.
  *
- * Use `RadioGroup` for a complete radio selection list component.
+ * Use [RadioGroup](src/components/RadioGroup) for a complete radio selection list component.
  *
  * @example
  * <RadioRoot
