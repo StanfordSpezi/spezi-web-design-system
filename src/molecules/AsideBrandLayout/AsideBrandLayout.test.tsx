@@ -7,11 +7,20 @@
 //
 
 import { render, screen } from "@testing-library/react";
-import { AsideBrandLayout } from ".";
+import {
+  AsideBrandLayoutRoot,
+  AsideBrandLayoutAside,
+  AsideBrandLayoutMain,
+} from ".";
 
 describe("AsideBrandLayout", () => {
-  it("renders aside and children elements", () => {
-    render(<AsideBrandLayout aside="Aside">Main</AsideBrandLayout>);
+  it("renders aside and main elements", () => {
+    render(
+      <AsideBrandLayoutRoot>
+        <AsideBrandLayoutAside>Aside</AsideBrandLayoutAside>
+        <AsideBrandLayoutMain>Main</AsideBrandLayoutMain>
+      </AsideBrandLayoutRoot>,
+    );
 
     const aside = screen.getByText("Aside");
     expect(aside).toBeInTheDocument();
