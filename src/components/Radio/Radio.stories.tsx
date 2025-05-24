@@ -8,7 +8,6 @@
 
 import { action } from "@storybook/addon-actions";
 import { type Meta } from "@storybook/react";
-import { SideLabel } from "@/components/SideLabel";
 import { Radio, RadioRoot } from "./Radio";
 
 const meta: Meta = {
@@ -17,19 +16,11 @@ const meta: Meta = {
 
 export default meta;
 
+/**
+ * Radio just renders standalone radio input. For complete radio, see RadioGroup.
+ */
 export const Default = () => (
   <RadioRoot onValueChange={action("onValueChange")}>
     <Radio value="standalone" />
-  </RadioRoot>
-);
-
-export const Labeled = () => (
-  <RadioRoot onValueChange={action("onValueChange")}>
-    <SideLabel label="One">
-      <Radio value="one" />
-    </SideLabel>
-    <SideLabel label="Two">
-      <Radio value="two" />
-    </SideLabel>
   </RadioRoot>
 );
