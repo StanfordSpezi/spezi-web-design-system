@@ -41,6 +41,10 @@
       "types": "./dist/components/Checkbox.d.ts",
       "default": "./dist/components/Checkbox.js"
     },
+    "./components/CheckboxGroup": {
+      "types": "./dist/components/CheckboxGroup.d.ts",
+      "default": "./dist/components/CheckboxGroup.js"
+    },
     "./components/Card": {
       "types": "./dist/components/Card.d.ts",
       "default": "./dist/components/Card.js"
