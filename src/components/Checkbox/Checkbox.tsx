@@ -15,6 +15,8 @@ type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 /**
  * Checkbox component, it implements just the Checkbox control input.
  *
+ * Use [CheckboxGroup](src/components/CheckboxGroup) for a complete checkbox selection list component.
+ *
  * @example
  * // It's typically used with a SideLabel for proper labeling
  * <SideLabel label="Show unread only">
