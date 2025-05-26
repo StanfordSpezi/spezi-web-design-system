@@ -11,13 +11,20 @@ import { screens } from "@/theme/breakpoints";
 import { useIsTouchDevice, useIsScreen } from "./useMedia";
 
 describe("useMedia", () => {
+  const createMediaQueryList = (matches: boolean) => ({
+    matches,
+    media: "",
+    onchange: null,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  });
+
   const mockMatchMedia = (matches: boolean) => {
-    const mediaQueryList = {
-      matches,
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-    };
-    window.matchMedia = vi.fn().mockReturnValue(mediaQueryList);
+    const mediaQueryList = createMediaQueryList(matches);
+    vi.spyOn(window, "matchMedia").mockReturnValue(mediaQueryList);
     return mediaQueryList;
   };
 
@@ -70,6 +77,7 @@ describe("useMedia", () => {
     });
 
     it("uses correct breakpoint value", () => {
+      mockMatchMedia(false);
       renderHook(() => useIsScreen("md"));
 
       expect(window.matchMedia).toHaveBeenCalledWith(
