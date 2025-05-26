@@ -169,6 +169,10 @@
       "types": "./dist/components/Spinner.d.ts",
       "default": "./dist/components/Spinner.js"
     },
+    "./components/Accordion": {
+      "types": "./dist/components/Accordion.d.ts",
+      "default": "./dist/components/Accordion.js"
+    },
     "./components/Async": {
       "types": "./dist/components/Async.d.ts",
       "default": "./dist/components/Async.js"
