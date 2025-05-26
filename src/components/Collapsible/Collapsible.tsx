@@ -34,9 +34,9 @@ import { type AsChildProp } from "@/utils/misc";
  *   </CollapsibleContent>
  * </CollapsibleRoot>
  */
-export const CollapsibleRoot = (props: ComponentProps<typeof CollapsiblePrimitive.Root>) => (
-  <CollapsiblePrimitive.Root data-slot="collapsible-root" {...props} />
-);
+export const CollapsibleRoot = (
+  props: ComponentProps<typeof CollapsiblePrimitive.Root>,
+) => <CollapsiblePrimitive.Root data-slot="collapsible-root" {...props} />;
 
 /**
  * Button that toggles the collapsible.
