@@ -22,6 +22,7 @@ export * from "./components/Avatar";
 export * from "./components/Button";
 export * from "./components/Calendar";
 export * from "./components/Card";
+export * from "./components/Collapsible";
 export * from "./components/CopyText";
 export * from "./components/DataTable";
 export * from "./components/DatePicker";

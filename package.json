@@ -157,6 +157,10 @@
       "types": "./dist/components/Badge.d.ts",
       "default": "./dist/components/Badge.js"
     },
+    "./components/Collapsible": {
+      "types": "./dist/components/Collapsible.d.ts",
+      "default": "./dist/components/Collapsible.js"
+    },
     "./components/StateContainer": {
       "types": "./dist/components/StateContainer.d.ts",
       "default": "./dist/components/StateContainer.js"
