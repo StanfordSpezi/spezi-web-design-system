@@ -11,10 +11,33 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
 /**
- * Container for Radio inputs.
+ * State provider for the radio. Radio cannot be rendered without a parent.
+ *
+ * Use [RadioGroup](src/components/RadioGroup) for a complete radio selection list component.
  */
-export const RadioGroup = RadioGroupPrimitive.Root;
+export const RadioRoot = RadioGroupPrimitive.Root;
 
+/**
+ * Radio component, it implements just the Radio control input.
+ * It must be wrapped in a RadioGroup.Root.
+ *
+ * Use [RadioGroup](src/components/RadioGroup) for a complete radio selection list component.
+ *
+ * @example
+ * <RadioRoot
+ *   onValueChange={(value) => console.log(value)}
+ *   defaultValue="unread"
+ * >
+ *   <Radio value="unread" />
+ * </RadioRoot>
+ *
+ *
+ * @example
+ * // typically wrapped with SideLabel for proper labeling
+ * <SideLabel label="Unread">
+ *   <Radio value="unread" />
+ * </SideLabel>
+ */
 export const Radio = ({
   className,
   ...props

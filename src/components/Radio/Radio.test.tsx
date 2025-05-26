@@ -8,7 +8,7 @@
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
-import { RadioGroup, Radio } from "./Radio";
+import { RadioRoot, Radio } from "./Radio";
 
 describe("Radio", () => {
   it("renders radio inputs", () => {
@@ -16,7 +16,7 @@ describe("Radio", () => {
     const onSelectedChange2 = vitest.fn();
 
     render(
-      <RadioGroup defaultValue="option1" aria-label="Example Radio Input">
+      <RadioRoot defaultValue="option1" aria-label="Example Radio Input">
         <Radio
           value="option1"
           id="option1"
@@ -29,7 +29,7 @@ describe("Radio", () => {
           onChange={onSelectedChange2}
           data-testid="option2"
         />
-      </RadioGroup>,
+      </RadioRoot>,
     );
 
     const option1 = screen.getByTestId("option1");

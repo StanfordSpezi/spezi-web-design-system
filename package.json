@@ -97,6 +97,10 @@
       "types": "./dist/components/Radio.d.ts",
       "default": "./dist/components/Radio.js"
     },
+    "./components/RadioGroup": {
+      "types": "./dist/components/RadioGroup.d.ts",
+      "default": "./dist/components/RadioGroup.js"
+    },
     "./components/RangeCounter": {
       "types": "./dist/components/RangeCounter.d.ts",
       "default": "./dist/components/RangeCounter.js"
