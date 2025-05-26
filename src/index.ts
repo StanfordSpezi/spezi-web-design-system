@@ -12,6 +12,7 @@ export * from "./utils/file";
 export * from "./utils/misc";
 export * from "./utils/tailwind";
 export * from "./utils/useOpenState";
+export * from "./utils/useMedia";
 export * from "./utils/navigator";
 export * from "./utils/query";
 export * from "./utils/dev";
