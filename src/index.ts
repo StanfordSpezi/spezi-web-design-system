@@ -41,6 +41,7 @@ export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/SideLabel";
 export * from "./components/Switch";
+export * from "./components/Sheet";
 export * from "./components/Radio";
 export * from "./components/RadioGroup";
 export * from "./components/Checkbox";

@@ -173,6 +173,10 @@
       "types": "./dist/components/Accordion.d.ts",
       "default": "./dist/components/Accordion.js"
     },
+    "./components/Sheet": {
+      "types": "./dist/components/Sheet.d.ts",
+      "default": "./dist/components/Sheet.js"
+    },
     "./components/Async": {
       "types": "./dist/components/Async.d.ts",
       "default": "./dist/components/Async.js"
