@@ -157,6 +157,10 @@
       "types": "./dist/components/Badge.d.ts",
       "default": "./dist/components/Badge.js"
     },
+    "./components/Collapsible": {
+      "types": "./dist/components/Collapsible.d.ts",
+      "default": "./dist/components/Collapsible.js"
+    },
     "./components/StateContainer": {
       "types": "./dist/components/StateContainer.d.ts",
       "default": "./dist/components/StateContainer.js"
@@ -164,6 +168,10 @@
     "./components/Spinner": {
       "types": "./dist/components/Spinner.d.ts",
       "default": "./dist/components/Spinner.js"
+    },
+    "./components/Accordion": {
+      "types": "./dist/components/Accordion.d.ts",
+      "default": "./dist/components/Accordion.js"
     },
     "./components/Async": {
       "types": "./dist/components/Async.d.ts",
