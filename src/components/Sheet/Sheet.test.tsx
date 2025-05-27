@@ -6,8 +6,17 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { fireEvent, render, screen } from "@testing-library/react";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from ".";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { Button } from "@/components/Button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from ".";
 
 describe("Sheet", () => {
   it("renders accessible sheet", () => {
@@ -15,7 +24,13 @@ describe("Sheet", () => {
       <Sheet>
         <SheetTrigger>Trigger</SheetTrigger>
         <SheetContent>
-          <SheetTitle>Content</SheetTitle>
+          <SheetHeader>
+            <SheetTitle>Content</SheetTitle>
+            <SheetDescription>Description</SheetDescription>
+          </SheetHeader>
+          <SheetFooter>
+            <Button>Submit</Button>
+          </SheetFooter>
         </SheetContent>
       </Sheet>,
     );
@@ -28,6 +43,13 @@ describe("Sheet", () => {
     fireEvent.click(trigger);
 
     expect(querySheetContent()).toBeInTheDocument();
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toBeInTheDocument();
+    expect(dialog).toHaveAccessibleName("Content");
+    expect(dialog).toHaveAccessibleDescription("Description");
+    expect(
+      within(dialog).getByRole("button", { name: "Submit" }),
+    ).toBeInTheDocument();
 
     const closeButton = screen.getByRole("button", { name: "Close" });
     fireEvent.click(closeButton);
