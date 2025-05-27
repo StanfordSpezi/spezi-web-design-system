@@ -27,6 +27,19 @@ jobs:
   markdownlinkcheck:
     name: Markdown Link Check
     uses: StanfordBDHG/.github/.github/workflows/markdown-link-check.yml@v2
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Clean Install
+        run: npm ci
+      - name: Build
+        run: npm run build
   eslint:
     name: ESLint
     uses: StanfordBDHG/.github/.github/workflows/eslint.yml@v2
