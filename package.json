@@ -252,6 +252,10 @@
     "./utils/data": {
       "types": "./dist/utils/data.d.ts",
       "default": "./dist/utils/data.js"
+    },
+    "./utils/useMedia": {
+      "types": "./dist/utils/useMedia.d.ts",
+      "default": "./dist/utils/useMedia.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
