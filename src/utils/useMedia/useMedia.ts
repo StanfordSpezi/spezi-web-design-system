@@ -16,16 +16,16 @@ import { screens } from "@/theme/breakpoints";
  * const isLargeScreen = useMedia('(min-width: 1024px)');
  */
 const useMedia = (query: string) => {
-  const [state, setState] = useState(
+  const [isMatching, setIsMatching] = useState(
     () => typeof window !== "undefined" && window.matchMedia(query).matches,
   );
 
   useEffect(() => {
     const match = window.matchMedia(query);
-    setState(match.matches);
+    setIsMatching(match.matches);
 
     const onChange = () => {
-      setState(match.matches);
+      setIsMatching(match.matches);
     };
 
     match.addEventListener("change", onChange);
@@ -33,7 +33,7 @@ const useMedia = (query: string) => {
     return () => match.removeEventListener("change", onChange);
   }, [query]);
 
-  return state;
+  return isMatching;
 };
 
 /**
