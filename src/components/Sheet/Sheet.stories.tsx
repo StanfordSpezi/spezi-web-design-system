@@ -157,6 +157,9 @@ export const OverflowingContentHorizontal = () => {
   const props = useProps();
   return (
     <Sheet {...props.sheet}>
+      <SheetTrigger asChild>
+        <Button>Trigger</Button>
+      </SheetTrigger>
       <SheetContent side="bottom">
         <SheetHeader>
           <SheetTitle>Scroll me</SheetTitle>
