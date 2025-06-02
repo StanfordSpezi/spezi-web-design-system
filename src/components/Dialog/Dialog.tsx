@@ -79,8 +79,17 @@ export const DialogClose = DialogPrimitive.Close;
  *   <p>Dialog content...</p>
  * </DialogContent>
  */
-export const DialogCloseX = () => (
-  <DialogPrimitive.Close className="focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none">
+export const DialogCloseX = ({
+  className,
+  ...props
+}: ComponentProps<typeof DialogPrimitive.Close>) => (
+  <DialogPrimitive.Close
+    className={cn(
+      "focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
+      className,
+    )}
+    {...props}
+  >
     <X className="size-4" />
     <span className="sr-only">Close</span>
   </DialogPrimitive.Close>

@@ -80,8 +80,17 @@ export const SheetClose = SheetPrimitive.Close;
  *   <p>Sheet content...</p>
  * </SheetContent>
  */
-export const SheetCloseX = () => (
-  <SheetPrimitive.Close className="focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none">
+export const SheetCloseX = ({
+  className,
+  ...props
+}: ComponentProps<typeof SheetPrimitive.Close>) => (
+  <SheetPrimitive.Close
+    className={cn(
+      "focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
+      className,
+    )}
+    {...props}
+  >
     <X className="size-4" />
     <span className="sr-only">Close</span>
   </SheetPrimitive.Close>

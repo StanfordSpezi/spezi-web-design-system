@@ -96,8 +96,17 @@ export const PopoverDescription = ({
  *   </PopoverHeader>
  * </PopoverContent>
  */
-export const PopoverCloseX = () => (
-  <PopoverPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
+export const PopoverCloseX = ({
+  className,
+  ...props
+}: ComponentProps<typeof PopoverPrimitive.Close>) => (
+  <PopoverPrimitive.Close
+    className={cn(
+      "focus-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
+      className,
+    )}
+    {...props}
+  >
     <X className="size-4" />
     <span className="sr-only">Close</span>
   </PopoverPrimitive.Close>
