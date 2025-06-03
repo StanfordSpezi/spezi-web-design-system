@@ -31,6 +31,7 @@ export * from "./components/Dialog";
 export * from "./components/DropdownMenu";
 export * from "./components/EmptyState";
 export * from "./components/Error";
+export * from "./components/InfoButton";
 export * from "./components/Input";
 export * from "./components/InputOTP";
 export * from "./components/Label";
