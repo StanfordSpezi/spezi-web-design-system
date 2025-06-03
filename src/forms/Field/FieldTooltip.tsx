@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { Info } from "lucide-react";
+import { InfoButton } from "@/components/InfoButton";
 import { Tooltip, type TooltipProps } from "@/components/Tooltip";
 import { type FieldProps } from "@/forms";
 import { ensureString } from "@/utils/misc";
@@ -20,9 +20,7 @@ interface FieldTooltipProps extends TooltipProps, Pick<FieldProps, "label"> {
  */
 export const FieldTooltip = ({ label, id, ...props }: FieldTooltipProps) => (
   <Tooltip {...props}>
-    <button
-      type="button"
-      className="focus-ring rounded-md"
+    <InfoButton
       aria-label={[
         "More information about the",
         ensureString(label) ?? id,
@@ -30,8 +28,6 @@ export const FieldTooltip = ({ label, id, ...props }: FieldTooltipProps) => (
       ]
         .filter(Boolean)
         .join(" ")}
-    >
-      <Info className="text-muted-foreground size-4" />
-    </button>
+    />
   </Tooltip>
 );
