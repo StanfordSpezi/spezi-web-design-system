@@ -29,6 +29,7 @@ export const InfoButton = ({
       "interactive-opacity text-muted-foreground size-4 rounded-md",
       className,
     )}
+    aria-label="More information"
     {...props}
   >
     <Info className="size-full" />
