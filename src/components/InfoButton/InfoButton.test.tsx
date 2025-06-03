@@ -19,9 +19,7 @@ describe("InfoButton", () => {
 
   it("passes additional props to button element", () => {
     const onClickMock = vi.fn();
-    render(
-      <InfoButton onClick={onClickMock} data-testid="info-button" />,
-    );
+    render(<InfoButton onClick={onClickMock} data-testid="info-button" />);
 
     const button = screen.getByTestId("info-button");
     fireEvent.click(button);
