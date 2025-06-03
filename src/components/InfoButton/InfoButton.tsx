@@ -7,7 +7,7 @@
 //
 
 import { Info } from "lucide-react";
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 
 /**
