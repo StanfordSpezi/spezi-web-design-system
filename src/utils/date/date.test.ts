@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { formatDateRange, formatNilDateRange } from "./date";
 
 describe("formatDateRange", () => {
