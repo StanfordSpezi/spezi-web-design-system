@@ -11,6 +11,11 @@ import { type Nil } from "@/utils/misc";
 
 type DateInput = Date | string | number;
 
+interface DateRange {
+  start?: Nil<DateInput>;
+  end?: Nil<DateInput>;
+}
+
 /**
  * Formats date to include just the day, month and year.
  * The exact date format is based on locale.
@@ -56,3 +61,74 @@ export const formatDateTime = (value: DateInput) => {
  */
 export const formatNilDateTime = (value: Nil<DateInput>) =>
   value === "" || isNil(value) ? null : formatDateTime(value);
+
+/**
+ * Formats a date range into a human-readable string using locale-aware formatting.
+ *
+ * @example
+ * // Both dates provided
+ * formatDateRange({ start: "2025-01-01", end: "2025-01-31" })
+ * // Returns: "Jan 1 – 31, 2025"
+ *
+ * @example
+ * // Only start date
+ * formatDateRange({ start: "2025-01-01" })
+ * // Returns: "from Jan 1, 2025"
+ *
+ * @example
+ * // Only end date
+ * formatDateRange({ end: "2025-01-31" })
+ * // Returns: "ending Jan 31, 2025"
+ *
+ * @example
+ * // No dates provided
+ * formatDateRange({})
+ * // Returns: null
+ */
+export const formatDateRange = (
+  dateRange: DateRange,
+  formatter = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }),
+) => {
+  if (dateRange.start && !dateRange.end) {
+    const formattedDate = formatter.format(new Date(dateRange.start));
+    return `from ${formattedDate}`;
+  }
+
+  if (dateRange.end && !dateRange.start) {
+    const formattedDate = formatter.format(new Date(dateRange.end));
+    return `ending ${formattedDate}`;
+  }
+
+  if (dateRange.start && dateRange.end) {
+    return formatter.formatRange(
+      new Date(dateRange.start),
+      new Date(dateRange.end),
+    );
+  }
+
+  return null;
+};
+
+/**
+ * Formats a date range like `formatDateRange`, but returns `null` for nil date ranges.
+ *
+ * @example
+ * formatNilDateRange({ start: "2025-01-01", end: "2025-01-31" })
+ * // Returns: "Jan 1 – 31, 2025"
+ *
+ * @example
+ * formatNilDateRange(null)
+ * // Returns: null
+ */
+export const formatNilDateRange = (
+  dateRange: Nil<DateRange>,
+  formatter = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }),
+) => (isNil(dateRange) ? null : formatDateRange(dateRange, formatter));
