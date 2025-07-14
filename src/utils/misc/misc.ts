@@ -166,3 +166,27 @@ export const isEmpty: IsEmptyFunction = (value: unknown) => {
   if (valueIsObject) return Object.entries(value).length === 0;
   return false;
 };
+
+/**
+ * Formats a boolean value into a string representation.
+ * Returns "true" or "false" based on the boolean value.
+ *
+ * @example
+ * formatBoolean(true); // "true"
+ * formatBoolean(false); // "false"
+ */
+export const formatBoolean = (value: boolean) => {
+  return value ? "true" : "false";
+};
+
+/**
+ * Formats a boolean like `formatBoolean`, but returns `null` for nil values.
+ *
+ * @example
+ * formatNilBoolean(true); // "true"
+ * formatNilBoolean(false); // "false"
+ * formatNilBoolean(null); // null
+ * formatNilBoolean(undefined); // null
+ */
+export const formatNilBoolean = (value: Nil<boolean>) =>
+  isNil(value) ? null : formatBoolean(value);
