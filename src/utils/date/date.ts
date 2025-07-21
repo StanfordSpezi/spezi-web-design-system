@@ -9,9 +9,9 @@
 import { isNil } from "es-toolkit";
 import { type Nil } from "@/utils/misc";
 
-type DateInput = Date | string | number;
+export type DateInput = Date | string | number;
 
-interface DateRange {
+export interface DateRange {
   start?: Nil<DateInput>;
   end?: Nil<DateInput>;
 }

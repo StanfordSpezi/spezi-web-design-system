@@ -175,9 +175,7 @@ export const isEmpty: IsEmptyFunction = (value: unknown) => {
  * formatBoolean(true); // "true"
  * formatBoolean(false); // "false"
  */
-export const formatBoolean = (value: boolean) => {
-  return value ? "true" : "false";
-};
+export const formatBoolean = (value: boolean) => (value ? "true" : "false");
 
 /**
  * Formats a boolean like `formatBoolean`, but returns `null` for nil values.
