@@ -41,7 +41,7 @@ describe("DashedSeparator", () => {
       <DashedSeparator
         dashColor="var(--color-primary)"
         dashSize="8px"
-        dashSpacing="10%"
+        dashGap="10%"
       />,
     );
 
@@ -50,13 +50,13 @@ describe("DashedSeparator", () => {
     expect(element).toHaveStyle({
       "--dash-color": "var(--color-primary)",
       "--dash-size": "8px",
-      "--dash-spacing": "10%",
+      "--dash-gap": "10%",
     });
   });
 
   it("renders separator with custom style classes", () => {
     render(
-      <DashedSeparator className="[--dash-color:theme(colors.red-500)] [--dash-size:theme(spacing.4)] [--dash-spacing:theme(spacing.3)]" />,
+      <DashedSeparator className="[--dash-color:theme(colors.red-500)] [--dash-gap:theme(spacing.3)] [--dash-size:theme(spacing.4)]" />,
     );
 
     const element = screen.getByRole("separator");
@@ -64,7 +64,7 @@ describe("DashedSeparator", () => {
     expect(element).toHaveClass(
       "[--dash-color:theme(colors.red-500)]",
       "[--dash-size:theme(spacing.4)]",
-      "[--dash-spacing:theme(spacing.3)]",
+      "[--dash-gap:theme(spacing.3)]",
     );
   });
 });

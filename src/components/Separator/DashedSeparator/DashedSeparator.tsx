@@ -13,13 +13,13 @@ import { Separator } from "../Separator";
 interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
   dashColor?: string;
   dashSize?: string;
-  dashSpacing?: string;
+  dashGap?: string;
 }
 
 /**
  * Visual dashed separator component for dividing content sections.
  * Use this when you need a more subtle visual break compared to a solid separator.
- * Configure the dash color, size, and spacing.
+ * Configure the dash color, size, and gap.
  *
  * Built on top of [radix-ui Separator](https://www.radix-ui.com/primitives/docs/components/separator).
  *
@@ -29,7 +29,7 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
  *   decorative
  *   dashColor="red"
  *   dashSize="8px"
- *   dashSpacing="4px"
+ *   dashGap="4px"
  * />
  *
  * @example
@@ -60,7 +60,7 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
 export const DashedSeparator = ({
   dashColor,
   dashSize,
-  dashSpacing,
+  dashGap,
   orientation,
   className,
   style,
@@ -70,7 +70,7 @@ export const DashedSeparator = ({
     orientation={orientation}
     className={cn(
       orientation === "vertical" ? "[--tilt:0deg]" : "[--tilt:90deg]",
-      "bg-[linear-gradient(var(--tilt),var(--dash-color,theme(colors.border)),var(--dash-color,theme(colors.border))_calc(100%_-_var(--dash-spacing,theme(spacing.1))),transparent_calc(100%_-_var(--dash-spacing,theme(spacing.1))),transparent_100%)]",
+      "bg-[linear-gradient(var(--tilt),var(--dash-color,theme(colors.border)),var(--dash-color,theme(colors.border))_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_100%)]",
       "bg-[length:var(--dash-size,theme(spacing.4))_var(--dash-size,theme(spacing.4))]",
       className,
     )}
@@ -78,7 +78,7 @@ export const DashedSeparator = ({
       {
         "--dash-color": dashColor,
         "--dash-size": dashSize,
-        "--dash-spacing": dashSpacing,
+        "--dash-gap": dashGap,
         backgroundColor: "transparent",
         ...style,
       } as CSSProperties
