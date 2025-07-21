@@ -5,7 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
  * Waits for provided milliseconds.
@@ -29,7 +28,7 @@ export const logPerformance = <T>(name: string, callback: () => T) => {
  * Throws a "not implemented" error.
  * Useful when implementing a feature partially in development environments.
  */
-export const notImplementedError: any = () => {
+export const notImplementedError = () => {
   throw new Error("Not implemented");
 };
 
@@ -37,6 +36,6 @@ export const notImplementedError: any = () => {
  * Shows a "not implemented" alert.
  * Useful when implementing a feature partially in development environments.
  */
-export const notImplementedAlert: any = () => {
+export const notImplementedAlert = () => {
   alert("Not implemented");
 };
