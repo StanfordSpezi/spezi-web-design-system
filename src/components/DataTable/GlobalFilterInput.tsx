@@ -8,6 +8,49 @@
 
 import { Search } from "lucide-react";
 import { Input, type InputProps } from "../Input";
+import { cn } from "@/utils/className";
+import { ComponentProps } from "react";
+
+export const GlobalFilterInputContainer = ({
+  className,
+  ...props
+}: ComponentProps<"div">) => (
+  <div className={cn("relative max-w-72 grow", className)} {...props} />
+);
+
+export const GlobalFilterInputIcon = ({
+  className,
+  ...props
+}: ComponentProps<typeof Search>) => (
+  <Search
+    className={cn(
+      "text-muted-foreground absolute top-2.5 left-3 size-5",
+      className,
+    )}
+    {...props}
+  />
+);
+
+interface GlobalFilterInputInputProps extends InputProps {
+  entityName?: string;
+}
+
+export const GlobalFilterInputInput = ({
+  entityName,
+  className,
+  ...props
+}: GlobalFilterInputInputProps) => {
+  const placeholder = `Search${entityName ? ` ${entityName}` : ""}...`;
+  return (
+    <Input
+      placeholder={placeholder}
+      aria-label={placeholder}
+      defaultValue=""
+      className={cn("pl-10", className)}
+      {...props}
+    />
+  );
+};
 
 interface GlobalFilterInputProps extends InputProps {
   entityName?: string;
@@ -16,21 +59,9 @@ interface GlobalFilterInputProps extends InputProps {
 /**
  * Renders input for global text search.
  */
-export const GlobalFilterInput = ({
-  entityName,
-  ...props
-}: GlobalFilterInputProps) => {
-  const placeholder = `Search${entityName ? ` ${entityName}` : ""}...`;
-  return (
-    <div className="relative max-w-72 grow">
-      <Search className="text-muted-foreground absolute top-2.5 left-3 size-5" />
-      <Input
-        placeholder={placeholder}
-        aria-label={placeholder}
-        defaultValue=""
-        className="pl-10"
-        {...props}
-      />
-    </div>
-  );
-};
+export const GlobalFilterInput = (props: GlobalFilterInputProps) => (
+  <GlobalFilterInputContainer>
+    <GlobalFilterInputIcon />
+    <GlobalFilterInputInput {...props} />
+  </GlobalFilterInputContainer>
+);
