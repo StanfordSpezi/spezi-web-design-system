@@ -52,10 +52,7 @@ export const GlobalFilterInputInput = ({
   );
 };
 
-interface GlobalFilterInputProps extends InputProps {
-  entityName?: string;
-}
-
+interface GlobalFilterInputProps extends GlobalFilterInputInputProps {}
 /**
  * Renders input for global text search.
  */
