@@ -18,7 +18,7 @@ import {
 import type { TableOptions } from "@tanstack/table-core";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { ensureString, PartialSome } from "@/utils/misc";
+import { ensureString, type PartialSome } from "@/utils/misc";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {

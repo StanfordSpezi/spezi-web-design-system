@@ -7,9 +7,9 @@
 //
 
 import { Search } from "lucide-react";
-import { Input, type InputProps } from "../Input";
+import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
-import { ComponentProps } from "react";
+import { Input, type InputProps } from "../Input";
 
 export const GlobalFilterInputContainer = ({
   className,
