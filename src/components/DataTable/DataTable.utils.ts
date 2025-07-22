@@ -18,7 +18,7 @@ import {
 import type { TableOptions } from "@tanstack/table-core";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import type { PartialSome } from "@/utils/misc";
+import { ensureString, PartialSome } from "@/utils/misc";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -99,5 +99,23 @@ export const useDataTable = <Data>({
     ...props,
   });
 
-  return { globalFilter, setGlobalFilter, setGlobalFilterDebounced, table };
+  const rows = table.getRowModel().rows;
+
+  const isEmpty = !rows.length;
+
+  const emptyProps = {
+    show: isEmpty,
+    textFilter: ensureString(table.getState().globalFilter),
+    hasFilters: data.length !== 0 && table.getState().columnFilters.length > 0,
+  };
+
+  return {
+    globalFilter,
+    setGlobalFilter,
+    setGlobalFilterDebounced,
+    table,
+    rows,
+    emptyProps,
+    isEmpty,
+  };
 };

@@ -19,7 +19,7 @@ import {
   type DataTableTableViewSpecificProps,
 } from "@/components/DataTable/DataTableTableView";
 import { cn } from "@/utils/className";
-import { ensureString, isObject } from "@/utils/misc";
+import { isObject } from "@/utils/misc";
 import { useDataTable, type UseDataTableProps } from "./DataTable.utils";
 import { DataTablePagination } from "./DataTablePagination";
 import { GlobalFilterInput } from "./GlobalFilterInput";
@@ -201,22 +201,20 @@ export const DataTable = <Data,>({
   empty,
   ...props
 }: DataTableProps<Data>) => {
-  const { table, setGlobalFilterDebounced } = useDataTable({
+  const {
+    table,
+    setGlobalFilterDebounced,
+    rows,
+    emptyProps: defaultEmptyProps,
+    isEmpty,
+  } = useDataTable({
     data,
     columns,
     pageSize,
     ...props,
   });
-  const rows = table.getRowModel().rows;
 
-  const isEmpty = !rows.length;
   const viewProps = { table, entityName, rows };
-
-  const defaultEmptyProps = {
-    show: rows.length === 0,
-    textFilter: ensureString(table.getState().globalFilter),
-    hasFilters: data.length !== 0 && table.getState().columnFilters.length > 0,
-  };
 
   return (
     <div
