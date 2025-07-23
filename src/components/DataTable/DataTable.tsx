@@ -227,7 +227,7 @@ export const DataTable = <Data,>({
       )}
     >
       {!minimal && (
-        <header className="flex items-center border-b p-4">
+        <header className="flex items-center gap-2 border-b p-4">
           <GlobalFilterInput
             onChange={(event) => setGlobalFilterDebounced(event.target.value)}
             entityName={entityName}
