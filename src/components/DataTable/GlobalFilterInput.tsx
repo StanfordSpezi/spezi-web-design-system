@@ -27,6 +27,7 @@ export const GlobalFilterInputIcon = ({
       "text-muted-foreground absolute top-2.5 left-3 size-5",
       className,
     )}
+    aria-hidden="true"
     {...props}
   />
 );
