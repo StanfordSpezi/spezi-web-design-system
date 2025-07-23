@@ -65,7 +65,7 @@ export const buttonVariants = {
 };
 
 export const buttonVariance = cva(
-  "inline-flex items-center justify-center whitespace-nowrap transition-colors focus-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap transition focus-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: buttonVariants,
     defaultVariants: {
