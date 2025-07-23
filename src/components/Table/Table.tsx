@@ -74,7 +74,7 @@ export const TableRow = ({
 }: TableRowProps) => (
   <tr
     className={cn(
-      "data-[state=selected]:bg-muted border-b transition-colors",
+      "data-[state=selected]:bg-muted border-b transition",
       isHoverable && "hover:bg-muted/50",
       onClick &&
         "focus-visible:bg-primary/10 cursor-pointer focus-visible:outline-hidden",

@@ -63,7 +63,7 @@ SPDX-License-Identifier: MIT
 }
 
 @utility interactive-opacity {
-  @apply focus-ring transition-opacity hover:opacity-60;
+  @apply focus-ring transition hover:opacity-60;
 }
 
 @utility hide-all-hidden {
