@@ -7,3 +7,5 @@
 //
 
 export * from "./Pagination";
+export * from "./ButtonPagination";
+export * from "./LinkPagination";
