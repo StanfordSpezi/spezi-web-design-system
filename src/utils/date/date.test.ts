@@ -11,7 +11,7 @@ import { formatDateRange, formatNilDateRange } from "./date";
 describe("formatDateRange", () => {
   const formatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
-    month: "short",
+    month: "numeric",
     day: "numeric",
   });
 
@@ -55,7 +55,7 @@ describe("formatDateRange", () => {
 describe("formatNilDateRange", () => {
   const formatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
-    month: "short",
+    month: "numeric",
     day: "numeric",
   });
 

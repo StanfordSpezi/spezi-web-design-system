@@ -68,17 +68,17 @@ export const formatNilDateTime = (value: Nil<DateInput>) =>
  * @example
  * // Both dates provided
  * formatDateRange({ start: "2025-01-01", end: "2025-01-31" })
- * // Returns: "Jan 1 – 31, 2025"
+ * // Returns: "1/1/2025 – 1/31/2025"
  *
  * @example
  * // Only start date
  * formatDateRange({ start: "2025-01-01" })
- * // Returns: "from Jan 1, 2025"
+ * // Returns: "from 1/1/2025"
  *
  * @example
  * // Only end date
  * formatDateRange({ end: "2025-01-31" })
- * // Returns: "ending Jan 31, 2025"
+ * // Returns: "ending 1/31/2025"
  *
  * @example
  * // No dates provided
@@ -89,7 +89,7 @@ export const formatDateRange = (
   dateRange: DateRange,
   formatter = new Intl.DateTimeFormat(undefined, {
     year: "numeric",
-    month: "short",
+    month: "numeric",
     day: "numeric",
   }),
 ) => {
@@ -118,7 +118,7 @@ export const formatDateRange = (
  *
  * @example
  * formatNilDateRange({ start: "2025-01-01", end: "2025-01-31" })
- * // Returns: "Jan 1 – 31, 2025"
+ * // Returns: "1/1/2025 – 1/31/2025"
  *
  * @example
  * formatNilDateRange(null)
@@ -128,7 +128,7 @@ export const formatNilDateRange = (
   dateRange: Nil<DateRange>,
   formatter = new Intl.DateTimeFormat(undefined, {
     year: "numeric",
-    month: "short",
+    month: "numeric",
     day: "numeric",
   }),
 ) => (isNil(dateRange) ? null : formatDateRange(dateRange, formatter));
