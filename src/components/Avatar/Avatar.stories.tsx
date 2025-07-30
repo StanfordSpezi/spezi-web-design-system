@@ -42,3 +42,11 @@ export const CustomFallback: Story = {
 
 export const SM: Story = { args: { size: "sm" } };
 export const LG: Story = { args: { size: "lg" } };
+
+export const WithOverlay: Story = {
+  args: {
+    overlay: (
+      <div className="absolute right-0 bottom-0 size-4 rounded-full border-2 border-white bg-green-500" />
+    ),
+  },
+};

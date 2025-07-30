@@ -47,4 +47,11 @@ describe("Avatar", () => {
     const element = screen.getByText("Lorem");
     expect(element).toBeInTheDocument();
   });
+
+  it("renders overlay content", () => {
+    render(<Avatar name="John Doe" overlay={<span>Badge</span>} />);
+
+    const overlay = screen.getByText("Badge");
+    expect(overlay).toBeInTheDocument();
+  });
 });
