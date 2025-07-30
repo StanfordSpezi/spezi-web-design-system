@@ -264,6 +264,10 @@
     "./utils/useMedia": {
       "types": "./dist/utils/useMedia.d.ts",
       "default": "./dist/utils/useMedia.js"
+    },
+    "./utils/useIsScrolled": {
+      "types": "./dist/utils/useIsScrolled.d.ts",
+      "default": "./dist/utils/useIsScrolled.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",

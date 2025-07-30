@@ -11,6 +11,7 @@ export * from "./utils/date";
 export * from "./utils/file";
 export * from "./utils/misc";
 export * from "./utils/tailwind";
+export * from "./utils/useIsScrolled";
 export * from "./utils/useOpenState";
 export * from "./utils/useMedia";
 export * from "./utils/navigator";
