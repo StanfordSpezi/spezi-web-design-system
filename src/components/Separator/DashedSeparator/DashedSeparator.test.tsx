@@ -14,8 +14,7 @@ describe("DashedSeparator", () => {
   it("renders separator element if no children provided", () => {
     render(<DashedSeparator />);
 
-    const element = screen.getByRole("separator");
-    expect(element).toBeInTheDocument();
+    screen.getByRole("separator");
   });
 
   it("renders regular element if children provided", () => {
@@ -56,13 +55,13 @@ describe("DashedSeparator", () => {
 
   it("renders separator with custom style classes", () => {
     render(
-      <DashedSeparator className="[--dash-color:theme(colors.red-500)] [--dash-gap:theme(spacing.3)] [--dash-size:theme(spacing.4)]" />,
+      <DashedSeparator className="[--dash-color:theme(colors.red.500)] [--dash-gap:theme(spacing.3)] [--dash-size:theme(spacing.4)]" />,
     );
 
     const element = screen.getByRole("separator");
     expect(element).toBeInTheDocument();
     expect(element).toHaveClass(
-      "[--dash-color:theme(colors.red-500)]",
+      "[--dash-color:theme(colors.red.500)]",
       "[--dash-size:theme(spacing.4)]",
       "[--dash-gap:theme(spacing.3)]",
     );

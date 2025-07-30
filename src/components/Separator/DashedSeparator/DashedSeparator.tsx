@@ -33,6 +33,14 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
  * />
  *
  * @example
+ * // Custom dash styling using class names
+ * <DashedSeparator className={`
+ *   [--dash-color:theme(colors.red.500)]
+ *   [--dash-size:theme(spacing.4)]
+ *   [--dash-gap:theme(spacing.2)]
+ * `} />
+ *
+ * @example
  * // Basic horizontal separator
  * <div className="space-y-4">
  *   <p>Content above</p>

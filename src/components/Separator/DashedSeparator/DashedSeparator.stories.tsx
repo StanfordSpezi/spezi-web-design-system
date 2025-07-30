@@ -35,7 +35,7 @@ export const CustomStyleProps = () => (
 
 export const CustomStyleClassNames = () => (
   <div className="w-96">
-    <DashedSeparator className="[--dash-color:theme(colors.red-500)] [--dash-gap:theme(spacing.3)] [--dash-size:theme(spacing.4)]" />
+    <DashedSeparator className="[--dash-color:theme(colors.red.500)] [--dash-gap:theme(spacing.3)] [--dash-size:theme(spacing.4)]" />
   </div>
 );
 
