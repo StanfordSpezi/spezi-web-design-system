@@ -6,20 +6,32 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { IconName } from "lucide-react/dynamic";
 import { useDebounce } from "use-debounce";
 import { Input } from "../../Input";
-import { type IconData, IconGrid } from "../IconGrid";
+import { IconGrid, type IconGridProps } from "../IconGrid";
 
-export interface IconSearchGridProps {
+export interface IconSearchGridProps extends Omit<IconGridProps, "searchTerm"> {
   searchPlaceholder?: string;
-  icons?: IconData[];
-  onValueChange?: (value: IconName) => void;
-  columns?: number;
-  visibleRows?: number;
-  rowHeight?: number;
 }
 
+/**
+ * Icon grid with integrated search input and debounced filtering.
+ *
+ * Combines a search input with the IconGrid component.
+ *
+ * @example
+ * // Basic usage
+ * <IconSearchGrid onValueChange={(icon) => setIcon(icon)} />
+ *
+ * @example
+ * // Custom placeholder and dimensions
+ * <IconSearchGrid
+ *   searchPlaceholder="Find your perfect icon..."
+ *   columns={8}
+ *   visibleRows={6}
+ *   onValueChange={handleSelection}
+ * />
+ */
 export const IconSearchGrid = ({
   searchPlaceholder = "Search for an icon...",
   ...iconGridProps

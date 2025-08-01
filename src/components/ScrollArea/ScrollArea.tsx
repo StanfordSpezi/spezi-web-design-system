@@ -21,12 +21,14 @@ export const ScrollArea = ({
 }) => {
   return (
     <ScrollAreaPrimitive.Root
+      data-testid="scroll-area"
       data-slot="scroll-area"
       className={cn("relative", className)}
       {...props}
     >
       <ScrollAreaPrimitive.Viewport
         ref={scrollViewRef}
+        data-testid="scroll-area-viewport"
         data-slot="scroll-area-viewport"
         className="focus-ring size-full rounded-[inherit] transition focus-visible:ring-2"
         onScroll={onScroll}
@@ -46,6 +48,7 @@ export const ScrollBar = ({
 }: React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>) => {
   return (
     <ScrollAreaPrimitive.ScrollAreaScrollbar
+      data-testid="scroll-area-scrollbar"
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       className={cn(

@@ -31,6 +31,45 @@ interface IconPickerProps
   triggerPlaceholder?: string;
 }
 
+/**
+ * Icon picker component with popover interface.
+ *
+ * Provides a button trigger that opens a popover containing an IconSearchGrid.
+ * Supports both controlled and uncontrolled usage patterns.
+ *
+ * @example
+ * // Uncontrolled with default value
+ * <IconPicker
+ *   defaultValue="home"
+ *   onValueChange={(icon) => console.log('Selected:', icon)}
+ * />
+ *
+ * @example
+ * // Controlled component
+ * <IconPicker
+ *   value={selectedIcon}
+ *   onValueChange={setSelectedIcon}
+ *   triggerPlaceholder="Choose an icon"
+ * />
+ *
+ * @example
+ * // Custom trigger
+ * <IconPicker onValueChange={handleSelect}>
+ *   <Button variant="ghost">
+ *     <Plus className="size-4" />
+ *     Add Icon
+ *   </Button>
+ * </IconPicker>
+ *
+ * @example
+ * // With custom search and icons
+ * <IconPicker
+ *   icons={brandIcons}
+ *   searchPlaceholder="Search brand icons..."
+ *   columns={6}
+ *   onValueChange={setBrandIcon}
+ * />
+ */
 export const IconPicker = ({
   // Popover root props
   open,
@@ -41,6 +80,10 @@ export const IconPicker = ({
   searchPlaceholder = "Search for an icon...",
   icons,
   onValueChange,
+  columns,
+  visibleRows,
+  rowHeight,
+  showTooltip,
   // Trigger props
   value,
   defaultValue,
@@ -101,11 +144,18 @@ export const IconPicker = ({
           </Button>
         )}
       </PopoverTrigger>
-      <PopoverContent className="w-96 rounded-xl border-black/10 bg-clip-padding pr-2 shadow-xl shadow-black/5">
+      <PopoverContent
+        side="top"
+        className="w-96 rounded-xl border-black/10 bg-clip-padding pr-2 shadow-xl shadow-black/5"
+      >
         <IconSearchGrid
           searchPlaceholder={searchPlaceholder}
           icons={icons}
           onValueChange={handleValueChange}
+          columns={columns}
+          visibleRows={visibleRows}
+          rowHeight={rowHeight}
+          showTooltip={showTooltip}
         />
       </PopoverContent>
     </PopoverRoot>

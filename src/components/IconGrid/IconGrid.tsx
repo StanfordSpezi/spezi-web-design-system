@@ -112,6 +112,7 @@ const IconRow = memo(
         {icons.map((icon) => (
           <button
             key={icon.name}
+            aria-label={upperFirst(icon.name.split("-").join(" "))}
             className="focus:bg-muted hover:bg-muted rounded-md transition outline-none"
             onClick={() => onValueChange?.(icon.name as IconName)}
           >
@@ -194,7 +195,7 @@ const GridVirtualizer = ({
   );
 };
 
-interface IconGridProps {
+export interface IconGridProps {
   searchTerm?: string;
   icons?: IconData[];
   onValueChange?: (value: IconName) => void;
@@ -204,6 +205,33 @@ interface IconGridProps {
   showTooltip?: boolean;
 }
 
+/**
+ * Virtualized grid component for displaying and selecting icons.
+ *
+ * Features search filtering, virtualization for performance, and customizable dimensions.
+ * Uses React Query to load icon data when no custom icons are provided.
+ *
+ * @example
+ * // Basic usage with all icons
+ * <IconGrid onValueChange={(icon) => setSelectedIcon(icon)} />
+ *
+ * @example
+ * // With custom icons and search
+ * <IconGrid
+ *   icons={customIcons}
+ *   searchTerm="home"
+ *   onValueChange={handleIconSelect}
+ * />
+ *
+ * @example
+ * // Custom dimensions
+ * <IconGrid
+ *   columns={10}
+ *   visibleRows={4}
+ *   rowHeight={40}
+ *   showTooltip={false}
+ * />
+ */
 export const IconGrid = ({
   searchTerm = "",
   icons,
