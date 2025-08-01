@@ -77,6 +77,14 @@
       "types": "./dist/components/Error.d.ts",
       "default": "./dist/components/Error.js"
     },
+    "./components/IconGrid": {
+      "types": "./dist/components/IconGrid.d.ts",
+      "default": "./dist/components/IconGrid.js"
+    },
+    "./components/IconPicker": {
+      "types": "./dist/components/IconPicker.d.ts",
+      "default": "./dist/components/IconPicker.js"
+    },
     "./components/InfoButton": {
       "types": "./dist/components/InfoButton.d.ts",
       "default": "./dist/components/InfoButton.js"
@@ -112,6 +120,10 @@
     "./components/RangeCounter": {
       "types": "./dist/components/RangeCounter.d.ts",
       "default": "./dist/components/RangeCounter.js"
+    },
+    "./components/ScrollArea": {
+      "types": "./dist/components/ScrollArea.d.ts",
+      "default": "./dist/components/ScrollArea.js"
     },
     "./components/Select": {
       "types": "./dist/components/Select.d.ts",
@@ -288,7 +300,9 @@
     "@hookform/resolvers": "^5.0.1",
     "@nextui-org/use-pagination": "^2.2.3",
     "@tanstack/match-sorter-utils": "^8.19.4",
+    "@tanstack/react-query": "^5.83.1",
     "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.12",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
     "es-toolkit": "^1.38.0",
