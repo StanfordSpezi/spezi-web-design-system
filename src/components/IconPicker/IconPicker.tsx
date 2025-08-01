@@ -144,10 +144,7 @@ export const IconPicker = ({
           </Button>
         )}
       </PopoverTrigger>
-      <PopoverContent
-        side="top"
-        className="w-96 rounded-xl border-black/10 bg-clip-padding pr-2 shadow-xl shadow-black/5"
-      >
+      <PopoverContent className="w-96 rounded-xl border-black/10 bg-clip-padding pr-2 shadow-xl shadow-black/5">
         <IconSearchGrid
           searchPlaceholder={searchPlaceholder}
           icons={icons}

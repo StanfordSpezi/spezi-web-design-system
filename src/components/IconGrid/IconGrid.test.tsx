@@ -49,7 +49,7 @@ describe("IconGrid", () => {
 
     mockIcons.forEach((icon) => {
       const button = screen.getByRole("button", {
-        name: new RegExp(icon.name),
+        name: new RegExp(icon.name, "i"),
       });
       expect(button).toBeInTheDocument();
     });

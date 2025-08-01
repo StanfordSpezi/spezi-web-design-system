@@ -45,8 +45,12 @@ const IconGridSkeleton = ({
       }}
     >
       {times(columns * visibleRows, (index) => (
-        <div key={index} className="flex-center" style={{ height: rowHeight }}>
-          <Skeleton className="size-5 rounded-sm" />
+        <div
+          key={index}
+          className="flex-center size-full"
+          style={{ height: rowHeight }}
+        >
+          <Skeleton className="size-2/3 rounded-sm" />
         </div>
       ))}
     </div>
