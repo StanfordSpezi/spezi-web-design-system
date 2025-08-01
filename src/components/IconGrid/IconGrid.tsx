@@ -39,6 +39,7 @@ const IconGridSkeleton = ({
 }: IconGridSkeletonProps) => {
   return (
     <div
+      data-testid="icon-grid-skeleton"
       className="grid w-full pr-2"
       style={{
         gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
@@ -66,6 +67,7 @@ const IconRenderer = memo(({ name, showTooltip }: IconRendererProps) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
+      data-testid={`icon-renderer-${name}`}
       className="flex-center relative size-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -76,12 +78,14 @@ const IconRenderer = memo(({ name, showTooltip }: IconRendererProps) => {
         <TooltipRoot disableHoverableContent>
           <TooltipTrigger asChild>
             <div
+              data-testid={`icon-tooltip-trigger-${name}`}
               className="flex-center absolute inset-0"
               onMouseLeave={() => setIsHovered(false)}
             />
           </TooltipTrigger>
           <Tooltip.Portal>
             <TooltipContent
+              data-testid="icon-tooltip"
               sideOffset={2}
               className="!bg-inverted text-inverted-foreground py-1 text-xs tracking-wide shadow-md"
             >

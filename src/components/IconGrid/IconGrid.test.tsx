@@ -7,7 +7,7 @@
 //
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { type ReactElement } from "react";
 import { IconGrid, type IconData } from "./IconGrid";
@@ -55,6 +55,20 @@ describe("IconGrid", () => {
     });
   });
 
+  it("renders custom grid dimensions", () => {
+    renderWithQueryClient(
+      <IconGrid icons={mockIcons} columns={4} visibleRows={3} rowHeight={48} />,
+    );
+
+    // All icons should still be rendered
+    mockIcons.forEach((icon) => {
+      const button = screen.getByRole("button", {
+        name: new RegExp(icon.name, "i"),
+      });
+      expect(button).toBeInTheDocument();
+    });
+  });
+
   it("filters icons based on search term", async () => {
     renderWithQueryClient(<IconGrid icons={mockIcons} searchTerm="bird" />);
 
@@ -93,5 +107,63 @@ describe("IconGrid", () => {
     await user.click(birdButton);
 
     expect(handleValueChange).toHaveBeenCalledWith("bird");
+  });
+
+  it("shows loading skeleton when data is loading", () => {
+    // Mock the import to simulate loading state
+    vi.doMock("../IconPicker/iconsData", () => ({
+      iconsData: mockIcons,
+    }));
+
+    renderWithQueryClient(<IconGrid />);
+
+    const skeletons = screen.getByTestId("icon-grid-skeleton");
+    expect(skeletons).toBeInTheDocument();
+  });
+
+  it("loads icon data from query when no custom icons provided", async () => {
+    vi.doMock("../IconPicker/iconsData", () => ({
+      iconsData: mockIcons,
+    }));
+
+    renderWithQueryClient(<IconGrid />);
+
+    await waitFor(() => {
+      const birdButton = screen.getByRole("button", { name: /bird/i });
+      expect(birdButton).toBeInTheDocument();
+    });
+  });
+
+  it("shows tooltips on hover when enabled", async () => {
+    const user = userEvent.setup();
+
+    renderWithQueryClient(<IconGrid icons={mockIcons} showTooltip={true} />);
+
+    const birdButton = screen.getByTestId(`icon-renderer-bird`);
+    fireEvent.mouseOver(birdButton);
+
+    const tooltipTrigger = screen.getByTestId(`icon-tooltip-trigger-bird`);
+    expect(tooltipTrigger).toBeInTheDocument();
+
+    await user.hover(tooltipTrigger);
+
+    // Wait for tooltip to appear
+    await waitFor(() => {
+      const tooltip = screen.getByTestId("icon-tooltip");
+      expect(tooltip).toBeInTheDocument();
+      expect(tooltip).toHaveTextContent("Bird");
+    });
+  });
+
+  it("does not show tooltips when disabled", () => {
+    renderWithQueryClient(<IconGrid icons={mockIcons} showTooltip={false} />);
+
+    const birdButton = screen.getByTestId(`icon-renderer-bird`);
+    fireEvent.mouseOver(birdButton);
+
+    expect(
+      screen.queryByTestId(`icon-tooltip-trigger-bird`),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByTestId("icon-tooltip")).not.toBeInTheDocument();
   });
 });
