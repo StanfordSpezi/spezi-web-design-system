@@ -66,7 +66,7 @@ const IconRenderer = memo(({ name, showTooltip }: IconRendererProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <DynamicIcon name={name} className="size-5 opacity-80" />
+      <DynamicIcon name={name} className="size-2/3 opacity-80" />
       {/* We don't want to render the tooltip by default to make sure the icon picker is performant */}
       {isHovered && showTooltip && (
         <TooltipRoot disableHoverableContent>
@@ -106,6 +106,7 @@ const IconRow = memo(
         className="grid size-full"
         style={{
           gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+          gridTemplateRows: "100%",
         }}
       >
         {icons.map((icon) => (
@@ -166,11 +167,8 @@ const GridVirtualizer = ({
 
   return (
     <div
-      style={{
-        height: `${rowVirtualizer.getTotalSize()}px`,
-        width: "100%",
-        position: "relative",
-      }}
+      className="relative w-full"
+      style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
     >
       {rowVirtualizer.getVirtualItems().map((virtualItem) => {
         const rowIcons = rowDataMap.get(virtualItem.index) ?? [];

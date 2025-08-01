@@ -18,7 +18,9 @@ const meta: Meta<typeof IconGrid> = {
   decorators: [
     (Story) => (
       <QueryClientProvider client={queryClient}>
-        <Story />
+        <div className="w-96">
+          <Story />
+        </div>
       </QueryClientProvider>
     ),
   ],
@@ -29,3 +31,17 @@ export default meta;
 type Story = StoryObj<typeof IconGrid>;
 
 export const Default: Story = {};
+export const WithCustomIcons: Story = {
+  args: {
+    icons: [
+      { name: "bird", tags: [], categories: [] },
+      { name: "cat", tags: [], categories: [] },
+      { name: "dog", tags: [], categories: [] },
+      { name: "rabbit", tags: [], categories: [] },
+      { name: "rat", tags: [], categories: [] },
+    ],
+  },
+};
+export const WithCustomDimensions: Story = {
+  args: { columns: 6, visibleRows: 6, rowHeight: 36 },
+};

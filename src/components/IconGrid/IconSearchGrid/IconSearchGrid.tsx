@@ -8,11 +8,11 @@
 
 import type { IconName } from "lucide-react/dynamic";
 import { useDebounce } from "use-debounce";
-import { Input } from "../Input";
-import { type IconData, IconGrid } from "./IconGrid";
+import { Input } from "../../Input";
+import { type IconData, IconGrid } from "../IconGrid";
 
 export interface IconSearchGridProps {
-  searchPlaceholder: string;
+  searchPlaceholder?: string;
   icons?: IconData[];
   onValueChange?: (value: IconName) => void;
   columns?: number;
@@ -21,7 +21,7 @@ export interface IconSearchGridProps {
 }
 
 export const IconSearchGrid = ({
-  searchPlaceholder,
+  searchPlaceholder = "Search for an icon...",
   ...iconGridProps
 }: IconSearchGridProps) => {
   const [searchTerm, setSearchTerm] = useDebounce("", 200);

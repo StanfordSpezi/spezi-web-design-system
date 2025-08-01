@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "test-results": true,
+    "playwright-report": true,
+    "**/*.license": true,
+    "LICENSE*": true,
+    "CONTRIBUTORS.md": true,
+    "CITATION.cff": true
+  },
+  "editor.codeActionsOnSave": {
+    // This conflicts with the eslint settings
+    "source.organizeImports": "never"
+  }
+}
