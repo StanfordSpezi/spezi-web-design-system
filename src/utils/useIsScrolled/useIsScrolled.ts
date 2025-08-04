@@ -16,14 +16,14 @@ import { useEffect, useState } from "react";
  *
  * @example
  * ```tsx
- * // Basic usage - triggers on any scroll
- * const isScrolled = useIsScrolled();
- *
- * // Custom threshold - triggers after scrolling 100px
+ * // Triggers after scrolling 100px
  * const hasScrolledPastHeader = useIsScrolled(100);
+ *
+ * // Triggers on any scroll
+ * const isScrolled = useIsScrolled(0);
  * ```
  */
-export const useIsScrolled = (threshold = 0) => {
+export const useIsScrolled = (threshold: number) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

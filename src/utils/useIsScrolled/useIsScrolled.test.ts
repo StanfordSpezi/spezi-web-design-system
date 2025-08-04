@@ -26,7 +26,7 @@ describe("useIsScrolled", () => {
   };
 
   it("returns false initially when scroll position is 0", () => {
-    const { result } = renderHook(() => useIsScrolled());
+    const { result } = renderHook(() => useIsScrolled(0));
     expect(result.current).toBe(false);
   });
 
@@ -36,12 +36,12 @@ describe("useIsScrolled", () => {
       value: 100,
     });
 
-    const { result } = renderHook(() => useIsScrolled());
+    const { result } = renderHook(() => useIsScrolled(0));
     expect(result.current).toBe(true);
   });
 
   it("returns true when scrolled past default threshold (0)", () => {
-    const { result } = renderHook(() => useIsScrolled());
+    const { result } = renderHook(() => useIsScrolled(0));
 
     act(() => mockScrollEvent(1));
     expect(result.current).toBe(true);
@@ -92,7 +92,7 @@ describe("useIsScrolled", () => {
 
   it("cleans up event listener on unmount", () => {
     const removeEventListenerSpy = vi.spyOn(window, "removeEventListener");
-    const { unmount } = renderHook(() => useIsScrolled());
+    const { unmount } = renderHook(() => useIsScrolled(0));
 
     unmount();
 
