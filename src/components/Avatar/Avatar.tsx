@@ -35,6 +35,12 @@ type AvatarProps = {
    * - Setting the alt text for the image
    */
   name?: Nil<string>;
+  /**
+   * Overlay content to render on top of the avatar.
+   * Can be any ReactNode - badges, status indicators, icons, etc.
+   * Positioned absolutely within the avatar container.
+   */
+  overlay?: ReactNode;
 } & VariantProps<typeof avatarVariance>;
 
 /**
@@ -68,15 +74,12 @@ export const avatarVariants = {
   },
 };
 
-export const avatarVariance = cva(
-  "relative flex shrink-0 overflow-hidden rounded-full",
-  {
-    variants: avatarVariants,
-    defaultVariants: {
-      size: "default",
-    },
+export const avatarVariance = cva("relative flex shrink-0", {
+  variants: avatarVariants,
+  defaultVariants: {
+    size: "default",
   },
-);
+});
 
 /**
  * Avatar component that displays a user's profile picture or fallback content.
@@ -92,6 +95,10 @@ export const avatarVariance = cva(
  * <Avatar name="John Doe" fallback={<UserIcon />} />
  *
  * @example
+ * // With overlay (e.g., status badge)
+ * <Avatar name="John Doe" overlay={<Badge variant="success" />} />
+ *
+ * @example
  * // Different sizes
  * <Avatar size="sm" name="John Doe" />
  * <Avatar size="default" name="John Doe" />
@@ -103,6 +110,7 @@ export const Avatar = ({
   fallback,
   size,
   name,
+  overlay,
 }: AvatarProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -117,22 +125,25 @@ export const Avatar = ({
 
   return (
     <div className={cn(avatarVariance({ size }), className)}>
-      {src && (
-        <img
-          className={cn(
-            "aspect-square size-full object-cover",
-            !isImageLoaded && "opacity-0",
-          )}
-          src={src}
-          onLoad={() => setIsImageLoaded(true)}
-          alt={[name, "avatar"].filter(Boolean).join(" ")}
-        />
-      )}
-      {fallbackContent && (
-        <div className="flex-center bg-muted size-full rounded-full">
-          {fallbackContent}
-        </div>
-      )}
+      <div className="size-full overflow-hidden rounded-full">
+        {src && (
+          <img
+            className={cn(
+              "aspect-square size-full object-cover",
+              !isImageLoaded && "opacity-0",
+            )}
+            src={src}
+            onLoad={() => setIsImageLoaded(true)}
+            alt={[name, "avatar"].filter(Boolean).join(" ")}
+          />
+        )}
+        {fallbackContent && (
+          <div className="flex-center bg-muted size-full rounded-full">
+            {fallbackContent}
+          </div>
+        )}
+      </div>
+      {overlay && <div className="absolute inset-0">{overlay}</div>}
     </div>
   );
 };
