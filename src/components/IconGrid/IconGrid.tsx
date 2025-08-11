@@ -87,7 +87,11 @@ const IconRenderer = memo(({ name, showTooltip }: IconRendererProps) => {
             />
           </TooltipTrigger>
           <Tooltip.Portal>
-            <TooltipContent data-testid="icon-tooltip" sideOffset={2}>
+            <TooltipContent
+              data-testid="icon-tooltip"
+              sideOffset={2}
+              className="py-1 text-xs"
+            >
               {upperFirst(name.split("-").join(" "))}
             </TooltipContent>
           </Tooltip.Portal>
