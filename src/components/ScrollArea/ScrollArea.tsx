@@ -45,18 +45,17 @@ export const ScrollBar = ({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>) => {
+}: ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>) => {
   return (
     <ScrollAreaPrimitive.ScrollAreaScrollbar
       data-testid="scroll-area-scrollbar"
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       className={cn(
-        "flex touch-none p-px transition-colors select-none",
-        orientation === "vertical" &&
-          "h-full w-2.5 border-l border-l-transparent",
-        orientation === "horizontal" &&
-          "h-2.5 flex-col border-t border-t-transparent",
+        "flex touch-none p-px transition select-none",
+        orientation === "vertical" ?
+          "h-full w-2.5 border-l border-l-transparent"
+        : "h-2.5 flex-col border-t border-t-transparent",
         className,
       )}
       {...props}

@@ -44,6 +44,9 @@ const IconGridSkeleton = ({
       style={{
         gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
       }}
+      aria-label="Loading icons..."
+      aria-live="polite"
+      role="status"
     >
       {times(columns * visibleRows, (index) => (
         <div
@@ -84,11 +87,7 @@ const IconRenderer = memo(({ name, showTooltip }: IconRendererProps) => {
             />
           </TooltipTrigger>
           <Tooltip.Portal>
-            <TooltipContent
-              data-testid="icon-tooltip"
-              sideOffset={2}
-              className="!bg-inverted text-inverted-foreground py-1 text-xs tracking-wide shadow-md"
-            >
+            <TooltipContent data-testid="icon-tooltip" sideOffset={2}>
               {upperFirst(name.split("-").join(" "))}
             </TooltipContent>
           </Tooltip.Portal>

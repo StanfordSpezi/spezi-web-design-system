@@ -7,21 +7,11 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { IconPicker } from "./IconPicker";
-
-const queryClient = new QueryClient();
 
 const meta: Meta<typeof IconPicker> = {
   title: "Components/IconPicker",
   component: IconPicker,
-  decorators: [
-    (Story) => (
-      <QueryClientProvider client={queryClient}>
-        <Story />
-      </QueryClientProvider>
-    ),
-  ],
 };
 
 export default meta;

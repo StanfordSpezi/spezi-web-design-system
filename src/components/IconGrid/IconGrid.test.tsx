@@ -6,18 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { type ReactElement } from "react";
+import { renderWithProviders } from "@/tests/helpers";
 import { IconGrid, type IconData } from "./IconGrid";
-
-const createTestQueryClient = () =>
-  new QueryClient({
-    defaultOptions: {
-      queries: { retry: false },
-    },
-  });
 
 const mockIcons: IconData[] = [
   { name: "bird", categories: [], tags: [] },
@@ -26,13 +18,6 @@ const mockIcons: IconData[] = [
   { name: "rabbit", categories: [], tags: [] },
   { name: "rat", categories: [], tags: [] },
 ];
-
-const renderWithQueryClient = (children: ReactElement) => {
-  const queryClient = createTestQueryClient();
-  return render(
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
-  );
-};
 
 describe("IconGrid", () => {
   beforeEach(() => {
@@ -45,7 +30,7 @@ describe("IconGrid", () => {
   });
 
   it("renders icon buttons with custom icons", () => {
-    renderWithQueryClient(<IconGrid icons={mockIcons} />);
+    renderWithProviders(<IconGrid icons={mockIcons} />);
 
     mockIcons.forEach((icon) => {
       const button = screen.getByRole("button", {
@@ -56,7 +41,7 @@ describe("IconGrid", () => {
   });
 
   it("renders custom grid dimensions", () => {
-    renderWithQueryClient(
+    renderWithProviders(
       <IconGrid icons={mockIcons} columns={4} visibleRows={3} rowHeight={48} />,
     );
 
@@ -70,12 +55,10 @@ describe("IconGrid", () => {
   });
 
   it("filters icons based on search term", async () => {
-    renderWithQueryClient(<IconGrid icons={mockIcons} searchTerm="bird" />);
+    renderWithProviders(<IconGrid icons={mockIcons} searchTerm="bird" />);
 
-    await waitFor(() => {
-      const birdButton = screen.getByRole("button", { name: /bird/i });
-      expect(birdButton).toBeInTheDocument();
-    });
+    const birdButton = await screen.findByRole("button", { name: /bird/i });
+    expect(birdButton).toBeInTheDocument();
 
     // Other icons should not be visible
     expect(
@@ -87,7 +70,7 @@ describe("IconGrid", () => {
   });
 
   it("shows empty state when no icons match search", () => {
-    renderWithQueryClient(
+    renderWithProviders(
       <IconGrid icons={mockIcons} searchTerm="nonexistent" />,
     );
 
@@ -99,7 +82,7 @@ describe("IconGrid", () => {
     const user = userEvent.setup();
     const handleValueChange = vi.fn();
 
-    renderWithQueryClient(
+    renderWithProviders(
       <IconGrid icons={mockIcons} onValueChange={handleValueChange} />,
     );
 
@@ -115,7 +98,7 @@ describe("IconGrid", () => {
       iconsData: mockIcons,
     }));
 
-    renderWithQueryClient(<IconGrid />);
+    renderWithProviders(<IconGrid />);
 
     const skeletons = screen.getByTestId("icon-grid-skeleton");
     expect(skeletons).toBeInTheDocument();
@@ -126,18 +109,16 @@ describe("IconGrid", () => {
       iconsData: mockIcons,
     }));
 
-    renderWithQueryClient(<IconGrid />);
+    renderWithProviders(<IconGrid />);
 
-    await waitFor(() => {
-      const birdButton = screen.getByRole("button", { name: /bird/i });
-      expect(birdButton).toBeInTheDocument();
-    });
+    const birdButton = await screen.findByRole("button", { name: /bird/i });
+    expect(birdButton).toBeInTheDocument();
   });
 
   it("shows tooltips on hover when enabled", async () => {
     const user = userEvent.setup();
 
-    renderWithQueryClient(<IconGrid icons={mockIcons} showTooltip={true} />);
+    renderWithProviders(<IconGrid icons={mockIcons} showTooltip={true} />);
 
     const birdButton = screen.getByTestId(`icon-renderer-bird`);
     fireEvent.mouseOver(birdButton);
@@ -147,16 +128,12 @@ describe("IconGrid", () => {
 
     await user.hover(tooltipTrigger);
 
-    // Wait for tooltip to appear
-    await waitFor(() => {
-      const tooltip = screen.getByTestId("icon-tooltip");
-      expect(tooltip).toBeInTheDocument();
-      expect(tooltip).toHaveTextContent("Bird");
-    });
+    const tooltip = await screen.findByTestId("icon-tooltip");
+    expect(tooltip).toHaveTextContent("Bird");
   });
 
   it("does not show tooltips when disabled", () => {
-    renderWithQueryClient(<IconGrid icons={mockIcons} showTooltip={false} />);
+    renderWithProviders(<IconGrid icons={mockIcons} showTooltip={false} />);
 
     const birdButton = screen.getByTestId(`icon-renderer-bird`);
     fireEvent.mouseOver(birdButton);

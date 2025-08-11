@@ -36,7 +36,5 @@ export const lightTheme: Theme = {
   "color-warning": "rgb(252 211 3)",
   "color-warning-dark": "rgb(153 101 21)",
   "color-warning-foreground": "rgb(9 4 4)",
-  "color-inverted": "rgb(9 4 4)",
-  "color-inverted-foreground": "rgb(243 243 243)",
   "color-ring": "rgb(62 176 85)",
 };

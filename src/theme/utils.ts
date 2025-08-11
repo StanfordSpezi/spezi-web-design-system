@@ -41,7 +41,5 @@ export interface Theme {
   "color-warning": RGBColor;
   "color-warning-dark": RGBColor;
   "color-warning-foreground": RGBColor;
-  "color-inverted": RGBColor;
-  "color-inverted-foreground": RGBColor;
   "color-ring": RGBColor;
 }

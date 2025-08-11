@@ -6,19 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { type ReactElement } from "react";
+import { renderWithProviders } from "@/tests/helpers";
 import { type IconData } from "../IconGrid";
 import { IconPicker } from "./IconPicker";
-
-const createTestQueryClient = () =>
-  new QueryClient({
-    defaultOptions: {
-      queries: { retry: false },
-    },
-  });
 
 const mockIcons: IconData[] = [
   { name: "bird", categories: [], tags: [] },
@@ -27,13 +19,6 @@ const mockIcons: IconData[] = [
   { name: "rabbit", categories: [], tags: [] },
   { name: "rat", categories: [], tags: [] },
 ];
-
-const renderWithQueryClient = (children: ReactElement) => {
-  const queryClient = createTestQueryClient();
-  return render(
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
-  );
-};
 
 describe("IconPicker", () => {
   beforeEach(() => {
@@ -46,14 +31,14 @@ describe("IconPicker", () => {
   });
 
   it("renders trigger button", () => {
-    renderWithQueryClient(<IconPicker icons={mockIcons} />);
+    renderWithProviders(<IconPicker icons={mockIcons} />);
 
     const trigger = screen.getByRole("button");
     expect(trigger).toBeInTheDocument();
   });
 
   it("renders trigger button with custom placeholder", () => {
-    renderWithQueryClient(
+    renderWithProviders(
       <IconPicker icons={mockIcons} triggerPlaceholder="Pick icon" />,
     );
 
@@ -62,7 +47,7 @@ describe("IconPicker", () => {
   });
 
   it("shows selected icon in trigger when defaultValue is provided", () => {
-    renderWithQueryClient(<IconPicker icons={mockIcons} defaultValue="bird" />);
+    renderWithProviders(<IconPicker icons={mockIcons} defaultValue="bird" />);
 
     const trigger = screen.getByRole("button", { name: /bird/i });
     expect(trigger).toBeInTheDocument();
@@ -70,7 +55,7 @@ describe("IconPicker", () => {
 
   it("opens popover when trigger is clicked", async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(<IconPicker icons={mockIcons} />);
+    renderWithProviders(<IconPicker icons={mockIcons} />);
 
     const trigger = screen.getByRole("button");
     await user.click(trigger);
@@ -81,7 +66,7 @@ describe("IconPicker", () => {
 
   it("closes popover and updates trigger when icon is selected", async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(<IconPicker icons={mockIcons} />);
+    renderWithProviders(<IconPicker icons={mockIcons} />);
 
     // Open popover
     const trigger = screen.getByRole("button");
@@ -105,7 +90,7 @@ describe("IconPicker", () => {
     const user = userEvent.setup();
     const handleValueChange = vi.fn();
 
-    renderWithQueryClient(
+    renderWithProviders(
       <IconPicker icons={mockIcons} onValueChange={handleValueChange} />,
     );
 
@@ -122,7 +107,7 @@ describe("IconPicker", () => {
     const user = userEvent.setup();
     const handleValueChange = vi.fn();
 
-    renderWithQueryClient(
+    renderWithProviders(
       <IconPicker
         icons={mockIcons}
         value="cat"
@@ -144,7 +129,7 @@ describe("IconPicker", () => {
 
   it("supports custom trigger children", async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(
+    renderWithProviders(
       <IconPicker icons={mockIcons}>
         <button>Custom Trigger</button>
       </IconPicker>,
