@@ -33,7 +33,7 @@ export const TooltipContent = ({
   <TooltipPrimitive.Content
     sideOffset={sideOffset}
     className={cn(
-      "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 bg-popover text-foreground z-50 w-max overflow-hidden rounded-sm border px-2 py-0.5",
+      "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 bg-inverted text-inverted-foreground z-50 w-max overflow-hidden rounded-sm border px-2 py-0.5 shadow-sm",
       className,
     )}
     {...props}
