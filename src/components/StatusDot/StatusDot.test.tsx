@@ -51,4 +51,12 @@ describe("StatusDot", () => {
 
     expect(element).not.toHaveAttribute("aria-label");
   });
+
+  it("has a fallback aria label, if a 'null' status is provided", () => {
+    render(<StatusDot status={null} />);
+
+    const element = screen.getByRole("img");
+
+    expect(element).toHaveAttribute("aria-label", "Status indicator");
+  });
 });
