@@ -133,7 +133,7 @@ export const DropdownMenuContent = ({
     <DropdownMenuPrimitive.Content
       sideOffset={sideOffset}
       className={cn(
-        "animate-entrance-fade-slide bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-md border p-1",
+        "animate-entrance-fade-slide bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-md",
         className,
       )}
       {...props}
