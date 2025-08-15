@@ -7,8 +7,8 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { StatusDot } from "../StatusDot";
-import { Badge } from "./Badge";
+import { StatusDot, type StatusDotProps } from "../StatusDot";
+import { Badge, type BadgeProps } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -37,25 +37,50 @@ export const Outline: Story = { args: { variant: "outline" } };
 export const Sm: Story = { args: { size: "sm" } };
 export const Lg: Story = { args: { size: "lg" } };
 
-export const WithStatusDot: Story = {
-  render: () => (
-    <div className="flex gap-4">
-      <Badge variant="outline">
-        <StatusDot status="success" />
-        <span>Published</span>
-      </Badge>
-      <Badge variant="outline">
-        <StatusDot status="default" />
-        <span>Draft</span>
-      </Badge>
-      <Badge variant="outline">
-        <StatusDot status="warning" />
-        <span>Pending</span>
-      </Badge>
-      <Badge variant="outline">
-        <StatusDot status="destructive" />
-        <span>Error</span>
-      </Badge>
-    </div>
+type StoryWithStatusDot = StoryObj<
+  BadgeProps & {
+    statusDotStatus: StatusDotProps["status"];
+    statusDotAppearance: StatusDotProps["appearance"];
+    statusDotSize: StatusDotProps["size"];
+  }
+>;
+
+export const WithStatusDot: StoryWithStatusDot = {
+  args: {
+    variant: "outline",
+    children: "Published",
+    statusDotStatus: "success",
+    statusDotAppearance: "glow",
+    statusDotSize: "sm",
+  },
+  argTypes: {
+    statusDotStatus: {
+      control: { type: "select" },
+      options: ["default", "primary", "success", "warning", "destructive"],
+    },
+    statusDotAppearance: {
+      control: { type: "select" },
+      options: ["solid", "glow"],
+    },
+    statusDotSize: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+    },
+  },
+  render: ({
+    statusDotSize,
+    statusDotStatus,
+    statusDotAppearance,
+    children,
+    ...args
+  }) => (
+    <Badge {...args}>
+      <StatusDot
+        status={statusDotStatus}
+        appearance={statusDotAppearance}
+        size={statusDotSize}
+      />
+      <span>{children}</span>
+    </Badge>
   ),
 };

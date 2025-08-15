@@ -69,7 +69,16 @@ export const LargeSize: Story = {
 export const CustomColor: Story = {
   args: {
     status: null,
-    className: "bg-blue-500",
+    appearance: "glow",
+    className: "bg-blue-500 [--glow-color:theme(colors.blue.500)]",
     "aria-label": "In progress",
+  },
+};
+
+export const WithGlow: Story = {
+  args: {
+    appearance: "glow",
+    size: "lg",
+    status: "success",
   },
 };

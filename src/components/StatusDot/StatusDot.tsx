@@ -23,11 +23,12 @@ export const statusDotVariance = cva("rounded-full", {
      * @default "default"
      */
     status: {
-      default: "bg-muted-foreground",
-      primary: "bg-primary",
-      success: "bg-success",
-      warning: "bg-warning",
-      destructive: "bg-destructive",
+      default:
+        "bg-muted-foreground [--glow-color:var(--color-muted-foreground)]",
+      primary: "bg-primary [--glow-color:var(--color-primary)]",
+      success: "bg-success [--glow-color:var(--color-success)]",
+      warning: "bg-warning [--glow-color:var(--color-warning)]",
+      destructive: "bg-destructive [--glow-color:var(--color-destructive)]",
     },
     /**
      * Controls the size of the status dot.
@@ -38,14 +39,26 @@ export const statusDotVariance = cva("rounded-full", {
      * @default "sm"
      */
     size: {
-      sm: "size-2",
-      md: "size-3",
-      lg: "size-4",
+      sm: "size-2 [--glow-size:1px]",
+      md: "size-3 [--glow-size:2px]",
+      lg: "size-4 [--glow-size:3px]",
+    },
+    /**
+     * Controls the visual appearance of the dot.
+     * - `solid`: standard filled dot
+     * - `glow`: dot with a subtle glow effect
+     *
+     * @default "solid"
+     */
+    appearance: {
+      solid: "",
+      glow: "border-(length:--glow-size) border-[color-mix(in_srgb,var(--glow-color)_50%,transparent)] bg-clip-padding shadow-[0_0_calc(var(--glow-size)*3)_color-mix(in_srgb,var(--glow-color)_30%,transparent)]",
     },
   },
   defaultVariants: {
     status: "default",
     size: "sm",
+    appearance: "solid",
   },
 });
 
@@ -96,13 +109,24 @@ export interface StatusDotProps
  * <StatusDot status="success" size="lg" />
  *
  * @example
+ * // Glow appearance for emphasis
+ * <StatusDot status="success" appearance="glow" />
+ *
+ * @example
  * // Custom colors
  * <StatusDot status={null} className="bg-blue-500" aria-label="In progress" />
+ * <StatusDot status={null} appearance="glow" className="bg-purple-500 [--glow-color:theme(colors.purple.500)]" aria-label="Active" />
+ *
+ * @example
+ * // Custom size
+ * <StatusDot size={null} className="size-10" />
+ * <StatusDot size={null} appearance="glow" className="size-10 [--glow-size:4px]" />
  */
 export const StatusDot = ({
   className,
   status = "default",
   size = "sm",
+  appearance = "solid",
   "aria-label": ariaLabel,
   "aria-hidden": ariaHidden = false,
   ...props
@@ -128,7 +152,7 @@ export const StatusDot = ({
       role="img"
       aria-label={getEffectiveAriaLabel()}
       aria-hidden={ariaHidden}
-      className={cn(statusDotVariance({ status, size }), className)}
+      className={cn(statusDotVariance({ status, size, appearance }), className)}
       {...props}
     />
   );
