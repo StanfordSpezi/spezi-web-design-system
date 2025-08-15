@@ -94,6 +94,10 @@ export interface StatusDotProps
  * <StatusDot status="success" size="sm" />
  * <StatusDot status="success" size="md" />
  * <StatusDot status="success" size="lg" />
+ *
+ * @example
+ * // Custom colors
+ * <StatusDot status={null} className="bg-blue-500" aria-label="In progress" />
  */
 export const StatusDot = ({
   className,

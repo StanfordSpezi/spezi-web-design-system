@@ -65,3 +65,11 @@ export const LargeSize: Story = {
     size: "lg",
   },
 };
+
+export const CustomColor: Story = {
+  args: {
+    status: null,
+    className: "bg-blue-500",
+    "aria-label": "In progress",
+  },
+};
