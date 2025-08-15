@@ -41,28 +41,20 @@ export const WithStatusDot: Story = {
   render: () => (
     <div className="flex gap-4">
       <Badge variant="outline">
-        <div className="flex items-center gap-2">
-          <StatusDot status="success" />
-          <span>Published</span>
-        </div>
+        <StatusDot status="success" />
+        <span>Published</span>
       </Badge>
       <Badge variant="outline">
-        <div className="flex items-center gap-2">
-          <StatusDot status="default" />
-          <span>Draft</span>
-        </div>
+        <StatusDot status="default" />
+        <span>Draft</span>
       </Badge>
       <Badge variant="outline">
-        <div className="flex items-center gap-2">
-          <StatusDot status="warning" />
-          <span>Pending</span>
-        </div>
+        <StatusDot status="warning" />
+        <span>Pending</span>
       </Badge>
       <Badge variant="outline">
-        <div className="flex items-center gap-2">
-          <StatusDot status="destructive" />
-          <span>Error</span>
-        </div>
+        <StatusDot status="destructive" />
+        <span>Error</span>
       </Badge>
     </div>
   ),

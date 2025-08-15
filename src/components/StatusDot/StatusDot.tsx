@@ -103,13 +103,10 @@ export const StatusDot = ({
   "aria-hidden": ariaHidden = false,
   ...props
 }: StatusDotProps) => {
-  // Generate default aria-label based on status if not provided and not hidden
-  const getDefaultAriaLabel = (
-    statusValue: VariantProps<typeof statusDotVariance>["status"],
-  ) => {
-    if (!statusValue) {
-      return "Status indicator";
-    }
+  const getEffectiveAriaLabel = () => {
+    if (ariaHidden) return undefined;
+    if (ariaLabel) return ariaLabel;
+    if (!status) return "Status indicator";
 
     const statusLabels = {
       default: "Neutral status",
@@ -119,16 +116,13 @@ export const StatusDot = ({
       destructive: "Error status",
     } as const;
 
-    return statusLabels[statusValue];
+    return statusLabels[status];
   };
-
-  const effectiveAriaLabel =
-    ariaHidden ? undefined : (ariaLabel ?? getDefaultAriaLabel(status));
 
   return (
     <div
       role="img"
-      aria-label={effectiveAriaLabel}
+      aria-label={getEffectiveAriaLabel()}
       aria-hidden={ariaHidden}
       className={cn(statusDotVariance({ status, size }), className)}
       {...props}

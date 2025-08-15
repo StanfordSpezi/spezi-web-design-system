@@ -7,7 +7,6 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { upperFirst } from "@/utils/misc";
 import { StatusDot } from "./StatusDot";
 
 const meta: Meta<typeof StatusDot> = {
@@ -24,46 +23,45 @@ export const Default: Story = {
     status: "default",
   },
 };
-export const AllStatuses: Story = {
-  render: () => {
-    const statuses = [
-      "default",
-      "primary",
-      "success",
-      "warning",
-      "destructive",
-    ] as const;
-    return (
-      <div className="flex items-center gap-4">
-        {statuses.map((status) => (
-          <div key={status} className="flex flex-col items-center gap-2">
-            <StatusDot status={status} />
-            <span className="text-muted-foreground text-xs">
-              {upperFirst(status)}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
+
+export const Primary: Story = {
+  args: {
+    status: "primary",
   },
 };
 
-export const AllSizes: Story = {
-  render: () => {
-    const sizes = [
-      { size: "sm", label: "Small" },
-      { size: "md", label: "Medium" },
-      { size: "lg", label: "Large" },
-    ] as const;
-    return (
-      <div className="flex items-center gap-4">
-        {sizes.map(({ size, label }) => (
-          <div key={size} className="flex flex-col items-center gap-2">
-            <StatusDot size={size} />
-            <span className="text-muted-foreground text-xs">{label}</span>
-          </div>
-        ))}
-      </div>
-    );
+export const Success: Story = {
+  args: {
+    status: "success",
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    status: "warning",
+  },
+};
+
+export const Destructive: Story = {
+  args: {
+    status: "destructive",
+  },
+};
+
+export const SmallSize: Story = {
+  args: {
+    size: "sm",
+  },
+};
+
+export const MediumSize: Story = {
+  args: {
+    size: "md",
+  },
+};
+
+export const LargeSize: Story = {
+  args: {
+    size: "lg",
   },
 };
