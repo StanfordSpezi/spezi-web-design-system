@@ -141,6 +141,10 @@
       "types": "./dist/components/SideLabel.d.ts",
       "default": "./dist/components/SideLabel.js"
     },
+    "./components/StatusDot": {
+      "types": "./dist/components/StatusDot.d.ts",
+      "default": "./dist/components/StatusDot.js"
+    },
     "./components/Switch": {
       "types": "./dist/components/Switch.d.ts",
       "default": "./dist/components/Switch.js"
