@@ -43,7 +43,8 @@ export type FullErrorProps = {
   show: boolean;
 } & ErrorStateProps;
 
-export interface AsyncProps extends Pick<StateContainerProps, "grow"> {
+export interface AsyncProps
+  extends Pick<StateContainerProps, "grow" | "padding"> {
   /**
    * This is the main content that will be shown when there is no error,
    * loading, or empty state.
@@ -161,6 +162,7 @@ export const Async = ({
   children,
   grow,
   className,
+  padding,
 }: AsyncProps) => {
   const error = parseError(errorProp);
   const empty = parseEmpty(emptyProp);
@@ -176,7 +178,7 @@ export const Async = ({
   return (
     !specialState ? children
     : renderState ? renderState(specialState)
-    : <StateContainer grow={grow} className={className}>
+    : <StateContainer grow={grow} className={className} padding={padding}>
         {specialState}
       </StateContainer>
   );

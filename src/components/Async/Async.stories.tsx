@@ -34,3 +34,7 @@ export const CustomMessage: Story = {
 export const Empty: Story = {
   args: { empty: { show: true } },
 };
+
+export const NoPadding: Story = {
+  args: { empty: true, padding: false },
+};
