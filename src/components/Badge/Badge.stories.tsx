@@ -7,7 +7,8 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { Badge } from "./Badge";
+import { StatusDot, type StatusDotProps } from "../StatusDot";
+import { Badge, type BadgeProps } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -35,3 +36,51 @@ export const Outline: Story = { args: { variant: "outline" } };
 
 export const Sm: Story = { args: { size: "sm" } };
 export const Lg: Story = { args: { size: "lg" } };
+
+type StoryWithStatusDot = StoryObj<
+  BadgeProps & {
+    statusDotStatus: StatusDotProps["status"];
+    statusDotAppearance: StatusDotProps["appearance"];
+    statusDotSize: StatusDotProps["size"];
+  }
+>;
+
+export const WithStatusDot: StoryWithStatusDot = {
+  args: {
+    variant: "outline",
+    children: "Published",
+    statusDotStatus: "success",
+    statusDotAppearance: "glow",
+    statusDotSize: "sm",
+  },
+  argTypes: {
+    statusDotStatus: {
+      control: { type: "select" },
+      options: ["default", "primary", "success", "warning", "destructive"],
+    },
+    statusDotAppearance: {
+      control: { type: "select" },
+      options: ["solid", "glow"],
+    },
+    statusDotSize: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+    },
+  },
+  render: ({
+    statusDotSize,
+    statusDotStatus,
+    statusDotAppearance,
+    children,
+    ...args
+  }) => (
+    <Badge {...args}>
+      <StatusDot
+        status={statusDotStatus}
+        appearance={statusDotAppearance}
+        size={statusDotSize}
+      />
+      <span>{children}</span>
+    </Badge>
+  ),
+};

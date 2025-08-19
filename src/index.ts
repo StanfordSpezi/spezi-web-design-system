@@ -45,6 +45,7 @@ export * from "./components/ScrollArea";
 export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/SideLabel";
+export * from "./components/StatusDot";
 export * from "./components/Switch";
 export * from "./components/Sheet";
 export * from "./components/Radio";
