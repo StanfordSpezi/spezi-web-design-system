@@ -36,6 +36,8 @@ SPDX-License-Identifier: MIT
   --color-warning-foreground: var(--color-warning-foreground);
   --color-destructive: var(--color-destructive);
   --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-inverted: var(--color-inverted);
+  --color-inverted-foreground: var(--color-inverted-foreground);
   --color-ring: var(--color-ring);
 }
 
@@ -93,6 +95,5 @@ SPDX-License-Identifier: MIT
   RadixUI components use it.
 */
 @utility animate-entrance-fade-slide {
-  @apply animate-entrance-fade-zoom data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2
+  @apply animate-entrance-fade-zoom data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 }
-
