@@ -7,7 +7,7 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { Tooltip } from "./Tooltip";
+import { Tooltip, tooltipVariants } from "./Tooltip";
 
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
@@ -15,6 +15,12 @@ const meta: Meta<typeof Tooltip> = {
   args: {
     children: <button type="button">Trigger</button>,
     tooltip: "Tooltip",
+  },
+  argTypes: {
+    variant: {
+      options: Object.keys(tooltipVariants.variant),
+      control: "select",
+    },
   },
 };
 
@@ -27,6 +33,17 @@ export const Default: Story = {
     tooltip: (
       <span>
         Tooltip <b>text</b>
+      </span>
+    ),
+  },
+};
+
+export const Inverted: Story = {
+  args: {
+    variant: "inverted",
+    tooltip: (
+      <span>
+        Inverted tooltip <b>text</b>
       </span>
     ),
   },
