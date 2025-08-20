@@ -305,7 +305,7 @@
     "prepush": "npm run lint:fix && tsc --noEmit"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.0.1",
+    "@hookform/resolvers": "^5.2.1",
     "@nextui-org/use-pagination": "^2.2.3",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-query": "^5.83.1",

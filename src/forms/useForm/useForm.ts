@@ -10,12 +10,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import {
   type DeepRequired,
-  type FieldErrorsImpl,
   type ErrorOption,
+  type FieldErrorsImpl,
   useForm as useFormHook,
   type UseFormProps,
 } from "react-hook-form";
-import { type z } from "zod";
+import type * as z3 from "zod/v3";
+import type * as z4 from "zod/v4";
 import { parseUnknownError } from "@/utils/query";
 
 type FieldValues = Record<string, unknown>;
@@ -43,6 +44,16 @@ class ValidationError<
   }
 }
 
+// Inspired by https://github.com/vercel/ai/blob/c4eff2967ae1cbcb1cc8fd251447c664ea9b868c/packages/provider-utils/src/schema.ts#L31
+type FlexibleSchema =
+  | z3.ZodType<FieldValues>
+  | z4.core.$ZodType<FieldValues, FieldValues>;
+
+type InferSchema<Schema> =
+  Schema extends z3.ZodType<FieldValues> ? z3.infer<Schema>
+  : Schema extends z4.core.$ZodType<FieldValues, FieldValues> ? z4.infer<Schema>
+  : never;
+
 /**
  * Enhanced version of [react-hook-form's useForm](https://react-hook-form.com/docs/useform).
  * Provides Zod schema validation and additional utilities for form handling.
@@ -61,13 +72,14 @@ class ValidationError<
  *   })
  * });
  */
-export const useForm = <Schema extends z.ZodTypeAny>({
+export const useForm = <Schema = FlexibleSchema, Result = InferSchema<Schema>>({
   formSchema,
   ...props
-}: UseFormProps<z.infer<Schema>> & {
+}: UseFormProps<Result extends FieldValues ? Result : never> & {
   formSchema: Schema;
 }) => {
-  const form = useFormHook<z.infer<Schema>>({
+  const form = useFormHook<Result extends FieldValues ? Result : never>({
+    // @ts-expect-error -- We know that both zod v3 and zod v4 schemas are supported with @hookform/resolvers ^5.2.1: https://github.com/react-hook-form/resolvers/pull/777
     resolver: zodResolver(formSchema),
     ...props,
   });
@@ -83,7 +95,7 @@ export const useForm = <Schema extends z.ZodTypeAny>({
    * Prevents callback hell and wrong execution flow if one of forms is not valid.
    */
   const submitAsync = () =>
-    new Promise<z.infer<Schema>>((resolve, reject) => {
+    new Promise<Result>((resolve, reject) => {
       void form.handleSubmit(
         (data) => {
           resolve(data);
