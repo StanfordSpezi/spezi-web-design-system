@@ -8,10 +8,10 @@
 
 import { type Meta } from "@storybook/react";
 import { z } from "zod";
-import { LabelContainer, Label as LabelComponent } from "@/components/Label";
-import { Field } from "./Field";
+import { Label as LabelComponent, LabelContainer } from "@/components/Label";
 import { Input } from "../../components/Input";
 import { useForm } from "../useForm";
+import { Field } from "./Field";
 
 const meta: Meta<typeof Field> = {
   title: "Forms/Field",
@@ -52,16 +52,13 @@ export const Label = () => {
  * This is just example
  */
 export const Error = () => {
-  const form = useForm({
-    formSchema,
-    errors: {
-      name: { message: "Name is required field", type: "validationError" },
-    },
-  });
+  const form = useForm({ formSchema });
   return (
     <Field
       control={form.control}
       name="name"
+      label="Name"
+      error={{ message: "Name is required field", type: "validationError" }}
       render={({ field }) => <Input {...field} />}
     />
   );
