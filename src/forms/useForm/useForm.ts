@@ -15,8 +15,7 @@ import {
   useForm as useFormHook,
   type UseFormProps,
 } from "react-hook-form";
-import type * as z3 from "zod/v3";
-import type * as z4 from "zod/v4";
+import { type z } from "zod";
 import { parseUnknownError } from "@/utils/query";
 
 type FieldValues = Record<string, unknown>;
@@ -44,16 +43,6 @@ class ValidationError<
   }
 }
 
-// Inspired by https://github.com/vercel/ai/blob/c4eff2967ae1cbcb1cc8fd251447c664ea9b868c/packages/provider-utils/src/schema.ts#L31
-type FlexibleSchema =
-  | z3.ZodType<FieldValues>
-  | z4.core.$ZodType<FieldValues, FieldValues>;
-
-type InferSchema<Schema> =
-  Schema extends z3.ZodType<FieldValues> ? z3.infer<Schema>
-  : Schema extends z4.core.$ZodType<FieldValues, FieldValues> ? z4.infer<Schema>
-  : never;
-
 /**
  * Enhanced version of [react-hook-form's useForm](https://react-hook-form.com/docs/useform).
  * Provides Zod schema validation and additional utilities for form handling.
@@ -67,19 +56,21 @@ type InferSchema<Schema> =
  * @example
  * const form = useForm({
  *   formSchema: z.object({
- *     email: z.string().email(),
+ *     email: z.email(),
  *     password: z.string().min(8)
  *   })
  * });
  */
-export const useForm = <Schema = FlexibleSchema, Result = InferSchema<Schema>>({
+export const useForm = <
+  Schema extends z.ZodType<FieldValues, FieldValues>,
+  Context,
+>({
   formSchema,
   ...props
-}: UseFormProps<Result extends FieldValues ? Result : never> & {
+}: UseFormProps<z.input<Schema>, Context, z.output<Schema>> & {
   formSchema: Schema;
 }) => {
-  const form = useFormHook<Result extends FieldValues ? Result : never>({
-    // @ts-expect-error -- We know that both zod v3 and zod v4 schemas are supported with @hookform/resolvers ^5.2.1: https://github.com/react-hook-form/resolvers/pull/777
+  const form = useFormHook({
     resolver: zodResolver(formSchema),
     ...props,
   });
@@ -95,7 +86,7 @@ export const useForm = <Schema = FlexibleSchema, Result = InferSchema<Schema>>({
    * Prevents callback hell and wrong execution flow if one of forms is not valid.
    */
   const submitAsync = () =>
-    new Promise<Result>((resolve, reject) => {
+    new Promise<z.infer<Schema>>((resolve, reject) => {
       void form.handleSubmit(
         (data) => {
           resolve(data);
