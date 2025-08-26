@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { z } from "zod";
 import { useForm } from "./useForm";
 

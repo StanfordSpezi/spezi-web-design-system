@@ -10,8 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import {
   type DeepRequired,
-  type FieldErrorsImpl,
   type ErrorOption,
+  type FieldErrorsImpl,
   useForm as useFormHook,
   type UseFormProps,
 } from "react-hook-form";
@@ -56,18 +56,21 @@ class ValidationError<
  * @example
  * const form = useForm({
  *   formSchema: z.object({
- *     email: z.string().email(),
+ *     email: z.email(),
  *     password: z.string().min(8)
  *   })
  * });
  */
-export const useForm = <Schema extends z.ZodTypeAny>({
+export const useForm = <
+  Schema extends z.ZodType<FieldValues, FieldValues>,
+  Context,
+>({
   formSchema,
   ...props
-}: UseFormProps<z.infer<Schema>> & {
+}: UseFormProps<z.input<Schema>, Context, z.output<Schema>> & {
   formSchema: Schema;
 }) => {
-  const form = useFormHook<z.infer<Schema>>({
+  const form = useFormHook({
     resolver: zodResolver(formSchema),
     ...props,
   });
