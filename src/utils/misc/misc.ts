@@ -217,15 +217,13 @@ export const formatNilBoolean = (value: Nil<boolean>) =>
  * @example
  * joinPaths("/a", "b?x=1#top"); // "/a/b?x=1#top"
  */
-export const joinPaths = (
-  ...segments: Array<string | number | null | undefined>
-): string => {
+export const joinPaths = (...segments: Array<Nil<string | number>>) => {
   const normalizedSegments = segments
     .filter(
       (segment): segment is string | number =>
-        segment != null && String(segment).length > 0,
+        !isNil(segment) && String(segment).length > 0,
     )
-    .map((segment) => String(segment))
+    .map(String)
     .map((segment, index, arr) => {
       const isFirstSegment = index === 0;
       const isLastSegment = index === arr.length - 1;
