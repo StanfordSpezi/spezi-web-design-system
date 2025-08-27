@@ -71,6 +71,18 @@ export type RequiredSome<T, K extends keyof T> = Partial<Omit<T, K>> &
   Required<Pick<T, K>>;
 
 /**
+ * Prettify makes complex object types easier to read by flattening intersections.
+ * Use this when you export or inspect inferred types. This only affects type presentation in tooling.
+ *
+ * @example
+ * type A = { a: string };
+ * type B = { b: number };
+ * type Mixed = A & B;
+ * type Readable = Prettify<Mixed>; // { a: string; b: number }
+ */
+export type Prettify<T> = { [K in keyof T]: T[K] } & {};
+
+/**
  * Handles copying to clipboard and show confirmation toast.
  */
 export const copyToClipboard = async (value: string) => {
@@ -188,3 +200,52 @@ export const formatBoolean = (value: boolean) => (value ? "true" : "false");
  */
 export const formatNilBoolean = (value: Nil<boolean>) =>
   isNil(value) ? null : formatBoolean(value);
+
+/**
+ * Joins path segments, handling leading/trailing slashes between segments.
+ * It accepts strings and numbers; ignores null/undefined/empty segments.
+ *
+ * @example
+ * joinPaths("/api/v1/", "/users", "123"); // "/api/v1/users/123"
+ *
+ * @example
+ * joinPaths("api", "users"); // "api/users"
+ *
+ * @example
+ * joinPaths("https://example.com/", "/users/", "123"); // "https://example.com/users/123"
+ *
+ * @example
+ * joinPaths("/a", "b?x=1#top"); // "/a/b?x=1#top"
+ */
+export const joinPaths = (...segments: Array<Nil<string | number>>) => {
+  const normalizedSegments = segments
+    .filter(
+      (segment): segment is string | number =>
+        !isNil(segment) && String(segment).length > 0,
+    )
+    .map(String)
+    .map((segment, index, arr) => {
+      const isFirstSegment = index === 0;
+      const isLastSegment = index === arr.length - 1;
+
+      // Remove leading slashes from non-first segments to avoid "//" in the middle.
+      const withoutLeadingSlash =
+        isFirstSegment ? segment : segment.replace(/^\/+/, "");
+
+      // Remove trailing slashes from non-last segments to avoid duplicate separators.
+      const withoutTrailingSlash =
+        isLastSegment ? withoutLeadingSlash : (
+          withoutLeadingSlash.replace(/\/+$/, "")
+        );
+
+      return withoutTrailingSlash;
+    })
+    // Remove any segments that became empty after trimming (e.g., a standalone "/")
+    .filter((segment) => segment.length > 0);
+
+  if (normalizedSegments.length === 0) {
+    return "";
+  }
+
+  return normalizedSegments.join("/");
+};

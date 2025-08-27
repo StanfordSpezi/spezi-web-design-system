@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { not, times, upperFirst, isObject, isEmpty } from "./misc";
+import { isEmpty, isObject, joinPaths, not, times, upperFirst } from "./misc";
 
 describe("not", () => {
   it("negates value", () => {
@@ -66,5 +66,38 @@ describe("isEmpty", () => {
     [new Set(), true],
   ])("checks if %s is empty -> %s", (a, result) => {
     expect(isEmpty(a)).toEqual(result);
+  });
+});
+
+describe("joinPaths", () => {
+  it("joins basic segments", () => {
+    expect(joinPaths("/api/v1/", "/users", "123")).toBe("/api/v1/users/123");
+  });
+
+  it("collapses duplicate slashes between segments", () => {
+    expect(joinPaths("/api//", "//v1///", "users")).toBe("/api/v1/users");
+  });
+
+  it("preserves absolute URL bases", () => {
+    expect(joinPaths("https://example.com/", "/users/", "123")).toBe(
+      "https://example.com/users/123",
+    );
+  });
+
+  it("keeps query and hash on the last segment", () => {
+    expect(joinPaths("/api", "users?x=1#top")).toBe("/api/users?x=1#top");
+    expect(joinPaths("/api/", "users/?x=1#top")).toBe("/api/users/?x=1#top");
+  });
+
+  it("ignores null/undefined/empty segments", () => {
+    expect(joinPaths(undefined, "", "/a/", null, "b")).toBe("/a/b");
+  });
+
+  it("supports numeric segments", () => {
+    expect(joinPaths("/users", 42)).toBe("/users/42");
+  });
+
+  it("returns empty string when all segments are empty", () => {
+    expect(joinPaths("", null, undefined, "")).toBe("");
   });
 });
