@@ -96,4 +96,8 @@ describe("joinPaths", () => {
   it("supports numeric segments", () => {
     expect(joinPaths("/users", 42)).toBe("/users/42");
   });
+
+  it("returns empty string when all segments are empty", () => {
+    expect(joinPaths("", null, undefined, "")).toBe("");
+  });
 });
