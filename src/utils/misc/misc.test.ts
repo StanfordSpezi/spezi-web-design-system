@@ -90,8 +90,6 @@ describe("joinPaths", () => {
   });
 
   it("ignores null/undefined/empty segments", () => {
-    // Current implementation treats empty strings as removable only after trimming slashes.
-    // If you adopt the simplified version that filters empty strings, this still passes.
     expect(joinPaths(undefined, "", "/a/", null, "b")).toBe("/a/b");
   });
 
