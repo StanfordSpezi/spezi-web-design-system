@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { cn } from "@/utils/className";
 import type { CSSProperties, ComponentProps } from "react";
+import { cn } from "@/utils/className";
 import { Separator } from "../Separator";
 
 interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
