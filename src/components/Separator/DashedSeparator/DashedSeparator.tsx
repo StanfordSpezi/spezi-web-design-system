@@ -77,8 +77,10 @@ export const DashedSeparator = ({
   <Separator
     orientation={orientation}
     className={cn(
+      // We need this CSS variable so the bg class is applied in projects without a 'border' color var in the Tailwind config
+      "[--default-border-color:theme(colors.border)]",
       orientation === "vertical" ? "[--tilt:0deg]" : "[--tilt:90deg]",
-      "bg-[linear-gradient(var(--tilt),var(--dash-color,theme(colors.border)),var(--dash-color,theme(colors.border))_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_100%)]",
+      "bg-[linear-gradient(var(--tilt),var(--dash-color,var(--default-border-color)),var(--dash-color,var(--default-border-color))_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_calc(100%_-_var(--dash-gap,theme(spacing.1))),transparent_100%)]",
       "bg-[length:var(--dash-size,theme(spacing.4))_var(--dash-size,theme(spacing.4))]",
       className,
     )}
