@@ -308,7 +308,6 @@
     "@hookform/resolvers": "^5.2.1",
     "@nextui-org/use-pagination": "^2.2.3",
     "@tanstack/match-sorter-utils": "^8.19.4",
-    "@tanstack/react-query": "^5.83.1",
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "^3.13.12",
     "class-variance-authority": "^0.7.1",
@@ -335,6 +334,7 @@
     "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.14",
     "@tailwindcss/postcss": "^4.1.7",
+    "@tanstack/react-query": "^5.85.5",
     "@testing-library/jest-dom": "^6",
     "@testing-library/react": "^16",
     "@total-typescript/ts-reset": "^0.6.1",
@@ -362,7 +362,8 @@
   "peerDependencies": {
     "next-intl": "^3",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "@tanstack/react-query": "^5.85.5"
   },
   "engines": {
     "node": "22"
