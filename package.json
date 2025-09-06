@@ -261,6 +261,10 @@
       "types": "./dist/utils/useOpenState.d.ts",
       "default": "./dist/utils/useOpenState.js"
     },
+    "./utils/useTimedFlag": {
+      "types": "./dist/utils/useTimedFlag.d.ts",
+      "default": "./dist/utils/useTimedFlag.js"
+    },
     "./utils/navigator": {
       "types": "./dist/utils/navigator.d.ts",
       "default": "./dist/utils/navigator.js"

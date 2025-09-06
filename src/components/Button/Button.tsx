@@ -26,6 +26,8 @@ export const buttonVariants = {
    *   Can be used for additional controls, icon buttons.
    * - `ghostPrimary`: primary color, with `ghost` styles on hover.
    *   Can be used for additional controls, icon buttons.
+   * - `success`: filled with success color.
+   *    Should be used for indicating positive actions.
    * - `destructive`: filled with destructive color.
    *    Should be used for indicating negative and destructive actions.
    * - `link`: just a regular text with underline on hover.
@@ -40,6 +42,7 @@ export const buttonVariants = {
       "border border-input bg-surface-primary hover:bg-accent hover:text-accent-foreground",
     ghost: "hover:bg-accent hover:text-accent-foreground",
     ghostPrimary: "text-primary hover:bg-primary/10",
+    success: "bg-success text-success-foreground hover:bg-success/80",
     destructive:
       "bg-destructive text-destructive-foreground hover:bg-destructive/80",
     link: "text-primary underline-offset-4 hover:underline",
