@@ -1,7 +1,7 @@
 //
 // This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
 //
-// SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+// SPDX-FileCopyrightText: 2024 Stanford University and the project authors (see CONTRIBUTORS.md)
 //
 // SPDX-License-Identifier: MIT
 //
@@ -14,15 +14,15 @@ describe("useTimedFlag", () => {
 
   it("activates when trigger is true and deactivates after timeout", () => {
     const { result, rerender } = renderHook(
-      ({ t, ms }) => useTimedFlag(t, ms),
+      ({ trigger, timeout }) => useTimedFlag(trigger, timeout),
       {
-        initialProps: { t: false, ms: 1000 },
+        initialProps: { trigger: false, timeout: 1000 },
       },
     );
 
     expect(result.current).toBe(false);
 
-    rerender({ t: true, ms: 1000 });
+    rerender({ trigger: true, timeout: 1000 });
     expect(result.current).toBe(true);
 
     act(() => {
