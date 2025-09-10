@@ -227,4 +227,32 @@ describe("MultiSelect", () => {
 
     expect(screen.getByRole("separator")).toBeInTheDocument();
   });
+
+  it("does not remove a value when clickToRemove is false", () => {
+    render(
+      <MultiSelect>
+        <MultiSelectTrigger>
+          <MultiSelectValue placeholder="Pick..." clickToRemove={false} />
+        </MultiSelectTrigger>
+        <MultiSelectContent>
+          <MultiSelectItem value="alpha">Alpha</MultiSelectItem>
+        </MultiSelectContent>
+      </MultiSelect>,
+    );
+
+    const trigger = screen
+      .getAllByRole("combobox")
+      .find((el) => el.tagName.toLowerCase() === "button") as HTMLButtonElement;
+    fireEvent.click(trigger);
+
+    const option = screen.getByRole("option", { name: "Alpha" });
+    fireEvent.click(option);
+
+    const badge = within(trigger).getByText("Alpha");
+    expect(badge).toBeInTheDocument();
+
+    // Clicking the badge should do nothing when clickToRemove is false
+    fireEvent.click(badge);
+    expect(within(trigger).getByText("Alpha")).toBeInTheDocument();
+  });
 });
