@@ -15,6 +15,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
+  CommandShortcut,
 } from ".";
 
 describe("Command", () => {
@@ -60,5 +62,31 @@ describe("Command", () => {
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     // Command input should be reachable
     expect(screen.getByRole("combobox")).toBeInTheDocument();
+  });
+
+  it("renders separator and shortcut inside items", () => {
+    render(
+      <Command>
+        <CommandList>
+          <CommandGroup heading="Shortcuts">
+            <CommandItem>
+              Open Palette
+              <CommandShortcut>⌘K</CommandShortcut>
+            </CommandItem>
+            <CommandSeparator />
+            <CommandItem>
+              Close
+              <CommandShortcut>Esc</CommandShortcut>
+            </CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </Command>,
+    );
+
+    // Separator should render
+    expect(screen.getByRole("separator")).toBeInTheDocument();
+    // Shortcuts should render as inline spans
+    expect(screen.getByText("⌘K")).toBeInTheDocument();
+    expect(screen.getByText("Esc")).toBeInTheDocument();
   });
 });
