@@ -49,6 +49,10 @@
       "types": "./dist/components/Card.d.ts",
       "default": "./dist/components/Card.js"
     },
+    "./components/Command": {
+      "types": "./dist/components/Command.d.ts",
+      "default": "./dist/components/Command.js"
+    },
     "./components/CopyText": {
       "types": "./dist/components/CopyText.d.ts",
       "default": "./dist/components/CopyText.js"
@@ -100,6 +104,10 @@
     "./components/Label": {
       "types": "./dist/components/Label.d.ts",
       "default": "./dist/components/Label.js"
+    },
+    "./components/MultiSelect": {
+      "types": "./dist/components/MultiSelect.d.ts",
+      "default": "./dist/components/MultiSelect.js"
     },
     "./components/Pagination": {
       "types": "./dist/components/Pagination.d.ts",
@@ -311,6 +319,7 @@
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "^3.13.12",
     "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "es-toolkit": "^1.38.0",
     "firebase": "^11.8.1",
@@ -360,10 +369,10 @@
     "vitest": "^3.1.4"
   },
   "peerDependencies": {
+    "@tanstack/react-query": "^5.85.5",
     "next-intl": "^3",
     "react": "^19",
-    "react-dom": "^19",
-    "@tanstack/react-query": "^5.85.5"
+    "react-dom": "^19"
   },
   "engines": {
     "node": "22"
