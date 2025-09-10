@@ -191,7 +191,7 @@ interface MultiSelectValueProps
    */
   placeholder?: string;
   /**
-   * If true, clic^king a badge removes that item from the selection.
+   * If true, clicking a badge removes that item from the selection.
    *
    * @default true
    */
