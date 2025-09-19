@@ -25,12 +25,11 @@ export interface NavigationBlockerProps
   /**
    * Controls whether the native browser beforeunload prompt should be enabled.
    * When true and `shouldBlock` is true, a native prompt will appear on page reload/close.
-   * Defaults to `false`.
+   *
+   * @default false
    */
   enableBeforeUnload?: boolean;
-  /**
-   * Indicates whether there are unsaved changes that should block navigation.
-   */
+  /** Indicates whether there are unsaved changes that should block navigation. */
   shouldBlock?: boolean;
   /** When set to "blocked", the confirmation dialog is shown. */
   status?: BlockerStatus;
@@ -46,13 +45,7 @@ export interface NavigationBlockerProps
 
 /**
  * A small confirmation dialog to guard against accidental navigation when there are unsaved changes.
- *
  * This component is router-agnostic. It does not import or depend on any specific router library.
- * To integrate with TanStack Router, forward the `status`, `proceed`, and `reset` values
- * from `useBlocker({ shouldBlockFn, withResolver: true, enableBeforeUnload })` into this component.
- *
- * It also optionally attaches a `beforeunload` listener when `enableBeforeUnload` and `shouldBlock` are true,
- * prompting the user if they try to leave the page via refresh/close.
  *
  * @example
  * import { useBlocker } from "@tanstack/react-router";
@@ -64,11 +57,33 @@ export interface NavigationBlockerProps
  *   withResolver: true,
  *   enableBeforeUnload: true,
  * });
- * return (<NavigationBlocker
- *   status={blocker.status}
- *   proceed={blocker.proceed}
- *   reset={blocker.reset}
- * />);
+ * return (
+ *   <NavigationBlocker
+ *     status={blocker.status}
+ *     proceed={blocker.proceed}
+ *     reset={blocker.reset}
+ *   />
+ * );
+ *
+ * @example
+ * // The `enableBeforeUnload` prop enables a native browser prompt on page reload/close.
+ * const [dirty, setDirty] = useState(false);
+ * return (
+ *   <>
+ *     <NavigationBlocker shouldBlock={dirty} enableBeforeUnload />
+ *      <form
+ *       onChange={() => setDirty(true)}
+ *       onSubmit={(e) => {
+ *         e.preventDefault();
+ *         // save...
+ *         setDirty(false);
+ *       }}
+ *     >
+ *       <input name="displayName" />
+ *       <button type="submit">Save</button>
+ *     </form>
+ *   </>
+ * );
  */
 export const NavigationBlocker = ({
   status = "idle",
@@ -102,7 +117,7 @@ export const NavigationBlocker = ({
       <DialogContent size="sm">
         <DialogHeader className="items-center sm:items-start">
           <div className="mb-4 size-8 rounded-lg border shadow-xs">
-            <div className="grid size-full place-items-center">
+            <div className="flex-center size-full">
               <CircleAlert className="text-muted-foreground size-4" />
             </div>
           </div>
