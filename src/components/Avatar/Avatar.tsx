@@ -7,41 +7,46 @@
 //
 
 import { cva, type VariantProps } from "class-variance-authority";
-import { type ReactNode, useEffect, useState } from "react";
+import {
+  type ComponentProps,
+  type ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { cn } from "@/utils/className";
 import { isEmpty, type Nil } from "@/utils/misc";
 
-type AvatarProps = {
-  className?: string;
-  /**
-   * The source URL of the avatar image.
-   * If provided, the image will be displayed.
-   * If the image fails to load, the fallback content will be shown.
-   */
-  src?: Nil<string>;
-  /**
-   * Custom fallback content to display when:
-   * - No src is provided
-   * - The image fails to load
-   * - The name is not provided
-   *
-   * Initials from the name will be used as fallback if provided.
-   */
-  fallback?: ReactNode;
-  /**
-   * The name associated with the avatar.
-   * Used for:
-   * - Generating fallback initials when no fallback is provided
-   * - Setting the alt text for the image
-   */
-  name?: Nil<string>;
-  /**
-   * Overlay content to render on top of the avatar.
-   * Can be any ReactNode - badges, status indicators, icons, etc.
-   * Positioned absolutely within the avatar container.
-   */
-  overlay?: ReactNode;
-} & VariantProps<typeof avatarVariance>;
+type AvatarProps = VariantProps<typeof avatarVariance> &
+  ComponentProps<"div"> & {
+    /**
+     * The source URL of the avatar image.
+     * If provided, the image will be displayed.
+     * If the image fails to load, the fallback content will be shown.
+     */
+    src?: Nil<string>;
+    /**
+     * Custom fallback content to display when:
+     * - No src is provided
+     * - The image fails to load
+     * - The name is not provided
+     *
+     * Initials from the name will be used as fallback if provided.
+     */
+    fallback?: ReactNode;
+    /**
+     * The name associated with the avatar.
+     * Used for:
+     * - Generating fallback initials when no fallback is provided
+     * - Setting the alt text for the image
+     */
+    name?: Nil<string>;
+    /**
+     * Overlay content to render on top of the avatar.
+     * Can be any ReactNode - badges, status indicators, icons, etc.
+     * Positioned absolutely within the avatar container.
+     */
+    overlay?: ReactNode;
+  };
 
 /**
  * Extracts initials from a given name string.
@@ -111,6 +116,7 @@ export const Avatar = ({
   size,
   name,
   overlay,
+  ...props
 }: AvatarProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -124,7 +130,7 @@ export const Avatar = ({
     : fallback;
 
   return (
-    <div className={cn(avatarVariance({ size }), className)}>
+    <div className={cn(avatarVariance({ size }), className)} {...props}>
       <div className="size-full overflow-hidden rounded-full">
         {src && (
           <img
