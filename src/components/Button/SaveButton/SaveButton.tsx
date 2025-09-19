@@ -16,11 +16,19 @@ export interface SaveButtonProps
   extends Omit<ComponentProps<typeof Button>, "children"> {
   /** When true, shows a temporary success state. */
   isSuccess?: boolean;
-  /** Duration in ms to keep success state visible. Default: 2000 */
+  /**
+   * Duration in ms to keep success state visible.
+   *
+   * @default 2000
+   */
   successTimeout?: number;
   /** When true, shows a temporary error state. */
   isError?: boolean;
-  /** Duration in ms to keep error state visible. Default: 5000 */
+  /**
+   * Duration in ms to keep error state visible.
+   *
+   * @default 5000
+   */
   errorTimeout?: number;
 }
 
@@ -77,8 +85,8 @@ export const SaveButton = ({
         : "default"
       }
       className={cn(
-        "w-20 border-2 border-transparent transition-all",
-        (localIsSuccess || localIsError) && "w-28",
+        "border-2 border-transparent transition-all",
+        localIsSuccess || localIsError ? "w-28" : "w-20",
         className,
       )}
       {...props}
