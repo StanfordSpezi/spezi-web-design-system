@@ -30,6 +30,7 @@ export * from "./components/InfoButton";
 export * from "./components/Input";
 export * from "./components/InputOTP";
 export * from "./components/Label";
+export * from "./components/NavigationBlocker";
 export * from "./components/Pagination";
 export * from "./components/Popover";
 export * from "./components/Radio";

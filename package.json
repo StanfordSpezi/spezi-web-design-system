@@ -193,6 +193,10 @@
       "types": "./dist/components/Accordion.d.ts",
       "default": "./dist/components/Accordion.js"
     },
+    "./components/NavigationBlocker": {
+      "types": "./dist/components/NavigationBlocker.d.ts",
+      "default": "./dist/components/NavigationBlocker.js"
+    },
     "./components/Sheet": {
       "types": "./dist/components/Sheet.d.ts",
       "default": "./dist/components/Sheet.js"
