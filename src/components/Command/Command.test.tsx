@@ -7,9 +7,10 @@
 //
 
 import { fireEvent, render, screen } from "@testing-library/react";
+import { Dialog } from "@/components/Dialog";
 import {
   Command,
-  CommandDialog,
+  CommandDialogContent,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -48,14 +49,16 @@ describe("Command", () => {
 
   it("can be placed inside a dialog wrapper", () => {
     render(
-      <CommandDialog open>
-        <CommandInput placeholder="Search..." />
-        <CommandList>
-          <CommandGroup heading="Group">
-            <CommandItem>Item</CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>,
+      <Dialog open>
+        <CommandDialogContent>
+          <CommandInput placeholder="Search..." />
+          <CommandList>
+            <CommandGroup heading="Group">
+              <CommandItem>Item</CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </CommandDialogContent>
+      </Dialog>,
     );
 
     // Dialog content should be present

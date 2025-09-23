@@ -8,9 +8,11 @@
 
 import { type Meta } from "@storybook/react";
 import { useState } from "react";
+import { Button } from "../Button";
+import { Dialog } from "../Dialog";
 import {
   Command,
-  CommandDialog,
+  CommandDialogContent,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -19,7 +21,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "./Command";
-import { Button } from "../Button";
 
 const meta: Meta<typeof Command> = {
   title: "Components/Command",
@@ -29,7 +30,7 @@ const meta: Meta<typeof Command> = {
 export default meta;
 
 export const Default = () => (
-  <Command className="rounded-lg border shadow-lg/5 md:min-w-[450px]">
+  <Command className="border md:min-w-[450px]">
     <CommandInput placeholder="Search..." />
     <CommandList>
       <CommandEmpty>No results found.</CommandEmpty>
@@ -60,16 +61,18 @@ export const InDialog = () => {
       <Button size="sm" variant="outline" onClick={() => setOpen(true)}>
         Open Command Palette
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="General">
-            <CommandItem>Open File</CommandItem>
-            <CommandItem>New Window</CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <CommandDialogContent>
+          <CommandInput placeholder="Type a command or search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="General">
+              <CommandItem>Open File</CommandItem>
+              <CommandItem>New Window</CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </CommandDialogContent>
+      </Dialog>
     </>
   );
 };

@@ -7,13 +7,11 @@
 //
 
 import { Command as CommandPrimitive } from "cmdk";
-import { Search } from "lucide-react";
+import { Search, SearchX } from "lucide-react";
 import { type ComponentProps } from "react";
 import {
-  Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
 } from "@/components/Dialog";
 import { cn } from "@/utils/className";
@@ -59,71 +57,68 @@ export const Command = ({
   />
 );
 
-interface CommandDialogProps extends ComponentProps<typeof Dialog> {
+interface CommandDialogContentProps
+  extends ComponentProps<typeof DialogContent> {
   /**
-   * Accessible title announced by screen readers. Hidden visually by default.
+   * Accessible title announced by screen readers. Visually hidden.
    * @default "Command Palette"
    */
   title?: string;
   /**
-   * Accessible description announced by screen readers. Hidden visually by default.
+   * Accessible description announced by screen readers. Visually hidden.
    * @default "Search for a command to run..."
    */
   description?: string;
-  /** Optional className forwarded to DialogContent wrapper */
-  className?: string;
 }
 
 /**
- * Convenience wrapper that places `Command` inside a `Dialog`.
+ * Command dialog content composed of `DialogContent` and `Command`.
  *
- * Good for command palettes and global search. The title and description are announced to
- * assistive tech but are visually hidden by default.
+ * Use this inside your own `Dialog` wrapper for maximum composability.
+ * The `title` and `description` are announced to assistive tech but are visually hidden.
  *
  * @example
  * const [open, setOpen] = useState(false);
- * <CommandDialog open={open} onOpenChange={setOpen} title="Command Palette">
- *   <CommandInput placeholder="Search..." />
- *   <CommandList>
- *     <CommandGroup heading="Files">
- *       <CommandItem>Open Recent</CommandItem>
- *     </CommandGroup>
- *   </CommandList>
- * </CommandDialog>
+ * <Dialog open={open} onOpenChange={setOpen}>
+ *   <CommandDialogContent title="Command Palette">
+ *     <CommandInput placeholder="Search..." />
+ *     <CommandList>
+ *       <CommandGroup heading="Files">
+ *         <CommandItem>Open Recent</CommandItem>
+ *       </CommandGroup>
+ *     </CommandList>
+ *   </CommandDialogContent>
+ * </Dialog>
  */
-export const CommandDialog = ({
+export const CommandDialogContent = ({
   title = "Command Palette",
   description = "Search for a command to run...",
   children,
   className,
   ...props
-}: CommandDialogProps) => (
-  <Dialog {...props}>
+}: CommandDialogContentProps) => (
+  <DialogContent className={cn("overflow-hidden !p-0", className)} {...props}>
     {/* Hidden header elements to improve a11y */}
-    <DialogHeader className="sr-only">
-      <DialogTitle>{title}</DialogTitle>
-      <DialogDescription>{description}</DialogDescription>
-    </DialogHeader>
-    <DialogContent className={cn("overflow-hidden !p-0", className)}>
-      <Command
-        className={cn(
-          "[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium",
-          "[&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0",
-          "**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12",
-          "[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3",
-          "[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
-        )}
-      >
-        {children}
-      </Command>
-    </DialogContent>
-  </Dialog>
+    <DialogTitle className="sr-only">{title}</DialogTitle>
+    <DialogDescription className="sr-only">{description}</DialogDescription>
+    <Command
+      className={cn(
+        "[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium",
+        "[&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0",
+        "**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12",
+        "[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3",
+        "[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
+      )}
+    >
+      {children}
+    </Command>
+  </DialogContent>
 );
 
 /**
  * Search input with an inline search icon and bottom border.
  *
- * Place inside `Command` (or `CommandDialog`) to filter list items automatically.
+ * Place inside `Command` (or compose with `Dialog` using `CommandDialogContent`) to filter list items automatically.
  *
  * @example
  * <Command>
@@ -136,6 +131,7 @@ export const CommandDialog = ({
  */
 export const CommandInput = ({
   className,
+  placeholder = "Search...",
   ...props
 }: ComponentProps<typeof CommandPrimitive.Input>) => (
   <div
@@ -145,6 +141,7 @@ export const CommandInput = ({
     <Search className="size-4 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       data-slot="command-input"
+      placeholder={placeholder}
       className={cn(
         "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
         className,
@@ -189,14 +186,22 @@ export const CommandList = ({
  *   <CommandEmpty>No results found.</CommandEmpty>
  * </CommandList>
  */
-export const CommandEmpty = (
-  props: ComponentProps<typeof CommandPrimitive.Empty>,
-) => (
+export const CommandEmpty = ({
+  className,
+  children = "No results found",
+  ...props
+}: ComponentProps<typeof CommandPrimitive.Empty>) => (
   <CommandPrimitive.Empty
     data-slot="command-empty"
-    className="py-6 text-center text-sm"
+    className={cn(
+      "text-muted-foreground flex-center gap-2 py-6 text-center text-sm",
+      className,
+    )}
     {...props}
-  />
+  >
+    <SearchX className="size-4" />
+    {children}
+  </CommandPrimitive.Empty>
 );
 
 /**
@@ -289,5 +294,3 @@ export const CommandShortcut = ({
     {...props}
   />
 );
-
-export type { ComponentProps as CommandComponentProps };

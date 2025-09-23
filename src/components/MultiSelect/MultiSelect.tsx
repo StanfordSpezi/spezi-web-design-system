@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
+import { isBoolean, isUndefined } from "es-toolkit";
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import {
   createContext,
@@ -19,7 +20,6 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/utils/className";
-import { isObject } from "@/utils/misc";
 import { Badge } from "../Badge";
 import { Button } from "../Button";
 import {
@@ -98,20 +98,17 @@ export const MultiSelect = ({
   const [selectedValues, setSelectedValues] = useState(
     new Set(values ?? defaultValues),
   );
-  const [items, setItems] = useState<Map<string, ReactNode>>(new Map());
+  const [items, setItems] = useState(new Map<string, ReactNode>());
 
   const toggleValue = (value: string) => {
-    const getNewSet = (prev: Set<string>) => {
-      const newSet = new Set(prev);
-      if (newSet.has(value)) {
-        newSet.delete(value);
-      } else {
-        newSet.add(value);
-      }
-      return newSet;
-    };
-    setSelectedValues(getNewSet);
-    onValuesChange?.([...getNewSet(selectedValues)]);
+    const newSet = new Set(selectedValues);
+    if (newSet.has(value)) {
+      newSet.delete(value);
+    } else {
+      newSet.add(value);
+    }
+    setSelectedValues(newSet);
+    onValuesChange?.(Array.from(newSet));
   };
 
   const onItemAdded = (value: string, label: ReactNode) => {
@@ -170,15 +167,14 @@ export const MultiSelectTrigger = ({
         variant={null}
         aria-expanded={propsAriaExpanded ?? open}
         className={cn(
-          "group border-input bg-surface-primary ring-offset-surface placeholder:text-muted-foreground flex h-auto min-h-10 w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm",
-          "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden",
+          "group border-input bg-surface-primary ring-offset-surface placeholder:text-muted-foreground focus-ring flex h-auto min-h-10 w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm",
           "[&>span]:line-clamp-1 [&>span]:text-left",
           "disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
       >
         {children}
-        <ChevronsUpDownIcon className="size-4 shrink-0 opacity-50 transition-opacity group-hover:opacity-80" />
+        <ChevronsUpDownIcon className="size-4 shrink-0 opacity-50 transition group-hover:opacity-80" />
       </Button>
     </PopoverTrigger>
   );
@@ -259,20 +255,17 @@ export const MultiSelectValue = ({
     checkOverflow();
   }, [selectedValues, checkOverflow, shouldWrap]);
 
-  const handleResize = useCallback(
-    (node: HTMLDivElement) => {
-      valueRef.current = node;
+  const handleResize = (node: HTMLDivElement) => {
+    valueRef.current = node;
 
-      const observer = new ResizeObserver(checkOverflow);
-      observer.observe(node);
+    const observer = new ResizeObserver(checkOverflow);
+    observer.observe(node);
 
-      return () => {
-        observer.disconnect();
-        valueRef.current = null;
-      };
-    },
-    [checkOverflow],
-  );
+    return () => {
+      observer.disconnect();
+      valueRef.current = null;
+    };
+  };
 
   if (selectedValues.size === 0 && placeholder) {
     return (
@@ -292,7 +285,7 @@ export const MultiSelectValue = ({
         className,
       )}
     >
-      {[...selectedValues]
+      {Array.from(selectedValues)
         .filter((value) => items.has(value))
         .map((value) => (
           <Badge
@@ -314,16 +307,14 @@ export const MultiSelectValue = ({
           >
             {items.get(value)}
             {clickToRemove && (
-              <XIcon className="size-2.5 stroke-3 opacity-50 transition-opacity group-hover/badge:opacity-100" />
+              <XIcon className="size-2.5 stroke-3 opacity-50 transition group-hover/badge:opacity-100" />
             )}
           </Badge>
         ))}
       <Badge
-        style={{
-          display: overflowAmount > 0 && !shouldWrap ? "block" : "none",
-        }}
         variant="secondary"
         ref={overflowRef}
+        className={cn((overflowAmount <= 0 || shouldWrap) && "hidden")}
       >
         +{overflowAmount}
       </Badge>
@@ -346,6 +337,28 @@ interface MultiSelectContentProps
 }
 
 /**
+ * Transform the `search` prop into a normalized object with default values for
+ * placeholder and emptyMessage. Returns null if search is false.
+ */
+const normalizeSearchProp = (search: MultiSelectContentProps["search"]) => {
+  const defaultSearchParams = {
+    placeholder: "Search...",
+    emptyMessage: "No results found.",
+  };
+
+  if (isUndefined(search)) return defaultSearchParams;
+  if (isBoolean(search)) {
+    if (search) return defaultSearchParams;
+    return null;
+  }
+
+  return {
+    placeholder: search.placeholder ?? defaultSearchParams.placeholder,
+    emptyMessage: search.emptyMessage ?? defaultSearchParams.emptyMessage,
+  };
+};
+
+/**
  * Popover content that renders the `Command`-based searchable list of items.
  *
  * @example
@@ -366,28 +379,23 @@ export const MultiSelectContent = ({
   children,
   ...props
 }: MultiSelectContentProps) => {
-  const canSearch = isObject(search) ? true : search;
-
+  const searchObject = normalizeSearchProp(search);
   return (
     <>
       {/* Render a hidden list of children, so the useEffect on the MultiSelectItem fires */}
-      <div style={{ display: "none" }}>
+      <div className="hidden">
         <Command>
           <CommandList>{children}</CommandList>
         </Command>
       </div>
-      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] !p-0 !shadow-md">
+      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] !p-0">
         <Command {...props}>
-          {canSearch ?
-            <CommandInput
-              placeholder={isObject(search) ? search.placeholder : "Search..."}
-            />
+          {searchObject ?
+            <CommandInput placeholder={searchObject.placeholder} />
           : <button autoFocus className="sr-only" />}
           <CommandList>
-            {canSearch && (
-              <CommandEmpty>
-                {isObject(search) ? search.emptyMessage : "No results found."}
-              </CommandEmpty>
+            {searchObject && (
+              <CommandEmpty>{searchObject.emptyMessage}</CommandEmpty>
             )}
             {children}
           </CommandList>
