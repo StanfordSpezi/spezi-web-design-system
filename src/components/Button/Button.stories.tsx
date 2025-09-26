@@ -37,6 +37,7 @@ export const Outline: Story = { args: { variant: "outline" } };
 export const Ghost: Story = { args: { variant: "ghost" } };
 export const GhostPrimary: Story = { args: { variant: "ghostPrimary" } };
 export const Link: Story = { args: { variant: "link" } };
+export const Success: Story = { args: { variant: "success" } };
 export const Destructive: Story = { args: { variant: "destructive" } };
 
 export const Xs: Story = { args: { size: "xs" } };
