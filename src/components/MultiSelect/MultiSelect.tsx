@@ -383,9 +383,11 @@ export const MultiSelectContent = ({
   return (
     <>
       {/* Render a hidden list of children, so the useEffect on the MultiSelectItem fires */}
-      <div className="hidden">
-        <Command>
-          <CommandList>{children}</CommandList>
+      <div className="hidden" aria-hidden="true">
+        <Command aria-hidden="true" tabIndex={-1}>
+          <CommandList aria-hidden="true" tabIndex={-1}>
+            {children}
+          </CommandList>
         </Command>
       </div>
       <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] !p-0">
