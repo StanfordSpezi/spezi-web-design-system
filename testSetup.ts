@@ -15,3 +15,12 @@ const ResizeObserverMock = vi.fn(() => ({
 }));
 
 vi.stubGlobal("ResizeObserver", ResizeObserverMock);
+
+// jsdom doesn't implement scrollIntoView; stub it for components that rely on it (e.g., Command)
+if (!("scrollIntoView" in Element.prototype)) {
+  Object.defineProperty(Element.prototype, "scrollIntoView", {
+    value: vi.fn(),
+    writable: true,
+    configurable: true,
+  });
+}
