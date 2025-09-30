@@ -310,6 +310,7 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
+    "build-storybook": "storybook build",
     "dev": "vite",
     "docs": "typedoc",
     "docs:ci": "typedoc --out ./out/docs --githubPages true",

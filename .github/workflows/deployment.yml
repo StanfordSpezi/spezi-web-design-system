@@ -39,3 +39,11 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     with:
       packageVersion: ${{ github.event.release.tag_name }}
+  deploy-storybook:
+    name: Deploy Storybook
+    needs: build-and-test
+    uses: ./.github/workflows/storybook-deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
