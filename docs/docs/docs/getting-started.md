@@ -364,9 +364,9 @@ const MyComponent = () => {
 ## Next Steps
 
 - **[Browse Components in Storybook](https://spezi.health/spezi-web-design-system/storybook)** - Interactive examples and documentation
-- **[API Reference](/api)** - Detailed component and utility documentation
-- **[Why Spezi?](/why-spezi)** - Learn about our philosophy and approach
-- **[Technology Stack](/technology-stack)** - Understand the underlying technologies
+- **[API Reference](/api/SpeziProvider)** - Detailed component and utility documentation
+- **[Why Spezi?](/docs/why-spezi)** - Learn about our philosophy and approach
+- **[Technology Stack](/docs/technology-stack)** - Understand the underlying technologies
 
 ## Production Examples
 
