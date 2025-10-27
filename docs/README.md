@@ -1,3 +1,13 @@
+<!--
+
+This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
+
+SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+
+SPDX-License-Identifier: MIT
+
+-->
+
 # Spezi Web Design System Documentation
 
 This documentation website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator. It provides comprehensive documentation for the Spezi Web Design System, including guides and auto-generated API reference.
