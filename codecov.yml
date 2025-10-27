@@ -11,6 +11,7 @@ codecov:
   require_ci_to_pass: true
 ignore:
   - '**/*.stories.tsx'
+  - 'docs/**'
 comment:
   behavior: default
   layout: reach,diff,flags,files,footer
