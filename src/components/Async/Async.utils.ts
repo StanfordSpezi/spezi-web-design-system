@@ -11,7 +11,7 @@ import { combineQueries, type Query } from "@/utils/query";
 import { type FullErrorProps } from "./Async";
 
 /**
- * Parses an array of queries into `Async` component props.
+ * Parses an array of queries into {@link Async} component props.
  * Combines multiple query states into a single loading and error state.
  *
  * @param queries - Array of Query object results to parse
@@ -19,6 +19,7 @@ import { type FullErrorProps } from "./Async";
  * @returns Object containing loading and error states for the Async component
  *
  * @example
+ * ```tsx
  * // Multiple queries with custom error handling
  * const usersQuery = useQuery(...)
  * const postsQuery = useQuery(...)
@@ -30,6 +31,7 @@ import { type FullErrorProps } from "./Async";
  * >
  *   <UserList users={usersQuery.data} posts={postsQuery.data} />
  * </Async>
+ * ```
  */
 export const queriesToAsyncProps = (
   queries: Query[],

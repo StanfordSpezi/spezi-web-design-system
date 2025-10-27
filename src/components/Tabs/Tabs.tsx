@@ -15,6 +15,7 @@ import { cn } from "@/utils/className";
  * Built on top of [radix-ui Tabs](https://www.radix-ui.com/primitives/docs/components/tabs).
  *
  * @example
+ * ```tsx
  * <Tabs defaultValue="account">
  *   <TabsList>
  *     <TabsTrigger value="account">Account</TabsTrigger>
@@ -27,9 +28,11 @@ import { cn } from "@/utils/className";
  *     <p>Password settings</p>
  *   </TabsContent>
  * </Tabs>
+ * ```
  *
  *
  * @example
+ * ```tsx
  * // Tabs as links
  * <Tabs defaultValue="account">
  *   <TabsList>
@@ -41,6 +44,7 @@ import { cn } from "@/utils/className";
  *     <p>Account settings</p>
  *   </TabsContent>
  * </Tabs>
+ * ```
  */
 export const Tabs = TabsPrimitive.Root;
 
@@ -69,10 +73,12 @@ const TabsListContext = createContext<TabsListContextProps>({
  * Container for Tab's triggers.
  *
  * @example
+ * ```tsx
  * <TabsList>
  *   <TabsTrigger value="account">Account</TabsTrigger>
  *   <TabsTrigger value="password">Password</TabsTrigger>
  * </TabsList>
+ * ```
  */
 export const TabsList = ({ className, grow, ...props }: TabsListProps) => (
   <TabsListContext.Provider value={{ grow }}>
@@ -88,7 +94,7 @@ export const TabsList = ({ className, grow, ...props }: TabsListProps) => (
 );
 
 /**
- * Trigger for a single tab. Should be wrapped with `TabsList`.
+ * Trigger for a single tab. Should be wrapped with {@link TabsList}`.
  * Can be rendered as a link using asChild.
  */
 export const TabsTrigger = ({

@@ -14,10 +14,12 @@ import { cn } from "@/utils/className";
  * A button component with an information icon that can be used as a trigger.
  *
  * @example
+ * ```tsx
  * // Basic usage with Tooltip
  * <Tooltip tooltip="Additional information here">
  *   <InfoButton />
  * </Tooltip>
+ * ```
  */
 export const InfoButton = ({
   className,

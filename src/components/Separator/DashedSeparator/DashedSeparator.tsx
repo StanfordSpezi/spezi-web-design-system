@@ -24,6 +24,7 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
  * Built on top of [radix-ui Separator](https://www.radix-ui.com/primitives/docs/components/separator).
  *
  * @example
+ * ```tsx
  * // Custom dash styling
  * <DashedSeparator
  *   decorative
@@ -31,31 +32,39 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
  *   dashSize="8px"
  *   dashGap="4px"
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom dash styling using class names
  * <DashedSeparator className={`
  *   [--dash-color:theme(colors.red.500)]
  *   [--dash-size:theme(spacing.4)]
  *   [--dash-gap:theme(spacing.2)]
  * `} />
+ * ```
  *
  * @example
+ * ```tsx
  * // Basic horizontal separator
  * <div className="space-y-4">
  *   <p>Content above</p>
  *   <DashedSeparator decorative />
  *   <p>Content below</p>
  * </div>
+ * ```
  * @example
+ * ```tsx
  * // Vertical separator
  * <div className="flex items-center gap-4">
  *   <p>Left content</p>
  *   <DashedSeparator decorative orientation="vertical" />
  *   <p>Right content</p>
  * </div>
+ * ```
  *
  * @example
+ * ```tsx
  * // With text
  * <div className="space-y-4">
  *   <p>Content above</p>
@@ -64,6 +73,7 @@ interface DashedSeparatorProps extends ComponentProps<typeof Separator> {
  *   </DashedSeparator>
  *   <p>Content below</p>
  * </div>
+ * ```
  */
 export const DashedSeparator = ({
   dashColor,

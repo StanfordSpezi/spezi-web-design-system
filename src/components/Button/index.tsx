@@ -6,5 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-button--default" />
+ * @packageDocumentation
+ */
 export * from "./Button";
 export * from "./SaveButton";

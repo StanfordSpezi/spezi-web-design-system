@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-scrollarea--default" />
+ * @packageDocumentation
+ */
 export * from "./ScrollArea";

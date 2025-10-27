@@ -54,14 +54,17 @@ export interface NotificationProps extends NotificationContextType {
  * The notification's read status affects styling through the context passed to child components.
  *
  * @example
+ * ```ts
  * // Basic notification with title and message
  * <Notification
  *   title="New message"
  *   message="You have a new message from Dr. Smith"
  *   isRead={false}
  * />
+ * ```
  *
  * @example
+ * ```ts
  * // Complete link notification
  * <Notification
  *   title="Appointment reminder"
@@ -71,14 +74,17 @@ export interface NotificationProps extends NotificationContextType {
  *   link="/appointments/123"
  *   isRead={false}
  * />
+ * ```
  *
  * @example
+ * ```ts
  * // Notification with additional actions
  * <Notification
  *   title="New message"
  *   message="You have a new message from Dr. Smith"
  *   actions={<Button>Dismiss message</Button>}
  * />
+ * ```
  */
 export const Notification = ({
   title,

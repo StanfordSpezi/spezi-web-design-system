@@ -65,7 +65,7 @@ export const getInitials = (value: string) => {
 
 export const avatarVariants = {
   /**
-   * Affects width, height and font size.
+   * Affects width, height, and font size.
    * - `sm`: 32px with smaller text.
    * - `default`: 48px with base text.
    * - `lg`: 64px with larger text.
@@ -92,22 +92,30 @@ export const avatarVariance = cva("relative flex shrink-0", {
  * or automatically generated initials from a name.
  *
  * @example
+ * ```tsx
  * // Basic usage with image
  * <Avatar src="/path/to/image.jpg" name="John Doe" />
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom fallback
  * <Avatar name="John Doe" fallback={<UserIcon />} />
+ * ```
  *
  * @example
+ * ```tsx
  * // With overlay (e.g., status badge)
  * <Avatar name="John Doe" overlay={<Badge variant="success" />} />
+ * ```
  *
  * @example
+ * ```tsx
  * // Different sizes
  * <Avatar size="sm" name="John Doe" />
  * <Avatar size="default" name="John Doe" />
  * <Avatar size="lg" name="John Doe" />
+ * ```
  */
 export const Avatar = ({
   className,

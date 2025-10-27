@@ -20,10 +20,12 @@ import { toast } from "../../components/Toaster";
  *  - to inject event handlers without passing them manually
  *
  * @example
+ * ```tsx
  * // Renders a link as a badge
  * <Badge asChild>
  *   <a href="https://example.com">Link Badge</a>
  * </Badge>
+ * ```
  *
  * @default false
  */
@@ -56,7 +58,9 @@ export type Url = string | UrlObject;
  * Make some fields in the object partial.
  *
  * @example
+ * ```ts
  * PartialSome<{ a: string, b: string, c: string }, 'a'> => { a?: string, b: string, c: string }
+ * ```
  */
 export type PartialSome<T, K extends keyof T> = Omit<T, K> &
   Partial<Pick<T, K>>;
@@ -65,7 +69,9 @@ export type PartialSome<T, K extends keyof T> = Omit<T, K> &
  * Make provided fields in the object required and the rest of fields partial.
  *
  * @example
+ * ```ts
  * RequiredSome<{ a: string, b: string, c: string }, 'a'> => { a: string, b?: string, c?: string }
+ * ```
  */
 export type RequiredSome<T, K extends keyof T> = Partial<Omit<T, K>> &
   Required<Pick<T, K>>;
@@ -75,10 +81,12 @@ export type RequiredSome<T, K extends keyof T> = Partial<Omit<T, K>> &
  * Use this when you export or inspect inferred types. This only affects type presentation in tooling.
  *
  * @example
+ * ```ts
  * type A = { a: string };
  * type B = { b: number };
  * type Mixed = A & B;
  * type Readable = Prettify<Mixed>; // { a: string; b: number }
+ * ```
  */
 export type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
@@ -96,7 +104,10 @@ export const copyToClipboard = async (value: string) => {
 
 /**
  * Makes first letter uppercased.
- * @example upperFirst("lorem ipsum") => "Lorem ipsum"
+ * @example
+ * ```ts
+ * upperFirst("lorem ipsum") => "Lorem ipsum"
+ * ```
  */
 export const upperFirst = (value: string) =>
   `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`;
@@ -113,6 +124,7 @@ export const times = <T>(length: number, callback: (index: number) => T) =>
  * Provides correct types for enums, guaranteeing that `record` provides every enum key.
  *
  * @example
+ * ```ts
  * enum Message {
  *   success
  *   error
@@ -121,6 +133,7 @@ export const times = <T>(length: number, callback: (index: number) => T) =>
  *   [Message.success]: "Saving file worked!",
  *   [Message.error]: "Saving file failed. Please try again later!",
  * }, Message.error) // "Saving file failed. Please try again later!"
+ * ```
  */
 export const strategy = <T extends string | number | symbol, F>(
   record: Record<T, F>,
@@ -131,8 +144,10 @@ export const strategy = <T extends string | number | symbol, F>(
  * Ensures a value is a string, returning undefined if it's not.
  *
  * @example
+ * ```ts
  * ensureString("hello"); // "hello"
  * ensureString(123); // undefined
+ * ```
  */
 export const ensureString = (value: unknown) =>
   isString(value) ? value : undefined;
@@ -141,10 +156,12 @@ export const ensureString = (value: unknown) =>
  * Type guard to check if a value is an object (and not null).
  *
  * @example
+ * ```ts
  * isObject({}); // true
  * isObject([]); // true
  * isObject(null); // false
  * isObject("string"); // false
+ * ```
  */
 export const isObject = (value: unknown): value is object =>
   value !== null && typeof value === "object";
@@ -160,6 +177,7 @@ interface IsEmptyFunction {
  * Handles strings, null/undefined, arrays, objects, and collections with size property.
  *
  * @example
+ * ```ts
  * isEmpty(""); // true
  * isEmpty(null); // true
  * isEmpty([]); // true
@@ -167,6 +185,7 @@ interface IsEmptyFunction {
  * isEmpty(new Set()); // true
  * isEmpty("hello"); // false
  * isEmpty([1, 2, 3]); // false
+ * ```
  */
 // @ts-expect-error isEmpty implements predicate check
 export const isEmpty: IsEmptyFunction = (value: unknown) => {
@@ -184,19 +203,23 @@ export const isEmpty: IsEmptyFunction = (value: unknown) => {
  * Returns "true" or "false" based on the boolean value.
  *
  * @example
+ * ```ts
  * formatBoolean(true); // "true"
  * formatBoolean(false); // "false"
+ * ```
  */
 export const formatBoolean = (value: boolean) => (value ? "true" : "false");
 
 /**
- * Formats a boolean like `formatBoolean`, but returns `null` for nil values.
+ * Formats a boolean like {@link formatBoolean}, but returns `null` for nil values.
  *
  * @example
+ * ```ts
  * formatNilBoolean(true); // "true"
  * formatNilBoolean(false); // "false"
  * formatNilBoolean(null); // null
  * formatNilBoolean(undefined); // null
+ * ```
  */
 export const formatNilBoolean = (value: Nil<boolean>) =>
   isNil(value) ? null : formatBoolean(value);
@@ -206,16 +229,24 @@ export const formatNilBoolean = (value: Nil<boolean>) =>
  * It accepts strings and numbers; ignores null/undefined/empty segments.
  *
  * @example
+ * ```ts
  * joinPaths("/api/v1/", "/users", "123"); // "/api/v1/users/123"
+ * ```
  *
  * @example
+ * ```ts
  * joinPaths("api", "users"); // "api/users"
+ * ```
  *
  * @example
+ * ```ts
  * joinPaths("https://example.com/", "/users/", "123"); // "https://example.com/users/123"
+ * ```
  *
  * @example
+ * ```ts
  * joinPaths("/a", "b?x=1#top"); // "/a/b?x=1#top"
+ * ```
  */
 export const joinPaths = (...segments: Array<Nil<string | number>>) => {
   const normalizedSegments = segments

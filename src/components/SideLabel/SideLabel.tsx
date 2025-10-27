@@ -30,10 +30,12 @@ export type SideLabelProps = Omit<ComponentProps<"label">, "label"> & {
  * Component for creating labeled form controls like radio, checkbox or switch.
  *
  * @example
+ * ```tsx
  * // Basic usage with Checkbox
  * <SideLabel label="Enable notifications">
  *   <Checkbox />
  * </SideLabel>
+ * ```
  */
 export const SideLabel = ({
   children,

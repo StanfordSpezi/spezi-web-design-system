@@ -42,6 +42,7 @@ interface ConfirmDeleteDialogProps extends ComponentProps<typeof Dialog> {
  * for confirming irreversible actions.
  *
  * @example
+ * ```tsx
  * <ConfirmDeleteDialog
  *   entityName="user"
  *   itemName="john@example.com"
@@ -49,6 +50,7 @@ interface ConfirmDeleteDialogProps extends ComponentProps<typeof Dialog> {
  *   open={isOpen}
  *   onOpenChange={setIsOpen}
  * />
+ * ```
  */
 export const ConfirmDeleteDialog = ({
   entityName,

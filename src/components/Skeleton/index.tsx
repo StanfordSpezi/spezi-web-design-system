@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-skeleton--default" />
+ * @packageDocumentation
+ */
 export * from "./Skeleton";

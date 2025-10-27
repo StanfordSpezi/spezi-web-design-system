@@ -6,6 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-datatable--default" />
+ * @packageDocumentation
+ */
 export * from "./DataTable";
 export * from "./RowDropdownMenu";
 export * from "./DataTable.columns";

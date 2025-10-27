@@ -24,6 +24,7 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  * Built on top of [radix-ui Dialog](https://www.radix-ui.com/primitives/docs/components/dialog)
  *
  * @example
+ * ```tsx
  * // Basic usage with DialogTrigger
  * <Dialog>
  *   <DialogTrigger>Open Settings</DialogTrigger>
@@ -43,8 +44,10 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  *     </DialogFooter>
  *   </DialogContent>
  * </Dialog>
+ * ```
  *
  * @example
+ * ```tsx
  * // Controlled dialog
  * const [open, setOpen] = useState(false);
  *
@@ -59,6 +62,7 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  *     </div>
  *   </DialogContent>
  * </Dialog>
+ * ```
  */
 export const Dialog = DialogPrimitive.Root;
 
@@ -73,11 +77,13 @@ export const DialogClose = DialogPrimitive.Close;
  * Positioned in the top-right corner of a Dialog by default.
  *
  * @example
+ * ```tsx
  * <DialogContent>
  *   <DialogTitle>Settings</DialogTitle>
  *   <DialogCloseX />
  *   <p>Dialog content...</p>
  * </DialogContent>
+ * ```
  */
 export const DialogCloseX = ({
   className,
@@ -152,17 +158,21 @@ interface DialogContentProps extends DialogContentElementProps {}
  *
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <DialogContent>
  *   <DialogTitle>Dialog Title</DialogTitle>
  *   <p>Dialog content</p>
  * </DialogContent>
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom size
  * <DialogContent size="sm">
  *   <DialogTitle>Small Dialog</DialogTitle>
  * </DialogContent>
+ * ```
  */
 export const DialogContent = ({
   className,
@@ -182,13 +192,15 @@ export const DialogContent = ({
 /**
  * Container for dialog header elements.
  *
- * Typically contains `DialogTitle` and optionally `DialogDescription` components.
+ * Typically contains {@link DialogTitle} and optionally {@link DialogDescription} components.
  *
  * @example
+ * ```tsx
  * <DialogHeader>
  *   <DialogTitle>Settings</DialogTitle>
  *   <DialogDescription>Configure your preferences</DialogDescription>
  * </DialogHeader>
+ * ```
  */
 export const DialogHeader = ({
   className,
@@ -211,10 +223,12 @@ export const DialogHeader = ({
  * On desktop, buttons are placed side-by-side with right alignment.
  *
  * @example
+ * ```tsx
  * <DialogFooter>
  *   <Button variant="outline">Cancel</Button>
  *   <Button>Save Changes</Button>
  * </DialogFooter>
+ * ```
  */
 export const DialogFooter = ({
   className,
@@ -238,11 +252,15 @@ export const DialogFooter = ({
  * Required for accessibility but can be visually hidden if necessary.
  *
  * @example
+ * ```tsx
  * <DialogTitle>Account Settings</DialogTitle>
+ * ```
  *
  * @example
+ * ```tsx
  * // hidden visually
  * <DialogTitle className="hidden">Account Settings</DialogTitle>
+ * ```
  */
 export const DialogTitle = ({
   className,
@@ -262,9 +280,11 @@ export const DialogTitle = ({
  * Rendered with muted styling to create visual hierarchy.
  *
  * @example
+ * ```tsx
  * <DialogDescription>
  *   Make changes to your profile information. Your data will be updated across all services.
  * </DialogDescription>
+ * ```
  */
 export const DialogDescription = ({
   className,

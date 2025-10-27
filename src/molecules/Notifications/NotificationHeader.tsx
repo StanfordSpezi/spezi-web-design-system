@@ -15,10 +15,12 @@ interface NotificationHeaderProps extends ComponentProps<"div"> {}
  * Header component for notifications that provides a container for title, time and other elements.
  *
  * @example
+ * ```ts
  * <NotificationHeader>
  *   <NotificationTitle>New Message</NotificationTitle>
  *   <NotificationTime time={new Date()} />
  * </NotificationHeader>
+ * ```
  */
 export const NotificationHeader = ({
   className,

@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-sheet--default" />
+ * @packageDocumentation
+ */
 export * from "./Sheet";

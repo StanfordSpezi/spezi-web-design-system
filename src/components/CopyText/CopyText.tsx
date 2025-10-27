@@ -31,6 +31,18 @@ type CopyTextProps = (StringChildrenProps | ReactNodeChildrenProps) & {
  * Displays copiable text.
  * Useful for displaying truncated ids in a compact manner,
  * ensuring more screen estate.
+ *
+ * @example
+ * ```tsx
+ * // With default value
+ * <CopyText>50e8400-e29b-41d4-a716-446655440000</CopyText>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // With custom value
+ * <CopyText value="50e8400-e29b-41d4-a716-446655440000">Copy user UUID</CopyText>
+ * ```
  */
 export const CopyText = ({ children, className, value }: CopyTextProps) => {
   // It's resolved by types

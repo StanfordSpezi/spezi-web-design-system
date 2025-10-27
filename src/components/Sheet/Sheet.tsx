@@ -25,6 +25,7 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  * Built on top of [radix-ui Dialog](https://www.radix-ui.com/primitives/docs/components/dialog)
  *
  * @example
+ * ```tsx
  * // Basic usage with SheetTrigger
  * <Sheet>
  *   <SheetTrigger>Open Settings</SheetTrigger>
@@ -44,8 +45,10 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  *     </SheetFooter>
  *   </SheetContent>
  * </Sheet>
+ * ```
  *
  * @example
+ * ```tsx
  * // Controlled sheet
  * const [open, setOpen] = useState(false);
  *
@@ -60,6 +63,7 @@ import { type Size, sizeToMaxWidthRecord } from "@/utils/tailwind";
  *     </div>
  *   </SheetContent>
  * </Sheet>
+ * ```
  */
 export const Sheet = SheetPrimitive.Root;
 
@@ -74,11 +78,13 @@ export const SheetClose = SheetPrimitive.Close;
  * Positioned in the top-right corner of a Sheet by default.
  *
  * @example
+ * ```tsx
  * <SheetContent>
  *   <SheetTitle>Settings</SheetTitle>
  *   <SheetCloseX />
  *   <p>Sheet content...</p>
  * </SheetContent>
+ * ```
  */
 export const SheetCloseX = ({
   className,
@@ -176,17 +182,21 @@ export interface SheetContentProps extends SheetContentElementProps {}
  * If Sheet has more specified needs, it has to opt out from this component and use primitives directly.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <SheetContent>
  *   <SheetTitle>Sheet Title</SheetTitle>
  *   <p>Sheet content</p>
  * </SheetContent>
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom side
  * <SheetContent side="left">
  *   <SheetTitle>Left Sheet</SheetTitle>
  * </SheetContent>
+ * ```
  */
 export const SheetContent = ({ children, ...props }: SheetContentProps) => (
   <SheetPortal>
@@ -201,13 +211,15 @@ export const SheetContent = ({ children, ...props }: SheetContentProps) => (
 /**
  * Container for sheet header elements.
  *
- * Typically contains `SheetTitle` and optionally `SheetDescription` components.
+ * Typically contains {@link SheetTitle} and optionally {@link SheetDescription} components.
  *
  * @example
+ * ```tsx
  * <SheetHeader>
  *   <SheetTitle>Settings</SheetTitle>
  *   <SheetDescription>Configure your preferences</SheetDescription>
  * </SheetHeader>
+ * ```
  */
 export const SheetHeader = ({ className, ...props }: ComponentProps<"div">) => (
   <div
@@ -223,10 +235,12 @@ export const SheetHeader = ({ className, ...props }: ComponentProps<"div">) => (
  * Provides consistent spacing and layout for sheet actions like buttons.
  *
  * @example
+ * ```tsx
  * <SheetFooter>
  *   <Button variant="outline">Cancel</Button>
  *   <Button>Save Changes</Button>
  * </SheetFooter>
+ * ```
  */
 export const SheetFooter = ({ className, ...props }: ComponentProps<"div">) => (
   <div
@@ -244,11 +258,15 @@ export const SheetFooter = ({ className, ...props }: ComponentProps<"div">) => (
  * Required for accessibility but can be visually hidden if necessary.
  *
  * @example
+ * ```tsx
  * <SheetTitle>Account Settings</SheetTitle>
+ * ```
  *
  * @example
+ * ```tsx
  * // hidden visually
  * <SheetTitle className="hidden">Account Settings</SheetTitle>
+ * ```
  */
 export const SheetTitle = ({
   className,
@@ -269,9 +287,11 @@ export const SheetTitle = ({
  * Rendered with muted styling to create visual hierarchy.
  *
  * @example
+ * ```tsx
  * <SheetDescription>
  *   Make changes to your profile information. Your data will be updated across all services.
  * </SheetDescription>
+ * ```
  */
 export const SheetDescription = ({
   className,

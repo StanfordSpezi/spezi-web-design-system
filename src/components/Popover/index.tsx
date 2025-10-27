@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-popover--default" />
+ * @packageDocumentation
+ */
 export * from "./Popover";

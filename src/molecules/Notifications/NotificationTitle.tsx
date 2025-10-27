@@ -17,7 +17,9 @@ interface NotificationTitleProps extends ComponentProps<"div"> {}
  * Adjusts its styling based on notification read status from context.
  *
  * @example
+ * ```ts
  * <NotificationTitle>New message received</NotificationTitle>
+ * ```
  */
 export const NotificationTitle = ({
   className,

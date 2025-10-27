@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-inputotp--default" />
+ * @packageDocumentation
+ */
 export * from "./InputOTP";

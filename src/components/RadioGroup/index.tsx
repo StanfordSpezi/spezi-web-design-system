@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-radiogroup--controlled" />
+ * @packageDocumentation
+ */
 export * from "./RadioGroup";

@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-avatar--default" />
+ * @packageDocumentation
+ */
 export * from "./Avatar";

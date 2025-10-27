@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-iconpicker--default" />
+ * @packageDocumentation
+ */
 export * from "./IconPicker";

@@ -6,6 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-separator--default" />
+ * @packageDocumentation
+ */
 export * from "./Separator";
 export * from "./SeparatorText";
 export * from "./DashedSeparator";

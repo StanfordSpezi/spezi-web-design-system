@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-toaster--default" />
+ * @packageDocumentation
+ */
 export * from "./Toaster";

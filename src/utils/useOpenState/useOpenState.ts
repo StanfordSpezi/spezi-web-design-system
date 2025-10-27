@@ -14,9 +14,11 @@ import { type InitialState, not } from "../misc";
  * Mainly aims to improve readability.
  *
  * @example
+ * ```tsx
  * const modal = useOpenState()
  * <button onClick={modal.open} />
  * <Modal isOpen={modal.isOpen} />
+ * ```
  *
  */
 export const useOpenState = (initialValue: InitialState<boolean> = false) => {

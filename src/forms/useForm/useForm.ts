@@ -54,12 +54,14 @@ class ValidationError<
  * - Submit button state management
  *
  * @example
+ * ```tsx
  * const form = useForm({
  *   formSchema: z.object({
  *     email: z.email(),
  *     password: z.string().min(8)
  *   })
  * });
+ * ```
  */
 export const useForm = <
   Schema extends z.ZodType<FieldValues, FieldValues>,

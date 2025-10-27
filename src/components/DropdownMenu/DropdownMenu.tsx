@@ -24,10 +24,12 @@ export const DropdownMenu = DropdownMenuPrimitive.Root;
  * Must be wrapped in the DropdownMenu component.
  *
  * @example
+ * ```tsx
  * // renders Button as trigger
  * <DropdownMenuTrigger asChild>
  *   <Button variant="outline">Trigger</Button>
  * </DropdownMenuTrigger>
+ * ```
  */
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
@@ -110,18 +112,22 @@ type DropdownMenuContentProps = ComponentProps<
  * Displays the main content of a dropdown menu.
  *
  * @example
+ * ```tsx
  * <DropdownMenu>
  *   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
  *   <DropdownMenuContent>
  *     <DropdownMenuItem>Item</DropdownMenuItem>
  *   </DropdownMenuContent>
  * </DropdownMenu>
+ * ```
  *
  * @example
+ * ```tsx
  * // Render inline without portal
  * <DropdownMenuContent container={null}>
  *   <DropdownMenuItem>Item</DropdownMenuItem>
  * </DropdownMenuContent>
+ * ```
  */
 export const DropdownMenuContent = ({
   className,
@@ -151,18 +157,22 @@ export const DropdownMenuContent = ({
  * Renders a selectable option.
  *
  * @example
+ * ```tsx
  * <DropdownMenuItem onClick={() => signOut()}>
  *   <LogOut />
  *   Sign out
  * </DropdownMenuItem>
+ * ```
  *
  * @example
+ * ```tsx
  * // as link
  * <DropdownMenuItem asChild>
  *   <Link href="/account">
  *     Account
  *   </Link>
  * </DropdownMenuItem>
+ * ```
  */
 export const DropdownMenuItem = ({
   className,
@@ -187,6 +197,7 @@ export const DropdownMenuItem = ({
  * Supports three states: checked, unchecked, and indeterminate.
  *
  * @example
+ * ```tsx
  * <DropdownMenu>
  *   <DropdownMenuContent>
  *     <DropdownMenuCheckboxItem checked={isChecked} onCheckedChange={setIsChecked}>
@@ -194,6 +205,7 @@ export const DropdownMenuItem = ({
  *     </DropdownMenuCheckboxItem>
  *   </DropdownMenuContent>
  * </DropdownMenu>
+ * ```
  */
 export const DropdownMenuCheckboxItem = ({
   className,
@@ -223,10 +235,12 @@ export const DropdownMenuCheckboxItem = ({
  * Must be used inside a DropdownMenuRadioGroup.
  *
  * @example
+ * ```tsx
  * <DropdownMenuRadioGroup value={value} onValueChange={setValue}>
  *   <DropdownMenuRadioItem value="option1">Option 1</DropdownMenuRadioItem>
  *   <DropdownMenuRadioItem value="option2">Option 2</DropdownMenuRadioItem>
  * </DropdownMenuRadioGroup>
+ * ```
  */
 export const DropdownMenuRadioItem = ({
   className,
@@ -260,6 +274,7 @@ type DropdownMenuLabelProps = ComponentProps<
  * Useful for creating section headers or group titles within the menu.
  *
  * @example
+ * ```tsx
  * <DropdownMenu>
  *   <DropdownMenuContent>
  *     <DropdownMenuLabel>Account</DropdownMenuLabel>
@@ -267,6 +282,7 @@ type DropdownMenuLabelProps = ComponentProps<
  *     <DropdownMenuItem>Settings</DropdownMenuItem>
  *   </DropdownMenuContent>
  * </DropdownMenu>
+ * ```
  */
 export const DropdownMenuLabel = ({
   className,
@@ -288,6 +304,7 @@ export const DropdownMenuLabel = ({
  * Creates a horizontal rule to divide sections within the menu.
  *
  * @example
+ * ```tsx
  * <DropdownMenu>
  *   <DropdownMenuContent>
  *     <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -295,6 +312,7 @@ export const DropdownMenuLabel = ({
  *     <DropdownMenuItem>Settings</DropdownMenuItem>
  *   </DropdownMenuContent>
  * </DropdownMenu>
+ * ```
  */
 export const DropdownMenuSeparator = ({
   className,
@@ -311,10 +329,12 @@ export const DropdownMenuSeparator = ({
  * Renders with subtle styling to indicate keyboard commands without overwhelming the UI.
  *
  * @example
+ * ```tsx
  * <DropdownMenuItem>
  *   New File
  *   <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
  * </DropdownMenuItem>
+ * ```
  */
 export const DropdownMenuShortcut = ({
   className,

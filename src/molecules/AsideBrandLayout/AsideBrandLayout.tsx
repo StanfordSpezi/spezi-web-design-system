@@ -18,6 +18,7 @@ export interface AsideBrandLayoutRootProps extends ComponentProps<"div"> {}
  * The aside section is only visible on large screens (lg breakpoint and above).
  *
  * @example
+ * ```tsx
  * <AsideBrandLayoutRoot>
  *   <AsideBrandLayoutAside>
  *     <BrandLogo />
@@ -26,8 +27,10 @@ export interface AsideBrandLayoutRootProps extends ComponentProps<"div"> {}
  *     <SignInForm />
  *   </AsideBrandLayoutMain>
  * </AsideBrandLayoutRoot>
+ * ```
  *
  * @example
+ * ```tsx
  * // Stanford Branded example
  * <AsideBrandLayoutRoot>
  *   <AsideBrandLayoutAside>
@@ -42,6 +45,7 @@ export interface AsideBrandLayoutRootProps extends ComponentProps<"div"> {}
  *     <SignInForm />
  *   </AsideBrandLayoutMain>
  * </AsideBrandLayoutRoot>
+ * ```
  *
  */
 export const AsideBrandLayoutRoot = ({
@@ -68,10 +72,12 @@ export interface AsideBrandLayoutAsideProps extends ComponentProps<"aside"> {}
  * It provides a branded section with a light background color and centered content.
  *
  * @example
+ * ```tsx
  * <AsideBrandLayoutAside>
  *   <BrandLogo />
  *   <BrandDescription />
  * </AsideBrandLayoutAside>
+ * ```
  */
 export const AsideBrandLayoutAside = ({
   children,
@@ -97,9 +103,11 @@ export interface AsideBrandLayoutMainProps extends ComponentProps<"main"> {}
  * such as forms, content sections, or other interactive elements.
  *
  * @example
+ * ```tsx
  * <AsideBrandLayoutMain>
  *   <LoginForm />
  * </AsideBrandLayoutMain>
+ * ```
  */
 export const AsideBrandLayoutMain = ({
   children,

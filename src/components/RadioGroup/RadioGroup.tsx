@@ -28,7 +28,7 @@ export interface RadioGroupProps<T extends string>
   /**
    * Callback fired when the value changes.
    *
-   * onChange name is used to keep compatibility with `Field` component.
+   * onChange name is used to keep compatibility with {@link Field} component.
    */
   onChange?: (value: T) => void;
   /**
@@ -51,11 +51,12 @@ export interface RadioGroupProps<T extends string>
  * A component that composes a complete radio group with labeled options.
  *
  * This component renders a list of radio buttons with labels, arranged horizontally or vertically, with appropriate spacing and wrapping behavior.
- * It's recommended to use this component instead of the primitive `RadioGroup` component, unless you need complex custom behavior.
+ * It's recommended to use this component instead of the primitive {@link Radio} component, unless you need complex custom behavior.
  *
  * @template T The type of the value (string usually, but supports enum)
  *
  * @example
+ * ```tsx
  * // Basic usage with string values
  * <RadioGroup
  *   options={[
@@ -64,8 +65,10 @@ export interface RadioGroupProps<T extends string>
  *   ]}
  *   onChange={(value) => console.log(value)}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With controlled value
  * const [value, setValue] = useState("option1");
  * <RadioGroup
@@ -76,8 +79,10 @@ export interface RadioGroupProps<T extends string>
  *   value={value}
  *   onChange={setValue}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Horizontal layout
  * <RadioGroup
  *   direction="row"
@@ -87,6 +92,7 @@ export interface RadioGroupProps<T extends string>
  *   ]}
  *   onChange={handleChange}
  * />
+ * ```
  */
 export const RadioGroup = <T extends string>({
   options,

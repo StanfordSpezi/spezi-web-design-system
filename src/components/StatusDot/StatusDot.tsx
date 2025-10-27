@@ -85,42 +85,58 @@ export interface StatusDotProps
  * to provide quick visual feedback about an item's state.
  *
  * @example
+ * ```tsx
  * // Basic status dot with automatic aria-label
  * <StatusDot status="success" />
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom aria-label
  * <StatusDot status="success" aria-label="Task completed successfully" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Hidden from screen readers when status is described elsewhere
  * <StatusDot status="success" aria-hidden />
+ * ```
  *
  * @example
+ * ```tsx
  * // Different statuses
  * <StatusDot status="primary" />
  * <StatusDot status="warning" />
  * <StatusDot status="destructive" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Different sizes
  * <StatusDot status="success" size="sm" />
  * <StatusDot status="success" size="md" />
  * <StatusDot status="success" size="lg" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Glow appearance for emphasis
  * <StatusDot status="success" appearance="glow" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom colors
  * <StatusDot status={null} className="bg-blue-500" aria-label="In progress" />
  * <StatusDot status={null} appearance="glow" className="bg-purple-500 [--glow-color:theme(colors.purple.500)]" aria-label="Active" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom size
  * <StatusDot size={null} className="size-10" />
  * <StatusDot size={null} appearance="glow" className="size-10 [--glow-size:4px]" />
+ * ```
  */
 export const StatusDot = ({
   className,

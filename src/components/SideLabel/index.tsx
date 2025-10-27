@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-sidelabel--with-switch" />
+ * @packageDocumentation
+ */
 export * from "./SideLabel";

@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-card--default" />
+ * @packageDocumentation
+ */
 export * from "./Card";

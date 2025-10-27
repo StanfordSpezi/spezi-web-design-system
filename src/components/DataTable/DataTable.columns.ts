@@ -15,11 +15,13 @@ import { type Nil } from "../../utils/misc";
  * The exact date format is based on locale.
  *
  * @example
- * // for US -  2/12/2019
+ * ```ts
+ * // for US - 2/12/2019
  * columnHelper.accessor("updatedAt", {
  *   header: "Date",
  *   cell: dateColumn,
  * })
+ * ```
  */
 export const dateColumn = <T>(props: CellContext<T, Nil<string | Date>>) =>
   formatNilDate(props.getValue()) ?? "";
@@ -29,11 +31,13 @@ export const dateColumn = <T>(props: CellContext<T, Nil<string | Date>>) =>
  * The exact date format is based on locale.
  *
  * @example
- * // for US -  2/12/2019 11:31 PM
+ * ```ts
+ * // for US - 2/12/2019 11:31 PM
  * columnHelper.accessor("updatedAt", {
  *   header: "Date Time",
  *   cell: dateTimeColumn,
  * })
+ * ```
  */
 export const dateTimeColumn = <T>(props: CellContext<T, Nil<string | Date>>) =>
   formatNilDateTime(props.getValue()) ?? "";

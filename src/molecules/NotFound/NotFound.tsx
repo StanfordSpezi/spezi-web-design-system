@@ -75,7 +75,11 @@ export const NotFoundAction = (props: NotFoundActionProps) => (
 export interface NotFoundProps {
   /**
    * Configures where the user should go instead.
-   * @example { name: "users list", href: "/user" }
+   *
+   * @example
+   * ```ts
+   * { name: "users list", href: "/user" }
+   * ```
    */
   backPage: {
     name: ReactNode;
@@ -95,11 +99,13 @@ export interface NotFoundProps {
  * Ensures consistent error messaging and clear navigation options.
  *
  * @example
+ * ```ts
  * // Basic usage
  * <NotFound
  *   entityName="user"
  *   backPage={{ name: "users list", href: "/users" }}
  * />
+ * ```
  */
 export const NotFound = ({
   backPage,

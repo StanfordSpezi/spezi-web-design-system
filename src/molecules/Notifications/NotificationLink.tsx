@@ -17,7 +17,7 @@ interface NotificationLinkProps extends Omit<NotificationRootProps, "asChild"> {
 }
 
 /**
- * Composes `NotificationRoot` to provide a linkable notification.
+ * Composes {@link NotificationRoot} to provide a linkable notification.
  */
 export const NotificationLink = ({
   notification,

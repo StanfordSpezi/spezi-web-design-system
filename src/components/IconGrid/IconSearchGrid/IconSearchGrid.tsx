@@ -20,10 +20,13 @@ export interface IconSearchGridProps extends Omit<IconGridProps, "searchTerm"> {
  * Combines a search input with the IconGrid component.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <IconSearchGrid onValueChange={(icon) => setIcon(icon)} />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom placeholder and dimensions
  * <IconSearchGrid
  *   searchPlaceholder="Find your perfect icon..."
@@ -31,6 +34,7 @@ export interface IconSearchGridProps extends Omit<IconGridProps, "searchTerm"> {
  *   visibleRows={6}
  *   onValueChange={handleSelection}
  * />
+ * ```
  */
 export const IconSearchGrid = ({
   searchPlaceholder = "Search for an icon...",

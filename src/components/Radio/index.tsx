@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-radio--default" />
+ * @packageDocumentation
+ */
 export * from "./Radio";

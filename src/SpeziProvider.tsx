@@ -19,11 +19,16 @@ import { lightTheme } from "@/theme/light";
 import { type Theme } from "@/theme/utils";
 
 /**
- * Allows injecting necessary router-related components.
+ * Allows injecting the necessary router-related components.
+ *
+ * @remarks
+ * Spezi Web is router-agnostic.
+ * We need to provide a way to inject router-specific dependencies.
  * Projects can have different routers:
- * Tanstack Router, React Router, Next router
+ * Tanstack Router, React Router, Next router.
+ * See {@link SpeziProvider} for examples with Next and Tanstack Router.
  */
-interface SpeziContextRouter {
+export interface SpeziContextRouter {
   /**
    * Link component. Make sure to provide your router's Link component.
    */
@@ -52,12 +57,47 @@ export const useSpeziContext = () => {
 
 interface SpeziProviderProps extends SpeziContextType {
   children?: ReactNode;
+  /**
+   * Allows customizing default CSS variables for the theme.
+   */
   theme?: Partial<Theme>;
+  /**
+   * Allows overriding default localization messages.
+   */
   messages?: Partial<AllMessages>;
 }
 
 /**
- * Configures messages and theme.
+ * Injects necessary context providers for Spezi components.
+ * Wrap your entire application with this component
+ * Injected elements:
+ * - router configuration (Link component used by your application)
+ * - CSS variables for theme
+ * - localization messages
+ *
+ * @example
+ * // Usage with Next.js
+ * ```ts
+ * import { SpeziProvider, SpeziContextRouter } from "@stanfordspezi/spezi-web-design-system";
+ * import Link from "next/link";
+ *
+ * const routerProps: SpeziContextRouter = {
+ *   Link: ({ href, ...props }) => <Link href={href ?? "#"} {...props} />,
+ * };
+ * <SpeziProvider router={routerProps}>...</SpeziProvider>;
+ * ```
+ *
+ * @example
+ * // Usage with @tanstack/react-router
+ * ```ts
+ * import { SpeziProvider, SpeziContextRouter } from "@stanfordspezi/spezi-web-design-system";
+ * import { Link } from "@tanstack/react-router";
+ *
+ * const routerProps: SpeziContextRouter = {
+ *   Link: ({ href, ...props }) => <Link to={href} {...props} />,
+ * };
+ * <SpeziProvider router={routerProps}>...</SpeziProvider>;
+ * ```
  */
 export const SpeziProvider = ({
   children,

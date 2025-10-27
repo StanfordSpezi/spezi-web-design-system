@@ -23,7 +23,7 @@ import { type AsChildProp } from "@/utils/misc";
  * Container for Breadcrumbs component.
  *
  * Can be used to construct complete Breadcrums UI.
- * For batteries-included Breadcrumbs component - use `Breadcrumbs`.
+ * For batteries-included Breadcrumbs component - use {@link Breadcrumbs} instead.
  */
 export const BreadcrumbsRoot = ({ ...props }: ComponentProps<"nav">) => (
   <nav aria-label="breadcrumb" {...props} />
@@ -106,9 +106,11 @@ export const BreadcrumbPage = ({
  * Breadcrumb separator component that visually separates breadcrumb items.
  *
  * @example
+ * ```tsx
  * <BreadcrumbSeparator>
  *   <CustomIcon />
  * </BreadcrumbSeparator>
+ * ```
  */
 export const BreadcrumbSeparator = ({
   children = <ChevronRight />,
@@ -133,9 +135,11 @@ export const BreadcrumbSeparator = ({
  * Includes proper accessibility attributes to ensure it's correctly presented to assistive technologies.
  *
  * @example
+ * ```tsx
  * <BreadcrumbItem>
  *   <BreadcrumbEllipsis />
  * </BreadcrumbItem>
+ * ```
  */
 export const BreadcrumbEllipsis = ({
   className,
@@ -204,7 +208,7 @@ interface BreadcrumbsProps {
 }
 
 /**
- * Breadcrumbs component that provides a complete notification UI, based on links.
+ * Breadcrumbs component that provides a complete breadcrumbs UI, based on links.
  *
  * It composes smaller atomic breadcrumbs elements, which can be reused to create your own composition of Breadcrumbs.
  *
@@ -215,6 +219,7 @@ interface BreadcrumbsProps {
  * - Accessibility attributes
  *
  * @example
+ * ```tsx
  * <Breadcrumbs
  *   breadcrumbs={[
  *     { label: "Home", href: "/" },
@@ -222,6 +227,7 @@ interface BreadcrumbsProps {
  *     { label: "Current Page", href: "/products/current" }
  *   ]}
  * />
+ * ```
  */
 export const Breadcrumbs = ({
   breadcrumbs,

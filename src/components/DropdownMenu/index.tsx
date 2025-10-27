@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-dropdownmenu--triggerable" />
+ * @packageDocumentation
+ */
 export * from "./DropdownMenu";

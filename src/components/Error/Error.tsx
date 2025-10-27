@@ -30,14 +30,18 @@ interface ErrorProps extends ComponentProps<"p"> {
  * A component for displaying inline error messages in forms fields and other UI elements.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <Error>This field is required</Error>
+ * ```
  *
  * @example
+ * ```tsx
  * // With checkEmpty
  * <Error checkEmpty>
  *   {formErrors.email}
  * </Error>
+ * ```
  */
 export const Error = ({
   children,

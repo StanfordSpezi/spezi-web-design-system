@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-emptystate--default" />
+ * @packageDocumentation
+ */
 export * from "./EmptyState";

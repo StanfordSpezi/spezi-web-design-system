@@ -27,11 +27,13 @@ export interface Query {
  * - `isSuccess` is true only if all queries are successful
  *
  * @example
+ * ```ts
  * const combinedState = combineQueries([
  *   { isLoading: true },
  *   { isSuccess: true }
  * ]);
  * // Result: { isLoading: true, isError: false, isSuccess: false }
+ * ```
  */
 export const combineQueries = (queries: Query[]) => ({
   isLoading: queries.some((query) => query.isLoading),
@@ -44,10 +46,12 @@ export const combineQueries = (queries: Query[]) => ({
  * Handles various error formats including Error objects and plain strings.
  *
  * @example
+ * ```ts
  * parseUnknownError(new Error("Something went wrong")); // "Something went wrong"
  * parseUnknownError("Custom error message"); // "Custom error message"
  * parseUnknownError({ message: "Object error" }); // "Object error"
  * parseUnknownError({}); // "Unknown error happened"
+ * ```
  */
 export const parseUnknownError = (error: unknown) =>
   isObject(error) && "message" in error && isString(error.message) ?

@@ -30,10 +30,12 @@ type ToastTitle = (() => ReactNode) | ReactNode;
  * while customizing the default behavior for error toasts.
  *
  * @example
+ * ```ts
  * toast('Saved successfully');
  * toast({ title: 'Saved', description: 'Your changes were saved.' });
  * toast.error('Failed to save'); // displays for 5000ms by default
  * toast.error('Failed to save', { duration: 3000 }); // overrides default duration
+ * ```
  */
 export const toast: typeof sonnerToast = Object.assign(
   (message: ToastTitle, data?: ExternalToast) => sonnerToast(message, data), // Base callable function

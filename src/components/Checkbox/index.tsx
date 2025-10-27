@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-checkbox--labeled" />
+ * @packageDocumentation
+ */
 export * from "./Checkbox";

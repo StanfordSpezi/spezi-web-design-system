@@ -51,12 +51,14 @@ interface MenuItemProps {
  * - Icon support
  *
  * @example
+ * ```tsx
  * <MenuItem
  *   href="/dashboard"
  *   icon={<Home />}
  *   label="Dashboard"
  *   isActive
  * />
+ * ```
  */
 export const MenuItem = ({
   href,

@@ -17,13 +17,16 @@ import { type AsChildProp } from "@/utils/misc";
  * Renders fully accessible and animated collapsible, with no styles besides necessary.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <CollapsibleRoot>
  *   <CollapsibleTrigger>Toggle</CollapsibleTrigger>
  *   <CollapsibleContent>Content to collapse</CollapsibleContent>
  * </CollapsibleRoot>
+ * ```
  *
  * @example
+ * ```tsx
  * // With button and content styles
  * <CollapsibleRoot>
  *   <CollapsibleTrigger asChild>
@@ -33,6 +36,7 @@ import { type AsChildProp } from "@/utils/misc";
  *     <div className="p-5 bg-primary">Content to collapse</div>
  *   </CollapsibleContent>
  * </CollapsibleRoot>
+ * ```
  */
 export const CollapsibleRoot = (
   props: ComponentProps<typeof CollapsiblePrimitive.Root>,
@@ -42,9 +46,11 @@ export const CollapsibleRoot = (
  * Button that toggles the collapsible.
  *
  * @example
+ * ```tsx
  * <CollapsibleTrigger asChild>
  *   <Button>Trigger me</Button>
  * </CollapsibleTrigger>
+ * ```
  */
 export const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
 
@@ -61,11 +67,13 @@ export interface CollapsibleRootProps extends ComponentProps<"div"> {
  * This approach guarantees performant transition and animation from 0 to max height.
  *
  * @example
+ * ```tsx
  * <CollapsibleContentRoot>
  *   <CollapsibleContentInner>
  *     Content to collapse
  *   </CollapsibleContentInner>
  * </CollapsibleContentRoot>
+ * ```
  */
 export const CollapsibleContentRoot = ({
   className,
@@ -98,11 +106,13 @@ export interface CollapsibleContentProps extends ComponentProps<"div"> {
  * make sure to add it to the children of `CollapsibleContentInner`.
  *
  * @example
+ * ```tsx
  * <CollapsibleContentRoot>
  *   <CollapsibleContentInner>
  *     <div className="p-5">Content to collapse</div>
  *   </CollapsibleContentInner>
  * </CollapsibleContentRoot>
+ * ```
  */
 export const CollapsibleContentInner = ({
   className,
@@ -117,14 +127,18 @@ export const CollapsibleContentInner = ({
  * Shows collapsed content. Has to be used within CollapsibleRoot.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <CollapsibleContent>Content to collapse</CollapsibleContent>
+ * ```
  *
  * @example
+ * ```tsx
  * // With content styles
  * <CollapsibleContent>
  *   <div className="p-5 bg-primary">Content to collapse</div>
  * </CollapsibleContent>
+ * ```
  */
 export const CollapsibleContent = ({
   children,

@@ -12,7 +12,9 @@ import { useEffect, useRef, useState } from "react";
  * Hook that sets a flag to true when triggered, then automatically resets it after a timeout.
  *
  * @example
+ * ```ts
  * const showSuccess = useTimedFlag(isSuccess, 2000);
+ * ```
  */
 export const useTimedFlag = (trigger: boolean | undefined, timeout: number) => {
   const [isActive, setIsActive] = useState(false);

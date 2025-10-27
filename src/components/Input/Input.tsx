@@ -16,16 +16,22 @@ export interface InputProps extends ComponentProps<"input"> {}
  * Suitable for text inputs, search fields, and other form inputs.
  *
  * @example
+ * ```tsx
  * // Basic text input
  * <Input placeholder="Enter your name" />
+ * ```
  *
  * @example
+ * ```tsx
  * // Search input
  * <Input type="search" placeholder="Search..." />
+ * ```
  *
  * @example
+ * ```tsx
  * // Disabled input
  * <Input disabled value="Cannot edit" />
+ * ```
  */
 export const Input = ({ className, type = "text", ...props }: InputProps) => (
   <input

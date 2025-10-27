@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="molecules-notfound--generic" />
+ * @packageDocumentation
+ */
 export * from "./NotFound";
