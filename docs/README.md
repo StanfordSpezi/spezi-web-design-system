@@ -1,6 +1,6 @@
 # Spezi Web Design System Documentation
 
-This documentation website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator. It provides comprehensive documentation for the Spezi Web Design System, including auto-generated API reference and guides.
+This documentation website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator. It provides comprehensive documentation for the Spezi Web Design System, including guides and auto-generated API reference.
 
 ## Prerequisites
 

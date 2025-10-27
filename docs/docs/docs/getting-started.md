@@ -100,7 +100,7 @@ It allows configuring:
 
 Wrap your entire application with the `SpeziProvider`. 
 
-### With Tanstack Router
+#### With Tanstack Router
 
 ```tsx
 import { SpeziProvider, SpeziContextRouter } from "@stanfordspezi/spezi-web-design-system";
@@ -122,7 +122,7 @@ export const Route = createRootRoute({
 ```
 
 
-### With Next.js
+#### With Next.js
 
 ```tsx
 "use client";
@@ -132,7 +132,6 @@ import { SpeziProvider, SpeziContextRouter } from "@stanfordspezi/spezi-web-desi
 const routerProps: SpeziContextRouter = {
   Link: ({ href, ...props }) => <Link href={href ?? "#"} {...props} />,
 };
-<SpeziProvider router={routerProps}>...</SpeziProvider>;
 
 export default function RootLayout({
   children,
