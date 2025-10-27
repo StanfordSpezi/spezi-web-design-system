@@ -88,7 +88,7 @@ export type CalendarProps = DayPickerProps & {
  *   onSelect={setDate}
  *   showTimePicker
  * />
- * ```tsx
+ * ```
  */
 export const Calendar = (props: CalendarProps) => {
   const {
