@@ -42,9 +42,6 @@ next-env.d.ts
 # lint
 eslint_report.json
 
-# docs
-docs
-
 # editors
 .idea/
 .vscode/

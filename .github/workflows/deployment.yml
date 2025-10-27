@@ -47,3 +47,11 @@ jobs:
       contents: read
       pages: write
       id-token: write
+  deploy-docs:
+    name: Deploy Docs
+    needs: build-and-test
+    uses: ./.github/workflows/docs-deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
