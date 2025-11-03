@@ -6,6 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-pagination--default" />
+ * @packageDocumentation
+ */
 export * from "./Pagination";
 export * from "./ButtonPagination";
 export * from "./LinkPagination";

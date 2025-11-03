@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-input--empty" />
+ * @packageDocumentation
+ */
 export * from "./Input";

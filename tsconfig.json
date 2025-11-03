@@ -24,11 +24,5 @@
     "types": ["vitest/globals"]
   },
   "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.ts", ".storybook/**/*.tsx"],
-  "exclude": ["node_modules"],
-  "typedocOptions": {
-    "entryPoints": ["packages/*"],
-    "name": "Stanford Biodesign Digital Health Spezi Web Design System",
-    "entryPointStrategy": "packages",
-    "includeVersion": false
-  }
+  "exclude": ["node_modules", "docs"],
 }

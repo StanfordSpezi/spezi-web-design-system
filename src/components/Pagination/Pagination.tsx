@@ -29,7 +29,7 @@ export const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
  *
  * Provides proper layout and spacing for pagination controls.
  * Renders as a semantic unordered list for accessibility.
- * Usually contains `PaginationItemContainer` components.
+ * Usually contains {@link PaginationItemContainer} components.
  */
 export const PaginationContent = ({
   className,
@@ -45,9 +45,11 @@ export const PaginationContent = ({
  * Should wrap each individual pagination control.
  *
  * @example
+ * ```tsx
  * <PaginationItemContainer>
  *   <PaginationItem>1</PaginationItem>
  * </PaginationItemContainer>
+ * ```
  */
 export const PaginationItemContainer = ({
   className,
@@ -67,12 +69,16 @@ interface PaginationLinkProps extends ButtonProps {
  * Extends the Button component with pagination-specific behavior.
  *
  * @example
+ * ```tsx
  * <PaginationItem isActive>1</PaginationItem>
+ * ```
  *
  * @example
+ * ```tsx
  * <PaginationItem aria-label="Go to previous page">
  *    <PreviousIcon />
  * </PaginationItem>
+ * ```
  */
 export const PaginationItem = ({
   isActive,
@@ -98,11 +104,15 @@ export const PaginationPreviousIcon = () => <ChevronLeft className="size-4" />;
  * Displays a button with a left chevron icon by default.
  *
  * @example
+ * ```tsx
  * <PaginationPrevious onClick={() => goToPreviousPage()} />
+ * ```
  *
  * @example
+ * ```tsx
  * // custom content
  * <PaginationPrevious>Previous</PaginationPrevious>
+ * ```
  */
 export const PaginationPrevious = ({
   children,
@@ -124,11 +134,15 @@ export const PaginationNextIcon = () => <ChevronRight className="size-4" />;
  * Displays a button with a right chevron icon by default.
  *
  * @example
+ * ```tsx
  * <PaginationNext onClick={() => goToNextPage()} />
+ * ```
  *
  * @example
+ * ```tsx
  * // custom content
  * <PaginationNext>Next</PaginationNext>
+ * ```
  */
 export const PaginationNext = ({
   children,
@@ -147,9 +161,11 @@ export const PaginationNext = ({
  * Commonly used when there are too many pages to display all page numbers.
  *
  * @example
+ * ```tsx
  * <PaginationItemContainer>
  *   <PaginationEllipsis />
  * </PaginationItemContainer>
+ * ```
  */
 export const PaginationEllipsis = ({
   className,

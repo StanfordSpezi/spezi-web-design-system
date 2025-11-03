@@ -49,27 +49,34 @@ export interface EmptyStateProps
  * Shows different states based on whether the user already filtered the data.
  * This reduces the chance of misinterpretations and reduces user's anxiety.
  *
- * Automatically constructs messages based on `entityName`.
+ * Automatically constructs messages based on {@link EmptyStateProps#entityName|entityName}.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <EmptyState entityName="users" />
+ * ```
  *
  * @example
+ * ```tsx
  * // With text filter
  * <EmptyState
  *   entityName="users"
  *   textFilter="John"
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With other filters
  * <EmptyState
  *   entityName="users"
  *   hasFilters
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom content and actions
  * <EmptyState
  *   entityName="users"
@@ -77,6 +84,7 @@ export interface EmptyStateProps
  * >
  *   <p>No users found in the system.</p>
  * </EmptyState>
+ * ```
  */
 export const EmptyState = ({
   entityName,

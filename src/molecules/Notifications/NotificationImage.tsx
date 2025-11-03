@@ -22,12 +22,16 @@ type NotificationImageProps = Omit<ComponentProps<"img">, "src"> & {
  *
  *
  * @example
+ * ```ts
  * // With image URL
  * <NotificationImage src="/notification-image.jpg" alt="New message" />
+ * ```
  *
  * @example
+ * ```ts
  * // Without image - shows a default icon
  * <NotificationImage src={undefined} />
+ * ```
  */
 export const NotificationImage = ({
   alt = "Notification image",

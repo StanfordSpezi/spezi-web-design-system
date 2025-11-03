@@ -83,26 +83,34 @@ export interface BadgeProps
  * Badges are used to highlight an item's status for quick recognition.
  *
  * @example
+ * ```tsx
  * // Default badge
  * <Badge>New</Badge>
+ * ```
  *
  * @example
+ * ```tsx
  * // Different variants
  * <Badge variant="secondary">Secondary</Badge>
  * <Badge variant="destructive">Error</Badge>
  * <Badge variant="destructiveLight">Warning</Badge>
  * <Badge variant="outline">Outline</Badge>
+ * ```
  *
  * @example
+ * ```tsx
  * // Different sizes
  * <Badge size="sm">Small</Badge>
  * <Badge size="lg">Large</Badge>
+ * ```
  *
  * @example
+ * ```tsx
  * // As child element
  * <Badge asChild>
  *   <button>Click me</button>
  * </Badge>
+ * ```
  */
 export const Badge = ({
   className,

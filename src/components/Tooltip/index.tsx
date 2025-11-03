@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-tooltip--default" />
+ * @packageDocumentation
+ */
 export * from "./Tooltip";

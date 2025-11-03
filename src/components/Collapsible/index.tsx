@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-collapsible--default" />
+ * @packageDocumentation
+ */
 export * from "./Collapsible";

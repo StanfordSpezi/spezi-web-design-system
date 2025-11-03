@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-infobutton--default" />
+ * @packageDocumentation
+ */
 export * from "./InfoButton";

@@ -13,7 +13,9 @@ import { screens } from "@/theme/breakpoints";
  * Hook that subscribes to browser media query changes.
  *
  * @example
+ * ```ts
  * const isLargeScreen = useMedia('(min-width: 1024px)');
+ * ```
  */
 const useMedia = (query: string) => {
   const [isMatching, setIsMatching] = useState(
@@ -42,12 +44,14 @@ const useMedia = (query: string) => {
 export const useIsTouchDevice = () => useMedia("(pointer: coarse)");
 
 /**
- * Allows creating a `useIsScreen` hook with provided breakpoints.
- * Use `useIsScreen` directly if you just need default Tailwind's screens.
+ * Allows creating a {@link useIsScreen} hook with provided breakpoints.
+ * Use {@link useIsScreen} directly if you just need default Tailwind's screens.
  *
  * @example
+ * ```ts
  * const useIsScreen = createUseIsScreen({ sm: '560px', lg: "1200px" });
  * useIsScreen("sm");
+ * ```
  */
 export const createUseIsScreen =
   <TBreakpoints extends Record<string, string>>(breakpoints: TBreakpoints) =>
@@ -55,17 +59,21 @@ export const createUseIsScreen =
     useMedia(`(min-width: ${breakpoints[key]})`);
 
 /**
- * `useIsScreen` subscribes to media query checking minimal width of screen.
+ * Subscribes to media query checking minimal width of screen.
  * Matches default Tailwind's screen sizes and breakpoint methodology.
  *
  * @example
+ * ```ts
  * const isLg = useIsScreen("lg");
  * if (isLg) // do something on large screens
+ * ```
  *
  * @example
+ * ```tsx
  * // those are equivalents
  * useIsScreen("xl")
  * <div className="xl:flex" />
+ * ```
  *
  */
 export const useIsScreen = createUseIsScreen(screens);

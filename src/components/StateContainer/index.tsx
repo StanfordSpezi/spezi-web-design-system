@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-statecontainer--default" />
+ * @packageDocumentation
+ */
 export * from "./StateContainer";

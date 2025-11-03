@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="molecules-confirmdeletedialog--default" />
+ * @packageDocumentation
+ */
 export * from "./ConfirmDeleteDialog";

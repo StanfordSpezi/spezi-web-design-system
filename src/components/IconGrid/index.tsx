@@ -6,5 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-icongrid--default" />
+ * @packageDocumentation
+ */
 export * from "./IconGrid";
 export * from "./IconSearchGrid";

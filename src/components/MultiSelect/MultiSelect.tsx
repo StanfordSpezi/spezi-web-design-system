@@ -73,9 +73,10 @@ interface MultiSelectProps {
 /**
  * Root component that provides context for building a multi-select input.
  *
- * Compose with `MultiSelectTrigger`, `MultiSelectValue`, and `MultiSelectContent`.
+ * Compose with {@link MultiSelectTrigger}, {@link MultiSelectValue}, and {@link MultiSelectContent}.
  *
  * @example
+ * ```tsx
  * <MultiSelect>
  *   <MultiSelectTrigger className="w-full max-w-[400px]">
  *     <MultiSelectValue placeholder="Select fruit..." />
@@ -87,6 +88,7 @@ interface MultiSelectProps {
  *     </MultiSelectGroup>
  *   </MultiSelectContent>
  * </MultiSelect>
+ * ```
  */
 export const MultiSelect = ({
   children,
@@ -145,9 +147,11 @@ interface MultiSelectTriggerProps
  * Renders like an input using the Button component. Place `MultiSelectValue` inside to show selected items.
  *
  * @example
+ * ```tsx
  * <MultiSelectTrigger>
  *   <MultiSelectValue placeholder="Choose options..." />
  * </MultiSelectTrigger>
+ * ```
  */
 export const MultiSelectTrigger = ({
   role = "combobox",
@@ -207,9 +211,11 @@ interface MultiSelectValueProps
  * Displays the current selection inside the trigger, with badges for each selected item.
  *
  * @example
+ * ```tsx
  * <MultiSelectTrigger>
  *   <MultiSelectValue placeholder="Select tags..." overflowBehavior="cutoff" />
  * </MultiSelectTrigger>
+ * ```
  */
 export const MultiSelectValue = ({
   placeholder,
@@ -337,7 +343,7 @@ interface MultiSelectContentProps
 }
 
 /**
- * Transform the `search` prop into a normalized object with default values for
+ * Transform the {@link MultiSelectContentProps#search|search} prop into a normalized object with default values for
  * placeholder and emptyMessage. Returns null if search is false.
  */
 const normalizeSearchProp = (search: MultiSelectContentProps["search"]) => {
@@ -362,17 +368,21 @@ const normalizeSearchProp = (search: MultiSelectContentProps["search"]) => {
  * Popover content that renders the `Command`-based searchable list of items.
  *
  * @example
+ * ```tsx
  * <MultiSelectContent search={{ placeholder: "Search fruits...", emptyMessage: "Nothing found" }}>
  *   <MultiSelectGroup>
  *     <MultiSelectItem value="apple">Apple</MultiSelectItem>
  *   </MultiSelectGroup>
  * </MultiSelectContent>
+ * ```
  *
  * @example
+ * ```tsx
  * // Without search field
  * <MultiSelectContent search={false}>
  *   <MultiSelectItem value="a">A</MultiSelectItem>
  * </MultiSelectContent>
+ * ```
  */
 export const MultiSelectContent = ({
   search = true,
@@ -427,12 +437,16 @@ interface MultiSelectItemProps
  * Selectable item within the list. Toggles inclusion in the selection.
  *
  * @example
+ * ```tsx
  * <MultiSelectItem value="apple">Apple</MultiSelectItem>
+ * ```
  *
  * @example
+ * ```tsx
  * <MultiSelectItem value="us" badgeLabel={<span>United States</span>}>
  *   USA
  * </MultiSelectItem>
+ * ```
  */
 export const MultiSelectItem = ({
   value,
@@ -468,9 +482,11 @@ export const MultiSelectItem = ({
  * Group wrapper for grouping related `MultiSelectItem`s under a heading.
  *
  * @example
+ * ```tsx
  * <MultiSelectGroup heading="Fruits">
  *   <MultiSelectItem value="apple">Apple</MultiSelectItem>
  * </MultiSelectGroup>
+ * ```
  */
 export const MultiSelectGroup = (
   props: ComponentPropsWithoutRef<typeof CommandGroup>,
@@ -482,11 +498,13 @@ export const MultiSelectGroup = (
  * Visual separator between groups or sections in the list.
  *
  * @example
+ * ```tsx
  * <>
  *   <MultiSelectGroup heading="A" />
  *   <MultiSelectSeparator />
  *   <MultiSelectGroup heading="B" />
  * </>
+ * ```
  */
 export const MultiSelectSeparator = (
   props: ComponentPropsWithoutRef<typeof CommandSeparator>,

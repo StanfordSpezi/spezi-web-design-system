@@ -28,10 +28,12 @@ export interface NotificationRootProps extends ComponentProps<"article"> {
  * Provides notification context to child components.
  *
  * @example
+ * ```ts
  * // Basic notification root
  * <NotificationRoot notification={{ isRead: false }}>
  *   <NotificationContent />
  * </NotificationRoot>
+ * ```
  */
 export const NotificationRoot = ({
   notification,

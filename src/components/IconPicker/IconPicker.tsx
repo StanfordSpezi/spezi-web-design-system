@@ -38,21 +38,26 @@ interface IconPickerProps
  * Supports both controlled and uncontrolled usage patterns.
  *
  * @example
+ * ```tsx
  * // Uncontrolled with default value
  * <IconPicker
  *   defaultValue="home"
  *   onValueChange={(icon) => console.log('Selected:', icon)}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Controlled component
  * <IconPicker
  *   value={selectedIcon}
  *   onValueChange={setSelectedIcon}
  *   triggerPlaceholder="Choose an icon"
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom trigger
  * <IconPicker onValueChange={handleSelect}>
  *   <Button variant="ghost">
@@ -60,8 +65,10 @@ interface IconPickerProps
  *     Add Icon
  *   </Button>
  * </IconPicker>
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom search and icons
  * <IconPicker
  *   icons={brandIcons}
@@ -69,6 +76,7 @@ interface IconPickerProps
  *   columns={6}
  *   onValueChange={setBrandIcon}
  * />
+ * ```
  */
 export const IconPicker = ({
   // Popover root props

@@ -1,0 +1,664 @@
+/*
+
+This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
+
+SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+
+SPDX-License-Identifier: MIT
+
+*/
+
+/* Hero Styles */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(140, 21, 21, 0.05), var(--bg));
+}
+
+.heroContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .heroContainer {
+    padding: 8rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroContainer {
+    padding: 10rem 2rem;
+  }
+}
+
+.heroContent {
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(140, 21, 21, 0.2);
+  background: rgba(140, 21, 21, 0.05);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--stanford-cardinal-red);
+}
+
+.badgeIcon {
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  line-height: 1.1;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 6rem;
+  }
+}
+
+.subtitle {
+  max-width: 42rem;
+  margin: 0 auto 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.description {
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-wrap: balance;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 1.125rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .buttons {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  border-radius: 0.75rem;
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(140, 21, 21, 0.2);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.primaryButton:hover {
+  background: var(--ifm-color-primary-light);
+  text-decoration: none;
+}
+
+.secondaryButton {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background: var(--bg-secondary);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .secondaryButton:hover {
+  background: #333333;
+}
+
+.buttonIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: currentColor;
+}
+
+.decorativeOrb1 {
+  pointer-events: none;
+  position: absolute;
+  top: -10rem;
+  right: 0;
+  height: 24rem;
+  width: 24rem;
+  border-radius: 9999px;
+  background: rgba(140, 21, 21, 0.1);
+  filter: blur(64px);
+}
+
+.decorativeOrb2 {
+  pointer-events: none;
+  position: absolute;
+  bottom: -10rem;
+  left: 0;
+  height: 24rem;
+  width: 24rem;
+  border-radius: 9999px;
+  background: rgba(140, 21, 21, 0.05);
+  filter: blur(64px);
+}
+
+/* Features Styles */
+.features {
+  padding: 6rem 0;
+}
+
+@media (min-width: 768px) {
+  .features {
+    padding: 8rem 0;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.content {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.featuresHeader {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.featuresTitle {
+  margin-bottom: 1rem;
+
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .featuresTitle {
+    font-size: 3rem;
+  }
+}
+
+.featuresSubtitle {
+  max-width: 42rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.featuresGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.featureCard {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  border: 2px solid rgba(140, 21, 21, 0.5);
+  border-radius: 0.75rem;
+  background: var(--card-bg);
+  transition: all 0.2s;
+}
+
+.featureCard:hover {
+  border-color: rgba(140, 21, 21, 0.5);
+  box-shadow: 0 10px 15px -3px rgba(140, 21, 21, 0.05);
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(140, 21, 21, 0.1);
+  color: var(--stanford-cardinal-red);
+  transition: all 0.2s;
+}
+
+.featureCard:hover .iconWrapper {
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+}
+
+.featureIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.featureCardTitle {
+  margin-bottom: 0.75rem;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.featureCardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.cardGradient {
+  pointer-events: none;
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 9999px;
+  background: rgba(140, 21, 21, 0.05);
+  filter: blur(32px);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.featureCard:hover .cardGradient {
+  opacity: 1;
+}
+
+/* Used in Production Styles */
+.productionSection {
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+}
+
+@media (min-width: 768px) {
+  .productionSection {
+    padding: 8rem 0;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 3rem;
+  }
+}
+
+.sectionSubtitle {
+  margin-bottom: 4rem;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.productionGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .productionGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.productionCard {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.productionCardTitle {
+  margin-bottom: 0.5rem;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.productionCardDescription {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.productionButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.productionButton:hover {
+  background: var(--ifm-color-primary-light);
+  text-decoration: none;
+}
+
+/* Ecosystem Styles */
+.ecosystemSection {
+  padding: 6rem 0;
+}
+
+@media (min-width: 768px) {
+  .ecosystemSection {
+    padding: 8rem 0;
+  }
+}
+
+.ecosystemGrid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .ecosystemGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ecosystemCard {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--bg-secondary);
+}
+
+.ecosystemCardTitle {
+  margin-bottom: 0.75rem;
+  font-family: "Courier New", monospace;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.ecosystemCardDescription {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.ecosystemButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: #f5f5f5;
+  color: #000000;
+  border: 1px solid #f5f5f5;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.ecosystemButton:hover {
+  background: #e5e5e5;
+  text-decoration: none;
+}
+
+/* Actions Section */
+
+.actionsSection {
+  padding: 6rem 0 8rem;
+  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg));
+}
+
+@media (min-width: 768px) {
+  .actionsSection {
+    padding: 8rem 0 10rem;
+  }
+}
+
+.actionsContent {
+  text-align: center;
+}
+
+.actionsTitle {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .actionsTitle {
+    font-size: 3rem;
+  }
+}
+
+.actionsSubtitle {
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.actionsGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .actionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.actionCard {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  text-align: left;
+  transition: all 0.3s;
+}
+
+.actionCard:hover {
+  border-color: rgba(140, 21, 21, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(140, 21, 21, 0.1);
+  transform: translateY(-4px);
+}
+
+.actionIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(140, 21, 21, 0.1);
+  color: var(--stanford-cardinal-red);
+  transition: all 0.3s;
+}
+
+.actionCard:hover .actionIconWrapper {
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.actionIcon {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.actionCardTitle {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.actionCardDescription {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.actionCardButton {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  border-radius: 0.75rem;
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.actionCardButton:hover {
+  background: var(--ifm-color-primary-light);
+  text-decoration: none;
+}
+
+.actionArrow {
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: transform 0.2s;
+}
+
+.actionCardButton:hover .actionArrow {
+  transform: translateX(4px);
+}
+
+.templateButton {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background: var(--stanford-cardinal-red);
+  color: #ffffff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.templateButton:hover {
+  background: var(--ifm-color-primary-light);
+}

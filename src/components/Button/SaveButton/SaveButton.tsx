@@ -17,7 +17,7 @@ export interface SaveButtonProps
   /** When true, shows a temporary success state. */
   isSuccess?: boolean;
   /**
-   * Duration in ms to keep success state visible.
+   * Duration in ms to keep the success state visible.
    *
    * @default 2000
    */
@@ -25,7 +25,7 @@ export interface SaveButtonProps
   /** When true, shows a temporary error state. */
   isError?: boolean;
   /**
-   * Duration in ms to keep error state visible.
+   * Duration in ms to keep the error state visible.
    *
    * @default 5000
    */
@@ -34,9 +34,10 @@ export interface SaveButtonProps
 
 /**
  * SaveButton extends Button with built-in transient success and error states.
- * Provide `isSuccess` or `isError` to trigger the corresponding state.
+ * Provide {@link SaveButtonProps#isSuccess|isSuccess} or {@link SaveButtonProps#isSuccess|isError} to trigger the corresponding state.
  *
  * @example
+ * ```tsx
  * const [isPending, setIsPending] = useState(false);
  * const [success, setSuccess] = useState(false);
  * const [error, setError] = useState(false);
@@ -60,6 +61,7 @@ export interface SaveButtonProps
  *     onClick={handleSave}
  *   />
  * );
+ * ```
  */
 export const SaveButton = ({
   className,

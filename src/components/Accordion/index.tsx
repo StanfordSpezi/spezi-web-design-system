@@ -5,5 +5,9 @@
 //
 // SPDX-License-Identifier: MIT
 //
-
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-accordion--default" />
+ * @packageDocumentation
+ */
 export * from "./Accordion";

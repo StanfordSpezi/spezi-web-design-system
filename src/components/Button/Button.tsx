@@ -94,22 +94,28 @@ export interface ButtonProps
 /**
  * Button component for user interactions with multiple style variants and sizes.
  *
- * Can render as other elements via `asChild` prop to apply button styles to custom components.
- * Supports loading state through `isPending` prop.
+ * Can render as other elements via {@link ButtonProps#asChild|asChild} prop to apply button styles to custom components.
+ * Supports loading state through {@link ButtonProps#isPending|isPending} prop.
  *
  * @example
+ * ```tsx
  * // Default primary button
  * <Button>Click me</Button>
+ * ```
  *
  * @example
+ * ```tsx
  * // Secondary loading button
  * <Button variant="secondary" isPending>Something</Button>
+ * ```
  *
  * @example
+ * ```tsx
  * // Link styled as a button
  * <Button asChild>
  *   <a href="/somewhere">Visit</a>
  * </Button>
+ * ```
  */
 export const Button = ({
   className,

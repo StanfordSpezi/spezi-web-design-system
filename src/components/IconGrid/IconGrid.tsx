@@ -223,18 +223,23 @@ export interface IconGridProps {
  * Uses React Query to load icon data when no custom icons are provided.
  *
  * @example
+ * ```tsx
  * // Basic usage with all icons
  * <IconGrid onValueChange={(icon) => setSelectedIcon(icon)} />
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom icons and search
  * <IconGrid
  *   icons={customIcons}
  *   searchTerm="home"
  *   onValueChange={handleIconSelect}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom dimensions
  * <IconGrid
  *   columns={10}
@@ -242,6 +247,7 @@ export interface IconGridProps {
  *   rowHeight={40}
  *   showTooltip={false}
  * />
+ * ```
  */
 export const IconGrid = ({
   searchTerm = "",

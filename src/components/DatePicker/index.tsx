@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-datepicker--default" />
+ * @packageDocumentation
+ */
 export * from "./DatePicker";

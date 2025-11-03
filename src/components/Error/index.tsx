@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-error--default" />
+ * @packageDocumentation
+ */
 export * from "./Error";

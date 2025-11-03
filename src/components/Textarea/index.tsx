@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-textarea--empty" />
+ * @packageDocumentation
+ */
 export * from "./Textarea";

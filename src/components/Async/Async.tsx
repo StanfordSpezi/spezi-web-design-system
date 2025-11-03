@@ -17,7 +17,7 @@ import {
 import { EmptyState, type EmptyStateProps } from "../EmptyState";
 
 /**
- * Converts `error` prop to a FullErrorProps object.
+ * Converts {@link AsyncProps#error|error} prop to a FullErrorProps object.
  */
 const parseError = (error: AsyncProps["error"]) => {
   if (isUndefined(error))
@@ -29,7 +29,7 @@ const parseError = (error: AsyncProps["error"]) => {
 };
 
 /**
- * Converts `empty` prop to a FullEmptyProps object.
+ * Converts {@link AsyncProps#empty|empty} prop to a FullEmptyProps object.
  */
 const parseEmpty = (empty: AsyncProps["empty"]) => {
   if (isBoolean(empty)) return { show: empty };
@@ -63,15 +63,22 @@ export interface AsyncProps
    * When true or an object with show: true, the error state will be displayed.
    *
    * @example
+   * ```tsx
    * // Simple boolean usage
-   * error={true}
+   * <Async error={true} >
+   * ```
    *
    * @example
+   * ```tsx
    * // Object with additional configuration
-   * error={{
-   *   show: true,
-   *   children: "Custom error message",
-   * }}
+   * <Async
+   *   error={{
+   *     show: true,
+   *     children: "Custom error message ",
+   *   }}
+   * />
+   * />
+   * ```
    */
   error?: boolean | FullErrorProps;
   /**
@@ -81,24 +88,27 @@ export interface AsyncProps
    * When true or an object with show: true, the empty state will be displayed.
    *
    * @example
+   * ```tsx
    * // Simple boolean usage
-   * empty={true}
+   * <Async empty={true} />
+   * ```
    *
    * @example
+   * ```tsx
    * // Object with additional configuration
-   * empty={{
-   *   show: true,
-   *   children: "No Items Found",
-   * }}
+   * <Async
+   *   empty={{
+   *     show: true,
+   *     children: "No Items Found",
+   *   }}
+   * />
+   * ```
    */
   empty?: boolean | FullEmptyProps;
   /**
    * Controls the display of the loading state.
    * When true, a loading spinner will be displayed.
    * Useful for indicating data fetching or processing states.
-   *
-   * @example
-   * loading={true}
    */
   loading?: boolean;
   /**
@@ -121,12 +131,15 @@ export interface AsyncProps
  * across the application.
  *
  * @example
+ * ```tsx
  * // Basic usage with loading state
  * <Async loading={isLoading}>
  *   <div>Content</div>
  * </Async>
+ * ```
  *
  * @example
+ * ```tsx
  * // Usage with queriesToAsyncProps utility that parses query results
  * <Async
  *   {...queriesToAsyncProps([notificationQuery])}
@@ -139,8 +152,10 @@ export interface AsyncProps
  *     ))}
  *   </div>
  * </Async>
+ * ```
  *
  * @example
+ * ```tsx
  * // Custom state rendering
  * <Async
  *   loading={isLoading}
@@ -152,6 +167,7 @@ export interface AsyncProps
  * >
  *   <div>Content</div>
  * </Async>
+ * ```
  */
 export const Async = ({
   entityName = "data",

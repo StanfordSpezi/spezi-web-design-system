@@ -18,9 +18,11 @@ import { useOpenState } from "../../utils/useOpenState";
 
 export interface DashboardLayoutProps extends Partial<DashboardContextValue> {
   /**
-   * Title slot in the header. Can be used together with the `PageTitle` component.
+   * Title slot in the header. Can be used together with the {@link PageTitle} component.
    * @example
-   * title={<PageTitle icon={<Home />} title="Home" />}
+   * ```tsx
+   *  <DashboardLayout title={<PageTitle icon={<Home />} title="Home" />} />
+   * ```
    */
   title?: ReactNode;
   /**
@@ -51,6 +53,7 @@ export interface DashboardLayoutProps extends Partial<DashboardContextValue> {
  * - Mobile-optimized navigation
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <DashboardLayout
  *   title="Dashboard"
@@ -60,6 +63,7 @@ export interface DashboardLayoutProps extends Partial<DashboardContextValue> {
  * >
  *   <DashboardContent />
  * </DashboardLayout>
+ * ```
  */
 export const DashboardLayout = ({
   title,

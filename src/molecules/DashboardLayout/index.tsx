@@ -6,6 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="molecules-dashboardlayout--default" />
+ * @packageDocumentation
+ */
 export * from "./DashboardLayout";
 export * from "./MenuItem";
 export * from "./PageTitle";

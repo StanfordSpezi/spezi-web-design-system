@@ -48,7 +48,7 @@ export type FieldProps<
   className?: string;
   /**
    * Whether to check for empty errors.
-   * For more details, refer to the `checkEmpty` property of the [Error](src/components/Error/Error.tsx) component.
+   * For more details, refer to the {@link ErrorProps#checkEmpty|checkEmpty} property of the {@link Error} component.
    */
   checkEmptyError?: boolean;
   /**
@@ -73,6 +73,7 @@ export type FieldProps<
  * - Empty state checking
  *
  * @example
+ * ```tsx
  * const form = useForm({ formSchema });
  * <Field
  *   control={form.control}
@@ -82,6 +83,7 @@ export type FieldProps<
  *     <Input {...field} type="email" />
  *   )}
  * />
+ * ```
  */
 export const Field = <
   TFieldValues extends FieldValues = FieldValues,

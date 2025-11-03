@@ -50,9 +50,11 @@ export interface TooltipContentProps
  * Contains Tooltip's inner content.
  *
  * @example
+ * ```tsx
  * <TooltipContent>
  *   Tooltip text
  * </TooltipContent>
+ * ```
  */
 export const TooltipContent = ({
   className,
@@ -88,17 +90,21 @@ export interface TooltipProps
  * A component that displays additional information when hovering over an element.
  * Built on top of [radix-ui Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip).
  *
- * For interactive tooltips, see [Popover](src/components/Popover/Popover.tsx)
+ * For interactive tooltips, see {@link PopoverRoot|Popover}
  *
  * @example
+ * ```tsx
  * <Tooltip tooltip="Click to save">
  *   <Button>Save</Button>
  * </Tooltip>
+ * ```
  *
  * @example
+ * ```tsx
  * <Tooltip variant="inverted" tooltip="High contrast tooltip">
  *   <Button>Save</Button>
  * </Tooltip>
+ * ```
  */
 export const Tooltip = ({
   children,

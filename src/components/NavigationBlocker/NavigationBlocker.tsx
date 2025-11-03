@@ -24,7 +24,7 @@ export interface NavigationBlockerProps
   extends Omit<ComponentProps<typeof Dialog>, "open"> {
   /**
    * Controls whether the native browser beforeunload prompt should be enabled.
-   * When true and `shouldBlock` is true, a native prompt will appear on page reload/close.
+   * When true and {@link NavigationBlockerProps#shouldBlock|shouldBlock} is true, a native prompt will appear on page reload/close.
    *
    * @default false
    */
@@ -48,6 +48,7 @@ export interface NavigationBlockerProps
  * This component is router-agnostic. It does not import or depend on any specific router library.
  *
  * @example
+ * ```tsx
  * import { useBlocker } from "@tanstack/react-router";
  * const blocker = useBlocker({
  *   shouldBlockFn: (location, action) => {
@@ -64,8 +65,10 @@ export interface NavigationBlockerProps
  *     reset={blocker.reset}
  *   />
  * );
+ * ```
  *
  * @example
+ * ```tsx
  * // The `enableBeforeUnload` prop enables a native browser prompt on page reload/close.
  * const [dirty, setDirty] = useState(false);
  * return (
@@ -84,6 +87,7 @@ export interface NavigationBlockerProps
  *     </form>
  *   </>
  * );
+ * ```
  */
 export const NavigationBlocker = ({
   status = "idle",

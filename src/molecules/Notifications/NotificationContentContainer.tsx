@@ -15,9 +15,11 @@ interface NotificationContentContainerProps extends ComponentProps<"div"> {}
  * Container for Notification's main content.
  *
  * @example
+ * ```ts
  * <NotificationContentContainer>
  *   <NotificationMessage>You received a new message!</NotificationMessage>
  * </NotificationContentContainer>
+ * ```
  */
 export const NotificationContentContainer = ({
   className,

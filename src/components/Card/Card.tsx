@@ -32,18 +32,22 @@ export interface CardProps
  * They can contain various elements like headers, content sections, and footers.
  *
  * @example
+ * ```tsx
  * <Card>
  *   <CardHeader>
  *     <CardTitle>Card Title</CardTitle>
  *   </CardHeader>
  *   <div className="p-5">Card content goes here</div>
  * </Card>
+ * ```
  *
  * @example
+ * ```tsx
  * // Using asChild to render as a different element
  * <Card asChild>
  *   <article>Card content as an article</article>
  * </Card>
+ * ```
  */
 export const Card = ({ className, asChild, ...props }: CardProps) => {
   const Comp = asChild ? Slot.Root : "div";
@@ -53,12 +57,13 @@ export const Card = ({ className, asChild, ...props }: CardProps) => {
 type CardHeaderProps = ComponentProps<"div">;
 
 /**
- * Header component for Card.
+ * Header component for {@link Card}.
  *
  * Provides consistent spacing and layout for card headers.
- * Typically contains a CardTitle and optionally other content like descriptions or actions.
+ * Typically contains a {@link CardTitle} and optionally other content like descriptions or actions.
  *
  * @example
+ * ```tsx
  * <Card>
  *   <CardHeader>
  *     <CardTitle>Card Title</CardTitle>
@@ -66,6 +71,7 @@ type CardHeaderProps = ComponentProps<"div">;
  *   </CardHeader>
  *   <div className="p-5">Card content</div>
  * </Card>
+ * ```
  */
 export const CardHeader = ({ className, ...props }: CardHeaderProps) => (
   <header
@@ -79,14 +85,16 @@ type CardTitleProps = ComponentProps<"p"> & {
 };
 
 /**
- * Title component for Card headers.
+ * Title component for {@link CardHeader|card headers}.
  *
- * Provides consistent styling for card titles. Typically wrapped by `CardHeader`.
+ * Provides consistent styling for card titles. Typically wrapped by {@link CardHeader}.
  *
  * @example
+ * ```tsx
  * <CardHeader>
  *   <CardTitle>Settings</CardTitle>
  * </CardHeader>
+ * ```
  */
 export const CardTitle = ({ className, asChild, ...props }: CardTitleProps) => {
   const Comp = asChild ? Slot.Root : "h5";

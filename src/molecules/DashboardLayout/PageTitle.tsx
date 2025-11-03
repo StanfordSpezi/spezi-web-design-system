@@ -25,22 +25,26 @@ interface PageTitleProps {
 
 /**
  * A component for displaying page titles with optional icon and subtitle.
- * Used in the DashboardLayout `header` slot to provide consistent title styling.
+ * Used in the {@link DashboardLayoutProps#title|DashboardLayout's title} slot to provide consistent title styling.
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <PageTitle
  *   title="Dashboard"
  *   icon={<Home />}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // Helps to identify a resource
  * <PageTitle
  *   title="Edit user"
  *   subTitle="example@example.com"
  *   icon={<User />}
  * />
+ * ```
  */
 export const PageTitle = ({ title, subTitle, icon }: PageTitleProps) => (
   <div className="flex items-center gap-2 lg:gap-4">

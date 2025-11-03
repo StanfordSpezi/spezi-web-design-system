@@ -6,5 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-async--error" />
+ * @packageDocumentation
+ */
 export * from "./Async";
 export * from "./Async.utils";

@@ -63,6 +63,7 @@ export interface CheckboxGroupProps<T extends string | number = string>
  * @template T The type of the value (string or number, supports enum)
  *
  * @example
+ * ```tsx
  * <CheckboxGroup
  *   options={[
  *     { label: "Option 1", value: "option1" },
@@ -72,6 +73,7 @@ export interface CheckboxGroupProps<T extends string | number = string>
  *   defaultValue={["option1"]}
  *   onChange={(values) => console.log(values)}
  * />
+ * ```
  */
 export const CheckboxGroup = <T extends string | number>({
   options,

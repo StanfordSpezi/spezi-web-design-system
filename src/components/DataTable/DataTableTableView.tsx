@@ -21,7 +21,7 @@ import type { DataTableViewProps } from "./DataTable";
 
 export interface DataTableTableViewSpecificProps<Data> {
   /**
-   * Row event click handler. Row is clicked only if it passes `isRowClicked` check.
+   * Row event click handler. Row is clicked only if it passes {@link DataTableTableViewSpecificProps#isRowClicked|isRowClicked} check.
    */
   onRowClick?: (data: Data, event: MouseEvent) => void;
   /**

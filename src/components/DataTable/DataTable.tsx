@@ -50,16 +50,20 @@ export interface DataTableProps<Data>
    * Useful for creating custom filter or action buttons.
    *
    * @example
+   * ```tsx
    * // Using ReactNode
-   * header={<Button>Add User</Button>}
+   * <DataTable header={<Button>Add User</Button>} />
+   * ```
    *
    * @example
+   * ```tsx
    * // Using render function
-   * header={({ table }) => (
-   *   <Button onClick={() => table.resetGlobalFilter()}>
-   *     Clear Filters
-   *   </Button>
-   * )}
+   * <DataTable
+   *   header={({ table }) => (
+   *     <Button onClick={() => table.resetGlobalFilter()}>Clear Filters</Button>
+   *   )}
+   * />
+   * ```
    */
   header?: ReactNode | ViewRenderProp<Data>;
   /**
@@ -68,18 +72,18 @@ export interface DataTableProps<Data>
    * that still need to support pagination, filtering, and sorting features of DataTable.
    *
    * @example
-   * {({ rows }) => (
-   *   <div>
-   *     {rows.map((row) => {
-   *       const person = row.original;
-   *       return (
-   *         <div key={row.id}>
-   *           {person.name}
-   *         </div>
-   *       );
-   *     })}
-   *   </div>
-   * )}
+   * ```tsx
+   * <DataTable>
+   *   {({ rows }) => (
+   *     <div>
+   *       {rows.map((row) => {
+   *         const person = row.original;
+   *         return <div key={row.id}>{person.name}</div>;
+   *       })}
+   *     </div>
+   *   )}
+   * </DataTable>
+   * ```
    */
   children?: ViewRenderProp<Data>;
   /**
@@ -103,12 +107,16 @@ export interface DataTableProps<Data>
    * Can be a boolean to show/hide the default empty state, or an object to customize it.
    *
    * @example
+   * ```tsx
    * // customized error message
-   * empty={{ children: "Sorry, no users found" }}
+   * <DataTable empty={{ children: "Sorry, no users found" }} />
+   * ```
    *
    * @example
+   * ```tsx
    * // disable empty state
-   * empty={false}
+   * <DataTable empty={false} />
+   * ```
    */
   empty?: boolean | Partial<FullEmptyProps>;
 }
@@ -130,6 +138,7 @@ export interface DataTableProps<Data>
  * @template Data - The type of data items displayed in the table
  *
  * @example
+ * ```tsx
  * // Basic usage with array of users
  * const userColumns = createColumnHelper<User>()
  * <DataTable
@@ -142,8 +151,10 @@ export interface DataTableProps<Data>
  *   entityName="users"
  *   pageSize={10}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom empty state and loading
  * const productColumns = createColumnHelper<Product>()
  * <DataTable
@@ -158,9 +169,11 @@ export interface DataTableProps<Data>
  *   error={error}
  *   empty={{ children: "No products found" }}
  * />
+ * ```
  *
  *
  * @example
+ * ```tsx
  * // Completely custom view
  * <DataTable<Person>
  *   columns={peopleColumns}
@@ -184,6 +197,7 @@ export interface DataTableProps<Data>
  *     </div>
  *   )}
  * </DataTable>
+ * ```
  */
 export const DataTable = <Data,>({
   className,

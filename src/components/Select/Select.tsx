@@ -24,11 +24,13 @@ export const Select = SelectPrimitive.Root;
  * Provides visual and semantic grouping of options.
  *
  * @example
+ * ```tsx
  * <SelectGroup>
  *   <SelectLabel>Fruits</SelectLabel>
  *   <SelectItem value="apple">Apple</SelectItem>
  *   <SelectItem value="banana">Banana</SelectItem>
  * </SelectGroup>
+ * ```
  */
 export const SelectGroup = SelectPrimitive.Group;
 
@@ -37,7 +39,9 @@ export const SelectGroup = SelectPrimitive.Group;
  * Used inside SelectTrigger to show the current selection.
  *
  * @example
+ * ```tsx
  * <SelectValue placeholder="Select a fruit" />
+ * ```
  */
 export const SelectValue = SelectPrimitive.Value;
 
@@ -45,9 +49,11 @@ export const SelectValue = SelectPrimitive.Value;
  * Input-styled component that opens the select when clicked.
  *
  * @example
+ * ```tsx
  * <SelectTrigger>
  *   <SelectValue placeholder="Select an option" />
  * </SelectTrigger>
+ * ```
  */
 export const SelectTrigger = ({
   className,
@@ -113,10 +119,12 @@ export const SelectScrollDownButton = ({
  * Handles portal, scroll buttons, styling and animations.
  *
  * @example
+ * ```tsx
  * <SelectContent>
  *   <SelectItem value="option1">Option 1</SelectItem>
  *   <SelectItem value="option2">Option 2</SelectItem>
  * </SelectContent>
+ * ```
  */
 export const SelectContent = ({
   className,
@@ -155,9 +163,11 @@ export const SelectContent = ({
  * Provides a label for a group of options.
  *
  * @example
+ * ```tsx
  * <SelectLabel>Category</SelectLabel>
  * <SelectItem value="1">Option 1</SelectItem>
  * <SelectItem value="2">Option 2</SelectItem>
+ * ```
  */
 export const SelectLabel = ({
   className,
@@ -181,13 +191,17 @@ type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item> & {
  * Represents a single selectable option.
  *
  * @example
+ * ```tsx
  * <SelectItem value="1">Option 1</SelectItem>
+ * ```
  *
  * @example
+ * ```tsx
  * // With custom text, for complex ReactNode labels
  * <SelectItem value="1" itemText="Custom text">
  *   <div>Option <b>1</b></div>
  * </SelectItem>
+ * ```
  */
 export const SelectItem = ({
   className,
@@ -225,9 +239,11 @@ export const SelectItem = ({
  * Creates a visual divider between groups of items.
  *
  * @example
+ * ```tsx
  * <SelectItem value="1">Option 1</SelectItem>
  * <SelectSeparator />
  * <SelectItem value="2">Option 2</SelectItem>
+ * ```
  */
 export const SelectSeparator = ({
   className,

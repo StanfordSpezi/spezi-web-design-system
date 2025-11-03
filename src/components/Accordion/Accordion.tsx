@@ -18,9 +18,10 @@ import { cn } from "@/utils/className";
 /**
  * An accordion is a vertically stacked set of interactive headings that each reveal a section of content.
  *
- * For unstyled variant just for one trigger, see `Collapsible`.
+ * For unstyled variant just for one trigger, see {@link CollapsibleRoot|Collapsible}.
  *
  * @example
+ * ```tsx
  * // Just one item can be opened at once
  * <AccordionRoot type="single" collapsible>
  *   <AccordionItem value="item-1">
@@ -32,14 +33,16 @@ import { cn } from "@/utils/className";
  *     <AccordionContent>It comes with default styling.</AccordionContent>
  *   </AccordionItem>
  * </Accordion>
+ * ```
  *
  * @example
+ * ```tsx
  * // Multiple items can be opened simultaneously
  * <AccordionRoot type="multiple">
  *   <AccordionItem value="item-1">...</AccordionItem>
  *   <AccordionItem value="item-2">...</AccordionItem>
  * </Accordion>
- *
+ * ```
  */
 export const AccordionRoot = (
   props: ComponentProps<typeof AccordionPrimitive.Root>,
@@ -50,10 +53,12 @@ export const AccordionRoot = (
  * Each item needs a unique `value` prop to identify it.
  *
  * @example
+ * ```tsx
  * <AccordionItem value="item-1">
  *   <AccordionTrigger>Trigger text</AccordionTrigger>
  *   <AccordionContent>Content</AccordionContent>
  * </AccordionItem>
+ * ```
  */
 export const AccordionItem = ({
   className,
@@ -68,10 +73,12 @@ export const AccordionItem = ({
 
 /**
  * The trigger button that toggles the expanded state of an accordion item.
- * Must be a direct child of `AccordionItem`.
+ * Must be a direct child of {@link AccordionItem}.
  *
  * @example
+ * ```tsx
  * <AccordionTrigger>Section title</AccordionTrigger>
+ * ```
  */
 export const AccordionTrigger = ({
   className,
@@ -95,14 +102,16 @@ export const AccordionTrigger = ({
 
 /**
  * The expandable content section of an accordion item.
- * Must be a direct child of `AccordionItem`.
+ * Must be a direct child of {@link AccordionItem}.
  *
- * Features smooth animation through the CollapsiblePrimitive component.
+ * Features smooth animation through the {@link CollapsiblePrimitive} component.
  *
  * @example
+ * ```tsx
  * <AccordionContent>
  *   Content that will be revealed when the accordion item is expanded.
  * </AccordionContent>
+ * ```
  */
 export const AccordionContent = ({
   className,

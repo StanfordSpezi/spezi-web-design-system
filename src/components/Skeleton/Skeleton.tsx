@@ -22,8 +22,10 @@ type SkeletonProps = ComponentProps<"div"> & {
  *
  *
  * @example
+ * ```tsx
  * // Basic usage, width and height classes are necessary
  * <Skeleton className="w-12 h-4">
+ * ```
  */
 export const Skeleton = ({ className, round, ...props }: SkeletonProps) => (
   <div

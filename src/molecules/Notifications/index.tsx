@@ -6,6 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="molecules-notifications--basic" />
+ * @packageDocumentation
+ */
 export * from "./NotificationLink";
 export * from "./NotificationTime";
 export * from "./NotificationTitle";

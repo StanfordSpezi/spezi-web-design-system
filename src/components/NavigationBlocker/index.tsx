@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-navigationblocker--default" />
+ * @packageDocumentation
+ */
 export * from "./NavigationBlocker";

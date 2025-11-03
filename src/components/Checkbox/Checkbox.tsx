@@ -15,21 +15,25 @@ type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 /**
  * Checkbox component, it implements just the Checkbox control input.
  *
- * Use [CheckboxGroup](src/components/CheckboxGroup) for a complete checkbox selection list component.
+ * Use {@link CheckboxGroup} for a complete checkbox selection list component.
  *
  * @example
+ * ```tsx
  * // It's typically used with a SideLabel for proper labeling
  * <SideLabel label="Show unread only">
  *   <Checkbox checked={checked} onCheckedChange={setChecked} />
  * </SideLabel>
+ * ```
  *
  * @example
+ * ```tsx
  * // With aria-label for standalone usage
  * <Checkbox
  *   checked={checked}
  *   onCheckedChange={setChecked}
  *   aria-label="Checkbox"
  * />
+ * ```
  */
 export const Checkbox = ({ className, ...props }: CheckboxProps) => (
   <CheckboxPrimitive.Root

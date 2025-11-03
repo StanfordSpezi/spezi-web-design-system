@@ -19,10 +19,11 @@ import { cn } from "@/utils/className";
 /**
  * Root command component built on top of [cmdk](https://github.com/pacocoursey/cmdk).
  *
- * Provides the container and base styles. Compose with `CommandInput`, `CommandList`,
- * `CommandGroup`, `CommandItem`, `CommandSeparator`, `CommandEmpty`, and `CommandShortcut`.
+ * Provides the container and base styles. Compose with {@link CommandInput}, {@link CommandList},
+ * {@link CommandGroup}, {@link CommandItem}, {@link CommandSeparator}, {@link CommandEmpty}, and {@link CommandShortcut}.
  *
  * @example
+ * ```tsx
  * // Basic searchable list
  * <Command>
  *   <CommandInput placeholder="Search..." />
@@ -42,6 +43,7 @@ import { cn } from "@/utils/className";
  *     </CommandGroup>
  *   </CommandList>
  * </Command>
+ * ```
  */
 export const Command = ({
   className,
@@ -72,12 +74,13 @@ interface CommandDialogContentProps
 }
 
 /**
- * Command dialog content composed of `DialogContent` and `Command`.
+ * Command dialog content composed of {@link DialogContent} and {@link Command}.
  *
- * Use this inside your own `Dialog` wrapper for maximum composability.
- * The `title` and `description` are announced to assistive tech but are visually hidden.
+ * Use this inside your own Dialog wrapper for maximum composability.
+ * The {@link CommandDialogContentProps#title|title} and {@link CommandDialogContentProps#description|description} are announced to assistive tech but are visually hidden.
  *
  * @example
+ * ```tsx
  * const [open, setOpen] = useState(false);
  * <Dialog open={open} onOpenChange={setOpen}>
  *   <CommandDialogContent title="Command Palette">
@@ -89,6 +92,7 @@ interface CommandDialogContentProps
  *     </CommandList>
  *   </CommandDialogContent>
  * </Dialog>
+ * ```
  */
 export const CommandDialogContent = ({
   title = "Command Palette",
@@ -118,9 +122,10 @@ export const CommandDialogContent = ({
 /**
  * Search input with an inline search icon and bottom border.
  *
- * Place inside `Command` (or compose with `Dialog` using `CommandDialogContent`) to filter list items automatically.
+ * Place inside {@link Command} (or compose with {@link Dialog} using {@link CommandDialogContent}) to filter list items automatically.
  *
  * @example
+ * ```tsx
  * <Command>
  *   <CommandInput placeholder="Search..." />
  *   <CommandList>
@@ -128,6 +133,7 @@ export const CommandDialogContent = ({
  *     <CommandItem>Calculator</CommandItem>
  *   </CommandList>
  * </Command>
+ * ```
  */
 export const CommandInput = ({
   className,
@@ -154,15 +160,17 @@ export const CommandInput = ({
 /**
  * Scrollable list container for groups and items.
  *
- * Must wrap `CommandGroup`, `CommandItem`, `CommandEmpty`, and `CommandSeparator`.
+ * Must wrap {@link CommandGroup}, {@link CommandItem}, {@link CommandEmpty}, and {@link CommandSeparator}.
  *
  * @example
+ * ```tsx
  * <CommandList>
  *   <CommandEmpty>No results</CommandEmpty>
  *   <CommandGroup heading="General">
  *     <CommandItem>Open</CommandItem>
  *   </CommandGroup>
  * </CommandList>
+ * ```
  */
 export const CommandList = ({
   className,
@@ -182,9 +190,11 @@ export const CommandList = ({
  * Displayed when there are no results.
  *
  * @example
+ * ```tsx
  * <CommandList>
  *   <CommandEmpty>No results found.</CommandEmpty>
  * </CommandList>
+ * ```
  */
 export const CommandEmpty = ({
   className,
@@ -208,11 +218,13 @@ export const CommandEmpty = ({
  * Group container with heading support.
  *
  * @example
+ * ```tsx
  * <CommandList>
  *   <CommandGroup heading="Suggestions">
  *     <CommandItem>Calendar</CommandItem>
  *   </CommandGroup>
  * </CommandList>
+ * ```
  */
 export const CommandGroup = ({
   className,
@@ -232,11 +244,13 @@ export const CommandGroup = ({
  * Visual separator between items/groups.
  *
  * @example
+ * ```tsx
  * <CommandList>
  *   <CommandGroup heading="General" />
  *   <CommandSeparator />
  *   <CommandGroup heading="Settings" />
  * </CommandList>
+ * ```
  */
 export const CommandSeparator = ({
   className,
@@ -253,10 +267,12 @@ export const CommandSeparator = ({
  * Selectable item row.
  *
  * @example
+ * ```tsx
  * <CommandItem>
  *   Open File
  *   <CommandShortcut>⌘O</CommandShortcut>
  * </CommandItem>
+ * ```
  */
 export const CommandItem = ({
   className,
@@ -276,10 +292,12 @@ export const CommandItem = ({
  * Right-aligned keyboard shortcut hint.
  *
  * @example
+ * ```tsx
  * <CommandItem>
  *   Preferences
  *   <CommandShortcut>⌘,</CommandShortcut>
  * </CommandItem>
+ * ```
  */
 export const CommandShortcut = ({
   className,

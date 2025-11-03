@@ -19,12 +19,14 @@ import { times } from "@/utils/misc";
  * Controls behavior like focusing, keyboard navigation, and value management.
  *
  * @example
+ * ```tsx
  * <InputOTPRoot maxLength={2}>
  *   <InputOTPGroup>
  *     <InputOTPSlot index={0} />
  *     <InputOTPSlot index={1} />
  *   </InputOTPGroup>
  * </InputOTPRoot>
+ * ```
  */
 export const InputOTPRoot = ({
   className,
@@ -48,6 +50,7 @@ export const InputOTPRoot = ({
  * Useful for formatting OTP codes with visual separators between groups.
  *
  * @example
+ * ```tsx
  * <InputOTPRoot maxLength={6}>
  *   <InputOTPGroup>
  *     <InputOTPSlot index={0} />
@@ -61,6 +64,7 @@ export const InputOTPRoot = ({
  *     <InputOTPSlot index={5} />
  *   </InputOTPGroup>
  * </InputOTPRoot>
+ * ```
  */
 export const InputOTPGroup = ({
   className,
@@ -79,7 +83,9 @@ type InputOTPSlotProps = ComponentProps<"div"> & { index: number };
  * Automatically applies border radius to the first and last slots in a group.
  *
  * @example
+ * ```tsx
  * <InputOTPSlot index={0} />
+ * ```
  */
 export const InputOTPSlot = ({
   index,
@@ -115,6 +121,7 @@ export const InputOTPSlot = ({
  * Includes proper accessibility attributes for screen readers.
  *
  * @example
+ * ```tsx
  * <InputOTPRoot>
  *   <InputOTPGroup>
  *     ...
@@ -124,6 +131,7 @@ export const InputOTPSlot = ({
  *     ...
  *   </InputOTPGroup>
  * </InputOTPRoot>
+ * ```
  */
 export const InputOTPSeparator = ({ ...props }: ComponentProps<"div">) => (
   <div role="separator" {...props}>
@@ -138,13 +146,16 @@ type InputOTPProps = Omit<ComponentProps<typeof OTPInput>, "render">;
  * Built on top of [input-otp](https://github.com/guilhermerodz/input-otp#otpinput).
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <InputOTP
  *   maxLength={6}
  *   onComplete={(code) => verifyCode(code)}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With separator
  * <InputOTPRoot maxLength={6}>
  *   <InputOTPGroup>
@@ -159,6 +170,7 @@ type InputOTPProps = Omit<ComponentProps<typeof OTPInput>, "render">;
  *     <InputOTPSlot index={5} />
  *   </InputOTPGroup>
  * </InputOTPRoot>
+ * ```
  */
 export const InputOTP = ({ maxLength, ...props }: InputOTPProps) => (
   <InputOTPRoot maxLength={maxLength} {...props}>

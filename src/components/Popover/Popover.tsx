@@ -40,10 +40,12 @@ export const PopoverArrow = PopoverPrimitive.Arrow;
  * Provides consistent spacing and alignment for header content.
  *
  * @example
+ * ```tsx
  * <PopoverHeader>
  *   <PopoverTitle>Settings</PopoverTitle>
  *   <PopoverDescription>Configure your preferences</PopoverDescription>
  * </PopoverHeader>
+ * ```
  */
 export const PopoverHeader = ({
   className,
@@ -63,7 +65,9 @@ export const PopoverHeader = ({
  * Typically used within PopoverHeader.
  *
  * @example
+ * ```tsx
  * <PopoverTitle>Account Settings</PopoverTitle>
+ * ```
  */
 export const PopoverTitle = ({ className, ...props }: ComponentProps<"h6">) => (
   <h6 className={cn("text-lg font-semibold", className)} {...props} />
@@ -74,7 +78,9 @@ export const PopoverTitle = ({ className, ...props }: ComponentProps<"h6">) => (
  * Rendered with muted styling to create visual hierarchy.
  *
  * @example
+ * ```tsx
  * <PopoverDescription>Manage your account settings and preferences</PopoverDescription>
+ * ```
  */
 export const PopoverDescription = ({
   className,
@@ -89,12 +95,14 @@ export const PopoverDescription = ({
  * Positioned in the top-right corner of the popover by default.
  *
  * @example
+ * ```tsx
  * <PopoverContent>
  *   <PopoverCloseX />
  *   <PopoverHeader>
  *     <PopoverTitle>Settings</PopoverTitle>
  *   </PopoverHeader>
  * </PopoverContent>
+ * ```
  */
 export const PopoverCloseX = ({
   className,
@@ -125,6 +133,7 @@ type PopoverContentProps = ComponentProps<typeof PopoverPrimitive.Content> & {
  * Handles portal, arrow support, styling and animations.
  *
  * @example
+ * ```tsx
  * <PopoverContent>
  *   <PopoverHeader>
  *     <PopoverTitle>Settings</PopoverTitle>
@@ -132,6 +141,7 @@ type PopoverContentProps = ComponentProps<typeof PopoverPrimitive.Content> & {
  *   </PopoverHeader>
  *   <PopoverCloseX />
  * </PopoverContent>
+ * ```
  */
 export const PopoverContent = ({
   className,

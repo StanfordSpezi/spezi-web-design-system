@@ -15,18 +15,24 @@ import { cn } from "@/utils/className";
  * Built on top of [radix-ui Switch](https://www.radix-ui.com/primitives/docs/components/switch).
  *
  * @example
+ * ```tsx
  * // Basic usage
  * <Switch checked={isEnabled} onCheckedChange={setIsEnabled} />
+ * ```
  *
  * @example
+ * ```tsx
  * // With label
  * <SideLabel label="Enable notifications">
  *   <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
  * </SideLabel>
+ * ```
  *
  * @example
+ * ```tsx
  * // Disabled state
  * <Switch disabled />
+ * ```
  */
 export const Switch = ({
   className,

@@ -6,4 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="components-spinner--default" />
+ * @packageDocumentation
+ */
 export * from "./Spinner";

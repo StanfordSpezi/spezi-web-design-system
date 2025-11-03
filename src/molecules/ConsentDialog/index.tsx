@@ -6,5 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+/**
+ * ## Storybook
+ * <StorybookEmbed id="molecules-consentdialog--default" />
+ * @packageDocumentation
+ */
 export * from "./ConsentDialog";
 export { useConsentDialog, ConsentDialogContext } from "./ConsentDialogContext";

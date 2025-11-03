@@ -70,14 +70,17 @@ export type CalendarProps = DayPickerProps & {
  * Built on top of [react-day-picker](https://react-day-picker.js.org/).
  *
  * @example
+ * ```tsx
  * // Basic usage with single date selection
  * <Calendar
  *   mode="single"
  *   selected={date}
  *   onSelect={setDate}
  * />
+ * ```
  *
  * @example
+ * ```tsx
  * // With time picker
  * <Calendar
  *   mode="single"
@@ -85,6 +88,7 @@ export type CalendarProps = DayPickerProps & {
  *   onSelect={setDate}
  *   showTimePicker
  * />
+ * ```
  */
 export const Calendar = (props: CalendarProps) => {
   const {
