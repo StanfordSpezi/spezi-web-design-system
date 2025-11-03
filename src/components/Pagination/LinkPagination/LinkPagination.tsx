@@ -35,9 +35,10 @@ export interface LinkPaginationProps extends UsePaginationProps {
   page: number;
   /**
    * Translates page number to URL.
+   *
    * @example
    * ```ts
-   * (page) => `/users?page=${page}`
+   * (page) => "/users?page=" + page
    * ```
    */
   getHref: (page: number) => string;
