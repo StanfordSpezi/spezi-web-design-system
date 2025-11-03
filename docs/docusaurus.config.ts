@@ -167,7 +167,7 @@ const config: Config = {
             },
             {
               label: "API Reference",
-              to: "/api",
+              to: "/api/SpeziProvider",
             },
           ],
         },
