@@ -41,7 +41,7 @@ As part of the broader **Spezi Web ecosystem**, this library serves as the found
 
 - 🚀 **[Getting Started](https://spezi.health/spezi-web-design-system/docs/docs/getting-started)** - Installation, setup, and usage guide
 - 📚 **[Interactive Storybook](https://spezi.health/spezi-web-design-system/storybook)** - Browse components, view live examples, and experiment with props
-- 📖 **[API Reference](https://spezi.health/spezi-web-design-system/docs/api)** - Detailed technical documentation and API reference
+- 📖 **[API Reference](https://spezi.health/spezi-web-design-system/docs/api/SpeziProvider)** - Detailed technical documentation and API reference
 - 🏗️ **[Template Application](https://github.com/StanfordSpezi/spezi-web-template-application)** - Get started quickly with a complete application setup
 
 ## Spezi Web Ecosystem
