@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: MIT
 #
 
-name: Deploy Storybook
+name: Deploy to GitHub Pages
 
 on:
   release:
@@ -15,20 +15,21 @@ on:
   workflow_call:
 
 concurrency:
-  group: storybook-deployment
+  group: pages-deployment
   cancel-in-progress: false
 
 jobs:
-  deploy-storybook:
-    name: Deploy Storybook to GitHub Pages
+  build-and-deploy:
+    name: Build and Deploy to GitHub Pages
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
       id-token: write
     env:
+      DOCS_OUTPUT_DIR: ./docs/build
       STORYBOOK_OUTPUT_DIR: ./storybook-static
-      DEPLOY_PATH: ./deploy/storybook
+      DEPLOY_PATH: ./deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,13 +39,22 @@ jobs:
           node-version: '22.x'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          cd docs
+          npm ci
       - name: Build Storybook
         run: npm run build-storybook
+      - name: Build Docs
+        run: |
+          cd docs
+          npm run build
       - name: Prepare deployment directory
         run: |
-          mkdir -p ${{ env.DEPLOY_PATH }}
-          cp -r ${{ env.STORYBOOK_OUTPUT_DIR }}/* ${{ env.DEPLOY_PATH }}/
+          mkdir -p ${{ env.DEPLOY_PATH }}/storybook
+          mkdir -p ${{ env.DEPLOY_PATH }}/docs
+          cp -r ${{ env.STORYBOOK_OUTPUT_DIR }}/* ${{ env.DEPLOY_PATH }}/storybook/
+          cp -r ${{ env.DOCS_OUTPUT_DIR }}/* ${{ env.DEPLOY_PATH }}/docs/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
