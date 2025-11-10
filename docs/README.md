@@ -14,7 +14,7 @@ This documentation website is built using [Docusaurus 3](https://docusaurus.io/)
 
 ## Prerequisites
 
-- Node.js >= 22.0
+- Node.js >= 24.0
 - npm package manager
 
 ## Installation
