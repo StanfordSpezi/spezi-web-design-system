@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Clean Install
         run: npm ci
@@ -44,7 +44,7 @@ jobs:
     name: ESLint
     uses: StanfordBDHG/.github/.github/workflows/eslint.yml@v2
     with:
-      nodeVersion: 22
+      nodeVersion: 24
     permissions:
       contents: read
       checks: write
@@ -52,6 +52,6 @@ jobs:
     name: Test and Coverage
     uses: StanfordBDHG/.github/.github/workflows/npm-test-and-coverage.yml@v2
     with:
-      nodeVersion: 22
+      nodeVersion: 24
     secrets:
       token: ${{ secrets.CODECOV_TOKEN }}
