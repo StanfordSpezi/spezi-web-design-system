@@ -344,6 +344,7 @@
   },
   "devDependencies": {
     "@stanfordspezi/spezi-web-configurations": "^0.6.0",
+    "@storybook/addon-docs": "^10.0.6",
     "@storybook/react-vite": "^10.0.6",
     "@tailwindcss/postcss": "^4.1.17",
     "@tanstack/react-query": "^5.90.7",
