@@ -24,7 +24,7 @@ describe("useMedia", () => {
 
   const mockMatchMedia = (matches: boolean) => {
     const mediaQueryList = createMediaQueryList(matches);
-    vi.spyOn(window, "matchMedia").mockReturnValue(mediaQueryList);
+    window.matchMedia = vi.fn().mockImplementation(() => mediaQueryList);
     return mediaQueryList;
   };
 

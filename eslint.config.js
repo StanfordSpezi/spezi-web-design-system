@@ -6,11 +6,13 @@
 // SPDX-License-Identifier: MIT
 //
 
-const { getEslintConfig } = require("@stanfordspezi/spezi-web-configurations");
+const {
+  getEslintReactConfig,
+} = require("@stanfordspezi/spezi-web-configurations");
 const jsdoc = require("eslint-plugin-jsdoc");
 
 module.exports = [
-  ...getEslintConfig({ tsconfigRootDir: __dirname }),
+  ...getEslintReactConfig({ tsconfigRootDir: __dirname }),
   {
     files: ["**/*.{js,ts,tsx}"],
     plugins: {
