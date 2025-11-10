@@ -39,9 +39,9 @@ As part of the broader **Spezi Web ecosystem**, this library serves as the found
 
 ## Documentation
 
-- 🚀 **[Getting Started](https://spezi.health/spezi-web-design-system/docs/getting-started)** - Installation, setup, and usage guide
+- 🚀 **[Getting Started](https://spezi.health/spezi-web-design-system/docs/docs/getting-started)** - Installation, setup, and usage guide
 - 📚 **[Interactive Storybook](https://spezi.health/spezi-web-design-system/storybook)** - Browse components, view live examples, and experiment with props
-- 📖 **[API Reference](https://spezi.health/spezi-web-design-system/docs/api)** - Detailed technical documentation and API reference
+- 📖 **[API Reference](https://spezi.health/spezi-web-design-system/docs/api/SpeziProvider)** - Detailed technical documentation and API reference
 - 🏗️ **[Template Application](https://github.com/StanfordSpezi/spezi-web-template-application)** - Get started quickly with a complete application setup
 
 ## Spezi Web Ecosystem
@@ -65,19 +65,19 @@ Refer to them if you need inspiration or guidance on how to use the library in y
 
 ## Getting Started
 
-For detailed setup instructions, configuration, and usage examples, see the **[Getting Started guide](https://spezi.health/spezi-web-design-system/docs/getting-started)**.
+For detailed setup instructions, configuration, and usage examples, see the **[Getting Started guide](https://spezi.health/spezi-web-design-system/docs/docs/getting-started)**.
 
 ## Why Spezi?
 
 Spezi Web Design System strikes a balance between highly opinionated frameworks and copy-paste patterns. We provide package-based distribution for automatic updates, strong opinions for faster development, and escape hatches when you need deep customization.
 
-**[Read more about our rationale, comparisons with alternatives, and detailed trade-offs →](https://spezi.health/spezi-web-design-system/docs/why-spezi)**
+**[Read more about our rationale, comparisons with alternatives, and detailed trade-offs →](https://spezi.health/spezi-web-design-system/docs/docs/why-spezi)**
 
 ## Technology Stack
 
 Built on modern standards: TypeScript, React 19, Tailwind CSS v4, and Radix UI. Includes integrations with React Hook Form, Zod, TanStack Table, and more.
 
-**[View complete technology stack and rationale →](https://spezi.health/spezi-web-design-system/docs/technology-stack)**
+**[View complete technology stack and rationale →](https://spezi.health/spezi-web-design-system/docs/docs/technology-stack)**
 
 ## License
 
