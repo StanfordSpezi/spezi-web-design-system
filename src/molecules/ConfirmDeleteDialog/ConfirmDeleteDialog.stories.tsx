@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from "@storybook/addon-actions";
 import { type Meta, type StoryObj } from "@storybook/react";
+import { action } from "storybook/actions";
 import { ConfirmDeleteDialog } from "./ConfirmDeleteDialog";
 
 const meta: Meta<typeof ConfirmDeleteDialog> = {

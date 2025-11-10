@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from "@storybook/addon-actions";
-import { useArgs } from "@storybook/core/preview-api";
 import { type Meta, type StoryObj } from "@storybook/react";
+import { action } from "storybook/actions";
+import { useArgs } from "storybook/preview-api";
 import { RadioGroup } from "./RadioGroup";
 
 const meta: Meta<typeof RadioGroup> = {

@@ -7,8 +7,8 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import { X } from "lucide-react";
+import { fn } from "storybook/test";
 import { Button, buttonVariants } from "./Button";
 
 const meta: Meta<typeof Button> = {
