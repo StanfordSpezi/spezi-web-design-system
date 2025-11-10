@@ -6,10 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { useArgs } from "@storybook/core/preview-api";
 import { type Meta, type StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import { type ComponentProps } from "react";
+import { useArgs } from "storybook/preview-api";
+import { fn } from "storybook/test";
 import { SideLabel } from "@/components/SideLabel";
 import { Checkbox } from "./Checkbox";
 

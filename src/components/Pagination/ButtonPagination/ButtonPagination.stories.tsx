@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { action } from "@storybook/addon-actions";
 import { type Meta, type StoryObj } from "@storybook/react";
+import { action } from "storybook/actions";
 import { ButtonPagination } from "./ButtonPagination";
 
 const meta: Meta<typeof ButtonPagination> = {

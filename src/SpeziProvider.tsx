@@ -11,12 +11,9 @@ import {
   createContext,
   type ReactNode,
   useContext,
-  useLayoutEffect,
   useMemo,
 } from "react";
 import { messages as defaultMessages, type AllMessages } from "@/messages";
-import { lightTheme } from "@/theme/light";
-import { type Theme } from "@/theme/utils";
 
 /**
  * Allows injecting the necessary router-related components.
@@ -58,10 +55,6 @@ export const useSpeziContext = () => {
 interface SpeziProviderProps extends SpeziContextType {
   children?: ReactNode;
   /**
-   * Allows customizing default CSS variables for the theme.
-   */
-  theme?: Partial<Theme>;
-  /**
    * Allows overriding default localization messages.
    */
   messages?: Partial<AllMessages>;
@@ -102,18 +95,8 @@ interface SpeziProviderProps extends SpeziContextType {
 export const SpeziProvider = ({
   children,
   messages,
-  theme,
   router,
 }: SpeziProviderProps) => {
-  useLayoutEffect(() => {
-    const resolvedTheme = { ...lightTheme, ...theme };
-    Object.entries(resolvedTheme).forEach(([key, value]) => {
-      if (value) {
-        document.documentElement.style.setProperty(`--${key}`, value);
-      }
-    });
-  }, [theme]);
-
   const resolvedMessages = useMemo(
     () => ({ ...defaultMessages, ...messages }),
     [messages],

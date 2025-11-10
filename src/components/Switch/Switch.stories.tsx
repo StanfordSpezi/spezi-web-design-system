@@ -7,8 +7,8 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import { useState } from "react";
+import { fn } from "storybook/test";
 import { SideLabel } from "@/components/SideLabel";
 import { Switch } from "./Switch";
 
