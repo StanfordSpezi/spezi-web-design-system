@@ -300,6 +300,10 @@
     "./utils/useIsScrolled": {
       "types": "./dist/utils/useIsScrolled.d.ts",
       "default": "./dist/utils/useIsScrolled.js"
+    },
+    "./utils/react": {
+      "types": "./dist/utils/react.d.ts",
+      "default": "./dist/utils/react.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
