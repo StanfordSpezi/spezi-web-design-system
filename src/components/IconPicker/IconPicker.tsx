@@ -7,12 +7,7 @@
 //
 
 import { DynamicIcon, type IconName } from "lucide-react/dynamic";
-import {
-  useCallback,
-  useState,
-  type ComponentProps,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { useCallback, useState, type ComponentProps } from "react";
 import { upperFirst } from "@/utils/misc";
 import { useOpenState } from "@/utils/useOpenState";
 import { Button } from "../Button";
@@ -21,7 +16,7 @@ import { PopoverContent, PopoverRoot, PopoverTrigger } from "../Popover";
 
 interface IconPickerProps
   extends Omit<
-      ComponentPropsWithoutRef<typeof PopoverTrigger>,
+      ComponentProps<typeof PopoverTrigger>,
       "onSelect" | "onOpenChange"
     >,
     ComponentProps<typeof PopoverRoot>,
