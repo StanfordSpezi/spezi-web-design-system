@@ -37,6 +37,8 @@ window.HTMLElement.prototype.scrollIntoView = vitest.fn();
 window.HTMLElement.prototype.releasePointerCapture = vitest.fn();
 window.HTMLElement.prototype.hasPointerCapture = vitest.fn();
 
+const queryItem = (value: string) => screen.queryAllByText(value).at(1);
+
 describe("Select", () => {
   it("renders accessible select", async () => {
     render(
@@ -54,10 +56,7 @@ describe("Select", () => {
       </Select>,
     );
 
-    const queryIpsum = () => screen.queryByText("Ipsum");
-    const querySir = () => screen.queryByText("Sir");
-
-    expect(queryIpsum()).not.toBeInTheDocument();
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
 
     const trigger = screen.getByRole("combobox", { name: "Trigger" });
     const pointerState = await userEvent.pointer({ target: trigger });
@@ -65,14 +64,15 @@ describe("Select", () => {
       pointerState,
     });
 
-    expect(await screen.findByText("Ipsum")).toBeInTheDocument();
-    const sirOption = querySir();
+    expect(screen.queryByRole("listbox")).toBeInTheDocument();
+    const sirOption = queryItem("Sir");
     expect(sirOption).toBeInTheDocument();
-    // sirOption existence is checked above
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await userEvent.click(sirOption!);
+    // @ts-expect-error sirOption is checked to be in the document
+    await userEvent.click(sirOption);
 
-    expect(queryIpsum()).not.toBeInTheDocument();
-    expect(querySir()).toBeInTheDocument();
+    // just in the hidden select
+    expect(screen.queryAllByText("Ipsum")).toHaveLength(1);
+    // both hidden select and trigger value
+    expect(screen.queryAllByText("Sir")).toHaveLength(2);
   });
 });
