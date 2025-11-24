@@ -25,3 +25,6 @@ export const Placeholder: Story = {
 export const Value: Story = {
   args: { value: "John Doe" },
 };
+export const Disabled: Story = {
+  args: { disabled: true, value: "Disabled input" },
+};
