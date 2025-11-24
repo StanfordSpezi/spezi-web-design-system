@@ -165,7 +165,14 @@ export const useSelectProvider = ({
 
   const onItemAdded = useCallback((itemValue: string, value: ItemsMapValue) => {
     setItems((prev) => {
-      if (prev.get(itemValue) === value.label) return prev;
+      const prevItem = prev.get(itemValue);
+      if (
+        prevItem &&
+        prevItem.label === prevItem.label &&
+        prevItem.itemText === value.itemText
+      ) {
+        return prev;
+      }
       return new Map(prev).set(itemValue, value);
     });
   }, []);
