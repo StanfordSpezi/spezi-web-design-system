@@ -70,7 +70,10 @@ export const TooltipContent = ({
 );
 
 export interface TooltipProps
-  extends Omit<ComponentProps<typeof TooltipPrimitive.Root>, "children">,
+  extends Omit<
+      ComponentProps<typeof TooltipPrimitive.Root>,
+      "children" | "delayDuration"
+    >,
     Pick<
       ComponentProps<typeof TooltipPrimitive.Content>,
       "sideOffset" | "className" | "side"
@@ -84,6 +87,11 @@ export interface TooltipProps
    * Tooltip's content.
    */
   tooltip?: ReactNode;
+  /**
+   * The duration from when the pointer enters the trigger until the tooltip gets opened.
+   * @defaultValue 0
+   */
+  delayDuration?: number;
 }
 
 /**
