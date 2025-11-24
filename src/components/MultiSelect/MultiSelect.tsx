@@ -16,8 +16,8 @@ import {
   useLayoutEffect,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
   type ReactNode,
+  type ComponentProps,
 } from "react";
 import { cn } from "@/utils/className";
 import { Badge } from "../Badge";
@@ -139,7 +139,7 @@ export const MultiSelect = ({
 };
 
 interface MultiSelectTriggerProps
-  extends Omit<ComponentPropsWithoutRef<typeof Button>, "size" | "variant"> {}
+  extends Omit<ComponentProps<typeof Button>, "size" | "variant"> {}
 
 /**
  * Clickable trigger element that opens the selection popover.
@@ -185,7 +185,7 @@ export const MultiSelectTrigger = ({
 };
 
 interface MultiSelectValueProps
-  extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
+  extends Omit<ComponentProps<"div">, "children"> {
   /**
    * Placeholder text to show when no items are selected.
    */
@@ -329,7 +329,7 @@ export const MultiSelectValue = ({
 };
 
 interface MultiSelectContentProps
-  extends Omit<ComponentPropsWithoutRef<typeof Command>, "children"> {
+  extends Omit<ComponentProps<typeof Command>, "children"> {
   /**
    * Enable or disable the search input. Accepts three possible values:
    * - `true`: shows a search input with default placeholder and empty message.
@@ -418,7 +418,7 @@ export const MultiSelectContent = ({
 };
 
 interface MultiSelectItemProps
-  extends Omit<ComponentPropsWithoutRef<typeof CommandItem>, "value"> {
+  extends Omit<ComponentProps<typeof CommandItem>, "value"> {
   /**
    * The unique value for this item within the selection.
    */
@@ -489,10 +489,8 @@ export const MultiSelectItem = ({
  * ```
  */
 export const MultiSelectGroup = (
-  props: ComponentPropsWithoutRef<typeof CommandGroup>,
-) => {
-  return <CommandGroup {...props} />;
-};
+  props: ComponentProps<typeof CommandGroup>,
+) => <CommandGroup {...props} />;
 
 /**
  * Visual separator between groups or sections in the list.
@@ -507,7 +505,5 @@ export const MultiSelectGroup = (
  * ```
  */
 export const MultiSelectSeparator = (
-  props: ComponentPropsWithoutRef<typeof CommandSeparator>,
-) => {
-  return <CommandSeparator {...props} />;
-};
+  props: ComponentProps<typeof CommandSeparator>,
+) => <CommandSeparator {...props} />;
