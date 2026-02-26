@@ -21,11 +21,36 @@ interface RowDropdownMenuProps
    * Pass DropdownMenuContent children.
    */
   children?: ReactNode;
+  /**
+   * Unique name of an item
+   */
   itemName?: string;
 }
 
 /**
  * Standard DataTable row actions dropdown menu.
+ *
+ * Typically used within a DataTable column definition to provide per-row actions.
+ *
+ * @example
+ * ```tsx
+ * // Basic usage inside a DataTable column
+ * columnHelper.display({
+ *   id: "actions",
+ *   header: "",
+ *   cell: (props) => (
+ *     <RowDropdownMenu itemName={props.original.name}>
+ *       <DropdownMenuItem asChild>
+ *         <Link href="/details">View</Link>
+ *       </DropdownMenuItem>
+ *       <DropdownMenuItem onClick={() => handleDelete(props.row.original)}>
+ *         Delete
+ *       </DropdownMenuItem>
+ *     </RowDropdownMenu>
+ *   ),
+ * });
+ * })
+ * ```
  */
 export const RowDropdownMenu = ({
   children,
