@@ -7,7 +7,7 @@
 //
 
 import { Ellipsis } from "lucide-react";
-import { type ReactNode } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 import { Button } from "../../Button";
 import {
   DropdownMenu,
@@ -15,7 +15,8 @@ import {
   DropdownMenuTrigger,
 } from "../../DropdownMenu";
 
-interface RowDropdownMenuProps {
+interface RowDropdownMenuProps
+  extends Pick<ComponentProps<typeof DropdownMenuContent>, "align"> {
   /**
    * Pass DropdownMenuContent children.
    */
@@ -29,6 +30,7 @@ interface RowDropdownMenuProps {
 export const RowDropdownMenu = ({
   children,
   itemName,
+  align = "end",
 }: RowDropdownMenuProps) => (
   <div className="text-right">
     <DropdownMenu>
@@ -42,7 +44,7 @@ export const RowDropdownMenu = ({
           <Ellipsis className="size-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>{children}</DropdownMenuContent>
+      <DropdownMenuContent align={align}>{children}</DropdownMenuContent>
     </DropdownMenu>
   </div>
 );
