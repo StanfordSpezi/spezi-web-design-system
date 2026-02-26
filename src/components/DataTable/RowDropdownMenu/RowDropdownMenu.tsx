@@ -7,7 +7,7 @@
 //
 
 import { Ellipsis } from "lucide-react";
-import { type ReactNode } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 import { Button } from "../../Button";
 import {
   DropdownMenu,
@@ -15,20 +15,47 @@ import {
   DropdownMenuTrigger,
 } from "../../DropdownMenu";
 
-interface RowDropdownMenuProps {
+interface RowDropdownMenuProps
+  extends Pick<ComponentProps<typeof DropdownMenuContent>, "align"> {
   /**
    * Pass DropdownMenuContent children.
    */
   children?: ReactNode;
+  /**
+   * Unique name of an item
+   */
   itemName?: string;
 }
 
 /**
  * Standard DataTable row actions dropdown menu.
+ *
+ * Typically used within a DataTable column definition to provide per-row actions.
+ *
+ * @example
+ * ```tsx
+ * // Basic usage inside a DataTable column
+ * columnHelper.display({
+ *   id: "actions",
+ *   header: "",
+ *   cell: (props) => (
+ *     <RowDropdownMenu itemName={props.original.name}>
+ *       <DropdownMenuItem asChild>
+ *         <Link href="/details">View</Link>
+ *       </DropdownMenuItem>
+ *       <DropdownMenuItem onClick={() => handleDelete(props.row.original)}>
+ *         Delete
+ *       </DropdownMenuItem>
+ *     </RowDropdownMenu>
+ *   ),
+ * });
+ * })
+ * ```
  */
 export const RowDropdownMenu = ({
   children,
   itemName,
+  align = "end",
 }: RowDropdownMenuProps) => (
   <div className="text-right">
     <DropdownMenu>
@@ -42,7 +69,7 @@ export const RowDropdownMenu = ({
           <Ellipsis className="size-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>{children}</DropdownMenuContent>
+      <DropdownMenuContent align={align}>{children}</DropdownMenuContent>
     </DropdownMenu>
   </div>
 );
