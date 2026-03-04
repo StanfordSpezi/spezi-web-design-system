@@ -166,6 +166,7 @@ export const MultiSelectTrigger = ({
     <PopoverTrigger asChild>
       <Button
         {...props}
+        data-slot="multi-select-trigger"
         role={role}
         size={null}
         variant={null}
@@ -277,7 +278,7 @@ export const MultiSelectValue = ({
 
   if (selectedValues.size === 0 && placeholder) {
     return (
-      <span className="text-muted-foreground w-full min-w-0 overflow-hidden font-normal">
+      <span data-slot="multi-select-value" className="text-muted-foreground w-full min-w-0 overflow-hidden font-normal">
         {placeholder}
       </span>
     );
@@ -286,6 +287,7 @@ export const MultiSelectValue = ({
   return (
     <div
       {...props}
+      data-slot="multi-select-value"
       ref={handleResize}
       className={cn(
         "flex w-full gap-1.5 overflow-hidden",

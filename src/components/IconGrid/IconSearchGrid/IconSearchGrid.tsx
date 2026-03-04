@@ -42,7 +42,7 @@ export const IconSearchGrid = ({
 }: IconSearchGridProps) => {
   const [searchTerm, setSearchTerm] = useDebounce("", 200);
   return (
-    <div className="flex flex-col gap-4">
+    <div data-slot="icon-search-grid" className="flex flex-col gap-4">
       <div className="pr-2">
         <Input
           type="search"

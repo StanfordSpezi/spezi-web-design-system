@@ -52,6 +52,7 @@ export const PopoverHeader = ({
   ...props
 }: ComponentProps<"div">) => (
   <div
+    data-slot="popover-header"
     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
       className,
@@ -70,7 +71,7 @@ export const PopoverHeader = ({
  * ```
  */
 export const PopoverTitle = ({ className, ...props }: ComponentProps<"h6">) => (
-  <h6 className={cn("text-lg font-semibold", className)} {...props} />
+  <h6 data-slot="popover-title" className={cn("text-lg font-semibold", className)} {...props} />
 );
 
 /**
@@ -86,7 +87,7 @@ export const PopoverDescription = ({
   className,
   ...props
 }: ComponentProps<"h6">) => (
-  <p className={cn("text-muted-foreground text-sm", className)} {...props} />
+  <p data-slot="popover-description" className={cn("text-muted-foreground text-sm", className)} {...props} />
 );
 
 /**
@@ -109,6 +110,7 @@ export const PopoverCloseX = ({
   ...props
 }: ComponentProps<typeof PopoverPrimitive.Close>) => (
   <PopoverPrimitive.Close
+    data-slot="popover-close"
     className={cn(
       "focus-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
       className,
@@ -153,6 +155,7 @@ export const PopoverContent = ({
 }: PopoverContentProps) => (
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content
+      data-slot="popover-content"
       align={align}
       sideOffset={sideOffset}
       className={cn(

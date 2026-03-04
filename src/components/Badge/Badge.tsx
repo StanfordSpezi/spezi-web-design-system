@@ -122,6 +122,9 @@ export const Badge = ({
   const Component = asChild ? Slot.Root : "div";
   return (
     <Component
+      data-slot="badge"
+      data-variant={variant}
+      data-size={size}
       className={cn(badgeVariance({ variant, size }), className)}
       {...props}
     />

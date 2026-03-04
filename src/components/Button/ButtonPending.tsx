@@ -27,7 +27,7 @@ export const ButtonPending = ({
   size,
   ...props
 }: ButtonPendingProps) => (
-  <span className={cn("inline-flex-center relative", className)} {...props}>
+  <span data-slot="button-pending" className={cn("inline-flex-center relative", className)} {...props}>
     {isPending && (
       <div className="absolute" aria-hidden data-testid="buttonPendingLoader">
         <Loader2 className="animate-spin" />

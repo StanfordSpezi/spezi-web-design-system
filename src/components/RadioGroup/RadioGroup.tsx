@@ -102,6 +102,7 @@ export const RadioGroup = <T extends string>({
   ...props
 }: RadioGroupProps<T>) => (
   <RadioGroupPrimitive.Root
+    data-slot="radio-group"
     className={cn(
       "flex gap-x-4 gap-y-2",
       direction === "column" ? "flex-col" : "flex-wrap",

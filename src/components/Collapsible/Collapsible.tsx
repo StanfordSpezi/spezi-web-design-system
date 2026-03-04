@@ -83,6 +83,7 @@ export const CollapsibleContentRoot = ({
   const Comp = asChild ? Slot.Root : "div";
   return (
     <Comp
+      data-slot="collapsible-content-root"
       className={cn(
         "grid !transition-all data-[state=closed]:grid-rows-[0fr] data-[state=open]:grid-rows-[1fr]",
         className,
@@ -120,7 +121,7 @@ export const CollapsibleContentInner = ({
   ...props
 }: CollapsibleContentProps) => {
   const Comp = asChild ? Slot.Root : "div";
-  return <Comp className={cn("overflow-hidden", className)} {...props} />;
+  return <Comp data-slot="collapsible-content-inner" className={cn("overflow-hidden", className)} {...props} />;
 };
 
 /**

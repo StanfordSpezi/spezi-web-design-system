@@ -85,6 +85,7 @@ export const DashedSeparator = ({
   ...props
 }: DashedSeparatorProps) => (
   <Separator
+    data-slot="dashed-separator"
     orientation={orientation}
     className={cn(
       // We need this CSS variable so the bg class is applied in projects without a 'border' color var in the Tailwind config

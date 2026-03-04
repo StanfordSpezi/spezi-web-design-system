@@ -42,6 +42,7 @@ export const UserMenuItem = ({ name, img, ...props }: UserMenuItemProps) => {
   const { shrinkable } = useContext(DashboardContext);
   return (
     <Button
+      data-slot="user-menu-item"
       variant="ghost"
       className={cn(
         "mt-auto mb-2 p-2! transition",

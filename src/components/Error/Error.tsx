@@ -52,6 +52,7 @@ export const Error = ({
   if (checkEmpty && !children) return null;
   return (
     <p
+      data-slot="error"
       className={cn(
         "text-destructive mt-1.5 mb-1 text-xs leading-none",
         "min-h-5", // min-h-5 guarantees consistent spacing between Form fields

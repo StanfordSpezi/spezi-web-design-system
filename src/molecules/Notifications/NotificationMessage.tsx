@@ -22,6 +22,7 @@ export const NotificationMessage = ({
   const notification = useNotificationContext();
   return (
     <p
+      data-slot="notification-message"
       className={cn(
         "flex-1 text-sm",
         notification.isRead && "text-foreground/70",

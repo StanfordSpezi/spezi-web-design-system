@@ -70,6 +70,7 @@ export const DropdownMenuSubTrigger = ({
   inset?: boolean;
 }) => (
   <DropdownMenuPrimitive.SubTrigger
+    data-slot="dropdown-menu-sub-trigger"
     className={cn(
       "focus:bg-accent data-[state=open]:bg-accent flex cursor-default items-center gap-2 rounded-xs px-2 py-1.5 text-sm outline-hidden select-none",
       inset && "pl-8",
@@ -90,6 +91,7 @@ export const DropdownMenuSubContent = ({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) => (
   <DropdownMenuPrimitive.SubContent
+    data-slot="dropdown-menu-sub-content"
     className={cn(
       "animate-entrance-fade-slide bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-md border p-1",
       className,
@@ -137,6 +139,7 @@ export const DropdownMenuContent = ({
 }: DropdownMenuContentProps) => {
   const content = (
     <DropdownMenuPrimitive.Content
+      data-slot="dropdown-menu-content"
       sideOffset={sideOffset}
       className={cn(
         "animate-entrance-fade-slide bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-md",
@@ -182,6 +185,7 @@ export const DropdownMenuItem = ({
   inset?: boolean;
 }) => (
   <DropdownMenuPrimitive.Item
+    data-slot="dropdown-menu-item"
     className={cn(
       "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-xs px-2 py-1.5 text-sm outline-hidden transition select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:size-4",
       inset && "pl-8",
@@ -214,6 +218,7 @@ export const DropdownMenuCheckboxItem = ({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) => (
   <DropdownMenuPrimitive.CheckboxItem
+    data-slot="dropdown-menu-checkbox-item"
     className={cn(
       "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden transition select-none data-disabled:pointer-events-none data-disabled:opacity-50",
       className,
@@ -248,6 +253,7 @@ export const DropdownMenuRadioItem = ({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) => (
   <DropdownMenuPrimitive.RadioItem
+    data-slot="dropdown-menu-radio-item"
     className={cn(
       "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden transition select-none data-disabled:pointer-events-none data-disabled:opacity-50",
       className,
@@ -290,6 +296,7 @@ export const DropdownMenuLabel = ({
   ...props
 }: DropdownMenuLabelProps) => (
   <DropdownMenuPrimitive.Label
+    data-slot="dropdown-menu-label"
     className={cn(
       "px-2 py-1.5 text-sm font-semibold",
       inset && "pl-8",
@@ -319,6 +326,7 @@ export const DropdownMenuSeparator = ({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Separator>) => (
   <DropdownMenuPrimitive.Separator
+    data-slot="dropdown-menu-separator"
     className={cn("bg-muted -mx-1 my-1 h-px", className)}
     {...props}
   />
@@ -341,6 +349,7 @@ export const DropdownMenuShortcut = ({
   ...props
 }: ComponentProps<"span">) => (
   <span
+    data-slot="dropdown-menu-shortcut"
     className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
     {...props}
   />

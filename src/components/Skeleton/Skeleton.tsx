@@ -29,6 +29,7 @@ type SkeletonProps = ComponentProps<"div"> & {
  */
 export const Skeleton = ({ className, round, ...props }: SkeletonProps) => (
   <div
+    data-slot="skeleton"
     className={cn(
       "bg-accent animate-pulse",
       round ? "rounded-full" : "rounded-md",

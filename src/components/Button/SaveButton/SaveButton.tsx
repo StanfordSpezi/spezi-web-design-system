@@ -78,6 +78,7 @@ export const SaveButton = ({
 
   return (
     <Button
+      data-slot="save-button"
       disabled={disabled ?? isPending}
       isPending={isPending}
       variant={

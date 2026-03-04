@@ -46,6 +46,7 @@ export const SideLabel = ({
   ...props
 }: SideLabelProps) => (
   <label
+    data-slot="side-label"
     className={cn(
       "flex cursor-pointer gap-2.5 select-none",
       reverse && "flex-row-reverse",

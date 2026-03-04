@@ -20,6 +20,7 @@ export const NotFoundIcon = ({
   ...props
 }: Omit<ComponentProps<"div">, "children">) => (
   <div
+    data-slot="not-found-icon"
     className={cn("flex-center bg-muted mb-2 size-20 rounded-full", className)}
     {...props}
   >
@@ -35,6 +36,7 @@ export const NotFoundContainer = ({
   ...props
 }: ComponentProps<"div">) => (
   <div
+    data-slot="not-found"
     className={cn("flex-center grow flex-col gap-1", className)}
     {...props}
   />
@@ -48,7 +50,7 @@ export const NotFoundTitle = ({
   className,
   ...props
 }: ComponentProps<"h1">) => (
-  <h1 className={cn("text-2xl font-medium", className)} {...props} />
+  <h1 data-slot="not-found-title" className={cn("text-2xl font-medium", className)} {...props} />
 );
 
 /**
@@ -59,7 +61,7 @@ export const NotFoundParagraph = ({
   className,
   ...props
 }: ComponentProps<"p">) => (
-  <p className={cn("text-muted-foreground", className)} {...props} />
+  <p data-slot="not-found-paragraph" className={cn("text-muted-foreground", className)} {...props} />
 );
 
 interface NotFoundActionProps extends ComponentProps<typeof Button> {}

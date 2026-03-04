@@ -232,6 +232,7 @@ export const DataTable = <Data,>({
 
   return (
     <div
+      data-slot="data-table"
       className={cn(
         "bg-surface-primary rounded-md",
         bordered && "border",

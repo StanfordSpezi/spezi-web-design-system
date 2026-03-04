@@ -17,6 +17,7 @@ import { Button, type ButtonProps } from "../Button";
  */
 export const Pagination = ({ className, ...props }: ComponentProps<"nav">) => (
   <nav
+    data-slot="pagination"
     role="navigation"
     aria-label="pagination"
     className={cn("flex justify-center", className)}
@@ -35,7 +36,7 @@ export const PaginationContent = ({
   className,
   ...props
 }: ComponentProps<"ul">) => (
-  <ul className={cn("flex items-center gap-1", className)} {...props} />
+  <ul data-slot="pagination-content" className={cn("flex items-center gap-1", className)} {...props} />
 );
 
 /**
@@ -54,7 +55,7 @@ export const PaginationContent = ({
 export const PaginationItemContainer = ({
   className,
   ...props
-}: ComponentProps<"li">) => <li className={cn("", className)} {...props} />;
+}: ComponentProps<"li">) => <li data-slot="pagination-item-container" className={cn("", className)} {...props} />;
 
 interface PaginationLinkProps extends ButtonProps {
   /**
@@ -86,6 +87,7 @@ export const PaginationItem = ({
   ...props
 }: PaginationLinkProps) => (
   <Button
+    data-slot="pagination-item"
     aria-current={isActive ? "page" : undefined}
     variant={isActive ? "outline" : "ghost"}
     size={size}
@@ -171,7 +173,7 @@ export const PaginationEllipsis = ({
   className,
   ...props
 }: ComponentProps<"span">) => (
-  <span aria-hidden className={cn("flex-center size-9", className)} {...props}>
+  <span data-slot="pagination-ellipsis" aria-hidden className={cn("flex-center size-9", className)} {...props}>
     <Ellipsis className="size-4" />
     <span className="sr-only">More pages</span>
   </span>

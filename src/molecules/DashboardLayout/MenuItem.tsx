@@ -77,6 +77,7 @@ export const MenuItem = ({
     <>
       <Link
         href={href}
+        data-slot="menu-item"
         className={cn(
           "focus-ring relative flex items-center gap-3 rounded-lg p-2 font-medium no-underline transition",
           isActive ?

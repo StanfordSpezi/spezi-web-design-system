@@ -13,8 +13,9 @@ import { cn } from "@/utils/className";
  * Table primitives for creating Table UI. For ready table component, use DataTable.
  */
 export const Table = ({ className, ...props }: ComponentProps<"table">) => (
-  <div className="relative w-full overflow-auto">
+  <div data-slot="table-wrapper" className="relative w-full overflow-auto">
     <table
+      data-slot="table"
       className={cn("w-full caption-bottom text-sm", className)}
       {...props}
     />
@@ -28,14 +29,14 @@ export const TableHeader = ({
   className,
   ...props
 }: ComponentProps<"thead">) => (
-  <thead className={cn("[&_tr]:border-b", className)} {...props} />
+  <thead data-slot="table-header" className={cn("[&_tr]:border-b", className)} {...props} />
 );
 
 /**
  * Styled `tbody` element.
  */
 export const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => (
-  <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+  <tbody data-slot="table-body" className={cn("[&_tr:last-child]:border-0", className)} {...props} />
 );
 
 /**
@@ -46,6 +47,7 @@ export const TableFooter = ({
   ...props
 }: ComponentProps<"tfoot">) => (
   <tfoot
+    data-slot="table-footer"
     className={cn(
       "bg-muted/50 border-t font-medium last:[&>tr]:border-b-0",
       className,
@@ -73,6 +75,7 @@ export const TableRow = ({
   ...props
 }: TableRowProps) => (
   <tr
+    data-slot="table-row"
     className={cn(
       "data-[state=selected]:bg-muted border-b transition",
       isHoverable && "hover:bg-muted/50",
@@ -91,6 +94,7 @@ export const TableRow = ({
  */
 export const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
   <th
+    data-slot="table-head"
     className={cn(
       "text-muted-foreground h-12 px-4 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0",
       className,
@@ -104,6 +108,7 @@ export const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
  */
 export const TableCell = ({ className, ...props }: ComponentProps<"td">) => (
   <td
+    data-slot="table-cell"
     className={cn(
       "p-4 text-left align-middle [&:has([role=checkbox])]:pr-0",
       className,

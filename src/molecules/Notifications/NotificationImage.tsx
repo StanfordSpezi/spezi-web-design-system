@@ -42,6 +42,7 @@ export const NotificationImage = ({
   const notification = useNotificationContext();
   return (
     <div
+      data-slot="notification-image"
       className={cn(
         "flex-center shrink-0",
         notification.isRead && "opacity-70",

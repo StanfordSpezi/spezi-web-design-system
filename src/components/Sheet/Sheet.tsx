@@ -91,6 +91,7 @@ export const SheetCloseX = ({
   ...props
 }: ComponentProps<typeof SheetPrimitive.Close>) => (
   <SheetPrimitive.Close
+    data-slot="sheet-close"
     className={cn(
       "focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
       className,

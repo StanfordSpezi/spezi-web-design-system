@@ -63,6 +63,8 @@ export const TooltipContent = ({
   ...props
 }: TooltipContentProps) => (
   <TooltipPrimitive.Content
+    data-slot="tooltip-content"
+    data-variant={variant}
     sideOffset={sideOffset}
     className={cn(tooltipVariance({ variant, className }))}
     {...props}
