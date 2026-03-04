@@ -39,7 +39,7 @@ interface RowDropdownMenuProps
  *   id: "actions",
  *   header: "",
  *   cell: (props) => (
- *     <RowDropdownMenu itemName={props.original.name}>
+ *     <RowDropdownMenu itemName={props.row.original.name}>
  *       <DropdownMenuItem asChild>
  *         <Link href="/details">View</Link>
  *       </DropdownMenuItem>
@@ -49,7 +49,6 @@ interface RowDropdownMenuProps
  *     </RowDropdownMenu>
  *   ),
  * });
- * })
  * ```
  */
 export const RowDropdownMenu = ({
