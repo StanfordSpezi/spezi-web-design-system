@@ -7,12 +7,7 @@
 //
 
 import { cva, type VariantProps } from "class-variance-authority";
-import {
-  type ComponentProps,
-  type ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import { type ComponentProps, type ReactNode, useState } from "react";
 import { cn } from "@/utils/className";
 import { isEmpty, type Nil } from "@/utils/misc";
 
@@ -127,10 +122,12 @@ export const Avatar = ({
   ...props
 }: AvatarProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [prevSrc, setPrevSrc] = useState(src);
 
-  useEffect(() => {
+  if (src !== prevSrc) {
+    setPrevSrc(src);
     setIsImageLoaded(false);
-  }, [src]);
+  }
 
   const fallbackContent =
     isImageLoaded ? null

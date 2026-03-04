@@ -157,6 +157,8 @@ const GridVirtualizer = ({
   showTooltip,
   getScrollElement,
 }: GridVirtualizerProps) => {
+  // Acknowledge, but ignore
+  // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
     count: Math.ceil(icons.length / columns),
     getScrollElement,
