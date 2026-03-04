@@ -119,8 +119,8 @@ export interface ButtonProps
  */
 export const Button = ({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "default",
   asChild,
   type = "button",
   isPending,
@@ -130,6 +130,9 @@ export const Button = ({
   const Comp = asChild ? Slot.Root : "button";
   return (
     <Comp
+      data-slot="button"
+      data-variant={variant}
+      data-size={size}
       className={buttonVariance({ variant, size, className })}
       type={type}
       aria-label={isPending ? "Loading" : undefined}

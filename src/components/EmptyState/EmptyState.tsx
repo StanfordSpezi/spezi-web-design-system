@@ -96,6 +96,7 @@ export const EmptyState = ({
   ...props
 }: EmptyStateProps) => (
   <div
+    data-slot="empty-state"
     role="status"
     aria-live="polite"
     className={cn("text-muted-foreground flex gap-3", className)}

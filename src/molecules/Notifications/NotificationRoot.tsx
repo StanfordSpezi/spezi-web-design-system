@@ -45,6 +45,7 @@ export const NotificationRoot = ({
   return (
     <NotificationContext.Provider value={notification}>
       <Component
+        data-slot="notification-root"
         className={cn(
           "flex gap-x-4 border-b border-b-neutral-200 px-3 py-4 last:border-b-0",
           className,

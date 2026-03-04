@@ -114,14 +114,17 @@ export interface BadgeProps
  */
 export const Badge = ({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "sm",
   asChild,
   ...props
 }: BadgeProps) => {
   const Component = asChild ? Slot.Root : "div";
   return (
     <Component
+      data-slot="badge"
+      data-variant={variant}
+      data-size={size}
       className={cn(badgeVariance({ variant, size }), className)}
       {...props}
     />

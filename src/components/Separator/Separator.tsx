@@ -55,6 +55,7 @@ export const Separator = ({
   ...props
 }: ComponentProps<typeof SeparatorPrimitive.Root>) => (
   <SeparatorPrimitive.Root
+    data-slot="separator"
     decorative={decorative ?? !!children}
     orientation={orientation}
     className={cn(

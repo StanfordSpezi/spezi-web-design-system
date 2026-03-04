@@ -90,6 +90,7 @@ export const DialogCloseX = ({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Close>) => (
   <DialogPrimitive.Close
+    data-slot="dialog-close"
     className={cn(
       "focus-ring absolute top-4 right-4 opacity-70 transition hover:opacity-100 disabled:pointer-events-none",
       className,
@@ -109,6 +110,7 @@ export const DialogOverlay = ({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Overlay>) => (
   <DialogPrimitive.Overlay
+    data-slot="dialog-overlay"
     className={cn(
       "animate-entrance-fade fixed inset-0 z-50 bg-black/20",
       className,
@@ -137,6 +139,7 @@ export const DialogContentElement = ({
   ...props
 }: DialogContentElementProps) => (
   <DialogPrimitive.Content
+    data-slot="dialog-content"
     className={cn(
       "animate-entrance-fade-zoom bg-surface fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg sm:rounded-lg",
       size && sizeToMaxWidthRecord[size],
@@ -207,6 +210,7 @@ export const DialogHeader = ({
   ...props
 }: ComponentProps<"div">) => (
   <div
+    data-slot="dialog-header"
     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
       className,
@@ -235,6 +239,7 @@ export const DialogFooter = ({
   ...props
 }: ComponentProps<"div">) => (
   <div
+    data-slot="dialog-footer"
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className,
@@ -267,6 +272,7 @@ export const DialogTitle = ({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Title>) => (
   <DialogPrimitive.Title
+    data-slot="dialog-title"
     className={cn("text-lg font-semibold", className)}
     {...props}
   />
@@ -291,6 +297,7 @@ export const DialogDescription = ({
   ...props
 }: ComponentProps<typeof DialogPrimitive.Description>) => (
   <DialogPrimitive.Description
+    data-slot="dialog-description"
     className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />

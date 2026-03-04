@@ -50,6 +50,7 @@ export const CopyText = ({ children, className, value }: CopyTextProps) => {
   const copyValue = value ?? String(children);
   return (
     <button
+      data-slot="copy-text"
       type="button"
       className={cn(
         "interactive-opacity flex w-full items-center gap-2",

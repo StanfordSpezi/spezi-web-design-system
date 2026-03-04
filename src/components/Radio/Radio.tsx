@@ -47,12 +47,16 @@ export const Radio = ({
   ...props
 }: ComponentProps<typeof RadioGroupPrimitive.Item>) => (
   <RadioGroupPrimitive.Item
+    data-slot="radio"
     className={cn(
       "focus-ring flex-center border-input size-4 shrink-0 rounded-full border disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
     {...props}
   >
-    <RadioGroupPrimitive.Indicator className="flex-center bg-primary size-2 rounded-full" />
+    <RadioGroupPrimitive.Indicator
+      data-slot="radio-indicator"
+      className="flex-center bg-primary size-2 rounded-full"
+    />
   </RadioGroupPrimitive.Item>
 );

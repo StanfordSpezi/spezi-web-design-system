@@ -165,6 +165,10 @@ export const StatusDot = ({
 
   return (
     <div
+      data-slot="status-dot"
+      data-status={status}
+      data-size={size}
+      data-appearance={appearance}
       role="img"
       aria-label={getEffectiveAriaLabel()}
       aria-hidden={ariaHidden}

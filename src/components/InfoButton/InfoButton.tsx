@@ -26,6 +26,7 @@ export const InfoButton = ({
   ...props
 }: ComponentProps<"button">) => (
   <button
+    data-slot="info-button"
     type="button"
     className={cn(
       "interactive-opacity text-muted-foreground size-4 rounded-md",

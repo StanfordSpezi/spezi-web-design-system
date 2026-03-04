@@ -20,7 +20,7 @@ interface ToasterProps extends ToasterPropsBase {}
  * Toaster context provider.
  */
 export const Toaster = (props: ToasterProps) => (
-  <ToasterBase position="bottom-center" {...props} />
+  <ToasterBase data-slot="toaster" position="bottom-center" {...props} />
 );
 
 type ToastTitle = (() => ReactNode) | ReactNode;

@@ -31,6 +31,7 @@ export const NotificationLink = ({
     <NotificationRoot asChild notification={notification}>
       <Link
         href={href}
+        data-slot="notification-link"
         className="hover:bg-accent/50 cursor-pointer transition"
       >
         {children}

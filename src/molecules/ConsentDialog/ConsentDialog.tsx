@@ -58,7 +58,9 @@ export const ConsentDialog = ({ children, ...props }: ConsentDialogProps) => {
       <Dialog {...props}>
         <DialogPortal>
           <DialogOverlay />
-          <DialogContentElement>{children}</DialogContentElement>
+          <DialogContentElement data-slot="consent-dialog">
+            {children}
+          </DialogContentElement>
         </DialogPortal>
       </Dialog>
     </ConsentDialogContext.Provider>
@@ -84,6 +86,7 @@ export const ConsentDialogContent = ({
   ...props
 }: ConsentDialogContentProps) => (
   <div
+    data-slot="consent-dialog-content"
     className={cn(
       "max-h-[60vh] overflow-y-auto rounded-md border p-4",
       className,

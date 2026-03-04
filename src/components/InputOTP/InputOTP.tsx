@@ -34,6 +34,7 @@ export const InputOTPRoot = ({
   ...props
 }: ComponentProps<typeof OTPInput>) => (
   <OTPInput
+    data-slot="input-otp"
     containerClassName={cn(
       "flex items-center gap-1.5 has-disabled:opacity-50",
       containerClassName,
@@ -70,7 +71,11 @@ export const InputOTPGroup = ({
   className,
   ...props
 }: ComponentProps<"div">) => (
-  <div className={cn("flex items-center", className)} {...props} />
+  <div
+    data-slot="input-otp-group"
+    className={cn("flex items-center", className)}
+    {...props}
+  />
 );
 
 type InputOTPSlotProps = ComponentProps<"div"> & { index: number };
@@ -97,6 +102,7 @@ export const InputOTPSlot = ({
 
   return (
     <div
+      data-slot="input-otp-slot"
       className={cn(
         "flex-center border-input relative size-10 border-y border-r text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
         isActive && "ring-ring z-10 ring-2",
@@ -134,7 +140,7 @@ export const InputOTPSlot = ({
  * ```
  */
 export const InputOTPSeparator = ({ ...props }: ComponentProps<"div">) => (
-  <div role="separator" {...props}>
+  <div data-slot="input-otp-separator" role="separator" {...props}>
     <Minus className="text-muted-foreground w-4" />
   </div>
 );

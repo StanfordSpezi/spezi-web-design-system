@@ -26,7 +26,7 @@ import { type AsChildProp } from "@/utils/misc";
  * For batteries-included Breadcrumbs component - use {@link Breadcrumbs} instead.
  */
 export const BreadcrumbsRoot = ({ ...props }: ComponentProps<"nav">) => (
-  <nav aria-label="breadcrumb" {...props} />
+  <nav data-slot="breadcrumb" aria-label="breadcrumb" {...props} />
 );
 
 /**
@@ -37,6 +37,7 @@ export const BreadcrumbList = ({
   ...props
 }: ComponentProps<"ol">) => (
   <ol
+    data-slot="breadcrumb-list"
     className={cn(
       "text-muted-foreground flex flex-wrap items-center gap-1 text-sm break-words sm:gap-2",
       className,
@@ -53,6 +54,7 @@ export const BreadcrumbItem = ({
   ...props
 }: ComponentProps<"li">) => (
   <li
+    data-slot="breadcrumb-item"
     className={cn("inline-flex items-center gap-1.5", className)}
     {...props}
   />
@@ -77,6 +79,7 @@ export const BreadcrumbLink = ({
 
   return (
     <Comp
+      data-slot="breadcrumb-link"
       className={cn(
         "focus-ring hover:text-foreground rounded-sm transition",
         className,
@@ -94,6 +97,7 @@ export const BreadcrumbPage = ({
   ...props
 }: ComponentProps<"span">) => (
   <span
+    data-slot="breadcrumb-page"
     role="link"
     aria-disabled="true"
     aria-current="page"
@@ -118,6 +122,7 @@ export const BreadcrumbSeparator = ({
   ...props
 }: ComponentProps<"li">) => (
   <li
+    data-slot="breadcrumb-separator"
     role="presentation"
     aria-hidden="true"
     className={cn("opacity-60 [&>svg]:size-3.5", className)}
@@ -146,6 +151,7 @@ export const BreadcrumbEllipsis = ({
   ...props
 }: ComponentProps<"span">) => (
   <span
+    data-slot="breadcrumb-ellipsis"
     role="presentation"
     aria-hidden="true"
     className={cn("flex-center size-4", className)}

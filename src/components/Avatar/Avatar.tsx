@@ -124,7 +124,7 @@ export const Avatar = ({
   className,
   src,
   fallback,
-  size,
+  size = "default",
   name,
   overlay,
   objectFit = "cover",
@@ -144,10 +144,16 @@ export const Avatar = ({
     : fallback;
 
   return (
-    <div className={cn(avatarVariance({ size }), className)} {...props}>
+    <div
+      data-slot="avatar"
+      data-size={size}
+      className={cn(avatarVariance({ size }), className)}
+      {...props}
+    >
       <div className="size-full overflow-hidden rounded-full">
         {src && (
           <img
+            data-slot="avatar-image"
             className={cn(
               "aspect-square size-full",
               objectFit === "cover" ? "object-cover" : "object-contain",
@@ -159,7 +165,10 @@ export const Avatar = ({
           />
         )}
         {fallbackContent && (
-          <div className="flex-center bg-muted size-full rounded-full">
+          <div
+            data-slot="avatar-fallback"
+            className="flex-center bg-muted size-full rounded-full"
+          >
             {fallbackContent}
           </div>
         )}

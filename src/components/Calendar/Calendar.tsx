@@ -131,6 +131,7 @@ export const Calendar = (props: CalendarProps) => {
   return (
     <>
       <DayPicker
+        data-slot="calendar"
         showOutsideDays={showOutsideDays}
         className={cn("p-3", className)}
         startMonth={new Date(1900, 0)}

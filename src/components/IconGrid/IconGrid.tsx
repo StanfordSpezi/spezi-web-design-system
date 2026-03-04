@@ -39,6 +39,7 @@ const IconGridSkeleton = ({
 }: IconGridSkeletonProps) => {
   return (
     <div
+      data-slot="icon-grid-skeleton"
       data-testid="icon-grid-skeleton"
       className="grid w-full pr-2"
       style={{

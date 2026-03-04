@@ -41,6 +41,7 @@ export const ToggleSortButton = <Data,>({
 
   return (
     <Button
+      data-slot="toggle-sort-button"
       size="sm"
       variant="ghost"
       className="relative -left-2 w-full justify-start! px-2!"
