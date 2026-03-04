@@ -213,6 +213,10 @@
       "types": "./dist/components/Async.d.ts",
       "default": "./dist/components/Async.js"
     },
+    "./components/TimeSelect": {
+      "types": "./dist/components/TimeSelect.d.ts",
+      "default": "./dist/components/TimeSelect.js"
+    },
     "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
@@ -304,6 +308,14 @@
     "./utils/react": {
       "types": "./dist/utils/react.d.ts",
       "default": "./dist/utils/react.js"
+    },
+    "./utils/getOrdinalSuffix": {
+      "types": "./dist/utils/getOrdinalSuffix.d.ts",
+      "default": "./dist/utils/getOrdinalSuffix.js"
+    },
+    "./utils/notImplementedToast": {
+      "types": "./dist/utils/notImplementedToast.d.ts",
+      "default": "./dist/utils/notImplementedToast.js"
     }
   },
   "main": "dist/spezi-web-design-system.es.js",
