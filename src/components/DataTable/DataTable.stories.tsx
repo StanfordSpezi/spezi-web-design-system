@@ -7,6 +7,7 @@
 //
 
 import { type Meta, type StoryObj } from "@storybook/react";
+import { Pencil, Trash } from "lucide-react";
 import { DataTable } from "./DataTable";
 import { dateColumn, dateTimeColumn } from "./DataTable.columns";
 import {
@@ -16,7 +17,9 @@ import {
   peopleColumn,
   columnHelper,
 } from "./DataTable.mocks";
+import { RowDropdownMenu } from "./RowDropdownMenu";
 import { Button } from "../Button";
+import { DropdownMenuItem } from "../DropdownMenu";
 
 const meta: Meta<typeof DataTable> = {
   title: "Components/DataTable",
@@ -86,6 +89,34 @@ export const PremadeColumns: Story = {
       columnHelper.accessor("updatedAt", {
         header: "Date Time",
         cell: dateTimeColumn,
+      }),
+    ],
+  },
+};
+
+/**
+ * Row actions via RowDropdownMenu.
+ */
+export const RowDropdownActions: Story = {
+  args: {
+    ...Default.args,
+    columns: [
+      ...peopleColumns,
+      columnHelper.display({
+        id: "actions",
+        header: "",
+        cell: (props) => (
+          <RowDropdownMenu itemName={props.row.original.name}>
+            <DropdownMenuItem>
+              <Pencil className="size-4" />
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Trash className="size-4" />
+              Delete
+            </DropdownMenuItem>
+          </RowDropdownMenu>
+        ),
       }),
     ],
   },
