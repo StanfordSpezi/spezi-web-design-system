@@ -24,7 +24,8 @@ const useMedia = (query: string) => {
 
   useEffect(() => {
     const match = window.matchMedia(query);
-    // Ensures that the initial state is valid before event
+    // Syncs initial state with the current media query match,
+    // before the "change" event happens
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMatching(match.matches);
 
