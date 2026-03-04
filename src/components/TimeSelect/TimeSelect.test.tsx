@@ -16,6 +16,7 @@ const formatExpected = (hours: number, minutes: number) =>
     minute: "2-digit",
   });
 
+
 describe("TimeSelect", () => {
   it("renders with placeholder", () => {
     render(<TimeSelect value={null} onChange={() => undefined} />);
