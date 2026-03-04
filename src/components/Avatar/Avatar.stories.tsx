@@ -43,6 +43,13 @@ export const CustomFallback: Story = {
 export const SM: Story = { args: { size: "sm" } };
 export const LG: Story = { args: { size: "lg" } };
 
+export const Contain: Story = {
+  args: {
+    src: "https://biodesign.stanford.edu/_jcr_content/local-header/_jcr_content/custom-logo.img.full.high.png",
+    objectFit: "contain",
+  },
+};
+
 export const WithOverlay: Story = {
   args: {
     overlay: (
