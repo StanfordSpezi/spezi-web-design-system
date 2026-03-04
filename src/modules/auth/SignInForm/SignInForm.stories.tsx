@@ -17,6 +17,13 @@ const providerMock = {} as AuthProvider;
 const meta: Meta<typeof SignInForm> = {
   title: "Modules/SignInForm",
   component: SignInForm,
+  decorators: [
+    (Story) => (
+      <div className="w-sm">
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     auth: authMock,
     signInWithPopup: fn(),
