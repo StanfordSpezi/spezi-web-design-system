@@ -48,6 +48,7 @@ export type FieldProps<
   className?: string;
   /**
    * Whether to check for empty errors.
+   * Empty error establishes a standard gap between form fields.
    * For more details, refer to the {@link ErrorProps#checkEmpty|checkEmpty} property of the {@link Error} component.
    */
   checkEmptyError?: boolean;
