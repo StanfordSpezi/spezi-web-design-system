@@ -40,6 +40,38 @@ window.HTMLElement.prototype.hasPointerCapture = vitest.fn();
 const queryItem = (value: string) => screen.queryAllByText(value).at(1);
 
 describe("Select", () => {
+  it("forwards id from Select to SelectTrigger", () => {
+    render(
+      <Select id="test-id">
+        <SelectTrigger>
+          <SelectValue placeholder="Organizations" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Lorem">Lorem</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAttribute("id", "test-id");
+  });
+
+  it("allows SelectTrigger id prop to override Select id", () => {
+    render(
+      <Select id="select-id">
+        <SelectTrigger id="trigger-id">
+          <SelectValue placeholder="Organizations" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Lorem">Lorem</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAttribute("id", "trigger-id");
+  });
+
   it("renders accessible select", async () => {
     render(
       <Select>
