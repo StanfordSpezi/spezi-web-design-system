@@ -36,6 +36,7 @@ export const RangeCounter = ({
   ...props
 }: RangeCounterProps) => (
   <p
+    data-slot="range-counter"
     className={cn("text-muted-foreground text-sm font-medium", className)}
     {...props}
   >

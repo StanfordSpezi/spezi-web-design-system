@@ -30,6 +30,7 @@ export const NotificationTime = ({ time, ...props }: NotificationTimeProps) => {
   const notification = useNotificationContext();
   return (
     <time
+      data-slot="notification-time"
       className={cn(
         "shrink-0 text-xs",
         !notification.isRead && "font-semibold",

@@ -26,6 +26,7 @@ export const DatePicker = (props: DatePickerProps) => {
     <PopoverRoot>
       <PopoverTrigger asChild>
         <Button
+          data-slot="date-picker"
           variant="outline"
           className={cn(
             "bg-surface-primary! w-full! justify-start! text-left! text-sm!",

@@ -18,6 +18,7 @@ export const SeparatorText = ({
   ...props
 }: ComponentProps<"div">) => (
   <div
+    data-slot="separator-text"
     className={cn(
       "flex-center absolute -top-2.5 left-0 w-full text-sm",
       className,

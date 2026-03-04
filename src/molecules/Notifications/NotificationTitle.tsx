@@ -28,6 +28,7 @@ export const NotificationTitle = ({
   const notification = useNotificationContext();
   return (
     <h5
+      data-slot="notification-title"
       className={cn(
         "flex-1 text-sm",
         notification.isRead ?

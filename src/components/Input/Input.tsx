@@ -35,6 +35,7 @@ export interface InputProps extends ComponentProps<"input"> {}
  */
 export const Input = ({ className, type = "text", ...props }: InputProps) => (
   <input
+    data-slot="input"
     type={type}
     className={cn(
       "focus-ring border-input bg-surface-primary placeholder:text-muted-foreground flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50",

@@ -83,6 +83,7 @@ const TabsListContext = createContext<TabsListContextProps>({
 export const TabsList = ({ className, grow, ...props }: TabsListProps) => (
   <TabsListContext.Provider value={{ grow }}>
     <TabsPrimitive.List
+      data-slot="tabs-list"
       className={cn(
         "inline-flex-center text-muted-foreground h-10 p-1",
         grow && "w-full",
@@ -104,6 +105,7 @@ export const TabsTrigger = ({
   const { grow } = useContext(TabsListContext);
   return (
     <TabsPrimitive.Trigger
+      data-slot="tabs-trigger"
       className={cn(
         "inline-flex-center focus-ring border-b-border data-[state=active]:border-b-primary data-[state=active]:text-foreground border-b px-3 py-2 text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-xs",
         grow && "grow",
@@ -122,6 +124,7 @@ export const TabsContent = ({
   ...props
 }: ComponentProps<typeof TabsPrimitive.Content>) => (
   <TabsPrimitive.Content
+    data-slot="tabs-content"
     className={cn("focus-ring mt-2", className)}
     {...props}
   />

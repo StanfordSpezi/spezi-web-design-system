@@ -17,6 +17,7 @@ export interface SpinnerProps extends ComponentProps<typeof Loader2> {}
  */
 export const Spinner = ({ className, ...props }: SpinnerProps) => (
   <Loader2
+    data-slot="spinner"
     className={cn("text-muted-foreground animate-spin", className)}
     aria-label="Loading..."
     aria-live="polite"

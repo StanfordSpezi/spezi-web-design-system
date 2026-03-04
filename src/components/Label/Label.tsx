@@ -17,6 +17,7 @@ type LabelProps = ComponentProps<typeof LabelPrimitive.Root>;
  */
 export const Label = ({ className, ...props }: LabelProps) => (
   <LabelPrimitive.Root
+    data-slot="label"
     className={cn(
       "text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
       className,
@@ -34,5 +35,5 @@ export const LabelContainer = ({
   className,
   ...props
 }: LabelContainerProps) => (
-  <div className={cn("mb-2 flex gap-2", className)} {...props} />
+  <div data-slot="label-container" className={cn("mb-2 flex gap-2", className)} {...props} />
 );

@@ -346,6 +346,7 @@ export const SelectTrigger = ({
     <PopoverTrigger asChild>
       <Button
         {...props}
+        data-slot="select-trigger"
         id={propsId ?? contextId}
         role={role}
         size={null}
@@ -393,6 +394,7 @@ export const SelectValue = ({
   if (!selectedValue) {
     return (
       <span
+        data-slot="select-value"
         className={cn(
           "text-muted-foreground w-full min-w-0 overflow-hidden font-normal",
           className,
@@ -406,6 +408,7 @@ export const SelectValue = ({
 
   return (
     <span
+      data-slot="select-value"
       className={cn("w-full min-w-0 overflow-hidden", className)}
       {...props}
     >

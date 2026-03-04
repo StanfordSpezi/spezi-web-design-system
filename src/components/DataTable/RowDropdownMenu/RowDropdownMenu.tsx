@@ -56,7 +56,7 @@ export const RowDropdownMenu = ({
   itemName,
   align = "end",
 }: RowDropdownMenuProps) => (
-  <div className="text-right">
+  <div data-slot="row-dropdown-menu" className="text-right">
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button

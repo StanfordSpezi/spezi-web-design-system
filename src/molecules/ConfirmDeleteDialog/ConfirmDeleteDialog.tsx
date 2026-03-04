@@ -59,7 +59,7 @@ export const ConfirmDeleteDialog = ({
   ...props
 }: ConfirmDeleteDialogProps) => (
   <Dialog {...props}>
-    <DialogContent>
+    <DialogContent data-slot="confirm-delete-dialog">
       <DialogHeader>
         <DialogTitle>Deleting {entityName}</DialogTitle>
         <DialogDescription>

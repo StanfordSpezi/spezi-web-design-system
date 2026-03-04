@@ -54,6 +54,7 @@ export const AsideBrandLayoutRoot = ({
   ...props
 }: AsideBrandLayoutRootProps) => (
   <div
+    data-slot="aside-brand-layout"
     className={cn(
       "w-full lg:grid lg:min-h-screen lg:grid-cols-[450px_1fr] xl:grid-cols-[600px_1fr]",
       className,
@@ -85,6 +86,7 @@ export const AsideBrandLayoutAside = ({
   ...props
 }: AsideBrandLayoutAsideProps) => (
   <aside
+    data-slot="aside-brand-layout-aside"
     className={cn(
       "bg-accent hidden flex-col items-center justify-between gap-20 py-40 lg:flex",
       className,
@@ -115,6 +117,7 @@ export const AsideBrandLayoutMain = ({
   ...props
 }: AsideBrandLayoutMainProps) => (
   <main
+    data-slot="aside-brand-layout-main"
     className={cn(
       "flex min-h-screen items-center justify-center py-12",
       className,

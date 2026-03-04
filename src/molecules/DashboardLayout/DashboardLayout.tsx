@@ -78,6 +78,7 @@ export const DashboardLayout = ({
   return (
     <DashboardContext.Provider value={{ shrinkable }}>
       <div
+        data-slot="dashboard-layout"
         className={cn(
           "text-foreground [--headerHeight:72px] **:[box-sizing:border-box] lg:[--headerHeight:86px]",
           shrinkable ?

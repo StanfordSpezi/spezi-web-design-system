@@ -101,6 +101,7 @@ export const CheckboxGroup = <T extends string | number>({
 
   return (
     <div
+      data-slot="checkbox-group"
       role="group"
       className={cn(
         "flex gap-x-4 gap-y-2",

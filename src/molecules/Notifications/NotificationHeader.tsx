@@ -26,5 +26,5 @@ export const NotificationHeader = ({
   className,
   ...props
 }: NotificationHeaderProps) => (
-  <header className={cn("flex flex-1 gap-1", className)} {...props} />
+  <header data-slot="notification-header" className={cn("flex flex-1 gap-1", className)} {...props} />
 );
