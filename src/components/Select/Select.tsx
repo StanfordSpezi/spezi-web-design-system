@@ -90,6 +90,11 @@ interface SelectContextProps {
    */
   formatValue?: (value: string) => ReactNode;
   disabled?: boolean;
+  /**
+   * HTML id attribute forwarded to SelectTrigger.
+   * Useful for associating a label with the select trigger via `htmlFor`.
+   */
+  id?: string;
 }
 
 interface SelectProps extends SelectContextProps {
@@ -150,6 +155,7 @@ export const useSelectProvider = ({
   search,
   disabled,
   formatValue,
+  id,
 }: SelectContextProps) => {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -188,6 +194,7 @@ export const useSelectProvider = ({
     search: normalizeSearchProp(search),
     disabled,
     formatValue,
+    id,
   };
 };
 
@@ -330,14 +337,16 @@ export const SelectTrigger = ({
   "aria-expanded": propsAriaExpanded,
   className,
   children,
+  id: propsId,
   ...props
 }: SelectTriggerProps) => {
-  const { open, disabled } = useSelectContext();
+  const { open, disabled, id: contextId } = useSelectContext();
 
   return (
     <PopoverTrigger asChild>
       <Button
         {...props}
+        id={propsId ?? contextId}
         role={role}
         size={null}
         variant={null}
