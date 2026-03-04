@@ -278,7 +278,10 @@ export const MultiSelectValue = ({
 
   if (selectedValues.size === 0 && placeholder) {
     return (
-      <span data-slot="multi-select-value" className="text-muted-foreground w-full min-w-0 overflow-hidden font-normal">
+      <span
+        data-slot="multi-select-value"
+        className="text-muted-foreground w-full min-w-0 overflow-hidden font-normal"
+      >
         {placeholder}
       </span>
     );

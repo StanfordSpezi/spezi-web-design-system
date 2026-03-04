@@ -121,7 +121,13 @@ export const CollapsibleContentInner = ({
   ...props
 }: CollapsibleContentProps) => {
   const Comp = asChild ? Slot.Root : "div";
-  return <Comp data-slot="collapsible-content-inner" className={cn("overflow-hidden", className)} {...props} />;
+  return (
+    <Comp
+      data-slot="collapsible-content-inner"
+      className={cn("overflow-hidden", className)}
+      {...props}
+    />
+  );
 };
 
 /**

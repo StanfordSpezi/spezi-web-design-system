@@ -58,7 +58,9 @@ export const ConsentDialog = ({ children, ...props }: ConsentDialogProps) => {
       <Dialog {...props}>
         <DialogPortal>
           <DialogOverlay />
-          <DialogContentElement data-slot="consent-dialog">{children}</DialogContentElement>
+          <DialogContentElement data-slot="consent-dialog">
+            {children}
+          </DialogContentElement>
         </DialogPortal>
       </Dialog>
     </ConsentDialogContext.Provider>

@@ -71,7 +71,11 @@ export const InputOTPGroup = ({
   className,
   ...props
 }: ComponentProps<"div">) => (
-  <div data-slot="input-otp-group" className={cn("flex items-center", className)} {...props} />
+  <div
+    data-slot="input-otp-group"
+    className={cn("flex items-center", className)}
+    {...props}
+  />
 );
 
 type InputOTPSlotProps = ComponentProps<"div"> & { index: number };

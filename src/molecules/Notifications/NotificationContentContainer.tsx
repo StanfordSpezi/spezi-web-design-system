@@ -25,5 +25,9 @@ export const NotificationContentContainer = ({
   className,
   ...props
 }: NotificationContentContainerProps) => (
-  <div data-slot="notification-content-container" className={cn("flex flex-1 flex-col gap-1", className)} {...props} />
+  <div
+    data-slot="notification-content-container"
+    className={cn("flex flex-1 flex-col gap-1", className)}
+    {...props}
+  />
 );

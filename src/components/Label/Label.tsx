@@ -35,5 +35,9 @@ export const LabelContainer = ({
   className,
   ...props
 }: LabelContainerProps) => (
-  <div data-slot="label-container" className={cn("mb-2 flex gap-2", className)} {...props} />
+  <div
+    data-slot="label-container"
+    className={cn("mb-2 flex gap-2", className)}
+    {...props}
+  />
 );

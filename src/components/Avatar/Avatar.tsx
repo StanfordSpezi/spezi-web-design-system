@@ -144,7 +144,12 @@ export const Avatar = ({
     : fallback;
 
   return (
-    <div data-slot="avatar" data-size={size} className={cn(avatarVariance({ size }), className)} {...props}>
+    <div
+      data-slot="avatar"
+      data-size={size}
+      className={cn(avatarVariance({ size }), className)}
+      {...props}
+    >
       <div className="size-full overflow-hidden rounded-full">
         {src && (
           <img
@@ -160,7 +165,10 @@ export const Avatar = ({
           />
         )}
         {fallbackContent && (
-          <div data-slot="avatar-fallback" className="flex-center bg-muted size-full rounded-full">
+          <div
+            data-slot="avatar-fallback"
+            className="flex-center bg-muted size-full rounded-full"
+          >
             {fallbackContent}
           </div>
         )}

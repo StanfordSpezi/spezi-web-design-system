@@ -50,7 +50,11 @@ export const NotFoundTitle = ({
   className,
   ...props
 }: ComponentProps<"h1">) => (
-  <h1 data-slot="not-found-title" className={cn("text-2xl font-medium", className)} {...props} />
+  <h1
+    data-slot="not-found-title"
+    className={cn("text-2xl font-medium", className)}
+    {...props}
+  />
 );
 
 /**
@@ -61,7 +65,11 @@ export const NotFoundParagraph = ({
   className,
   ...props
 }: ComponentProps<"p">) => (
-  <p data-slot="not-found-paragraph" className={cn("text-muted-foreground", className)} {...props} />
+  <p
+    data-slot="not-found-paragraph"
+    className={cn("text-muted-foreground", className)}
+    {...props}
+  />
 );
 
 interface NotFoundActionProps extends ComponentProps<typeof Button> {}

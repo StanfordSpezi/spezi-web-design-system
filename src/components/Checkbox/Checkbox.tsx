@@ -44,6 +44,9 @@ export const Checkbox = ({ className, ...props }: CheckboxProps) => (
     )}
     {...props}
   >
-    <CheckboxPrimitive.Indicator data-slot="checkbox-indicator" className="flex-center bg-primary size-2.5 rounded-xs" />
+    <CheckboxPrimitive.Indicator
+      data-slot="checkbox-indicator"
+      className="flex-center bg-primary size-2.5 rounded-xs"
+    />
   </CheckboxPrimitive.Root>
 );

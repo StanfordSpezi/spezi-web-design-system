@@ -15,7 +15,11 @@ export const GlobalFilterInputContainer = ({
   className,
   ...props
 }: ComponentProps<"div">) => (
-  <div data-slot="global-filter-input" className={cn("relative max-w-72 grow", className)} {...props} />
+  <div
+    data-slot="global-filter-input"
+    className={cn("relative max-w-72 grow", className)}
+    {...props}
+  />
 );
 
 export const GlobalFilterInputIcon = ({

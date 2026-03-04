@@ -71,7 +71,11 @@ export const PopoverHeader = ({
  * ```
  */
 export const PopoverTitle = ({ className, ...props }: ComponentProps<"h6">) => (
-  <h6 data-slot="popover-title" className={cn("text-lg font-semibold", className)} {...props} />
+  <h6
+    data-slot="popover-title"
+    className={cn("text-lg font-semibold", className)}
+    {...props}
+  />
 );
 
 /**
@@ -87,7 +91,11 @@ export const PopoverDescription = ({
   className,
   ...props
 }: ComponentProps<"h6">) => (
-  <p data-slot="popover-description" className={cn("text-muted-foreground text-sm", className)} {...props} />
+  <p
+    data-slot="popover-description"
+    className={cn("text-muted-foreground text-sm", className)}
+    {...props}
+  />
 );
 
 /**

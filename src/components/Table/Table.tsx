@@ -29,14 +29,22 @@ export const TableHeader = ({
   className,
   ...props
 }: ComponentProps<"thead">) => (
-  <thead data-slot="table-header" className={cn("[&_tr]:border-b", className)} {...props} />
+  <thead
+    data-slot="table-header"
+    className={cn("[&_tr]:border-b", className)}
+    {...props}
+  />
 );
 
 /**
  * Styled `tbody` element.
  */
 export const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => (
-  <tbody data-slot="table-body" className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+  <tbody
+    data-slot="table-body"
+    className={cn("[&_tr:last-child]:border-0", className)}
+    {...props}
+  />
 );
 
 /**

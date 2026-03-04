@@ -36,7 +36,11 @@ export const PaginationContent = ({
   className,
   ...props
 }: ComponentProps<"ul">) => (
-  <ul data-slot="pagination-content" className={cn("flex items-center gap-1", className)} {...props} />
+  <ul
+    data-slot="pagination-content"
+    className={cn("flex items-center gap-1", className)}
+    {...props}
+  />
 );
 
 /**
@@ -55,7 +59,13 @@ export const PaginationContent = ({
 export const PaginationItemContainer = ({
   className,
   ...props
-}: ComponentProps<"li">) => <li data-slot="pagination-item-container" className={cn("", className)} {...props} />;
+}: ComponentProps<"li">) => (
+  <li
+    data-slot="pagination-item-container"
+    className={cn("", className)}
+    {...props}
+  />
+);
 
 interface PaginationLinkProps extends ButtonProps {
   /**
@@ -173,7 +183,12 @@ export const PaginationEllipsis = ({
   className,
   ...props
 }: ComponentProps<"span">) => (
-  <span data-slot="pagination-ellipsis" aria-hidden className={cn("flex-center size-9", className)} {...props}>
+  <span
+    data-slot="pagination-ellipsis"
+    aria-hidden
+    className={cn("flex-center size-9", className)}
+    {...props}
+  >
     <Ellipsis className="size-4" />
     <span className="sr-only">More pages</span>
   </span>

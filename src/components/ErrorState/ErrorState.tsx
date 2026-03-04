@@ -28,7 +28,13 @@ export const ErrorState = ({
   entityName,
   ...props
 }: ErrorStateProps) => (
-  <Badge data-slot="error-state" size="lg" variant="destructiveLight" role="alert" {...props}>
+  <Badge
+    data-slot="error-state"
+    size="lg"
+    variant="destructiveLight"
+    role="alert"
+    {...props}
+  >
     <CircleAlert />
     <span>
       {children ?? <>Fetching {entityName} failed. Please try again later.</>}

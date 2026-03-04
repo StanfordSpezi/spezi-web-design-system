@@ -51,7 +51,9 @@ export interface CardProps
  */
 export const Card = ({ className, asChild, ...props }: CardProps) => {
   const Comp = asChild ? Slot.Root : "div";
-  return <Comp data-slot="card" className={cardVariance({ className })} {...props} />;
+  return (
+    <Comp data-slot="card" className={cardVariance({ className })} {...props} />
+  );
 };
 
 type CardHeaderProps = ComponentProps<"div">;
@@ -99,5 +101,11 @@ type CardTitleProps = ComponentProps<"p"> & {
  */
 export const CardTitle = ({ className, asChild, ...props }: CardTitleProps) => {
   const Comp = asChild ? Slot.Root : "h5";
-  return <Comp data-slot="card-title" className={cn("text-lg font-medium", className)} {...props} />;
+  return (
+    <Comp
+      data-slot="card-title"
+      className={cn("text-lg font-medium", className)}
+      {...props}
+    />
+  );
 };

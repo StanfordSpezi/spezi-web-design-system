@@ -54,6 +54,9 @@ export const Radio = ({
     )}
     {...props}
   >
-    <RadioGroupPrimitive.Indicator data-slot="radio-indicator" className="flex-center bg-primary size-2 rounded-full" />
+    <RadioGroupPrimitive.Indicator
+      data-slot="radio-indicator"
+      className="flex-center bg-primary size-2 rounded-full"
+    />
   </RadioGroupPrimitive.Item>
 );
