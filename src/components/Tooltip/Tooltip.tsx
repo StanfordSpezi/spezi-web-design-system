@@ -59,7 +59,7 @@ export interface TooltipContentProps
 export const TooltipContent = ({
   className,
   sideOffset = 4,
-  variant,
+  variant = "default",
   ...props
 }: TooltipContentProps) => (
   <TooltipPrimitive.Content

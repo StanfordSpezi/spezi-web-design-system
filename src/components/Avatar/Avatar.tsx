@@ -124,7 +124,7 @@ export const Avatar = ({
   className,
   src,
   fallback,
-  size,
+  size = "default",
   name,
   overlay,
   objectFit = "cover",

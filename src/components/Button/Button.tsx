@@ -119,8 +119,8 @@ export interface ButtonProps
  */
 export const Button = ({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "default",
   asChild,
   type = "button",
   isPending,

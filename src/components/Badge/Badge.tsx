@@ -114,8 +114,8 @@ export interface BadgeProps
  */
 export const Badge = ({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "sm",
   asChild,
   ...props
 }: BadgeProps) => {
