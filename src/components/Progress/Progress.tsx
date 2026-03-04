@@ -12,7 +12,7 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/className";
 import { strategy } from "@/utils/misc";
 
-const progressVariants = cva(
+const progressVariance = cva(
   "relative h-1 w-full overflow-hidden rounded-full",
   {
     variants: {
@@ -26,7 +26,7 @@ const progressVariants = cva(
 );
 
 type ProgressProps = ComponentProps<typeof ProgressPrimitive.Root> &
-  VariantProps<typeof progressVariants>;
+  VariantProps<typeof progressVariance>;
 
 /**
  * Displays a progress bar indicating completion of a task.
@@ -44,16 +44,21 @@ type ProgressProps = ComponentProps<typeof ProgressPrimitive.Root> &
 export const Progress = ({
   className,
   value: valueProp,
+  max: maxProp = 100,
   color = "foreground",
   ...props
 }: ProgressProps) => {
-  const value = valueProp ?? 0;
+  const max = Number.isFinite(maxProp) && maxProp > 0 ? maxProp : 100;
+  const value = Math.min(Math.max(valueProp ?? 0, 0), max);
+  const percentage = (value / max) * 100;
+
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
       data-color={color}
-      className={progressVariants({ color, className })}
+      className={progressVariance({ color, className })}
       value={value}
+      max={max}
       {...props}
     >
       <ProgressPrimitive.Indicator
@@ -70,7 +75,7 @@ export const Progress = ({
           ),
         )}
         style={{
-          transform: `translateX(-${100 - (value === 0 ? -2 : value)}%)`,
+          transform: `translateX(-${100 - percentage}%)`,
         }}
       />
     </ProgressPrimitive.Root>
