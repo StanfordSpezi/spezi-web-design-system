@@ -35,6 +35,7 @@ export * from "./components/MultiSelect";
 export * from "./components/NavigationBlocker";
 export * from "./components/Pagination";
 export * from "./components/Popover";
+export * from "./components/Progress";
 export * from "./components/Radio";
 export * from "./components/RadioGroup";
 export * from "./components/RangeCounter";
