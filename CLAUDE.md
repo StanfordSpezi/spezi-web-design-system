@@ -19,8 +19,8 @@ Every file in this repository must include a REUSE-compliant license header. Add
 ### Comment style by file type
 
 Adapt the comment style to the language of the file. For example:
-- Markdown file use `<!-- -->` for comments. 
-- YAML file use `#` for comments.     
-- JavaScript, TypeScript, JavaScript React, TypeScript React use `//`
+- Markdown files use `<!-- -->` for comments.
+- YAML files use `#` for comments.
+- JavaScript, TypeScript, JavaScript React, and TypeScript React files use `//`
 
 - **Sidecar `.license` file** for formats that don't support comments (`.json`, images, etc.). Create a `<filename>.license` file next to the original with the plain text header (no comment markers).
