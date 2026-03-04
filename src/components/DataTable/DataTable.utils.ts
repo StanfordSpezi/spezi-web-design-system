@@ -77,6 +77,8 @@ export const useDataTable = <Data>({
     200,
   );
 
+  // Acknowledge, but ignore
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     columns,
     data,
