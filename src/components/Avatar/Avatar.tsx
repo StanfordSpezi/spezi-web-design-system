@@ -41,6 +41,14 @@ type AvatarProps = VariantProps<typeof avatarVariance> &
      * Positioned absolutely within the avatar container.
      */
     overlay?: ReactNode;
+    /**
+     * How the image should be resized to fit its container.
+     * - `cover`: Image covers the entire container, may be cropped.
+     * - `contain`: Image fits within the container, may have empty space.
+     *
+     * @default "cover"
+     */
+    objectFit?: "cover" | "contain";
   };
 
 /**
@@ -119,6 +127,7 @@ export const Avatar = ({
   size,
   name,
   overlay,
+  objectFit = "cover",
   ...props
 }: AvatarProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -140,7 +149,8 @@ export const Avatar = ({
         {src && (
           <img
             className={cn(
-              "aspect-square size-full object-cover",
+              "aspect-square size-full",
+              objectFit === "cover" ? "object-cover" : "object-contain",
               !isImageLoaded && "opacity-0",
             )}
             src={src}

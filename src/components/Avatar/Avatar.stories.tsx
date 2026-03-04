@@ -43,6 +43,13 @@ export const CustomFallback: Story = {
 export const SM: Story = { args: { size: "sm" } };
 export const LG: Story = { args: { size: "lg" } };
 
+export const Contain: Story = {
+  args: {
+    src: "https://cdn.icon-icons.com/icons2/2643/PNG/512/avatar_female_woman_person_people_white_tone_icon_159360.png",
+    objectFit: "contain",
+  },
+};
+
 export const WithOverlay: Story = {
   args: {
     overlay: (
