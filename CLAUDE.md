@@ -6,7 +6,7 @@ Every file in this repository must include a REUSE-compliant license header. Add
 
 ### Header content
 
-```
+```text
 //
 // This source file is part of the Stanford Biodesign Digital Health Spezi Web Design System open-source project
 //
