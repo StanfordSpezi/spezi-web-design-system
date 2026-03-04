@@ -258,6 +258,8 @@ export const MultiSelectValue = ({
   }, []);
 
   useLayoutEffect(() => {
+    // Syncs DOM measurements with state — legitimate effect usage
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     checkOverflow();
   }, [selectedValues, checkOverflow, shouldWrap]);
 
