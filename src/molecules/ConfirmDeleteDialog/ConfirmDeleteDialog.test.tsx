@@ -41,9 +41,7 @@ describe("ConfirmDeleteDialog", () => {
     );
 
     expect(screen.getByText("alice@example.com")).toBeInTheDocument();
-    expect(
-      screen.getByText(/will be deleted forever/),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/will be deleted forever/)).toBeInTheDocument();
   });
 
   it("renders multiple item names", () => {
@@ -53,11 +51,7 @@ describe("ConfirmDeleteDialog", () => {
         onOpenChange={vitest.fn()}
         onDelete={vitest.fn()}
         entityName="3 users"
-        itemName={[
-          "alice@example.com",
-          "bob@example.com",
-          "carol@example.com",
-        ]}
+        itemName={["alice@example.com", "bob@example.com", "carol@example.com"]}
       />,
     );
 
@@ -90,9 +84,7 @@ describe("ConfirmDeleteDialog", () => {
 
     expect(screen.getByText("alice@example.com")).toBeInTheDocument();
     expect(screen.getByText("bob@example.com")).toBeInTheDocument();
-    expect(
-      screen.queryByText("carol@example.com"),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText("carol@example.com")).not.toBeInTheDocument();
     expect(screen.getByText(/and 4 more/)).toBeInTheDocument();
   });
 });

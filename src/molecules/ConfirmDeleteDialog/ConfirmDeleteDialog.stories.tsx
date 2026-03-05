@@ -40,11 +40,7 @@ export const MultipleItems: Story = {
     open: true,
     onDelete: action("onDelete"),
     entityName: "3 users",
-    itemName: [
-      "alice@example.com",
-      "bob@example.com",
-      "carol@example.com",
-    ],
+    itemName: ["alice@example.com", "bob@example.com", "carol@example.com"],
   },
 };
 
