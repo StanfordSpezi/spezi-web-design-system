@@ -44,11 +44,11 @@ const formatOptionValue = (hours: number, minutes: TimeSelectMinute) => {
 };
 
 const formatOptionLabel = (hours: number, minutes: TimeSelectMinute) => {
-  const period = hours < 12 ? "AM" : "PM";
-  const twelveHour = hours % 12 === 0 ? 12 : hours % 12;
-  const minuteLabel = minutes === 0 ? "00" : "30";
-
-  return `${twelveHour}:${minuteLabel} ${period}`;
+  const date = new Date(2000, 0, 1, hours, minutes);
+  return date.toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+  });
 };
 
 const timeOptions: Array<{
