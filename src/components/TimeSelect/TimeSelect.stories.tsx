@@ -13,6 +13,13 @@ import { type TimeSelectValue, TimeSelect } from "./TimeSelect";
 const meta: Meta<typeof TimeSelect> = {
   title: "Components/TimeSelect",
   component: TimeSelect,
+  decorators: [
+    (Story) => (
+      <div className="w-xs">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -20,14 +27,14 @@ export default meta;
 export const Default = () => {
   const [time, setTime] = useState<TimeSelectValue | null>(null);
   return (
-    <div className="w-[220px]">
+    <>
       <TimeSelect value={time} onChange={setTime} />
       {time && (
         <p className="text-muted-foreground mt-2 text-sm">
           Selected: {time.hours}:{time.minutes.toString().padStart(2, "0")}
         </p>
       )}
-    </div>
+    </>
   );
 };
 
@@ -36,31 +43,17 @@ export const WithInitialValue = () => {
     hours: 9,
     minutes: 30,
   });
-  return (
-    <div className="w-[220px]">
-      <TimeSelect value={time} onChange={setTime} />
-    </div>
-  );
+  return <TimeSelect value={time} onChange={setTime} />;
 };
 
 export const CustomPlaceholder = () => {
   const [time, setTime] = useState<TimeSelectValue | null>(null);
   return (
-    <div className="w-[220px]">
-      <TimeSelect
-        value={time}
-        onChange={setTime}
-        placeholder="Pick a time..."
-      />
-    </div>
+    <TimeSelect value={time} onChange={setTime} placeholder="Pick a time..." />
   );
 };
 
 export const Disabled = () => {
   const [time, setTime] = useState<TimeSelectValue | null>(null);
-  return (
-    <div className="w-[220px]">
-      <TimeSelect value={time} onChange={setTime} disabled />
-    </div>
-  );
+  return <TimeSelect value={time} onChange={setTime} disabled />;
 };
