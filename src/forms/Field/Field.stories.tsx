@@ -8,7 +8,9 @@
 
 import { type Meta } from "@storybook/react";
 import { z } from "zod";
+import { Button } from "@/components/Button";
 import { Label as LabelComponent, LabelContainer } from "@/components/Label";
+import { useOpenState } from "@/utils/useOpenState";
 import { Input } from "../../components/Input";
 import { useForm } from "../useForm";
 import { Field } from "./Field";
@@ -76,6 +78,49 @@ export const Tooltip = () => {
     />
   );
 };
+
+interface CheckEmptyErrorProps {
+  checkEmptyError?: boolean;
+}
+
+const CheckEmptyError = ({ checkEmptyError }: CheckEmptyErrorProps) => {
+  const errorVisibility = useOpenState();
+  const form = useForm({ formSchema });
+  return (
+    <div>
+      <Field
+        control={form.control}
+        name="name"
+        label="Field with error"
+        error={
+          errorVisibility.isOpen ?
+            { message: "Name is a required field", type: "validationError" }
+          : undefined
+        }
+        checkEmptyError={checkEmptyError}
+        render={({ field }) => <Input {...field} />}
+      />
+      <Button onClick={errorVisibility.toggle}>
+        {errorVisibility.isOpen ? "Hide" : "Show"} error
+      </Button>
+    </div>
+  );
+};
+
+/**
+ * By default, Field reserves minimum space for the error message even when there is no error,
+ * which helps reduce layout shifts for typical single-line errors. The text below the fields
+ * is less likely to move when errors are shown or hidden.
+ */
+export const CheckEmptyErrorOff = () => (
+  <CheckEmptyError checkEmptyError={false} />
+);
+
+/**
+ * With `checkEmptyError` enabled, the error element is removed from the DOM when empty.
+ * This causes surrounding content to shift when errors appear or disappear.
+ */
+export const CheckEmptyErrorOn = () => <CheckEmptyError checkEmptyError />;
 
 export const CustomLabelElements = () => {
   const form = useForm({ formSchema });

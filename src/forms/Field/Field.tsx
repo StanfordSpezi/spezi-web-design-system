@@ -47,7 +47,9 @@ export type FieldProps<
   label?: ReactNode;
   className?: string;
   /**
-   * Whether to check for empty errors.
+   * Controls handling of empty error messages.
+   * When false (default), an empty {@link Error} element is rendered to maintain a standard gap between form fields.
+   * When true, the empty error element is not rendered and this additional spacing is removed.
    * For more details, refer to the {@link ErrorProps#checkEmpty|checkEmpty} property of the {@link Error} component.
    */
   checkEmptyError?: boolean;
