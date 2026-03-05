@@ -84,7 +84,7 @@ interface CheckEmptyErrorProps {
 }
 
 const CheckEmptyError = ({ checkEmptyError }: CheckEmptyErrorProps) => {
-  const error = useOpenState();
+  const errorVisibility = useOpenState();
   const form = useForm({ formSchema });
   return (
     <div>
@@ -93,24 +93,24 @@ const CheckEmptyError = ({ checkEmptyError }: CheckEmptyErrorProps) => {
         name="name"
         label="Field with error"
         error={
-          error.isOpen ?
-            { message: "Name is required field", type: "validationError" }
+          errorVisibility.isOpen ?
+            { message: "Name is a required field", type: "validationError" }
           : undefined
         }
         checkEmptyError={checkEmptyError}
         render={({ field }) => <Input {...field} />}
       />
-      <Button onClick={error.toggle}>
-        {error.isOpen ? "Hide" : "Show"} error
+      <Button onClick={errorVisibility.toggle}>
+        {errorVisibility.isOpen ? "Hide" : "Show"} error
       </Button>
     </div>
   );
 };
 
 /**
- * By default, Field reserves space for the error message even when there is no error,
- * preventing layout shifts. The text below the fields stays in a fixed position
- * regardless of whether errors are shown.
+ * By default, Field reserves minimum space for the error message even when there is no error,
+ * which helps reduce layout shifts for typical single-line errors. The text below the fields
+ * is less likely to move when errors are shown or hidden.
  */
 export const CheckEmptyErrorOff = () => (
   <CheckEmptyError checkEmptyError={false} />
