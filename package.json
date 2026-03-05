@@ -217,6 +217,10 @@
       "types": "./dist/components/TimeSelect.d.ts",
       "default": "./dist/components/TimeSelect.js"
     },
+    "./components/Progress": {
+      "types": "./dist/components/Progress.d.ts",
+      "default": "./dist/components/Progress.js"
+    },
     "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
