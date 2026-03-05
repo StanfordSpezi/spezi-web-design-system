@@ -34,3 +34,36 @@ export const Plain: Story = {
     onDelete: action("onDelete"),
   },
 };
+
+export const MultipleItems: Story = {
+  args: {
+    open: true,
+    onDelete: action("onDelete"),
+    entityName: "3 users",
+    itemName: ["alice@example.com", "bob@example.com", "carol@example.com"],
+  },
+};
+
+export const MultipleItemsTruncated: Story = {
+  args: {
+    open: true,
+    onDelete: action("onDelete"),
+    entityName: "6 users",
+    itemName: [
+      "alice@example.com",
+      "bob@example.com",
+      "carol@example.com",
+      "dave@example.com",
+      "eve@example.com",
+      "frank@example.com",
+    ],
+  },
+};
+
+export const MultipleItemsWithoutNames: Story = {
+  args: {
+    open: true,
+    onDelete: action("onDelete"),
+    entityName: "5 organizations",
+  },
+};
