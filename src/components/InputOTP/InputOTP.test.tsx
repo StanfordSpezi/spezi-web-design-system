@@ -10,6 +10,15 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { InputOTP } from ".";
 
 describe("InputOTP", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
+  });
+
   it("renders otp input", () => {
     render(<InputOTP maxLength={6} />);
 
