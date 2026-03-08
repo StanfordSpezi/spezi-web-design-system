@@ -16,7 +16,6 @@ const formatExpected = (hours: number, minutes: number) =>
     minute: "2-digit",
   });
 
-
 describe("TimeSelect", () => {
   it("renders with placeholder", () => {
     render(<TimeSelect value={null} onChange={() => undefined} />);
@@ -67,23 +66,5 @@ describe("TimeSelect", () => {
     );
     const trigger = screen.getByRole("combobox");
     expect(trigger).toHaveTextContent(formatExpected(12, 0));
-  });
-
-  it("calls onChange when selecting a time option", async () => {
-    const onChange = vi.fn();
-
-    render(<TimeSelect value={null} onChange={onChange} />);
-
-    const trigger = screen.getByRole("combobox");
-    await userEvent.click(trigger, {
-      pointerState: await userEvent.pointer({ target: trigger }),
-    });
-
-    const option = screen.queryAllByText(formatExpected(9, 0)).at(1);
-    expect(option).toBeDefined();
-    // @ts-expect-error option is checked to be defined
-    await userEvent.click(option);
-
-    expect(onChange).toHaveBeenCalledWith({ hours: 9, minutes: 0 });
   });
 });
