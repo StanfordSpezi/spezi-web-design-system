@@ -9,6 +9,12 @@
 import { render, screen } from "@testing-library/react";
 import { TimeSelect } from ".";
 
+const formatExpected = (hours: number, minutes: number) =>
+  new Date(2000, 0, 1, hours, minutes).toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+
 describe("TimeSelect", () => {
   it("renders with placeholder", () => {
     render(<TimeSelect value={null} onChange={() => undefined} />);
@@ -36,7 +42,7 @@ describe("TimeSelect", () => {
       />,
     );
     const trigger = screen.getByRole("combobox");
-    expect(trigger).toHaveTextContent("2:30 PM");
+    expect(trigger).toHaveTextContent(formatExpected(14, 30));
   });
 
   it("displays midnight correctly", () => {
@@ -47,7 +53,7 @@ describe("TimeSelect", () => {
       />,
     );
     const trigger = screen.getByRole("combobox");
-    expect(trigger).toHaveTextContent("12:00 AM");
+    expect(trigger).toHaveTextContent(formatExpected(0, 0));
   });
 
   it("displays noon correctly", () => {
@@ -58,6 +64,6 @@ describe("TimeSelect", () => {
       />,
     );
     const trigger = screen.getByRole("combobox");
-    expect(trigger).toHaveTextContent("12:00 PM");
+    expect(trigger).toHaveTextContent(formatExpected(12, 0));
   });
 });

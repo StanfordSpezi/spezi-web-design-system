@@ -71,7 +71,7 @@ for (let hour = 0; hour < 24; hour += 1) {
 
 /**
  * A time picker component that renders a Select dropdown with 48 half-hour time slots
- * from 12:00 AM through 11:30 PM.
+ * covering the full 24-hour day. Labels are formatted using locale-aware time formatting.
  *
  * @example
  * ```tsx
@@ -132,10 +132,10 @@ export const TimeSelect = ({
       onValueChange={handleValueChange}
       {...props}
     >
-      <SelectTrigger className={cn("w-full", className)}>
+      <SelectTrigger id={id} className={cn("w-full", className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent id={id}>
+      <SelectContent>
         {timeOptions.map((option) => (
           <SelectItem
             key={option.value}
