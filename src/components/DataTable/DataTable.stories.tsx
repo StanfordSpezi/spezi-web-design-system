@@ -207,7 +207,7 @@ export const CustomCellStyling: Story = {
       columnHelper.accessor("name", {
         header: "Name",
         id: "name",
-        meta: { cellClassName: "bg-success/10 text-success" },
+        meta: { cellClassName: "font-bold" },
       }),
       columnHelper.accessor("age", {
         header: "Age",
