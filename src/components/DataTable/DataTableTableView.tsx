@@ -8,6 +8,7 @@
 
 import { flexRender } from "@tanstack/react-table";
 import { type MouseEvent } from "react";
+import { isFunction } from "es-toolkit";
 import { ToggleSortButton } from "@/components/DataTable/ToggleSortButton";
 import {
   Table,
@@ -104,7 +105,7 @@ export const DataTableTableView = <Data,>({
             const meta = cell.column.columnDef.meta;
             const context = cell.getContext();
             const cellClassName =
-              typeof meta?.cellClassName === "function" ?
+              isFunction(meta?.cellClassName) ?
                 meta.cellClassName(context)
               : meta?.cellClassName;
 
