@@ -8,7 +8,7 @@
 
 import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "@/tests/helpers";
-import { DashboardLayout, MenuItem, PageTitle } from ".";
+import { DashboardLayout, MenuItem, PageTitle, UserMenuItem } from ".";
 
 describe("DashboardLayout", () => {
   it("renders functional dashboard", () => {
@@ -39,5 +39,24 @@ describe("DashboardLayout", () => {
     // Renders both home links - mobile and desktop
     const homeLinks = screen.getAllByRole("link", { name: "Home" });
     expect(homeLinks).toHaveLength(2);
+  });
+});
+
+describe("UserMenuItem", () => {
+  it("renders user name and avatar", () => {
+    renderWithProviders(<UserMenuItem name="John Doe" img="/avatar.jpg" />);
+
+    const name = screen.getByText("John Doe");
+    expect(name).toBeInTheDocument();
+
+    const avatar = screen.getByRole("img");
+    expect(avatar).toBeInTheDocument();
+  });
+
+  it("renders without image", () => {
+    renderWithProviders(<UserMenuItem name="Jane Doe" img={null} />);
+
+    const name = screen.getByText("Jane Doe");
+    expect(name).toBeInTheDocument();
   });
 });

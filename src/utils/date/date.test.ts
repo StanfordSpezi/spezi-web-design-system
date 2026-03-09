@@ -6,7 +6,88 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { formatDateRange, formatNilDateRange } from "./date";
+import {
+  formatDate,
+  formatDateTime,
+  formatDateRange,
+  formatNilDate,
+  formatNilDateTime,
+  formatNilDateRange,
+} from "./date";
+
+describe("formatDate", () => {
+  it("formats a Date object", () => {
+    const date = new Date(2025, 0, 15);
+    expect(formatDate(date)).toBe(date.toLocaleDateString());
+  });
+
+  it("formats a date string", () => {
+    const result = formatDate("2025-06-15");
+    const expected = new Date("2025-06-15").toLocaleDateString();
+    expect(result).toBe(expected);
+  });
+
+  it("formats a timestamp number", () => {
+    const date = new Date(2025, 5, 15);
+    expect(formatDate(date.getTime())).toBe(date.toLocaleDateString());
+  });
+});
+
+describe("formatNilDate", () => {
+  it("returns null for null", () => {
+    expect(formatNilDate(null)).toBeNull();
+  });
+
+  it("returns null for undefined", () => {
+    expect(formatNilDate(undefined)).toBeNull();
+  });
+
+  it("returns null for empty string", () => {
+    expect(formatNilDate("")).toBeNull();
+  });
+
+  it("formats valid date input", () => {
+    const date = new Date(2025, 0, 15);
+    expect(formatNilDate(date)).toBe(date.toLocaleDateString());
+  });
+});
+
+describe("formatDateTime", () => {
+  it("formats date with time", () => {
+    const date = new Date(2025, 0, 15, 14, 30);
+    const result = formatDateTime(date);
+    expect(result).toContain(date.toLocaleDateString());
+    expect(result).toMatch(/\d{1,2}:\d{2}/);
+  });
+
+  it("formats a date string", () => {
+    const result = formatDateTime("2025-06-15T10:00:00");
+    expect(result).toContain(
+      new Date("2025-06-15T10:00:00").toLocaleDateString(),
+    );
+  });
+});
+
+describe("formatNilDateTime", () => {
+  it("returns null for null", () => {
+    expect(formatNilDateTime(null)).toBeNull();
+  });
+
+  it("returns null for undefined", () => {
+    expect(formatNilDateTime(undefined)).toBeNull();
+  });
+
+  it("returns null for empty string", () => {
+    expect(formatNilDateTime("")).toBeNull();
+  });
+
+  it("formats valid date input with time", () => {
+    const date = new Date(2025, 0, 15, 14, 30);
+    const result = formatNilDateTime(date);
+    expect(result).not.toBeNull();
+    expect(result).toContain(date.toLocaleDateString());
+  });
+});
 
 describe("formatDateRange", () => {
   const formatter = new Intl.DateTimeFormat("en-US", {

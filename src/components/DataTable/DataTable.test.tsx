@@ -8,6 +8,7 @@
 
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
+import { vitest } from "vitest";
 import { peopleColumn, peopleColumns, peopleData } from "./DataTable.mocks";
 import { DataTable } from ".";
 
@@ -244,6 +245,46 @@ describe("DataTable", () => {
 
       const paginationCounter = screen.getByText("1-2 of 7");
       expect(paginationCounter).toBeInTheDocument();
+    });
+  });
+
+  describe("row click", () => {
+    it("calls onRowClick when clicking table cell", () => {
+      const onRowClick = vitest.fn();
+      render(
+        <DataTable
+          columns={peopleColumns}
+          data={peopleData}
+          tableView={{ onRowClick }}
+        />,
+      );
+
+      const firstCell = screen.getByRole("cell", {
+        name: peopleData[0]?.name,
+      });
+      fireEvent.click(firstCell);
+
+      expect(onRowClick).toHaveBeenCalledWith(peopleData[0], expect.anything());
+    });
+
+    it("supports custom isRowClicked", () => {
+      const onRowClick = vitest.fn();
+      const isRowClicked = vitest.fn(() => true);
+      render(
+        <DataTable
+          columns={peopleColumns}
+          data={peopleData}
+          tableView={{ onRowClick, isRowClicked }}
+        />,
+      );
+
+      const firstCell = screen.getByRole("cell", {
+        name: peopleData[0]?.name,
+      });
+      fireEvent.click(firstCell);
+
+      expect(isRowClicked).toHaveBeenCalled();
+      expect(onRowClick).toHaveBeenCalledWith(peopleData[0], expect.anything());
     });
   });
 
