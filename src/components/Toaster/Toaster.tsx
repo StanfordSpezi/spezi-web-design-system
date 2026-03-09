@@ -13,7 +13,7 @@ import {
   type ToasterProps as ToasterPropsBase,
   toast as sonnerToast,
 } from "sonner";
-import { SpeziContext } from "@/SpeziProvider";
+import { SpeziContext } from "@/SpeziContext";
 
 interface ToasterProps extends ToasterPropsBase {}
 

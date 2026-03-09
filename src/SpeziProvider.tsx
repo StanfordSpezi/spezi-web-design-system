@@ -7,70 +7,38 @@
 
 import { NextIntlClientProvider } from "next-intl";
 import {
-  type ComponentProps,
-  createContext,
   type ReactNode,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
 } from "react";
 import { messages as defaultMessages, type AllMessages } from "@/messages";
+import {
+  SpeziContext,
+  type SpeziContextType,
+  type ThemeMode,
+} from "@/SpeziContext";
 import { DEFAULT_THEME_STORAGE_KEY } from "@/theme/getThemeScript";
-import { type ThemeMode } from "@/theme/useTheme";
 
-/**
- * Allows injecting the necessary router-related components.
- *
- * @remarks
- * Spezi Web is router-agnostic.
- * We need to provide a way to inject router-specific dependencies.
- * Projects can have different routers:
- * Tanstack Router, React Router, Next router.
- * See {@link SpeziProvider} for examples with Next and Tanstack Router.
- */
-export interface SpeziContextRouter {
-  /**
-   * Link component. Make sure to provide your router's Link component.
-   */
-  Link: (props: ComponentProps<"a">) => ReactNode;
-}
-
-export interface SpeziContextType {
-  router: SpeziContextRouter;
-  theme: ThemeMode;
-  resolvedTheme: "light" | "dark";
-  setTheme: (theme: ThemeMode) => void;
-}
-
-export const SpeziContext = createContext<SpeziContextType | null>(null);
-
-/**
- * Returns SpeziContextType from context and validates its presence.
- * @throws {Error} When used outside SpeziProvider.
- */
-export const useSpeziContext = () => {
-  const value = useContext(SpeziContext);
-  if (!value) {
-    throw new Error(
-      "useSpeziContext must be used within SpeziProvider. Make sure to wrap your application with SpeziProvider",
-    );
-  }
-  return value;
-};
+export type {
+  SpeziContextRouter,
+  SpeziContextType,
+  ThemeMode,
+} from "@/SpeziContext";
+export { SpeziContext, useSpeziContext } from "@/SpeziContext";
 
 const getSystemTheme = (): "light" | "dark" =>
-  typeof window !== "undefined" &&
-  typeof window.matchMedia === "function" &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) ?
+    "dark"
+  : "light";
 
-const resolveTheme = (theme: ThemeMode): "light" | "dark" =>
-  theme === "system" ? getSystemTheme() : theme;
-
-interface SpeziProviderProps extends Omit<SpeziContextType, "theme" | "resolvedTheme" | "setTheme"> {
+interface SpeziProviderProps
+  extends Omit<SpeziContextType, "theme" | "resolvedTheme" | "setTheme"> {
   children?: ReactNode;
   /**
    * Allows overriding default localization messages.
@@ -138,52 +106,46 @@ export const SpeziProvider = ({
     );
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() =>
-    resolveTheme(theme),
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">(
+    getSystemTheme,
   );
 
-  const applyThemeToDOM = useCallback((mode: ThemeMode) => {
-    if (typeof window === "undefined") return;
-    if (mode === "system") {
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.dataset.theme = mode;
-    }
-    setResolvedTheme(resolveTheme(mode));
-  }, []);
+  const resolvedTheme: "light" | "dark" =
+    theme === "system" ? systemTheme : theme;
 
   const setTheme = useCallback(
     (newTheme: ThemeMode) => {
       setThemeState(newTheme);
-      applyThemeToDOM(newTheme);
       if (typeof window !== "undefined") {
         if (newTheme === "system") {
+          document.documentElement.removeAttribute("data-theme");
           localStorage.removeItem(storageKey);
         } else {
+          document.documentElement.dataset.theme = newTheme;
           localStorage.setItem(storageKey, newTheme);
         }
       }
     },
-    [applyThemeToDOM, storageKey],
+    [storageKey],
   );
 
-  // Apply theme on mount
+  // Apply data-theme attribute on mount
   useEffect(() => {
-    applyThemeToDOM(theme);
-  }, [applyThemeToDOM, theme]);
+    if (theme === "system") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.dataset.theme = theme;
+    }
+  }, [theme]);
 
-  // Listen for system preference changes when in "system" mode
+  // Listen for system preference changes
   useEffect(() => {
     if (typeof window.matchMedia !== "function") return;
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      if (theme === "system") {
-        setResolvedTheme(getSystemTheme());
-      }
-    };
+    const handleChange = () => setSystemTheme(getSystemTheme());
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
+  }, []);
 
   const resolvedMessages = useMemo(
     () => ({ ...defaultMessages, ...messages }),

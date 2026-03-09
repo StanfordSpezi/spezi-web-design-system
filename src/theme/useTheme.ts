@@ -7,15 +7,7 @@
 //
 
 import { useContext } from "react";
-import { SpeziContext } from "@/SpeziProvider";
-
-/**
- * Represents the user's theme preference.
- * - `"light"` forces light mode
- * - `"dark"` forces dark mode
- * - `"system"` follows the OS/browser preference
- */
-export type ThemeMode = "light" | "dark" | "system";
+import { SpeziContext, type ThemeMode } from "@/SpeziContext";
 
 export interface UseThemeReturn {
   /**
