@@ -10,10 +10,15 @@ import {
   type ComponentProps,
   createContext,
   type ReactNode,
+  useCallback,
   useContext,
+  useEffect,
   useMemo,
+  useState,
 } from "react";
 import { messages as defaultMessages, type AllMessages } from "@/messages";
+import { DEFAULT_THEME_STORAGE_KEY } from "@/theme/getThemeScript";
+import { type ThemeMode } from "@/theme/useTheme";
 
 /**
  * Allows injecting the necessary router-related components.
@@ -34,6 +39,9 @@ export interface SpeziContextRouter {
 
 export interface SpeziContextType {
   router: SpeziContextRouter;
+  theme: ThemeMode;
+  resolvedTheme: "light" | "dark";
+  setTheme: (theme: ThemeMode) => void;
 }
 
 export const SpeziContext = createContext<SpeziContextType | null>(null);
@@ -52,12 +60,36 @@ export const useSpeziContext = () => {
   return value;
 };
 
-interface SpeziProviderProps extends SpeziContextType {
+const getSystemTheme = (): "light" | "dark" =>
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+
+const resolveTheme = (theme: ThemeMode): "light" | "dark" =>
+  theme === "system" ? getSystemTheme() : theme;
+
+interface SpeziProviderProps extends Omit<SpeziContextType, "theme" | "resolvedTheme" | "setTheme"> {
   children?: ReactNode;
   /**
    * Allows overriding default localization messages.
    */
   messages?: Partial<AllMessages>;
+  /**
+   * Initial theme mode.
+   * - `"system"` (default): follows OS preference via `prefers-color-scheme`
+   * - `"light"`: forces light mode
+   * - `"dark"`: forces dark mode
+   *
+   * The user's choice is persisted in localStorage under {@link storageKey}.
+   */
+  defaultTheme?: ThemeMode;
+  /**
+   * localStorage key for persisting the theme preference.
+   * @default "spezi-theme"
+   */
+  storageKey?: string;
 }
 
 /**
@@ -65,7 +97,7 @@ interface SpeziProviderProps extends SpeziContextType {
  * Wrap your entire application with this component
  * Injected elements:
  * - router configuration (Link component used by your application)
- * - CSS variables for theme
+ * - theme management (dark mode support)
  * - localization messages
  *
  * @example
@@ -96,13 +128,72 @@ export const SpeziProvider = ({
   children,
   messages,
   router,
+  defaultTheme = "system",
+  storageKey = DEFAULT_THEME_STORAGE_KEY,
 }: SpeziProviderProps) => {
+  const [theme, setThemeState] = useState<ThemeMode>(() => {
+    if (typeof window === "undefined") return defaultTheme;
+    return (
+      (localStorage.getItem(storageKey) as ThemeMode | null) ?? defaultTheme
+    );
+  });
+
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() =>
+    resolveTheme(theme),
+  );
+
+  const applyThemeToDOM = useCallback((mode: ThemeMode) => {
+    if (typeof window === "undefined") return;
+    if (mode === "system") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.dataset.theme = mode;
+    }
+    setResolvedTheme(resolveTheme(mode));
+  }, []);
+
+  const setTheme = useCallback(
+    (newTheme: ThemeMode) => {
+      setThemeState(newTheme);
+      applyThemeToDOM(newTheme);
+      if (typeof window !== "undefined") {
+        if (newTheme === "system") {
+          localStorage.removeItem(storageKey);
+        } else {
+          localStorage.setItem(storageKey, newTheme);
+        }
+      }
+    },
+    [applyThemeToDOM, storageKey],
+  );
+
+  // Apply theme on mount
+  useEffect(() => {
+    applyThemeToDOM(theme);
+  }, [applyThemeToDOM, theme]);
+
+  // Listen for system preference changes when in "system" mode
+  useEffect(() => {
+    if (typeof window.matchMedia !== "function") return;
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      if (theme === "system") {
+        setResolvedTheme(getSystemTheme());
+      }
+    };
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [theme]);
+
   const resolvedMessages = useMemo(
     () => ({ ...defaultMessages, ...messages }),
     [messages],
   );
 
-  const speziContextValue = useMemo(() => ({ router }), [router]);
+  const speziContextValue = useMemo(
+    () => ({ router, theme, resolvedTheme, setTheme }),
+    [router, theme, resolvedTheme, setTheme],
+  );
 
   return (
     <NextIntlClientProvider messages={resolvedMessages} locale="en">
