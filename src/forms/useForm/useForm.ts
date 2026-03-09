@@ -10,7 +10,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import {
   type DeepRequired,
-  type ErrorOption,
   type FieldErrorsImpl,
   useForm as useFormHook,
   type UseFormProps,
@@ -23,11 +22,6 @@ type FieldValues = Record<string, unknown>;
 type ErrorsObject<TFieldValues extends FieldValues> = Partial<
   FieldErrorsImpl<DeepRequired<TFieldValues>>
 >;
-
-/**
- * Special key used for form-level errors.
- */
-export const FORM_ERROR_KEY = "FORM_ERROR";
 
 /**
  * Custom error class for form validation errors.
@@ -110,12 +104,7 @@ export const useForm = <
       const errorValue = {
         message: parseUnknownError(error),
       };
-      setError(
-        // @ts-expect-error Form error is a special key, so type error here is expected
-        FORM_ERROR_KEY,
-        errorValue,
-        options,
-      );
+      setError("root", errorValue, options);
     },
     [setError],
   );
@@ -136,7 +125,7 @@ export const useForm = <
       }
     }, negativeHandler);
 
-  const formError = errors[FORM_ERROR_KEY] as ErrorOption | undefined;
+  const formError = errors.root;
 
   const isSubmitDisabled = !isValid || !isDirty;
 

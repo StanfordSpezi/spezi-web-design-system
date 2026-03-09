@@ -8,7 +8,7 @@
 
 import { isString } from "es-toolkit";
 import { type ReactNode } from "react";
-import { type ErrorOption } from "react-hook-form";
+import { type GlobalError } from "react-hook-form";
 import { ErrorState, type ErrorStateProps } from "@/components/ErrorState";
 import { StateContainer } from "@/components/StateContainer";
 import { cn } from "@/utils/className";
@@ -16,7 +16,7 @@ import { isObject } from "@/utils/misc";
 
 export interface FormErrorProps
   extends Omit<ErrorStateProps, "children" | "prefix" | "entityName"> {
-  formError: ErrorOption | ReactNode;
+  formError: GlobalError | ReactNode;
   prefix?: ReactNode;
 }
 
