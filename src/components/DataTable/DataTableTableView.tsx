@@ -104,9 +104,9 @@ export const DataTableTableView = <Data,>({
             const meta = cell.column.columnDef.meta;
             const context = cell.getContext();
             const cellClassName =
-              typeof meta?.cellClassName === "function"
-                ? meta.cellClassName(context)
-                : meta?.cellClassName;
+              typeof meta?.cellClassName === "function" ?
+                meta.cellClassName(context)
+              : meta?.cellClassName;
 
             return (
               <TableCell key={cell.id} className={cn(cellClassName)}>

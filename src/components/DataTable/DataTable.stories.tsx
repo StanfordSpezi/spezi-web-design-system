@@ -200,7 +200,7 @@ export const NoBorder: Story = {
  * Static cell class name applied to entire columns.
  * Uses `meta.cellClassName` on column definitions.
  */
-export const StaticCellClassName: Story = {
+export const CustomCellStyling: Story = {
   args: {
     ...Default.args,
     columns: [
@@ -209,24 +209,6 @@ export const StaticCellClassName: Story = {
         id: "name",
         meta: { cellClassName: "bg-success/10 text-success" },
       }),
-      columnHelper.accessor("age", {
-        header: "Age",
-        id: "age",
-        meta: { cellClassName: "bg-warning/10 text-warning-dark" },
-      }),
-    ],
-  },
-};
-
-/**
- * Dynamic cell class name based on cell value.
- * Uses a function in `meta.cellClassName` to apply different styles per cell.
- */
-export const DynamicCellClassName: Story = {
-  args: {
-    ...Default.args,
-    columns: [
-      peopleColumn.name,
       columnHelper.accessor("age", {
         header: "Age",
         id: "age",

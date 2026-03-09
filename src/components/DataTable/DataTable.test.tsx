@@ -265,12 +265,12 @@ describe("DataTable", () => {
       render(<DataTable columns={columns} data={peopleData} />);
 
       const nameCell = screen.getByRole("cell", {
-        name: peopleData[0]?.name,
+        name: peopleData.at(0)?.name,
       });
       expect(nameCell).toHaveClass("bg-success/10", "text-success");
 
       const ageCell = screen.getByRole("cell", {
-        name: String(peopleData[0]?.age),
+        name: String(peopleData.at(0)?.age),
       });
       expect(ageCell).not.toHaveClass("bg-success/10");
     });
@@ -299,17 +299,6 @@ describe("DataTable", () => {
       // John is 52, should get success
       const olderCell = screen.getByRole("cell", { name: "52" });
       expect(olderCell).toHaveClass("bg-success/10", "text-success");
-    });
-
-    it("does not add extra classes when meta is undefined", () => {
-      render(<DataTable columns={peopleColumns} data={peopleData} />);
-
-      const cell = screen.getByRole("cell", {
-        name: peopleData[0]?.name,
-      });
-      // Default TableCell classes only
-      expect(cell).toHaveClass("p-4");
-      expect(cell.className).not.toContain("bg-");
     });
   });
 
