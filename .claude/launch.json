@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "storybook",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "storybook"],
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "npx storybook dev -p ${PORT:-6006} --ci --no-open"],
       "port": 6006,
       "autoPort": true
     },
