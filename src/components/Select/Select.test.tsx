@@ -6,12 +6,15 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
+import { vitest } from "vitest";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from ".";
@@ -85,5 +88,162 @@ describe("Select", () => {
     expect(screen.queryAllByText("Ipsum")).toHaveLength(1);
     // both hidden select and trigger value
     expect(screen.queryAllByText("Sir")).toHaveLength(2);
+  });
+
+  it("renders groups and separators", async () => {
+    render(
+      <Select>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Pick one" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup heading="Fruits">
+            <SelectItem value="apple">Apple</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup heading="Vegetables">
+            <SelectItem value="carrot">Carrot</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    await userEvent.click(trigger);
+
+    const listbox = screen.getByRole("listbox");
+    expect(
+      within(listbox).getAllByText("Fruits").length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      within(listbox).getAllByText("Vegetables").length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(within(listbox).getByRole("separator")).toBeInTheDocument();
+  });
+
+  it("supports search", async () => {
+    render(
+      <Select search>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    await userEvent.click(trigger);
+
+    const searchInput = screen.getByPlaceholderText("Search...");
+    await userEvent.type(searchInput, "Apple");
+
+    const listbox = screen.getByRole("listbox");
+    expect(within(listbox).getByText("Apple")).toBeInTheDocument();
+    expect(within(listbox).queryByText("Banana")).not.toBeInTheDocument();
+  });
+
+  it("supports custom search config", async () => {
+    render(
+      <Select
+        search={{ placeholder: "Type here...", emptyMessage: "Nothing found" }}
+      >
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    await userEvent.click(trigger);
+
+    const searchInput = screen.getByPlaceholderText("Type here...");
+    await userEvent.type(searchInput, "xyz");
+
+    expect(screen.getByText("Nothing found")).toBeInTheDocument();
+  });
+
+  it("supports create option", async () => {
+    const onCreateOption = vitest.fn();
+    render(
+      <Select search create={{ onCreateOption }}>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    await userEvent.click(trigger);
+
+    const searchInput = screen.getByPlaceholderText("Search...");
+    await userEvent.type(searchInput, "Mango");
+
+    const createOption = screen.getByText('Create "Mango"');
+    expect(createOption).toBeInTheDocument();
+    await userEvent.click(createOption);
+    expect(onCreateOption).toHaveBeenCalled();
+  });
+
+  it("uses formatValue for unknown values", () => {
+    render(
+      <Select value="custom-123" formatValue={(v) => `ID: ${v}`}>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    expect(screen.getByText("ID: custom-123")).toBeInTheDocument();
+  });
+
+  it("supports disabled state", () => {
+    render(
+      <Select disabled>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toBeDisabled();
+  });
+
+  it("fires onValueChange callback", async () => {
+    const onValueChange = vitest.fn();
+    render(
+      <Select onValueChange={onValueChange}>
+        <SelectTrigger aria-label="Trigger">
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("combobox");
+    await userEvent.click(trigger);
+
+    const appleOption = queryItem("Apple");
+    // @ts-expect-error appleOption exists
+    await userEvent.click(appleOption);
+
+    expect(onValueChange).toHaveBeenCalledWith("apple");
   });
 });

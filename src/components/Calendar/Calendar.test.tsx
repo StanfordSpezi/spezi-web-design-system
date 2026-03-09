@@ -55,4 +55,28 @@ describe("Calendar", () => {
       expect.anything(),
     );
   });
+
+  it("calls onSelect when clicking a day", () => {
+    const date = new Date(2024, 6, 27);
+    const onSelect = vitest.fn();
+    render(
+      <Calendar
+        defaultMonth={date}
+        mode="single"
+        selected={date}
+        onSelect={onSelect}
+      />,
+    );
+
+    const day24 = screen.getByRole("gridcell", { name: "24" });
+    fireEvent.click(day24.firstElementChild ?? day24);
+
+    expect(onSelect).toHaveBeenCalled();
+  });
+
+  it("does not show time picker in range mode", () => {
+    render(<Calendar mode="range" showTimePicker />);
+
+    expect(screen.queryByTestId("dateInput")).not.toBeInTheDocument();
+  });
 });
