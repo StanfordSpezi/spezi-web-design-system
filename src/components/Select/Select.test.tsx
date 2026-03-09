@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { vitest } from "vitest";
 import {
@@ -111,9 +111,14 @@ describe("Select", () => {
     const trigger = screen.getByRole("combobox");
     await userEvent.click(trigger);
 
-    // Both the hidden native select and the visible popover render group labels
-    expect(screen.getAllByText("Fruits").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("Vegetables").length).toBeGreaterThanOrEqual(1);
+    const listbox = screen.getByRole("listbox");
+    expect(
+      within(listbox).getAllByText("Fruits").length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      within(listbox).getAllByText("Vegetables").length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(within(listbox).getByRole("separator")).toBeInTheDocument();
   });
 
   it("supports search", async () => {
@@ -133,7 +138,11 @@ describe("Select", () => {
     await userEvent.click(trigger);
 
     const searchInput = screen.getByPlaceholderText("Search...");
-    expect(searchInput).toBeInTheDocument();
+    await userEvent.type(searchInput, "Apple");
+
+    const listbox = screen.getByRole("listbox");
+    expect(within(listbox).getByText("Apple")).toBeInTheDocument();
+    expect(within(listbox).queryByText("Banana")).not.toBeInTheDocument();
   });
 
   it("supports custom search config", async () => {
@@ -153,7 +162,10 @@ describe("Select", () => {
     const trigger = screen.getByRole("combobox");
     await userEvent.click(trigger);
 
-    expect(screen.getByPlaceholderText("Type here...")).toBeInTheDocument();
+    const searchInput = screen.getByPlaceholderText("Type here...");
+    await userEvent.type(searchInput, "xyz");
+
+    expect(screen.getByText("Nothing found")).toBeInTheDocument();
   });
 
   it("supports create option", async () => {
@@ -177,6 +189,8 @@ describe("Select", () => {
 
     const createOption = screen.getByText('Create "Mango"');
     expect(createOption).toBeInTheDocument();
+    await userEvent.click(createOption);
+    expect(onCreateOption).toHaveBeenCalled();
   });
 
   it("uses formatValue for unknown values", () => {

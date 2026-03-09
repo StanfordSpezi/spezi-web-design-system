@@ -90,6 +90,9 @@ describe("NotificationActions", () => {
     fireEvent.click(actions as HTMLElement);
 
     expect(actionsClick).toHaveBeenCalledTimes(1);
+    expect(
+      (actionsClick.mock.calls[0]?.[0] as MouseEvent).defaultPrevented,
+    ).toBe(true);
     expect(parentClick).not.toHaveBeenCalled();
   });
 

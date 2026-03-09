@@ -30,6 +30,10 @@ describe("reactNodeToText", () => {
     expect(reactNodeToText(42)).toBe("42");
   });
 
+  it("converts zero to string", () => {
+    expect(reactNodeToText(0)).toBe("0");
+  });
+
   it("extracts text from React element children", () => {
     const element = createElement("div", null, "Hello World");
     expect(reactNodeToText(element)).toBe("Hello World");

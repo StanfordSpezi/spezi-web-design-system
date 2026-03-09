@@ -57,7 +57,11 @@ describe("formatDateTime", () => {
     const date = new Date(2025, 0, 15, 14, 30);
     const result = formatDateTime(date);
     expect(result).toContain(date.toLocaleDateString());
-    expect(result).toMatch(/\d{1,2}:\d{2}/);
+    const expectedTime = date.toLocaleTimeString(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    expect(result).toContain(expectedTime);
   });
 
   it("formats a date string", () => {
