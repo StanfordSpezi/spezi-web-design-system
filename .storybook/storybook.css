@@ -10,3 +10,7 @@ SPDX-License-Identifier: MIT
 
 @import "../src/tailwind.css";
 @import "../src/base.css";
+
+.sb-show-main {
+  @apply bg-surface;
+}
