@@ -17,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/Table";
+import { cn } from "@/utils/className";
 import type { DataTableViewProps } from "./DataTable";
 
 export interface DataTableTableViewSpecificProps<Data> {
@@ -99,11 +100,20 @@ export const DataTableTableView = <Data,>({
             : undefined
           }
         >
-          {row.getVisibleCells().map((cell) => (
-            <TableCell key={cell.id}>
-              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </TableCell>
-          ))}
+          {row.getVisibleCells().map((cell) => {
+            const meta = cell.column.columnDef.meta;
+            const context = cell.getContext();
+            const cellClassName =
+              typeof meta?.cellClassName === "function"
+                ? meta.cellClassName(context)
+                : meta?.cellClassName;
+
+            return (
+              <TableCell key={cell.id} className={cn(cellClassName)}>
+                {flexRender(cell.column.columnDef.cell, context)}
+              </TableCell>
+            );
+          })}
         </TableRow>
       ))}
     </TableBody>

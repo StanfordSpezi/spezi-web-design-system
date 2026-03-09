@@ -8,7 +8,12 @@
 
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { peopleColumn, peopleColumns, peopleData } from "./DataTable.mocks";
+import {
+  columnHelper,
+  peopleColumn,
+  peopleColumns,
+  peopleData,
+} from "./DataTable.mocks";
 import { DataTable } from ".";
 
 describe("DataTable", () => {
@@ -244,6 +249,68 @@ describe("DataTable", () => {
 
       const paginationCounter = screen.getByText("1-2 of 7");
       expect(paginationCounter).toBeInTheDocument();
+    });
+  });
+
+  describe("cellClassName", () => {
+    it("applies static cellClassName to cells", () => {
+      const columns = [
+        columnHelper.accessor("name", {
+          header: "Name",
+          id: "name",
+          meta: { cellClassName: "bg-success/10 text-success" },
+        }),
+        peopleColumn.age,
+      ];
+      render(<DataTable columns={columns} data={peopleData} />);
+
+      const nameCell = screen.getByRole("cell", {
+        name: peopleData[0]?.name,
+      });
+      expect(nameCell).toHaveClass("bg-success/10", "text-success");
+
+      const ageCell = screen.getByRole("cell", {
+        name: String(peopleData[0]?.age),
+      });
+      expect(ageCell).not.toHaveClass("bg-success/10");
+    });
+
+    it("applies dynamic cellClassName based on cell value", () => {
+      const columns = [
+        peopleColumn.name,
+        columnHelper.accessor("age", {
+          header: "Age",
+          id: "age",
+          meta: {
+            cellClassName: (ctx) => {
+              const age = ctx.getValue();
+              if (age < 18)
+                return "bg-warning/10 text-warning-dark";
+              return "bg-success/10 text-success";
+            },
+          },
+        }),
+      ];
+      render(<DataTable columns={columns} data={peopleData} />);
+
+      // Ralph is 12, should get warning
+      const youngCell = screen.getByRole("cell", { name: "12" });
+      expect(youngCell).toHaveClass("bg-warning/10", "text-warning-dark");
+
+      // John is 52, should get success
+      const olderCell = screen.getByRole("cell", { name: "52" });
+      expect(olderCell).toHaveClass("bg-success/10", "text-success");
+    });
+
+    it("does not add extra classes when meta is undefined", () => {
+      render(<DataTable columns={peopleColumns} data={peopleData} />);
+
+      const cell = screen.getByRole("cell", {
+        name: peopleData[0]?.name,
+      });
+      // Default TableCell classes only
+      expect(cell).toHaveClass("p-4");
+      expect(cell.className).not.toContain("bg-");
     });
   });
 

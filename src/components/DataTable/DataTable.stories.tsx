@@ -195,3 +195,50 @@ export const NoBorder: Story = {
     bordered: false,
   },
 };
+
+/**
+ * Static cell class name applied to entire columns.
+ * Uses `meta.cellClassName` on column definitions.
+ */
+export const StaticCellClassName: Story = {
+  args: {
+    ...Default.args,
+    columns: [
+      columnHelper.accessor("name", {
+        header: "Name",
+        id: "name",
+        meta: { cellClassName: "bg-success/10 text-success" },
+      }),
+      columnHelper.accessor("age", {
+        header: "Age",
+        id: "age",
+        meta: { cellClassName: "bg-warning/10 text-warning-dark" },
+      }),
+    ],
+  },
+};
+
+/**
+ * Dynamic cell class name based on cell value.
+ * Uses a function in `meta.cellClassName` to apply different styles per cell.
+ */
+export const DynamicCellClassName: Story = {
+  args: {
+    ...Default.args,
+    columns: [
+      peopleColumn.name,
+      columnHelper.accessor("age", {
+        header: "Age",
+        id: "age",
+        meta: {
+          cellClassName: (ctx) => {
+            const age = ctx.getValue();
+            if (age < 18) return "bg-warning/10 text-warning-dark";
+            if (age > 40) return "bg-destructive/10 text-destructive";
+            return "bg-success/10 text-success";
+          },
+        },
+      }),
+    ],
+  },
+};
