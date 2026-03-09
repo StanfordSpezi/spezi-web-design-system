@@ -6,9 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
+import { vitest } from "vitest";
 import { renderWithProviders } from "@/tests/helpers";
-import { Notification } from "./";
+import { Notification, NotificationActions } from "./";
 
 describe("Notification", () => {
   it("renders basic notification", () => {
@@ -68,5 +69,44 @@ describe("Notification", () => {
     const link = screen.getByRole("link");
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "/users");
+  });
+});
+
+describe("NotificationActions", () => {
+  it("stops propagation and prevents default on click", () => {
+    const parentClick = vitest.fn();
+    const actionsClick = vitest.fn();
+
+    renderWithProviders(
+      <div onClick={parentClick} role="presentation">
+        <NotificationActions onClick={actionsClick}>
+          <button>Delete</button>
+        </NotificationActions>
+      </div>,
+    );
+
+    const actions = screen.getByText("Delete").closest("div:not([role])");
+    expect(actions).toBeTruthy();
+    fireEvent.click(actions as HTMLElement);
+
+    expect(actionsClick).toHaveBeenCalledTimes(1);
+    expect(
+      (actionsClick.mock.calls[0]?.[0] as MouseEvent).defaultPrevented,
+    ).toBe(true);
+    expect(parentClick).not.toHaveBeenCalled();
+  });
+
+  it("renders without onClick handler", () => {
+    renderWithProviders(
+      <NotificationActions>
+        <button>Mark as read</button>
+      </NotificationActions>,
+    );
+
+    const button = screen.getByText("Mark as read");
+    const parent = button.closest("div");
+    expect(parent).toBeTruthy();
+    fireEvent.click(parent as HTMLElement);
+    expect(button).toBeInTheDocument();
   });
 });

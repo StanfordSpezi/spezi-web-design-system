@@ -25,7 +25,8 @@ import { type ReactNode, isValidElement } from "react";
  * ```
  */
 export const reactNodeToText = (node: ReactNode): string => {
-  if (!node) return "";
+  if (node === null || node === undefined || typeof node === "boolean")
+    return "";
 
   if (isString(node) || isNumber(node)) {
     return String(node);

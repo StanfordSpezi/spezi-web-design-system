@@ -90,4 +90,39 @@ describe("SignInForm", () => {
 
     expect(screen.getByTestId("icon")).toBeInTheDocument();
   });
+
+  it("shows firebase error on SSO failure", async () => {
+    const { FirebaseError } = await import("@firebase/app");
+    const firebaseError = new FirebaseError(
+      "auth/some-error",
+      "Some firebase error",
+    );
+    signInWithPopupMock.mockRejectedValueOnce(firebaseError);
+
+    renderWithProviders(<SignInForm {...defaultProps} />);
+
+    const ssoButton = screen.getByRole("button", {
+      name: "Sign in with Lorem",
+    });
+    fireEvent.click(ssoButton);
+
+    const errorMessage = await screen.findByText(
+      /Sign in error:.*auth\/some-error/,
+    );
+    expect(errorMessage).toBeInTheDocument();
+  });
+
+  it("shows unknown error on non-firebase SSO failure", async () => {
+    signInWithPopupMock.mockRejectedValueOnce(new Error("Network error"));
+
+    renderWithProviders(<SignInForm {...defaultProps} />);
+
+    const ssoButton = screen.getByRole("button", {
+      name: "Sign in with Lorem",
+    });
+    fireEvent.click(ssoButton);
+
+    const errorMessage = await screen.findByText(/Unknown error/);
+    expect(errorMessage).toBeInTheDocument();
+  });
 });
