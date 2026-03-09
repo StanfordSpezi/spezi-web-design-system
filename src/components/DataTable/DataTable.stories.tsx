@@ -232,7 +232,7 @@ export const DynamicCellClassName: Story = {
         id: "age",
         meta: {
           cellClassName: (ctx) => {
-            const age = ctx.getValue();
+            const age = ctx.getValue() as number;
             if (age < 18) return "bg-warning/10 text-warning-dark";
             if (age > 40) return "bg-destructive/10 text-destructive";
             return "bg-success/10 text-success";

@@ -284,8 +284,7 @@ describe("DataTable", () => {
           meta: {
             cellClassName: (ctx) => {
               const age = ctx.getValue();
-              if (age < 18)
-                return "bg-warning/10 text-warning-dark";
+              if (age < 18) return "bg-warning/10 text-warning-dark";
               return "bg-success/10 text-success";
             },
           },
