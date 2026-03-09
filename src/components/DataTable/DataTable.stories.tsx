@@ -197,8 +197,9 @@ export const NoBorder: Story = {
 };
 
 /**
- * Static cell class name applied to entire columns.
- * Uses `meta.cellClassName` on column definitions.
+ * Demonstrates custom cell styling using `meta.cellClassName` on column definitions.
+ * Includes both a static class applied to an entire column and a dynamic function
+ * that computes classes per cell based on the cell value.
  */
 export const CustomCellStyling: Story = {
   args: {

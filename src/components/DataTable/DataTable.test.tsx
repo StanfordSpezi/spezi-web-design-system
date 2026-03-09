@@ -341,6 +341,16 @@ describe("DataTable", () => {
       const olderCell = screen.getByRole("cell", { name: "52" });
       expect(olderCell).toHaveClass("bg-success/10", "text-success");
     });
+
+    it("does not add extra classes when meta is undefined", () => {
+      render(<DataTable columns={peopleColumns} data={peopleData} />);
+
+      const cell = screen.getByRole("cell", {
+        name: peopleData.at(0)?.name,
+      });
+      expect(cell).toHaveClass("p-4");
+      expect(cell.className).not.toContain("bg-");
+    });
   });
 
   describe("custom view", () => {
