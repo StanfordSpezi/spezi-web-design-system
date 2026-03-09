@@ -195,3 +195,33 @@ export const NoBorder: Story = {
     bordered: false,
   },
 };
+
+/**
+ * Demonstrates custom cell styling using `meta.cellClassName` on column definitions.
+ * Includes both a static class applied to an entire column and a dynamic function
+ * that computes classes per cell based on the cell value.
+ */
+export const CustomCellStyling: Story = {
+  args: {
+    ...Default.args,
+    columns: [
+      columnHelper.accessor("name", {
+        header: "Name",
+        id: "name",
+        meta: { cellClassName: "font-bold" },
+      }),
+      columnHelper.accessor("age", {
+        header: "Age",
+        id: "age",
+        meta: {
+          cellClassName: (ctx) => {
+            const age = ctx.getValue() as number;
+            if (age < 18) return "bg-warning/10 text-warning-dark";
+            if (age > 40) return "bg-destructive/10 text-destructive";
+            return "bg-success/10 text-success";
+          },
+        },
+      }),
+    ],
+  },
+};
