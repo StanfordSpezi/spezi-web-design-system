@@ -7,8 +7,8 @@
 //
 
 import { flexRender } from "@tanstack/react-table";
-import { type MouseEvent } from "react";
 import { isFunction } from "es-toolkit";
+import { type MouseEvent } from "react";
 import { ToggleSortButton } from "@/components/DataTable/ToggleSortButton";
 import {
   Table,
