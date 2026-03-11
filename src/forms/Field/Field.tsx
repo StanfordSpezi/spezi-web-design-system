@@ -15,6 +15,7 @@ import {
   type ErrorOption,
   type FieldPath,
   type FieldValues,
+  type GlobalError,
   type UseFormStateReturn,
 } from "react-hook-form";
 import { Error } from "@/components/Error";
@@ -56,7 +57,7 @@ export type FieldProps<
   /**
    * Custom error message
    */
-  error?: ErrorOption;
+  error?: ErrorOption | GlobalError;
   /**
    * Tooltip content on top of the field, helpful for explaining details.
    */
