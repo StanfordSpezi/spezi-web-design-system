@@ -64,6 +64,25 @@ describe("ConfirmDeleteDialog", () => {
     ).toBeInTheDocument();
   });
 
+  it("disables delete button and shows loader while pending", () => {
+    const onDelete = vitest.fn();
+    render(
+      <ConfirmDeleteDialog
+        open={true}
+        onOpenChange={vitest.fn()}
+        onDelete={onDelete}
+        entityName="user"
+        isPending
+      />,
+    );
+
+    const deleteButton = screen.getByRole("button", { name: "Loading" });
+    expect(deleteButton).toBeDisabled();
+
+    fireEvent.click(deleteButton);
+    expect(onDelete).not.toHaveBeenCalled();
+  });
+
   it("truncates when more than 4 items", () => {
     render(
       <ConfirmDeleteDialog

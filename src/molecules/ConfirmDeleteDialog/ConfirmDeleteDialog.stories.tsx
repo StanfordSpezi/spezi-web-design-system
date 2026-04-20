@@ -67,3 +67,13 @@ export const MultipleItemsWithoutNames: Story = {
     entityName: "5 organizations",
   },
 };
+
+export const Pending: Story = {
+  args: {
+    open: true,
+    onDelete: action("onDelete"),
+    entityName: "user",
+    itemName: "example@example.com",
+    isPending: true,
+  },
+};

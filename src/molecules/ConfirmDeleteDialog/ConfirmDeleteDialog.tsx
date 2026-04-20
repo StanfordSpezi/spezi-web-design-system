@@ -42,6 +42,13 @@ export interface ConfirmDeleteDialogProps
    */
   itemName?: ReactNode | ReactNode[];
   onDelete: MouseEventHandler;
+  /**
+   * Reflects that the delete operation is in progress.
+   * When true, the delete button shows a loader and is disabled
+   * to prevent duplicate submissions.
+   * @default false
+   */
+  isPending?: boolean;
 }
 
 interface ItemNamesProps {
@@ -100,6 +107,7 @@ export const ConfirmDeleteDialog = ({
   entityName,
   itemName,
   onDelete,
+  isPending = false,
   ...props
 }: ConfirmDeleteDialogProps) => {
   const itemNames =
@@ -118,7 +126,12 @@ export const ConfirmDeleteDialog = ({
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={onDelete} variant="destructive">
+          <Button
+            onClick={onDelete}
+            variant="destructive"
+            isPending={isPending}
+            disabled={isPending}
+          >
             Delete {entityName}
           </Button>
         </DialogFooter>
