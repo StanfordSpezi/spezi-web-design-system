@@ -78,6 +78,7 @@ describe("ConfirmDeleteDialog", () => {
 
     const deleteButton = screen.getByRole("button", { name: "Loading" });
     expect(deleteButton).toBeDisabled();
+    expect(screen.getByTestId("buttonPendingLoader")).toBeInTheDocument();
 
     fireEvent.click(deleteButton);
     expect(onDelete).not.toHaveBeenCalled();

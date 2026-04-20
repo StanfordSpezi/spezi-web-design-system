@@ -46,7 +46,7 @@ export interface ConfirmDeleteDialogProps
    * Reflects that the delete operation is in progress.
    * When true, the delete button shows a loader and is disabled
    * to prevent duplicate submissions.
-   * @default false
+   * @default undefined
    */
   isPending?: boolean;
 }
@@ -107,7 +107,7 @@ export const ConfirmDeleteDialog = ({
   entityName,
   itemName,
   onDelete,
-  isPending = false,
+  isPending,
   ...props
 }: ConfirmDeleteDialogProps) => {
   const itemNames =
