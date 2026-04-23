@@ -6,22 +6,33 @@
 // SPDX-License-Identifier: MIT
 //
 
-import type { ReactNode } from "react";
+import { type ReactNode, useContext } from "react";
 import {
   type ExternalToast,
   Toaster as ToasterBase,
   type ToasterProps as ToasterPropsBase,
   toast as sonnerToast,
 } from "sonner";
+import { SpeziContext } from "@/SpeziContext";
 
 interface ToasterProps extends ToasterPropsBase {}
 
 /**
  * Toaster context provider.
+ *
+ * Automatically respects the current theme from {@link SpeziProvider} when available.
  */
-export const Toaster = (props: ToasterProps) => (
-  <ToasterBase data-slot="toaster" position="bottom-center" {...props} />
-);
+export const Toaster = (props: ToasterProps) => {
+  const context = useContext(SpeziContext);
+  return (
+    <ToasterBase
+      data-slot="toaster"
+      position="bottom-center"
+      theme={context?.resolvedTheme}
+      {...props}
+    />
+  );
+};
 
 type ToastTitle = (() => ReactNode) | ReactNode;
 

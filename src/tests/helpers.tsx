@@ -9,7 +9,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, type RenderOptions } from "@testing-library/react";
 import type { ReactNode } from "react";
-import { SpeziProvider, type SpeziContextType } from "@/SpeziProvider";
+import { SpeziProvider, type SpeziContextRouter } from "@/SpeziProvider";
 
 interface TestProvidersProps {
   children: ReactNode;
@@ -17,10 +17,8 @@ interface TestProvidersProps {
 
 const queryClient = new QueryClient();
 
-const speziProviderContext: SpeziContextType = {
-  router: {
-    Link: (props) => <a {...props} />,
-  },
+const router: SpeziContextRouter = {
+  Link: (props) => <a {...props} />,
 };
 
 /**
@@ -28,7 +26,7 @@ const speziProviderContext: SpeziContextType = {
  */
 export const TestProviders = ({ children }: TestProvidersProps) => (
   <QueryClientProvider client={queryClient}>
-    <SpeziProvider {...speziProviderContext}>{children}</SpeziProvider>
+    <SpeziProvider router={router}>{children}</SpeziProvider>
   </QueryClientProvider>
 );
 

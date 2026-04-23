@@ -221,6 +221,10 @@
       "types": "./dist/components/Progress.d.ts",
       "default": "./dist/components/Progress.js"
     },
+    "./components/ThemeToggle": {
+      "types": "./dist/components/ThemeToggle.d.ts",
+      "default": "./dist/components/ThemeToggle.js"
+    },
     "./molecules/AsideBrandLayout": {
       "types": "./dist/molecules/AsideBrandLayout.d.ts",
       "default": "./dist/molecules/AsideBrandLayout.js"
