@@ -7,7 +7,14 @@
 //
 
 import { render, screen } from "@testing-library/react";
-import { Card, CardHeader, CardTitle } from ".";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from ".";
 
 describe("Card", () => {
   it("renders element", () => {
@@ -48,5 +55,28 @@ describe("Card", () => {
 
     const heading = screen.getByRole("heading", { level: 2 });
     expect(heading).toHaveTextContent("Custom heading");
+  });
+
+  it("renders CardDescription", () => {
+    render(
+      <CardHeader>
+        <CardTitle>Title</CardTitle>
+        <CardDescription>Some description</CardDescription>
+      </CardHeader>,
+    );
+
+    expect(screen.getByText("Some description")).toBeInTheDocument();
+  });
+
+  it("renders CardContent", () => {
+    render(<CardContent>Body text</CardContent>);
+
+    expect(screen.getByText("Body text")).toBeInTheDocument();
+  });
+
+  it("renders CardFooter", () => {
+    render(<CardFooter>Footer note</CardFooter>);
+
+    expect(screen.getByText("Footer note")).toBeInTheDocument();
   });
 });
